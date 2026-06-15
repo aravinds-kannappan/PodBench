@@ -1,0 +1,31 @@
+# CPU-based autoscaling fallback for clusters without KEDA. Coarser than queue
+# depth (a worker waiting on a slow model call is not CPU-bound), but it requires
+# only metrics-server. Prefer keda-scaledobject.yaml when available.
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: podbench-worker
+  namespace: podbench
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: podbench-worker
+  minReplicas: 2
+  maxReplicas: 24
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 65
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Pods
+          value: 4
+          periodSeconds: 30
+    scaleDown:
+      stabilizationWindowSeconds: 120

@@ -1,0 +1,32 @@
+# Queue-driven autoscaling with KEDA. Scales podbench-worker on the length of the
+# Redis list, which is the true backlog signal. This is what produces the scale
+# events ("New size: 12; reason: queue depth above target of 20 per replica")
+# shown in the dashboard's cluster event feed.
+#
+# Requires KEDA installed in the cluster (https://keda.sh). If you do not run
+# KEDA, use hpa.yaml instead, which scales on CPU as a coarser proxy.
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: podbench-worker
+  namespace: podbench
+spec:
+  scaleTargetRef:
+    name: podbench-worker
+  minReplicaCount: 2
+  maxReplicaCount: 24
+  cooldownPeriod: 120
+  pollingInterval: 10
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+          stabilizationWindowSeconds: 120
+        scaleUp:
+          stabilizationWindowSeconds: 0
+  triggers:
+    - type: redis
+      metadata:
+        address: redis.podbench.svc.cluster.local:6379
+        listName: podbench:tasks
+        listLength: "20"

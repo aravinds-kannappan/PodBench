@@ -1,0 +1,54 @@
+# The horizontally scaled unit. Each replica is one worker process draining the
+# Redis queue and running agent episodes. Resource limits here are what the
+# pod-health dashboard plots cpu and memory against (1000m / 1024Mi).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podbench-worker
+  namespace: podbench
+  labels:
+    app: podbench-worker
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: podbench-worker
+  template:
+    metadata:
+      labels:
+        app: podbench-worker
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+        - name: worker
+          image: ghcr.io/podbench/worker:0.4.2
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: REDIS_URL
+              value: "redis://redis.podbench.svc.cluster.local:6379"
+            - name: PODBENCH_QUEUE
+              value: "podbench:tasks"
+            - name: PODBENCH_MODEL
+              value: "claude-opus-4-8"
+            - name: PODBENCH_EFFORT
+              value: "medium"
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: podbench-secrets
+                  key: ANTHROPIC_API_KEY
+          resources:
+            requests:
+              cpu: 250m
+              memory: 384Mi
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
+          # The worker is a queue consumer with no inbound port. Liveness is a
+          # process check; readiness gates on the heartbeat file the worker
+          # touches when it has a broker connection.
+          livenessProbe:
+            exec:
+              command: ["sh", "-c", "pgrep -f worker.ts >/dev/null"]
+            initialDelaySeconds: 15
+            periodSeconds: 20

@@ -1,0 +1,47 @@
+{
+  "name": "podbench",
+  "version": "0.4.2",
+  "private": false,
+  "description": "Deterministic, resettable task environments for LLM agents, run at fleet scale on Kubernetes with per-run token metering and a pod-health dashboard.",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/podbench/podbench",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/podbench/podbench.git"
+  },
+  "keywords": [
+    "llm",
+    "agents",
+    "evaluation",
+    "benchmark",
+    "kubernetes",
+    "anthropic",
+    "observability"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "gen:data": "node scripts/gen.mjs",
+    "worker": "tsx infra/worker/worker.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.65.0",
+    "alasql": "^4.6.6",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "ioredis": "^5.4.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
