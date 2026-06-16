@@ -1,0 +1,119 @@
+import { AreaChart, Sparkline } from "@/components/charts";
+import { shortTime, ago } from "@/lib/format";
+import type { Fleet } from "@/lib/types";
+
+// Live cluster window: pod-health KPIs, queue depth, per-pod cpu/mem, and the
+// event feed. Shared by the overview and the demo dashboard.
+export default function FleetHealth({ fleet }: { fleet: Fleet }) {
+  const queuePeak = Math.max(...fleet.queue_depth_series);
+  const running = fleet.pods.filter((p) => p.phase === "Running").length;
+
+  return (
+    <section className="section" id="fleet">
+      <div className="section-head">
+        <h2>pod health</h2>
+        <span className="hint">
+          live cluster window, last {fleet.window_minutes} minutes, generated {ago(fleet.generated_at)}
+        </span>
+      </div>
+
+      <div className="kpis" style={{ marginTop: 0, gridTemplateColumns: "repeat(4, 1fr)" }}>
+        <Kpi label="replicas" value={`${fleet.current_replicas}/${fleet.desired_replicas}`} sub="current / desired (HPA)" />
+        <Kpi label="pods running" value={`${running}/${fleet.pods.length}`} sub="ready in the deployment" />
+        <Kpi label="queue peak" value={String(queuePeak)} sub="max backlog in window" />
+        <Kpi label="inflight now" value={String(fleet.inflight_series.at(-1) ?? 0)} sub="episodes executing" />
+      </div>
+
+      <div className="card" style={{ marginTop: 18 }}>
+        <h3>
+          queue depth<span className="h3sub">Redis stream backlog; HPA scales workers off this signal</span>
+        </h3>
+        <AreaChart
+          data={fleet.queue_depth_series}
+          labels={fleet.ts_series.map((t) => shortTime(t))}
+          color="var(--accent-2)"
+          yLabel="depth"
+          height={150}
+        />
+        <div className="legend">
+          <span>A burst arrives, the autoscaler adds workers, the backlog drains. The two scale events are in the event feed below.</span>
+        </div>
+      </div>
+
+      <div className="grid-2" style={{ marginTop: 18 }}>
+        <div className="card">
+          <h3>
+            pods<span className="h3sub">cpu and memory per worker</span>
+          </h3>
+          <table>
+            <thead>
+              <tr>
+                <th>pod</th>
+                <th>phase</th>
+                <th className="num">rst</th>
+                <th>cpu</th>
+                <th>mem</th>
+                <th className="num">runs</th>
+              </tr>
+            </thead>
+            <tbody>
+              {fleet.pods.map((p) => (
+                <tr key={p.name}>
+                  <td className="mono" style={{ fontSize: 11 }}>
+                    {p.name}
+                    <div className="faint" style={{ fontSize: 10 }}>{p.node}</div>
+                  </td>
+                  <td>
+                    <span className={`badge ${phaseClass(p.phase)}`}>{p.phase}</span>
+                  </td>
+                  <td className="num">{p.restarts}</td>
+                  <td>
+                    <Sparkline data={p.cpu_series} limit={p.cpu_limit_milli} color="var(--accent-2)" width={90} />
+                    <div className="faint mono" style={{ fontSize: 10 }}>{p.cpu_milli}/{p.cpu_limit_milli}m</div>
+                  </td>
+                  <td>
+                    <Sparkline data={p.mem_series} limit={p.mem_limit_mi} color={p.mem_mi > p.mem_limit_mi * 0.85 ? "var(--bad)" : "var(--accent)"} width={90} />
+                    <div className="faint mono" style={{ fontSize: 10 }}>{p.mem_mi}/{p.mem_limit_mi}Mi</div>
+                  </td>
+                  <td className="num">{p.runs_handled}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="card">
+          <h3>
+            cluster events<span className="h3sub">scheduling, scaling, OOM, and app-level signals</span>
+          </h3>
+          <div className="events">
+            {fleet.events.map((e, i) => (
+              <div key={i} className={`event ${e.type === "Warning" ? "warn" : "normal"}`}>
+                <span className="etime">{shortTime(e.ts)}</span>
+                <span className="ereason">{e.reason}</span>
+                <span className="emsg">{e.message}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Kpi({ label, value, sub }: { label: string; value: string; sub?: string }) {
+  return (
+    <div className="kpi">
+      <div className="label">{label}</div>
+      <div className="value">{value}</div>
+      {sub && <div className="sub">{sub}</div>}
+    </div>
+  );
+}
+
+function phaseClass(phase: string): string {
+  if (phase === "Running") return "run";
+  if (phase === "Pending") return "pend";
+  if (phase === "CrashLoopBackOff") return "crash";
+  return "done";
+}

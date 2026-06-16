@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Run } from "@/lib/types";
 import { computeStats } from "@/lib/stats";
-import { Histogram, Bar } from "@/components/charts";
+import ModelBehavior from "@/components/ModelBehavior";
+import LiveFleet from "@/components/LiveFleet";
 import {
   loadLocalRuns,
   saveLocalRun,
@@ -144,45 +145,18 @@ export default function DemoConsole({ tasks }: { tasks: TaskOpt[] }) {
           <Kpi label="cache hit rate" value={mounted && hasRuns ? pct(stats.avg_cache_hit_rate) : "—"} sub="input from cache" />
         </div>
 
-        {mounted && hasRuns && (
-          <div className="grid-2" style={{ marginTop: 18 }}>
-            <div className="card">
-              <h3>reward distribution<span className="h3sub">your runs, 0.0 to 1.0</span></h3>
-              <Histogram buckets={stats.reward_histogram} />
-            </div>
-            <div className="card">
-              <h3>by model<span className="h3sub">your runs only</span></h3>
-              <table>
-                <thead>
-                  <tr>
-                    <th>model</th>
-                    <th className="num">runs</th>
-                    <th>pass rate</th>
-                    <th className="num">reward</th>
-                    <th className="num">$/run</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {stats.by_model.map((m) => (
-                    <tr key={m.model}>
-                      <td className="mono">{m.model}</td>
-                      <td className="num">{m.runs}</td>
-                      <td>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                          <Bar value={m.pass_rate} max={1} variant={m.pass_rate < 0.6 ? "bad" : m.pass_rate < 0.8 ? "warn" : undefined} />
-                          <span className="mono faint">{pct(m.pass_rate, 0)}</span>
-                        </div>
-                      </td>
-                      <td className="num">{m.avg_reward.toFixed(3)}</td>
-                      <td className="num">{usd(m.avg_cost_per_run)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
       </section>
+
+      {/* LIVE MODEL BEHAVIOR — computed from this session's runs as they land */}
+      {mounted && hasRuns && (
+        <ModelBehavior
+          stats={stats}
+          hint="live — generated from the runs you execute, updating as each one lands"
+        />
+      )}
+
+      {/* LIVE POD HEALTH — derived from the episodes you ran */}
+      {mounted && hasRuns && <LiveFleet runs={runs} />}
 
       {/* TRAJECTORY */}
       {selected && (

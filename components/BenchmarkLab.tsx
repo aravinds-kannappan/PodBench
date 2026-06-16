@@ -111,13 +111,43 @@ export default function BenchmarkLab({ tasks }: { tasks: TaskOpt[] }) {
   const recommendation = useMemo(() => {
     const models = stats.by_model.filter((m) => m.runs > 0);
     if (models.length < 1) return null;
+    const EPS = 0.005;
+    const ceiling = Math.max(...models.map((m) => m.avg_reward));
+    const floor = Math.min(...models.map((m) => m.avg_reward));
+    const spread = ceiling - floor;
+    // models statistically at the top, and the priciest one among them — that is
+    // the spend you would avoid by picking the cheaper equal-quality worker.
+    const topTier = models.filter((m) => m.avg_reward >= ceiling - EPS);
+    const priciestTop = [...topTier].sort((a, b) => b.avg_cost_per_run - a.avg_cost_per_run)[0];
     const bestReward = [...models].sort((a, b) => b.avg_reward - a.avg_reward)[0];
     const qualified = models.filter((m) => m.avg_reward >= REWARD_BAR);
     const value =
       qualified.length > 0
         ? [...qualified].sort((a, b) => a.avg_cost_per_run - b.avg_cost_per_run)[0]
         : null;
-    return { bestReward, value, models };
+    const valueIsTop = value ? value.avg_reward >= ceiling - EPS : false;
+    const tiedAtTop = topTier.length > 1;
+    const savingVsPriciest =
+      value && value.avg_cost_per_run > 0
+        ? priciestTop.avg_cost_per_run / value.avg_cost_per_run
+        : 1;
+    const savingVsBest =
+      value && value.avg_cost_per_run > 0
+        ? bestReward.avg_cost_per_run / value.avg_cost_per_run
+        : 1;
+    return {
+      models,
+      ceiling,
+      spread,
+      topTier,
+      priciestTop,
+      bestReward,
+      value,
+      valueIsTop,
+      tiedAtTop,
+      savingVsPriciest,
+      savingVsBest,
+    };
   }, [stats]);
 
   return (
@@ -222,21 +252,53 @@ export default function BenchmarkLab({ tasks }: { tasks: TaskOpt[] }) {
                     <span className="reco-model mono">{shortModel(recommendation.value.model)}</span>
                     <span className="badge pass">best value</span>
                   </div>
-                  <p className="dim" style={{ fontSize: 13 }}>
+                  <p className="dim" style={{ fontSize: 13, marginBottom: 8 }}>
                     Cheapest model clearing the {REWARD_BAR.toFixed(2)} reward bar at{" "}
                     <strong className="mono">{usd(recommendation.value.avg_cost_per_run)}</strong>/run
                     {" "}({pct(recommendation.value.avg_reward, 0)} reward, {pct(recommendation.value.pass_rate, 0)} pass).
-                    {recommendation.bestReward.model !== recommendation.value.model &&
-                      recommendation.value.avg_cost_per_run > 0 && (
+                  </p>
+                  <p className="dim" style={{ fontSize: 13 }}>
+                    {recommendation.valueIsTop ? (
+                      recommendation.tiedAtTop ? (
                         <>
-                          {" "}It is{" "}
-                          <strong className="mono">
-                            {(recommendation.bestReward.avg_cost_per_run / recommendation.value.avg_cost_per_run).toFixed(1)}×
-                          </strong>{" "}
-                          cheaper than the top-reward model{" "}
-                          <span className="mono">{shortModel(recommendation.bestReward.model)}</span>.
+                          <strong>{recommendation.topTier.length} models tied at the top</strong> ({recommendation.ceiling.toFixed(3)} reward),
+                          so paying{" "}
+                          {recommendation.savingVsPriciest > 1.05 ? (
+                            <>
+                              <strong className="mono">{recommendation.savingVsPriciest.toFixed(1)}×</strong> more for{" "}
+                              <span className="mono">{shortModel(recommendation.priciestTop.model)}</span>
+                            </>
+                          ) : (
+                            <>more for a heavier model</>
+                          )}{" "}
+                          buys no measurable quality on this environment. Reserve the
+                          Opus-class budget for harder tasks — it is not recommended here.
                         </>
-                      )}
+                      ) : (
+                        <>
+                          It is also the most accurate model in the sweep, so there is no
+                          accuracy/cost tradeoff to make — it wins on both axes.
+                        </>
+                      )
+                    ) : (
+                      <>
+                        It gives up{" "}
+                        <strong className="mono">
+                          {(recommendation.bestReward.avg_reward - recommendation.value.avg_reward).toFixed(3)}
+                        </strong>{" "}
+                        reward versus top-scoring{" "}
+                        <span className="mono">{shortModel(recommendation.bestReward.model)}</span>{" "}
+                        but costs{" "}
+                        <strong className="mono">{recommendation.savingVsBest.toFixed(1)}×</strong> less.
+                        Pick <span className="mono">{shortModel(recommendation.bestReward.model)}</span> only
+                        if that last margin matters.
+                      </>
+                    )}
+                  </p>
+                  <p className="faint" style={{ fontSize: 12, marginTop: 10 }}>
+                    {recommendation.spread < 0.01
+                      ? "All models scored within a rounding error here — this environment doesn't separate them. Differentiation shows up on harder tasks or at lower effort."
+                      : `Reward spread across models: ${recommendation.spread.toFixed(3)} — this environment does separate them.`}
                   </p>
                 </>
               ) : (
