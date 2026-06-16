@@ -65,7 +65,7 @@ export const TASKS: Task[] = [
           ref,
           "SELECT email FROM customers c JOIN orders o ON o.customer_id = c.id " +
             "WHERE o.status <> 'cancelled' GROUP BY c.email " +
-            "ORDER BY SUM(o.total) DESC LIMIT 1"
+            "ORDER BY SUM(o.order_total) DESC LIMIT 1"
         )
       );
       const got = norm(submission?.answer);
@@ -151,7 +151,7 @@ export const TASKS: Task[] = [
     verify: ({ db }) => {
       const ref = seedDatabase();
       const expectedAmount = Number(
-        scalar(ref, "SELECT total FROM orders WHERE id = 1007")
+        scalar(ref, "SELECT order_total FROM orders WHERE id = 1007")
       );
       const status = norm(scalar(db, "SELECT status FROM orders WHERE id = 1007"));
       const refundRows = rows(db, "SELECT amount FROM refunds WHERE order_id = 1007");

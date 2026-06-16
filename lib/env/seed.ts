@@ -11,7 +11,7 @@ export const ENV_NOW =
 export const SCHEMA = `
 customers(id INT, name STRING, email STRING, country STRING, created_at STRING)
 products(id INT, name STRING, category STRING, price NUMBER, stock INT)
-orders(id INT, customer_id INT, status STRING, total NUMBER, created_at STRING)
+orders(id INT, customer_id INT, status STRING, order_total NUMBER, created_at STRING)
 order_items(id INT, order_id INT, product_id INT, qty INT, unit_price NUMBER)
 refunds(id INT, order_id INT, amount NUMBER, reason STRING, created_at STRING)
 `.trim();
@@ -75,9 +75,9 @@ Table: orders
               Revenue and spend questions almost always mean "exclude cancelled".
               Read the task to decide whether refunded should also be excluded; by
               default it is still counted as having been spent.
-  total       Order total in USD. This is the authoritative amount to refund when
+  order_total Order total in USD. This is the authoritative amount to refund when
               issuing a full refund. It equals the sum of its order_items
-              qty * unit_price for well-formed orders, but always read total
+              qty * unit_price for well-formed orders, but always read order_total
               directly rather than recomputing it.
   created_at  Order placement date, ISO 8601 date. Use string comparison against a
               cutoff date for "older than N days" questions; compute the cutoff
@@ -136,14 +136,14 @@ WORKED PATTERNS
   Find the top group by an aggregate:
     SELECT email FROM customers c JOIN orders o ON o.customer_id = c.id
     WHERE o.status <> 'cancelled' GROUP BY c.email
-    ORDER BY SUM(o.total) DESC LIMIT 1;
+    ORDER BY SUM(o.order_total) DESC LIMIT 1;
 
   Count rows matching a date cutoff:
     SELECT COUNT(*) FROM orders
     WHERE status = 'processing' AND created_at < '2026-05-16';
 
   Issue a full refund safely:
-    SELECT total FROM orders WHERE id = 1007;            -- read the amount
+    SELECT order_total FROM orders WHERE id = 1007;      -- read the amount
     SELECT COUNT(*) FROM refunds WHERE order_id = 1007;  -- confirm none exists
     INSERT INTO refunds (id, order_id, amount, reason, created_at)
       VALUES (2, 1007, 235, 'full refund', '2026-06-15');
@@ -182,7 +182,7 @@ APPENDIX A: COMMON MISTAKES AND HOW TO AVOID THEM
   Mistake: recomputing an order total from its items to decide a refund amount.
     Why it is wrong: small rounding differences and missing items make the
     recomputed value drift from the authoritative figure.
-    Fix: refund orders.total directly.
+    Fix: refund orders.order_total directly.
 
   Mistake: issuing a second refund for an order that already has one.
     Why it is wrong: it double-pays the customer and corrupts the books.
@@ -223,7 +223,7 @@ APPENDIX B: STATUS TRANSITION REFERENCE
 APPENDIX C: EXTENDED EXAMPLES
 
   List every order for one customer, newest first:
-    SELECT id, status, total, created_at FROM orders
+    SELECT id, status, order_total, created_at FROM orders
     WHERE customer_id = 4 ORDER BY created_at DESC;
 
   Total revenue by category, excluding cancelled orders:
@@ -247,7 +247,7 @@ APPENDIX C: EXTENDED EXAMPLES
     WHERE o.id = 1007;
 
   Spend per email, ranked, excluding cancelled orders:
-    SELECT c.email AS email, SUM(o.total) AS spend
+    SELECT c.email AS email, SUM(o.order_total) AS spend
     FROM customers c JOIN orders o ON o.customer_id = c.id
     WHERE o.status <> 'cancelled'
     GROUP BY c.email ORDER BY spend DESC;
@@ -269,7 +269,7 @@ GLOSSARY
   terminal status      A status an order is not expected to leave: delivered,
                        cancelled, and refunded are terminal in this data set.
   authoritative amount The figure to trust when two sources disagree. For a
-                       refund it is orders.total, not a recomputed sum.
+                       refund it is orders.order_total, not a recomputed sum.
 
 CLOSING NOTE
 
@@ -376,7 +376,7 @@ export function seedDatabase(): Db {
     "CREATE TABLE products (id INT, name STRING, category STRING, price NUMBER, stock INT)"
   );
   db.exec(
-    "CREATE TABLE orders (id INT, customer_id INT, status STRING, total NUMBER, created_at STRING)"
+    "CREATE TABLE orders (id INT, customer_id INT, status STRING, order_total NUMBER, created_at STRING)"
   );
   db.exec(
     "CREATE TABLE order_items (id INT, order_id INT, product_id INT, qty INT, unit_price NUMBER)"
