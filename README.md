@@ -132,8 +132,10 @@ harness" that drifts from "production."
 | `lib/env/` | Deterministic environment: fixtures, schema, operator playbook, tasks, verifiers. |
 | `lib/agent/runner.ts` | The agent loop: tool dispatch, token metering, backoff, caching, verification. |
 | `lib/agent/pricing.ts` | Per-model price table and the cost and cache-hit math. |
-| `lib/data/store.ts` | Reads the recorded window, merges in live runs, computes aggregate stats. |
-| `app/` | Next.js dashboard and JSON API (`/api/runs`, `/api/fleet`, `/api/stats`, `/api/run`). |
+| `lib/stats.ts` | Pure aggregation over a set of runs (no Node imports), so the same `computeStats` runs on the server and in client components. |
+| `lib/data/store.ts` | Reads the recorded window and the fleet snapshot, merges in live runs, re-exports the stats helpers. |
+| `lib/clientStore.ts` | Browser-local (`localStorage`) persistence for the runs a visitor executes on the demo tab. |
+| `app/` | Next.js dashboard (overview, demo, benchmark tabs) and JSON API (`/api/runs`, `/api/fleet`, `/api/stats`, `/api/run`). |
 | `infra/worker/` | The horizontally scaled queue consumer that wraps the runner. |
 | `infra/k8s/` | Namespace, Redis broker, worker Deployment, KEDA scaler, HPA fallback. |
 | `scripts/` | Dataset generation, real-run backfill, and a queue load generator. |
@@ -226,21 +228,40 @@ layer exists to surface.
 
 ## The dashboard
 
-[`app/page.tsx`](app/page.tsx) renders three things together:
+The dashboard is organized into three tabs, sharing a masthead and tab nav
+([`components/Masthead.tsx`](components/Masthead.tsx), [`components/TabNav.tsx`](components/TabNav.tsx)).
+All charts are hand-rolled inline SVG ([`components/charts.tsx`](components/charts.tsx)),
+so there is no chart dependency.
 
-- **Model behavior**: pass rate, reward, cache hit rate, and cost per run, broken
-  out by model and by environment, with a reward-distribution histogram and spend
-  over time. Charts are hand-rolled inline SVG ([`components/charts.tsx`](components/charts.tsx)),
-  so there is no chart dependency and everything renders on the server.
-- **Pod health**: replicas (current versus desired), queue depth over the window,
-  a per-pod table with CPU and memory sparklines against their limits, and a
-  cluster event feed.
-- **Run an agent**: pick an environment, model, and effort, and execute a live
-  run against the real model and verifier, with the trajectory and metered cost
-  shown inline.
+- **Overview & models** ([`app/page.tsx`](app/page.tsx)) is the published
+  reference corpus baked into `data/runs.json`. It shows model behavior (pass
+  rate, reward, cache hit rate, and cost per run by model and by environment, a
+  reward-distribution histogram, and spend over time) and pod health (replicas
+  current versus desired, queue depth over the window, a per-pod table with CPU
+  and memory sparklines against their limits, and a cluster event feed). The
+  model-behavior and pod-health blocks are shared components
+  ([`components/ModelBehavior.tsx`](components/ModelBehavior.tsx),
+  [`components/FleetHealth.tsx`](components/FleetHealth.tsx)).
+- **Demo runs** ([`app/demo/page.tsx`](app/demo/page.tsx)) is where you execute
+  agents yourself. Pick an environment, model, and effort and run live against
+  the real model and verifier, with the trajectory and metered cost shown inline.
+  Each result is persisted in your **browser** ([`lib/clientStore.ts`](lib/clientStore.ts),
+  `localStorage`) — Vercel's serverless filesystem is not durably writable, so
+  this is what makes a run you do now show up instantly with an accurate
+  timestamp. The entire dashboard on this tab — KPIs, model behavior, and pod
+  health ([`components/LiveFleet.tsx`](components/LiveFleet.tsx)) — is generated
+  live from your own session's runs, not copied from the reference corpus.
+- **Benchmarking** ([`app/benchmark/page.tsx`](app/benchmark/page.tsx)) runs the
+  same environment head-to-head across models and trials with streaming progress,
+  then draws an **efficiency frontier**: a cost-versus-reward scatter with the
+  Pareto-optimal set highlighted, plus an automatic recommendation of the
+  cheapest model that clears a reward bar. When models tie at the top it says so
+  and explains that the heavier model buys no measurable quality on that task;
+  when they differ it reports the reward given up against the cost saved.
 
-Every recent run links to a detail page ([`app/runs/[id]/page.tsx`](app/runs/%5Bid%5D/page.tsx))
-with the full token accounting, scheduling metadata, and step-by-step trajectory.
+Recorded runs on the overview link to a detail page
+([`app/runs/[id]/page.tsx`](app/runs/%5Bid%5D/page.tsx)) with the full token
+accounting, scheduling metadata, and step-by-step trajectory.
 
 ## Design decisions and tradeoffs
 
@@ -316,7 +337,7 @@ npm run dev                     # dashboard at http://localhost:3000
 ```
 
 The dashboard renders the recorded window out of the box. Set `ANTHROPIC_API_KEY`
-to enable the "Run an agent" panel and the backfill.
+to enable live execution on the demo and benchmarking tabs and the backfill.
 
 ### Environment variables
 
@@ -386,12 +407,16 @@ deterministic and model-free, and it will show up on the dashboard automatically
 ```
 app/                  Next.js dashboard and JSON API
   api/                runs, run, fleet, stats endpoints
+  demo/               demo-runs tab (live, browser-persisted runs)
+  benchmark/          benchmarking tab (head-to-head + efficiency frontier)
   runs/[id]/          per-run detail page
-components/           inline SVG charts and the live-run client panel
+components/           masthead/tab nav, inline SVG charts, shared model-behavior
+                      and pod-health blocks, and the demo + benchmark clients
 lib/
   env/                deterministic environment: seed, tasks, verifiers
   agent/              runner, pricing, cost and cache math
-  data/               run store and aggregate stats
+  data/               run store (server) and shared aggregate stats
+  stats.ts            pure run aggregation; clientStore.ts: localStorage runs
 infra/
   worker/             horizontally scaled queue consumer
   k8s/                namespace, redis, worker, KEDA, HPA
