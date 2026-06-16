@@ -63,9 +63,10 @@ export const TASKS: Task[] = [
       const expected = norm(
         scalar(
           ref,
-          "SELECT email FROM customers c JOIN orders o ON o.customer_id = c.id " +
+          "SELECT c.email AS email, SUM(o.order_total) AS spend " +
+            "FROM customers c JOIN orders o ON o.customer_id = c.id " +
             "WHERE o.status <> 'cancelled' GROUP BY c.email " +
-            "ORDER BY SUM(o.order_total) DESC LIMIT 1"
+            "ORDER BY spend DESC LIMIT 1"
         )
       );
       const got = norm(submission?.answer);
@@ -121,11 +122,12 @@ export const TASKS: Task[] = [
       const expected = norm(
         scalar(
           ref,
-          "SELECT p.category FROM order_items oi " +
+          "SELECT p.category AS category, SUM(oi.qty * oi.unit_price) AS revenue " +
+            "FROM order_items oi " +
             "JOIN products p ON p.id = oi.product_id " +
             "JOIN orders o ON o.id = oi.order_id " +
             "WHERE o.status <> 'cancelled' " +
-            "GROUP BY p.category ORDER BY SUM(oi.qty * oi.unit_price) DESC LIMIT 1"
+            "GROUP BY p.category ORDER BY revenue DESC LIMIT 1"
         )
       );
       const got = norm(submission?.answer);

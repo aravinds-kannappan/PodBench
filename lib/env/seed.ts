@@ -107,8 +107,10 @@ QUERY CONVENTIONS
   - The engine is a standard SQL dialect supporting SELECT, INSERT, UPDATE,
     DELETE, JOIN, GROUP BY, ORDER BY, LIMIT, COUNT, SUM, AVG, MIN, and MAX.
   - One statement per run_sql call. Inspect before you mutate.
-  - For "which X has the most Y" questions, GROUP BY the dimension, ORDER BY the
-    aggregate descending, and LIMIT 1.
+  - For "which X has the most Y" questions, GROUP BY the dimension, select the
+    aggregate with an alias (for example SUM(...) AS total), ORDER BY that alias
+    descending, and LIMIT 1. Always put the aggregate in the SELECT list and sort
+    by its alias rather than repeating the aggregate expression in ORDER BY.
   - For lifetime spend, group by customers.email (identity of record), not by
     customer id, and exclude cancelled orders unless told otherwise.
   - For "older than N days" questions, derive the cutoff date by subtracting N
@@ -134,9 +136,10 @@ SAFETY RULES
 WORKED PATTERNS
 
   Find the top group by an aggregate:
-    SELECT email FROM customers c JOIN orders o ON o.customer_id = c.id
+    SELECT c.email AS email, SUM(o.order_total) AS spend
+    FROM customers c JOIN orders o ON o.customer_id = c.id
     WHERE o.status <> 'cancelled' GROUP BY c.email
-    ORDER BY SUM(o.order_total) DESC LIMIT 1;
+    ORDER BY spend DESC LIMIT 1;
 
   Count rows matching a date cutoff:
     SELECT COUNT(*) FROM orders
