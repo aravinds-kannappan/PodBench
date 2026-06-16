@@ -60,7 +60,7 @@ export default function ModelBehavior({
           </h3>
           <Histogram buckets={stats.reward_histogram} />
           <div className="legend">
-            <span>bars at 0.0 are hard failures; the spike at 1.0 is clean passes; the middle is partial credit on state-mutation tasks.</span>
+            <span>bars at 0.0 are hard failures; the spike at 1.0 is clean passes; the middle is partial credit — proximity on answer tasks and weighted checks on state-mutation tasks.</span>
           </div>
         </div>
       </div>

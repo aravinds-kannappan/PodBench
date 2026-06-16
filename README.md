@@ -84,12 +84,16 @@ function, a Kubernetes worker, and a unit test.
 ### Reward shaping
 
 Question tasks (for example "which email has the highest lifetime spend") are
-graded by exact match against a value computed from a freshly seeded database.
-State-mutation tasks (for example "issue a full refund for order 1007") are
-graded by weighted checks on the database the agent left behind, so partial
-credit is visible: setting the order status but forgetting the refund row earns
-0.4, not 0. The continuous reward is what makes the reward-distribution histogram
-on the dashboard informative rather than a single pass/fail bar.
+proximity-graded against a value computed from a freshly seeded database: an
+exact answer scores 1.0 and `passed` is true, while a wrong-but-plausible answer
+earns partial credit proportional to how close it is — naming the second-highest
+spender scores its share of the top spend, and an off-by-one count loses 1/N per
+order rather than collapsing to zero. State-mutation tasks (for example "issue a
+full refund for order 1007") are graded by weighted checks on the database the
+agent left behind, so partial credit is visible there too: setting the order
+status but forgetting the refund row earns 0.4, not 0. This continuous reward is
+what makes the reward-distribution histogram a range rather than a single
+pass/fail bar; `passed` (used for the leaderboard pass rate) stays exact.
 
 The reference set ships six environments across three difficulties, each probing
 a planted situation in the fixtures (a duplicate customer, an oversell that drove

@@ -103,7 +103,7 @@ export default async function Page() {
                 <div style={{ fontWeight: 600, marginBottom: 6 }}>{t.title}</div>
                 <div className="dim" style={{ fontSize: 12 }}>{t.prompt}</div>
                 <div className="faint mono" style={{ fontSize: 11, marginTop: 10 }}>
-                  kind: {t.kind} / reward: {t.kind === "answer" ? "exact match" : "weighted state checks"}
+                  kind: {t.kind} / reward: {t.kind === "answer" ? "proximity-graded" : "weighted state checks"}
                 </div>
               </div>
             ))}

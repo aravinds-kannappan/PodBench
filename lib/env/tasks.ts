@@ -41,6 +41,11 @@ function norm(v: unknown): string {
     .toLowerCase();
 }
 
+function clamp01(x: number): number {
+  if (!Number.isFinite(x)) return 0;
+  return Math.max(0, Math.min(1, x));
+}
+
 function daysBefore(iso: string, days: number): string {
   const d = new Date(iso + "T00:00:00Z");
   d.setUTCDate(d.getUTCDate() - days);
@@ -60,23 +65,29 @@ export const TASKS: Task[] = [
       "Call submit with the winning email address as the answer.",
     verify: ({ submission }) => {
       const ref = seedDatabase();
-      const expected = norm(
-        scalar(
-          ref,
-          "SELECT c.email AS email, SUM(o.order_total) AS spend " +
-            "FROM customers c JOIN orders o ON o.customer_id = c.id " +
-            "WHERE o.status <> 'cancelled' GROUP BY c.email " +
-            "ORDER BY spend DESC LIMIT 1"
-        )
+      // Rank every email by spend so a wrong-but-plausible pick earns partial
+      // credit proportional to how much that email actually spent.
+      const ranked = rows(
+        ref,
+        "SELECT c.email AS email, SUM(o.order_total) AS spend " +
+          "FROM customers c JOIN orders o ON o.customer_id = c.id " +
+          "WHERE o.status <> 'cancelled' GROUP BY c.email " +
+          "ORDER BY spend DESC"
       );
+      const expected = norm(ranked[0]?.email);
+      const maxSpend = Number(ranked[0]?.spend ?? 0) || 1;
       const got = norm(submission?.answer);
+      const picked = ranked.find((r) => norm(r.email) === got);
       const passed = got === expected && expected.length > 0;
+      const reward = picked ? clamp01(Number(picked.spend) / maxSpend) : 0;
       return {
-        reward: passed ? 1 : 0,
+        reward: Number(reward.toFixed(3)),
         passed,
         detail: passed
           ? `answer "${got}" matches expected`
-          : `expected "${expected}", got "${got || "(none)"}"`,
+          : picked
+            ? `"${got}" is a real but lower spender (${reward.toFixed(2)} of the top); expected "${expected}"`
+            : `expected "${expected}", got "${got || "(none)"}"`,
       };
     },
   },
@@ -97,14 +108,20 @@ export const TASKS: Task[] = [
           `SELECT COUNT(*) AS n FROM orders WHERE status = 'processing' AND created_at < '${cutoff}'`
         )
       );
-      const got = Number(String(submission?.answer ?? "").replace(/[^0-9-]/g, ""));
+      const raw = String(submission?.answer ?? "").replace(/[^0-9-]/g, "");
+      const got = raw.length > 0 ? Number(raw) : NaN;
       const passed = Number.isFinite(got) && got === expected;
+      // Grade by how close the count is: exactly right is 1.0, and each order
+      // off costs 1/expected, so an off-by-one is near miss rather than a zero.
+      const reward = Number.isFinite(got)
+        ? clamp01(1 - Math.abs(got - expected) / Math.max(expected, 1))
+        : 0;
       return {
-        reward: passed ? 1 : 0,
+        reward: Number(reward.toFixed(3)),
         passed,
         detail: passed
           ? `count ${got} matches`
-          : `expected ${expected}, got ${submission?.answer ?? "(none)"}`,
+          : `expected ${expected}, got ${submission?.answer ?? "(none)"} (${reward.toFixed(2)} for proximity)`,
       };
     },
   },
@@ -119,25 +136,31 @@ export const TASKS: Task[] = [
       "category. Call submit with the winning category name as the answer.",
     verify: ({ submission }) => {
       const ref = seedDatabase();
-      const expected = norm(
-        scalar(
-          ref,
-          "SELECT p.category AS category, SUM(oi.qty * oi.unit_price) AS revenue " +
-            "FROM order_items oi " +
-            "JOIN products p ON p.id = oi.product_id " +
-            "JOIN orders o ON o.id = oi.order_id " +
-            "WHERE o.status <> 'cancelled' " +
-            "GROUP BY p.category ORDER BY revenue DESC LIMIT 1"
-        )
+      // Rank categories by revenue so picking a real-but-smaller category earns
+      // credit proportional to its share of the top category's revenue.
+      const ranked = rows(
+        ref,
+        "SELECT p.category AS category, SUM(oi.qty * oi.unit_price) AS revenue " +
+          "FROM order_items oi " +
+          "JOIN products p ON p.id = oi.product_id " +
+          "JOIN orders o ON o.id = oi.order_id " +
+          "WHERE o.status <> 'cancelled' " +
+          "GROUP BY p.category ORDER BY revenue DESC"
       );
+      const expected = norm(ranked[0]?.category);
+      const maxRevenue = Number(ranked[0]?.revenue ?? 0) || 1;
       const got = norm(submission?.answer);
+      const picked = ranked.find((r) => norm(r.category) === got);
       const passed = got === expected && expected.length > 0;
+      const reward = picked ? clamp01(Number(picked.revenue) / maxRevenue) : 0;
       return {
-        reward: passed ? 1 : 0,
+        reward: Number(reward.toFixed(3)),
         passed,
         detail: passed
           ? `category "${got}" matches`
-          : `expected "${expected}", got "${got || "(none)"}"`,
+          : picked
+            ? `"${got}" is a real but smaller category (${reward.toFixed(2)} of the top); expected "${expected}"`
+            : `expected "${expected}", got "${got || "(none)"}"`,
       };
     },
   },
