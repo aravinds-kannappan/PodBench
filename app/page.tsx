@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getRuns, getFleet, computeStats } from "@/lib/data/store";
 import { TASKS } from "@/lib/env/tasks";
 import { AreaChart, Histogram, Sparkline, Bar } from "@/components/charts";
-import LiveRun from "@/components/LiveRun";
+import Masthead from "@/components/Masthead";
 import { pct, usd, compact, ms, shortTime, ago } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
@@ -17,42 +17,7 @@ export default async function Page() {
 
   return (
     <>
-      <header className="masthead">
-        <div className="masthead-inner">
-          <div>
-            <div className="brand">
-              <div className="logo">pb</div>
-              <div>
-                <h1>
-                  podbench <span className="ver">v0.4.2</span>
-                </h1>
-              </div>
-            </div>
-            <p className="tagline">
-              Deterministic, resettable task environments for LLM agents with a
-              programmatic verifier, run concurrently on Kubernetes with per-run
-              token metering, rate-limit backoff, and prompt caching. Pod health
-              and model behavior on one pane.
-            </p>
-          </div>
-          <nav className="masthead-links">
-            <a href="#environments">environments</a>
-            <a href="#behavior">behavior</a>
-            <a href="#fleet">fleet</a>
-            <a href="https://github.com/podbench/podbench">github</a>
-          </nav>
-        </div>
-      </header>
-
-      <nav className="subnav">
-        <div className="subnav-inner">
-          <a href="#behavior">model behavior</a>
-          <a href="#fleet">pod health</a>
-          <a href="#run">run an agent</a>
-          <a href="#runs">recent runs</a>
-          <a href="#environments">environments</a>
-        </div>
-      </nav>
+      <Masthead tagline="Deterministic, resettable SQL task environments for LLM agents with a programmatic verifier. The overview below is the published reference corpus; head to demo runs to execute your own agents live." />
 
       <main className="wrap">
         <section className="kpis">
@@ -63,6 +28,14 @@ export default async function Page() {
           <Kpi label="rate-limit retries" value={String(stats.total_retries)} sub="backed off and recovered" />
           <Kpi label="p50 latency" value={ms(stats.avg_latency_ms)} sub="mean wall-clock per run" />
         </section>
+
+        <div className="cta-row">
+          <span className="dim">
+            This is the shared, historical benchmark corpus. To run agents yourself and
+            watch live results accumulate, open the
+          </span>
+          <Link href="/demo" className="cta-link">demo runs tab →</Link>
+        </div>
 
         {/* MODEL BEHAVIOR */}
         <section className="section" id="behavior">
@@ -258,20 +231,11 @@ export default async function Page() {
           </div>
         </section>
 
-        {/* RUN */}
-        <section className="section" id="run">
-          <div className="section-head">
-            <h2>run an agent</h2>
-            <span className="hint">requires ANTHROPIC_API_KEY in the environment</span>
-          </div>
-          <LiveRun tasks={TASKS.map((t) => ({ id: t.id, title: t.title, difficulty: t.difficulty }))} />
-        </section>
-
         {/* RECENT RUNS */}
         <section className="section" id="runs">
           <div className="section-head">
             <h2>recent runs</h2>
-            <span className="hint">newest first</span>
+            <span className="hint">from the reference corpus &middot; newest first</span>
           </div>
           <div className="card" style={{ padding: 0 }}>
             <table>

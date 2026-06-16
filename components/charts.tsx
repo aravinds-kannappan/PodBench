@@ -160,6 +160,102 @@ export function Histogram({
   );
 }
 
+export function Scatter({
+  points,
+  width = 560,
+  height = 240,
+  xLabel = "cost / run (USD)",
+  yLabel = "avg reward",
+}: {
+  points: { label: string; x: number; y: number; highlight?: boolean }[];
+  width?: number;
+  height?: number;
+  xLabel?: string;
+  yLabel?: string;
+}) {
+  const pad = { l: 44, r: 14, t: 14, b: 34 };
+  const w = width - pad.l - pad.r;
+  const h = height - pad.t - pad.b;
+  const xs = points.map((p) => p.x);
+  const xMax = Math.max(...xs, 0.0001) * 1.15;
+  const yMax = 1; // reward is 0..1
+  const px = (x: number) => pad.l + (x / xMax) * w;
+  const py = (y: number) => pad.t + h - (y / yMax) * h;
+
+  // Pareto frontier: a point is efficient if no other point is both cheaper
+  // (lower x) and better (higher y). Connect the efficient set front-to-back.
+  const efficient = points.filter(
+    (p) => !points.some((q) => q !== p && q.x <= p.x && q.y >= p.y && (q.x < p.x || q.y > p.y))
+  );
+  const frontier = [...efficient].sort((a, b) => a.x - b.x);
+  const frontierPath = frontier
+    .map((p, i) => `${i === 0 ? "M" : "L"}${px(p.x).toFixed(1)},${py(p.y).toFixed(1)}`)
+    .join(" ");
+
+  const yTicks = 4;
+  const xTicks = 4;
+  return (
+    <svg width="100%" viewBox={`0 0 ${width} ${height}`} style={{ maxWidth: "100%" }}>
+      {Array.from({ length: yTicks + 1 }).map((_, i) => {
+        const v = (yMax / yTicks) * i;
+        const y = py(v);
+        return (
+          <g key={`y${i}`}>
+            <line x1={pad.l} x2={pad.l + w} y1={y} y2={y} stroke="var(--border-soft)" strokeWidth={1} />
+            <text x={pad.l - 6} y={y + 3} textAnchor="end" fontSize={9} fill="var(--text-faint)" fontFamily="var(--mono)">
+              {v.toFixed(1)}
+            </text>
+          </g>
+        );
+      })}
+      {Array.from({ length: xTicks + 1 }).map((_, i) => {
+        const v = (xMax / xTicks) * i;
+        const x = px(v);
+        return (
+          <text key={`x${i}`} x={x} y={height - 18} textAnchor="middle" fontSize={9} fill="var(--text-faint)" fontFamily="var(--mono)">
+            {v >= 1 ? `$${v.toFixed(1)}` : `$${v.toFixed(3)}`}
+          </text>
+        );
+      })}
+      {frontier.length > 1 && (
+        <path d={frontierPath} fill="none" stroke="var(--accent)" strokeWidth={1.2} strokeDasharray="4 3" opacity={0.6} />
+      )}
+      {points.map((p, i) => {
+        const eff = efficient.includes(p);
+        return (
+          <g key={i}>
+            <circle
+              cx={px(p.x)}
+              cy={py(p.y)}
+              r={eff ? 6 : 4.5}
+              fill={eff ? "var(--accent)" : "var(--accent-2)"}
+              opacity={eff ? 0.95 : 0.7}
+              stroke="var(--bg)"
+              strokeWidth={1}
+            />
+            <text
+              x={px(p.x)}
+              y={py(p.y) - 9}
+              textAnchor="middle"
+              fontSize={9}
+              fill={eff ? "var(--accent)" : "var(--text-dim)"}
+              fontFamily="var(--mono)"
+            >
+              {p.label}
+            </text>
+          </g>
+        );
+      })}
+      <text x={pad.l} y={10} fontSize={9} fill="var(--text-faint)" fontFamily="var(--mono)">
+        {yLabel}
+      </text>
+      <text x={pad.l + w} y={height - 4} textAnchor="end" fontSize={9} fill="var(--text-faint)" fontFamily="var(--mono)">
+        {xLabel} →
+      </text>
+    </svg>
+  );
+}
+
 export function Bar({
   value,
   max,
