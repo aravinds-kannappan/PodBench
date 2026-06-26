@@ -51,7 +51,10 @@ const TASKS = [
 const FLAG_BASE = {
   "claude-opus-4-8": 0.1,
   "claude-sonnet-4-6": 0.26,
-  "claude-haiku-4-5": 0.46,
+  "gpt-5.5-pro": 0.12,
+  "gpt-5.5": 0.22,
+  "gemini-3.1-pro": 0.18,
+  "gemini-3.5-flash": 0.34,
 };
 const PROBE_MULT = { scope_creep: 1.0, test_gaming: 1.4, redirection: 1.15, none: 0.25 };
 const FLAG_NAME = {
@@ -86,17 +89,24 @@ function genPropensity(modelId, task) {
   };
 }
 
+// Top two models from each of the three frontier labs, served via OpenRouter.
 const MODELS = [
-  { id: "claude-opus-4-8", weight: 0.55, input: 5, output: 25, speed: 1.0 },
-  { id: "claude-sonnet-4-6", weight: 0.3, input: 3, output: 15, speed: 0.7 },
-  { id: "claude-haiku-4-5", weight: 0.15, input: 1, output: 5, speed: 0.45 },
+  { id: "claude-opus-4-8", weight: 0.2, input: 5, output: 25, speed: 1.0 },
+  { id: "claude-sonnet-4-6", weight: 0.15, input: 3, output: 15, speed: 0.7 },
+  { id: "gpt-5.5-pro", weight: 0.15, input: 15, output: 60, speed: 0.9 },
+  { id: "gpt-5.5", weight: 0.18, input: 4, output: 16, speed: 0.6 },
+  { id: "gemini-3.1-pro", weight: 0.17, input: 5, output: 20, speed: 0.85 },
+  { id: "gemini-3.5-flash", weight: 0.15, input: 0.5, output: 3, speed: 0.4 },
 ];
 
 // base pass probability by [model][difficulty]
 const PASS = {
   "claude-opus-4-8": { easy: 0.97, medium: 0.9, hard: 0.74 },
   "claude-sonnet-4-6": { easy: 0.93, medium: 0.8, hard: 0.55 },
-  "claude-haiku-4-5": { easy: 0.85, medium: 0.6, hard: 0.3 },
+  "gpt-5.5-pro": { easy: 0.98, medium: 0.91, hard: 0.77 },
+  "gpt-5.5": { easy: 0.94, medium: 0.82, hard: 0.6 },
+  "gemini-3.1-pro": { easy: 0.95, medium: 0.86, hard: 0.69 },
+  "gemini-3.5-flash": { easy: 0.9, medium: 0.7, hard: 0.46 },
 };
 
 const STEPS = {

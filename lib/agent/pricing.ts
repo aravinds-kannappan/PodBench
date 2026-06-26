@@ -8,6 +8,9 @@ interface ModelPrice {
   output: number;
 }
 
+// Approximate list prices per million tokens. For OpenRouter runs the real
+// upstream cost is used instead; these back the native-Anthropic path and the
+// simulated preview only.
 const PRICES: Record<string, ModelPrice> = {
   "claude-opus-4-8": { input: 5, output: 25 },
   "claude-opus-4-7": { input: 5, output: 25 },
@@ -15,6 +18,10 @@ const PRICES: Record<string, ModelPrice> = {
   "claude-sonnet-4-6": { input: 3, output: 15 },
   "claude-haiku-4-5": { input: 1, output: 5 },
   "claude-fable-5": { input: 10, output: 50 },
+  "gpt-5.5-pro": { input: 15, output: 60 },
+  "gpt-5.5": { input: 4, output: 16 },
+  "gemini-3.1-pro": { input: 5, output: 20 },
+  "gemini-3.5-flash": { input: 0.5, output: 3 },
 };
 
 const CACHE_WRITE_MULTIPLIER = 1.25; // 5 minute TTL

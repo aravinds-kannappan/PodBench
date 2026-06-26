@@ -10,7 +10,7 @@ export default function Masthead({ tagline }: { tagline?: string }) {
               <div className="logo">pb</div>
               <div>
                 <h1>
-                  podbench <span className="ver">v0.5.0</span>
+                  podbench <span className="ver">v0.6.0</span>
                 </h1>
               </div>
             </div>

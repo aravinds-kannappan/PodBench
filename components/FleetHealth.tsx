@@ -16,8 +16,8 @@ export default function FleetHealth({ fleet }: { fleet: Fleet }) {
       <div className="section-head">
         <h2>pod health</h2>
         <span className="hint">
-          <span className="badge sim" style={{ marginRight: 6 }}>simulated</span>
-          illustrative {fleet.window_minutes}-minute cluster snapshot &middot; the fleet the worker is built to run on, not a live deployment
+          <span className="badge sim" style={{ marginRight: 6 }}>illustration</span>
+          {fleet.window_minutes}-minute cluster snapshot &middot; the fleet the worker is built to run on, not a live deployment
         </span>
       </div>
 

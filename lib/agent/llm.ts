@@ -26,22 +26,38 @@ export function credentialHint(): string {
 }
 
 // Canonical podbench model id -> OpenRouter slug. Run records keep the canonical
-// id so the dashboard groups runs the same way regardless of provider.
+// id so the dashboard groups runs the same way regardless of provider. The
+// lineup is the top two models from each of the three frontier labs.
 const OPENROUTER_MODEL_MAP: Record<string, string> = {
+  // Anthropic
   "claude-opus-4-8": "anthropic/claude-opus-4.8",
   "claude-opus-4-7": "anthropic/claude-opus-4.7",
   "claude-opus-4-6": "anthropic/claude-opus-4.6",
   "claude-sonnet-4-6": "anthropic/claude-sonnet-4.6",
   "claude-haiku-4-5": "anthropic/claude-haiku-4.5",
+  // OpenAI
+  "gpt-5.5-pro": "openai/gpt-5.5-pro",
+  "gpt-5.5": "openai/gpt-5.5",
+  // Google
+  "gemini-3.1-pro": "google/gemini-3.1-pro-preview",
+  "gemini-3.5-flash": "google/gemini-3.5-flash",
 };
 
 export function resolveModelId(model: string, provider: Provider): string {
   if (provider === "anthropic") return model;
   if (model.includes("/")) return model; // already an OpenRouter slug
-  return (
-    OPENROUTER_MODEL_MAP[model] ??
-    `anthropic/${model.replace(/-(\d+)-(\d+)$/, ".$1.$2")}`
-  );
+  if (OPENROUTER_MODEL_MAP[model]) return OPENROUTER_MODEL_MAP[model];
+  // Best-effort prefix routing for ids not in the map.
+  if (/^gpt|^o\d/.test(model)) return `openai/${model}`;
+  if (/^gemini/.test(model)) return `google/${model}`;
+  return `anthropic/${model.replace(/-(\d+)-(\d+)$/, ".$1.$2")}`;
+}
+
+// Which lab serves a canonical model id, for grouping/labels in the UI.
+export function providerOf(model: string): "anthropic" | "openai" | "google" {
+  if (/^gpt|^o\d/.test(model)) return "openai";
+  if (/^gemini/.test(model)) return "google";
+  return "anthropic";
 }
 
 export interface ToolDef {

@@ -19,7 +19,14 @@ interface TaskOpt {
   difficulty: string;
 }
 
-const MODELS = ["claude-opus-4-8", "claude-sonnet-4-6", "claude-haiku-4-5"];
+const MODELS = [
+  "claude-opus-4-8",
+  "claude-sonnet-4-6",
+  "gpt-5.5-pro",
+  "gpt-5.5",
+  "gemini-3.1-pro",
+  "gemini-3.5-flash",
+];
 const EFFORTS = ["low", "medium", "high"];
 
 export default function DemoConsole({ tasks }: { tasks: TaskOpt[] }) {
