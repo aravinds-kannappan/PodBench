@@ -113,8 +113,8 @@ async function runInProcess(): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    log({ level: "error", event: "missing_key", message: "ANTHROPIC_API_KEY is required" });
+  if (!process.env.OPENROUTER_API_KEY && !process.env.ANTHROPIC_API_KEY) {
+    log({ level: "error", event: "missing_key", message: "OPENROUTER_API_KEY or ANTHROPIC_API_KEY is required" });
     process.exit(1);
   }
   if (REDIS_URL) await runRedis();

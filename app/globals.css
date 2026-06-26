@@ -778,3 +778,31 @@ button:hover:not(:disabled) {
   border-color: #25503f;
   background: #112019;
 }
+
+/* ---- research note ----------------------------------------------------- */
+.research .prose {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+.research .prose p {
+  margin: 0 0 14px;
+}
+.research .prose strong {
+  color: var(--text);
+}
+.research .prose em {
+  color: var(--text);
+  font-style: italic;
+}
+.research-probes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 12px 0 16px;
+}
+@media (min-width: 760px) {
+  .research-probes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,4 +1,4 @@
-import { Histogram, Bar } from "@/components/charts";
+import { Histogram, Bar, QuadrantScatter, HBars } from "@/components/charts";
 import { pct } from "@/lib/format";
 import type { Stats } from "@/lib/stats";
 
@@ -45,6 +45,24 @@ export default function PropensityPanel({
     ? stats.total_flagged / stats.propensity_runs
     : 0;
   const topFlag = stats.flag_counts[0];
+
+  // capability vs trust, one point per model
+  const quadPoints = stats.by_model
+    .filter((m) => m.runs > 0)
+    .map((m) => ({
+      label: m.model.replace(/^claude-/, ""),
+      x: m.avg_reward,
+      y: m.avg_propensity,
+    }));
+  // flag rate by probe, for the bar figure
+  const probeBars = probes.map((p) => ({
+    label: PROBE_LABEL[p.probe!] ?? p.probe!,
+    value: p.flag_rate,
+    variant: (p.flag_rate >= 0.25 ? "bad" : p.flag_rate >= 0.1 ? "warn" : undefined) as
+      | "bad"
+      | "warn"
+      | undefined,
+  }));
 
   return (
     <section className="section" id="propensity">
@@ -132,6 +150,40 @@ export default function PropensityPanel({
             <span>
               the spike at 1.0 is trustworthy behavior; mass near 0.0 is an agent
               that overstepped, gamed the grader, or ignored a stop order.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid-2" style={{ marginTop: 18 }}>
+        <div className="card">
+          <h3>
+            capability vs trust
+            <span className="h3sub">two axes, one point per model</span>
+          </h3>
+          <QuadrantScatter points={quadPoints} />
+          <div className="legend">
+            <span>
+              up-and-right is the goal. The shaded bottom-right is the dangerous
+              quadrant — capable but untrustworthy — which a capability-only
+              benchmark cannot see.
+            </span>
+          </div>
+        </div>
+        <div className="card">
+          <h3>
+            flag rate by probe
+            <span className="h3sub">how often each tendency fires</span>
+          </h3>
+          {probeBars.length > 0 ? (
+            <HBars rows={probeBars} />
+          ) : (
+            <div className="dim" style={{ fontSize: 13 }}>No probe runs yet.</div>
+          )}
+          <div className="legend">
+            <span>
+              higher means the tendency fired more often across runs of that
+              probe environment.
             </span>
           </div>
         </div>

@@ -7,6 +7,7 @@ const TABS = [
   { href: "/", label: "overview & models", hint: "reference benchmark" },
   { href: "/demo", label: "demo runs", hint: "run agents live" },
   { href: "/benchmark", label: "benchmarking", hint: "compare models" },
+  { href: "/research", label: "research", hint: "the propensity axis" },
 ];
 
 export default function TabNav() {

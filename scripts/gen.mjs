@@ -164,15 +164,25 @@ function genRun() {
   let steps = rint(slo, shi);
   if (!passed) steps += rint(1, 3); // flailing on failure
 
-  // reward
+  // reward — continuous, mirroring the real verifier. A pass is an exact answer
+  // or all state checks (1.0). A failure is NOT automatically zero: answer tasks
+  // are proximity-graded (a plausible wrong pick earns its share), and state
+  // tasks earn weighted partial credit, so the middle of the histogram fills in
+  // instead of collapsing to a 0/1 spike.
   let reward;
   if (passed) {
     reward = 1;
   } else if (task.kind === "answer") {
-    reward = chance(0.85) ? 0 : Number(rfloat(0, 0).toFixed(3));
+    // ~55% of misses are wrong-but-plausible (proximity credit); the rest are
+    // off-target and land near zero.
+    reward = chance(0.55)
+      ? Number(rfloat(0.35, 0.85).toFixed(3))
+      : Number(rfloat(0, 0.15).toFixed(3));
   } else {
-    // partial credit on state tasks
-    reward = pick([0, 0.3, 0.4, 0.5, 0.6, 0.667, 0.7, 0.33]);
+    // weighted state checks: most failures got something partially right.
+    reward = chance(0.8)
+      ? Number(rfloat(0.3, 0.8).toFixed(3))
+      : Number(rfloat(0, 0.2).toFixed(3));
   }
 
   // retries from rate limiting

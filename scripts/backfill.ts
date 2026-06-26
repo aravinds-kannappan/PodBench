@@ -20,8 +20,8 @@ import type { Run } from "../lib/types";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, "..", "data");
 
-if (!process.env.ANTHROPIC_API_KEY) {
-  console.error("ANTHROPIC_API_KEY is required to backfill real runs.");
+if (!process.env.OPENROUTER_API_KEY && !process.env.ANTHROPIC_API_KEY) {
+  console.error("OPENROUTER_API_KEY or ANTHROPIC_API_KEY is required to backfill real runs.");
   process.exit(1);
 }
 

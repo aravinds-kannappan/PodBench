@@ -79,7 +79,7 @@ export default function DemoConsole({ tasks }: { tasks: TaskOpt[] }) {
       <section className="section" id="run">
         <div className="section-head">
           <h2>run an agent</h2>
-          <span className="hint">live, against the real model and verifier &middot; needs ANTHROPIC_API_KEY</span>
+          <span className="hint">live, against the real model and verifier &middot; needs OPENROUTER_API_KEY or ANTHROPIC_API_KEY</span>
         </div>
         <div className="card">
           <div className="controls">

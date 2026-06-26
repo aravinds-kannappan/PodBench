@@ -256,6 +256,93 @@ export function Scatter({
   );
 }
 
+// Two unit axes (0..1) split into four quadrants by midlines. Used to plot
+// capability (x) against trust (y): the top-right quadrant is "capable AND
+// trustworthy"; bottom-right is the dangerous one — capable but untrustworthy.
+export function QuadrantScatter({
+  points,
+  width = 560,
+  height = 300,
+  xLabel = "capability (avg reward) →",
+  yLabel = "trust (avg propensity) →",
+  threshold = 0.85,
+}: {
+  points: { label: string; x: number; y: number }[];
+  width?: number;
+  height?: number;
+  xLabel?: string;
+  yLabel?: string;
+  threshold?: number;
+}) {
+  const pad = { l: 46, r: 16, t: 16, b: 36 };
+  const w = width - pad.l - pad.r;
+  const h = height - pad.t - pad.b;
+  const px = (x: number) => pad.l + Math.max(0, Math.min(1, x)) * w;
+  const py = (y: number) => pad.t + h - Math.max(0, Math.min(1, y)) * h;
+  const ticks = 4;
+  return (
+    <svg width="100%" viewBox={`0 0 ${width} ${height}`} style={{ maxWidth: "100%" }}>
+      {/* danger quadrant: high capability, low trust */}
+      <rect x={px(threshold)} y={py(threshold)} width={px(1) - px(threshold)} height={py(0) - py(threshold)} fill="var(--bad)" opacity={0.07} />
+      {/* gridlines */}
+      {Array.from({ length: ticks + 1 }).map((_, i) => {
+        const v = i / ticks;
+        return (
+          <g key={i}>
+            <line x1={pad.l} x2={pad.l + w} y1={py(v)} y2={py(v)} stroke="var(--border-soft)" strokeWidth={1} />
+            <text x={pad.l - 6} y={py(v) + 3} textAnchor="end" fontSize={9} fill="var(--text-faint)" fontFamily="var(--mono)">{v.toFixed(1)}</text>
+            <text x={px(v)} y={height - 18} textAnchor="middle" fontSize={9} fill="var(--text-faint)" fontFamily="var(--mono)">{v.toFixed(1)}</text>
+          </g>
+        );
+      })}
+      {/* trust threshold line */}
+      <line x1={pad.l} x2={pad.l + w} y1={py(threshold)} y2={py(threshold)} stroke="var(--warn)" strokeWidth={1} strokeDasharray="4 3" opacity={0.7} />
+      <text x={pad.l + w} y={py(threshold) - 4} textAnchor="end" fontSize={9} fill="var(--warn)" fontFamily="var(--mono)">trust bar {threshold.toFixed(2)}</text>
+      {points.map((p, i) => (
+        <g key={i}>
+          <circle cx={px(p.x)} cy={py(p.y)} r={6} fill={p.y >= threshold ? "var(--accent)" : "var(--bad)"} opacity={0.9} stroke="var(--bg)" strokeWidth={1} />
+          <text x={px(p.x)} y={py(p.y) - 9} textAnchor="middle" fontSize={9} fill={p.y >= threshold ? "var(--accent)" : "var(--bad)"} fontFamily="var(--mono)">{p.label}</text>
+        </g>
+      ))}
+      <text x={pad.l} y={10} fontSize={9} fill="var(--text-faint)" fontFamily="var(--mono)">{yLabel}</text>
+      <text x={pad.l + w} y={height - 4} textAnchor="end" fontSize={9} fill="var(--text-faint)" fontFamily="var(--mono)">{xLabel}</text>
+    </svg>
+  );
+}
+
+// Horizontal labelled bars, for ranking a small set of named values 0..1.
+export function HBars({
+  rows,
+  width = 560,
+  rowHeight = 30,
+}: {
+  rows: { label: string; value: number; max?: number; variant?: "bad" | "warn" }[];
+  width?: number;
+  rowHeight?: number;
+}) {
+  const pad = { l: 130, r: 44 };
+  const trackW = width - pad.l - pad.r;
+  const height = rows.length * rowHeight + 8;
+  const max = Math.max(1, ...rows.map((r) => r.max ?? 1));
+  return (
+    <svg width="100%" viewBox={`0 0 ${width} ${height}`} style={{ maxWidth: "100%" }}>
+      {rows.map((r, i) => {
+        const y = i * rowHeight + 4;
+        const bw = (r.value / max) * trackW;
+        const color = r.variant === "bad" ? "var(--bad)" : r.variant === "warn" ? "var(--warn)" : "var(--accent)";
+        return (
+          <g key={i}>
+            <text x={pad.l - 8} y={y + rowHeight / 2} textAnchor="end" fontSize={11} fill="var(--text-dim)" fontFamily="var(--mono)">{r.label}</text>
+            <rect x={pad.l} y={y + 4} width={trackW} height={rowHeight - 14} rx={3} fill="var(--border-soft)" />
+            <rect x={pad.l} y={y + 4} width={Math.max(2, bw)} height={rowHeight - 14} rx={3} fill={color} opacity={0.85} />
+            <text x={pad.l + trackW + 6} y={y + rowHeight / 2} textAnchor="start" fontSize={10} fill="var(--text-faint)" fontFamily="var(--mono)">{(r.value * 100).toFixed(0)}%</text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 export function Bar({
   value,
   max,

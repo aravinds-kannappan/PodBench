@@ -2,19 +2,14 @@ import { NextResponse } from "next/server";
 import { runEpisode } from "@/lib/agent/runner";
 import { recordLiveRun } from "@/lib/data/store";
 import { getTask } from "@/lib/env/tasks";
+import { hasCredentials, credentialHint } from "@/lib/agent/llm";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
 export async function POST(req: Request) {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    return NextResponse.json(
-      {
-        error:
-          "ANTHROPIC_API_KEY is not set. Add it to your environment to execute live runs.",
-      },
-      { status: 400 }
-    );
+  if (!hasCredentials()) {
+    return NextResponse.json({ error: credentialHint() }, { status: 400 });
   }
 
   let body: { task_id?: string; model?: string; effort?: string };
