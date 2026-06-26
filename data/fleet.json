@@ -199,7 +199,7 @@
       "mem_mi": 562,
       "cpu_limit_milli": 1000,
       "mem_limit_mi": 1024,
-      "runs_handled": 32,
+      "runs_handled": 7,
       "started_at": "2026-06-15T13:52:00.000Z",
       "cpu_series": [
         424,
@@ -335,7 +335,7 @@
       "mem_mi": 568,
       "cpu_limit_milli": 1000,
       "mem_limit_mi": 1024,
-      "runs_handled": 25,
+      "runs_handled": 7,
       "started_at": "2026-06-15T15:23:00.000Z",
       "cpu_series": [
         596,
@@ -471,7 +471,7 @@
       "mem_mi": 385,
       "cpu_limit_milli": 1000,
       "mem_limit_mi": 1024,
-      "runs_handled": 33,
+      "runs_handled": 7,
       "started_at": "2026-06-15T14:54:00.000Z",
       "cpu_series": [
         515,
@@ -607,7 +607,7 @@
       "mem_mi": 663,
       "cpu_limit_milli": 1000,
       "mem_limit_mi": 1024,
-      "runs_handled": 27,
+      "runs_handled": 7,
       "started_at": "2026-06-15T14:28:00.000Z",
       "cpu_series": [
         518,
@@ -743,7 +743,7 @@
       "mem_mi": 380,
       "cpu_limit_milli": 1000,
       "mem_limit_mi": 1024,
-      "runs_handled": 29,
+      "runs_handled": 7,
       "started_at": "2026-06-15T16:15:00.000Z",
       "cpu_series": [
         493,
@@ -879,7 +879,7 @@
       "mem_mi": 0,
       "cpu_limit_milli": 1000,
       "mem_limit_mi": 1024,
-      "runs_handled": 21,
+      "runs_handled": 0,
       "started_at": "2026-06-15T13:20:00.000Z",
       "cpu_series": [
         0,
@@ -1015,7 +1015,7 @@
       "mem_mi": 980,
       "cpu_limit_milli": 1000,
       "mem_limit_mi": 1024,
-      "runs_handled": 20,
+      "runs_handled": 7,
       "started_at": "2026-06-15T14:27:00.000Z",
       "cpu_series": [
         12,
@@ -1151,7 +1151,7 @@
       "mem_mi": 300,
       "cpu_limit_milli": 1000,
       "mem_limit_mi": 1024,
-      "runs_handled": 33,
+      "runs_handled": 6,
       "started_at": "2026-06-15T16:22:00.000Z",
       "cpu_series": [
         101,

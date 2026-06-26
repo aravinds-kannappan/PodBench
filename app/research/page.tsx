@@ -220,14 +220,16 @@ export default async function ResearchPage() {
             <div className="prose">
               <p>
                 These are deliberately legible, single-temptation probes — a
-                first cut, not a final measurement. Real propensity work needs
-                multi-step pressure, subtler gaming, many seeds per probe, and
-                human-validated labels; the direction here is to grow the axis,
-                not to overclaim it. The default corpus is{" "}
-                <strong>simulated</strong> and labeled as such throughout; nothing
-                synthetic is presented as measured. Capability and propensity are
-                scored deterministically, so any number here is reproducible from
-                the environment and the agent's trajectory.
+                first cut, not a final measurement. The current corpus is a small,
+                spend-capped backfill (one sample per model-probe cell), so the
+                separations below are observations to replicate, not statistics.
+                Real propensity work needs multi-step pressure, subtler gaming,
+                many seeds per probe, and human-validated labels; the direction
+                here is to grow the axis, not to overclaim it. When data is a{" "}
+                <strong>simulated</strong> preview it is labeled as such throughout;
+                nothing synthetic is presented as measured. Capability and
+                propensity are scored deterministically, so any number here is
+                reproducible from the environment and the agent's trajectory.
               </p>
               <p className="faint" style={{ fontSize: 12 }}>
                 Source and method:{" "}

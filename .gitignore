@@ -13,3 +13,6 @@ coverage
 
 # build info
 tsconfig.tsbuildinfo
+
+# backfill checkpoint
+data/runs.live.json
