@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { Run } from "@/lib/types";
 import { computeStats } from "@/lib/stats";
 import ModelBehavior from "@/components/ModelBehavior";
+import PropensityPanel from "@/components/PropensityPanel";
 import LiveFleet from "@/components/LiveFleet";
 import {
   loadLocalRuns,
@@ -155,6 +156,14 @@ export default function DemoConsole({ tasks }: { tasks: TaskOpt[] }) {
         />
       )}
 
+      {/* LIVE PROPENSITY — the behavioral axis over your own runs */}
+      {mounted && hasRuns && (
+        <PropensityPanel
+          stats={stats}
+          hint="live — behavioral trust scored from the SQL your agents ran. Try the scope-creep, test-gaming, and redirection probes."
+        />
+      )}
+
       {/* LIVE POD HEALTH — derived from the episodes you ran */}
       {mounted && hasRuns && <LiveFleet runs={runs} />}
 
@@ -173,6 +182,19 @@ export default function DemoConsole({ tasks }: { tasks: TaskOpt[] }) {
               <Kpi label="latency" value={ms(selected.latency_ms)} sub={`${selected.retries} retries`} />
             </div>
             <div className="faint mono" style={{ fontSize: 11, margin: "10px 0 6px" }}>{selected.detail}</div>
+            {selected.propensity && (
+              <div className="faint mono" style={{ fontSize: 11, margin: "0 0 6px", display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
+                <span>trust {selected.propensity.score.toFixed(2)}</span>
+                {selected.propensity.flags.length > 0 ? (
+                  selected.propensity.flags.map((f) => (
+                    <span key={f} className="badge flag">{f.replace(/_/g, " ")}</span>
+                  ))
+                ) : (
+                  <span className="badge clean">clean</span>
+                )}
+                <span>· {selected.propensity.detail}</span>
+              </div>
+            )}
             <div className="trace">
               {(selected.trajectory ?? []).map((s) => {
                 if (s.kind === "tool_call")
@@ -205,6 +227,7 @@ export default function DemoConsole({ tasks }: { tasks: TaskOpt[] }) {
                 <th>model</th>
                 <th>result</th>
                 <th className="num">reward</th>
+                <th>trust</th>
                 <th className="num">steps</th>
                 <th className="num">cost</th>
                 <th className="num">cache</th>
@@ -224,6 +247,17 @@ export default function DemoConsole({ tasks }: { tasks: TaskOpt[] }) {
                       <span className={`badge ${r.status === "passed" ? "pass" : r.status === "failed" ? "fail" : "err"}`}>{r.status}</span>
                     </td>
                     <td className="num">{r.reward.toFixed(3)}</td>
+                    <td>
+                      {r.propensity ? (
+                        r.propensity.flags.length > 0 ? (
+                          <span className="badge flag">{r.propensity.score.toFixed(2)} ⚑</span>
+                        ) : (
+                          <span className="mono faint">{r.propensity.score.toFixed(2)}</span>
+                        )
+                      ) : (
+                        <span className="faint">—</span>
+                      )}
+                    </td>
                     <td className="num">{r.steps}</td>
                     <td className="num">{usd(r.cost_usd)}</td>
                     <td className="num">{pct(r.cache_hit_rate, 0)}</td>
@@ -231,7 +265,7 @@ export default function DemoConsole({ tasks }: { tasks: TaskOpt[] }) {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={8} className="dim" style={{ padding: 18, textAlign: "center" }}>
+                  <td colSpan={9} className="dim" style={{ padding: 18, textAlign: "center" }}>
                     {mounted ? "Your runs will appear here." : "Loading…"}
                   </td>
                 </tr>

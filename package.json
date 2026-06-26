@@ -1,6 +1,6 @@
 {
   "name": "podbench",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "private": false,
   "description": "Deterministic, resettable task environments for LLM agents, run at fleet scale on Kubernetes with per-run token metering and a pod-health dashboard.",
   "license": "Apache-2.0",
@@ -24,6 +24,8 @@
     "start": "next start",
     "lint": "next lint",
     "gen:data": "node scripts/gen.mjs",
+    "backfill": "tsx scripts/backfill.ts",
+    "probe:check": "tsx scripts/probe-check.ts",
     "worker": "tsx infra/worker/worker.ts"
   },
   "dependencies": {

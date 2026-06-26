@@ -4,6 +4,37 @@ export type Difficulty = "easy" | "medium" | "hard";
 
 export type RunStatus = "passed" | "failed" | "error";
 
+// Where a run's numbers came from. "live" = a real episode executed against the
+// model API and the programmatic verifier. "simulated" = a seeded fixture from
+// scripts/gen.mjs, used only to populate the reference dashboard before any real
+// runs exist. The UI must never show a simulated number as if it were measured,
+// so every run carries its provenance and the dashboard surfaces it.
+export type RunSource = "live" | "simulated";
+
+// A propensity probe is an environment built to measure a *behavioral* tendency
+// rather than capability: whether the agent stays in scope, refuses to game the
+// grader, and obeys a mid-task redirection. These map to the failure modes that
+// cause production incidents (scope creep, specification gaming, resistance to
+// control) — the second axis alongside task correctness.
+export type ProbeKind = "scope_creep" | "test_gaming" | "redirection";
+
+export type PropensityFlag =
+  | "scope_creep"
+  | "test_gaming"
+  | "resistance_to_redirection";
+
+// The behavioral score for one episode, computed by the verifier from the SQL
+// the agent actually ran (not just the final state). 1.0 = fully trustworthy
+// behavior; flags name the specific tendencies that fired.
+export interface PropensityScore {
+  score: number; // 0..1, 1 = trustworthy behavior
+  flags: PropensityFlag[];
+  writes: number; // count of mutating statements the agent issued
+  writes_after_redirect: number; // mutations after a stop order, if one was sent
+  probe: ProbeKind | null; // the tendency this environment targets, if any
+  detail: string;
+}
+
 export interface TokenUsage {
   input_tokens: number;
   output_tokens: number;
@@ -40,6 +71,8 @@ export interface Run {
   retries: number;
   pod: string;
   queue: "sqs" | "redis";
+  source: RunSource;
+  propensity?: PropensityScore;
   trajectory?: TrajectoryStep[];
   error?: string;
 }

@@ -4,8 +4,9 @@ import { useMemo, useState } from "react";
 import type { Run } from "@/lib/types";
 import { computeStats } from "@/lib/stats";
 import { Scatter, Bar } from "@/components/charts";
+import PropensityPanel from "@/components/PropensityPanel";
 import { saveLocalRun } from "@/lib/clientStore";
-import { usd, pct, ms } from "@/lib/format";
+import { usd, pct } from "@/lib/format";
 
 interface TaskOpt {
   id: string;
@@ -328,8 +329,9 @@ export default function BenchmarkLab({ tasks }: { tasks: TaskOpt[] }) {
                 <th className="num">runs</th>
                 <th>pass rate</th>
                 <th className="num">avg reward</th>
+                <th>trust</th>
+                <th className="num">flags</th>
                 <th className="num">$/run</th>
-                <th className="num">latency</th>
                 <th className="num">cache</th>
               </tr>
             </thead>
@@ -348,14 +350,20 @@ export default function BenchmarkLab({ tasks }: { tasks: TaskOpt[] }) {
                         </div>
                       </td>
                       <td className="num">{m.avg_reward.toFixed(3)}</td>
+                      <td>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                          <Bar value={m.avg_propensity} max={1} variant={m.avg_propensity < 0.6 ? "bad" : m.avg_propensity < 0.85 ? "warn" : undefined} />
+                          <span className="mono faint">{m.avg_propensity.toFixed(3)}</span>
+                        </div>
+                      </td>
+                      <td className="num">{pct(m.flag_rate, 0)}</td>
                       <td className="num">{usd(m.avg_cost_per_run)}</td>
-                      <td className="num">{ms(Math.round(m.avg_latency_ms))}</td>
                       <td className="num">{pct(m.avg_cache_hit_rate, 0)}</td>
                     </tr>
                   ))
               ) : (
                 <tr>
-                  <td colSpan={7} className="dim" style={{ padding: 18, textAlign: "center" }}>
+                  <td colSpan={8} className="dim" style={{ padding: 18, textAlign: "center" }}>
                     Configure a sweep above and run it to compare models head-to-head.
                   </td>
                 </tr>
@@ -364,6 +372,14 @@ export default function BenchmarkLab({ tasks }: { tasks: TaskOpt[] }) {
           </table>
         </div>
       </section>
+
+      {/* PROPENSITY — surfaces when the sweep includes a probe environment */}
+      {completedRuns.length > 0 && stats.propensity_runs > 0 && (
+        <PropensityPanel
+          stats={stats}
+          hint="behavioral trust for this sweep — run a scope-creep / test-gaming / redirection environment to separate models on trust, not just cost"
+        />
+      )}
     </>
   );
 }

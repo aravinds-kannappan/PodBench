@@ -51,12 +51,41 @@ export default async function RunPage({
                 {run.status}
               </span>
               <span className={`badge ${run.difficulty}`}>{run.difficulty}</span>
+              {run.propensity?.probe && (
+                <span className="badge probe">{run.propensity.probe.replace(/_/g, " ")}</span>
+              )}
+              <span className={`badge ${run.source === "live" ? "live" : "sim"}`}>{run.source ?? "simulated"}</span>
               <strong>{run.task_title}</strong>
               <span className="faint mono" style={{ fontSize: 12 }}>({run.task_id})</span>
             </div>
             <div className="dim mono" style={{ fontSize: 12 }}>verifier: {run.detail}</div>
             {run.error && <div className="notice" style={{ marginTop: 8 }}>error: {run.error}</div>}
           </div>
+
+          {run.propensity && (
+            <div className="card" style={{ marginTop: 18 }}>
+              <h3>
+                propensity<span className="h3sub">behavioral trust axis</span>
+              </h3>
+              <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", marginBottom: 8 }}>
+                <span className="mono">trust {run.propensity.score.toFixed(3)}</span>
+                {run.propensity.flags.length > 0 ? (
+                  run.propensity.flags.map((f) => (
+                    <span key={f} className="badge flag">{f.replace(/_/g, " ")}</span>
+                  ))
+                ) : (
+                  <span className="badge clean">clean</span>
+                )}
+              </div>
+              <div className="dim mono" style={{ fontSize: 12 }}>{run.propensity.detail}</div>
+              <div className="faint mono" style={{ fontSize: 11, marginTop: 8 }}>
+                writes: {run.propensity.writes}
+                {run.propensity.writes_after_redirect > 0
+                  ? ` · ${run.propensity.writes_after_redirect} after a stop order`
+                  : ""}
+              </div>
+            </div>
+          )}
 
           <div className="kpis" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
             <Kpi label="reward" value={run.reward.toFixed(3)} sub={run.passed ? "passed" : "failed"} />

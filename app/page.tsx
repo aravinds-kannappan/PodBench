@@ -3,8 +3,9 @@ import { getRuns, getFleet, computeStats } from "@/lib/data/store";
 import { TASKS } from "@/lib/env/tasks";
 import Masthead from "@/components/Masthead";
 import ModelBehavior from "@/components/ModelBehavior";
+import PropensityPanel from "@/components/PropensityPanel";
 import FleetHealth from "@/components/FleetHealth";
-import { pct, usd, compact, ms, ago } from "@/lib/format";
+import { pct, usd, compact, ago } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
@@ -14,29 +15,50 @@ export default async function Page() {
   const stats = computeStats(runs);
   const recent = runs.slice(0, 12);
 
+  const simulated = runs.filter((r) => r.source === "simulated").length;
+  const allSim = simulated === runs.length && runs.length > 0;
+
   return (
     <>
-      <Masthead tagline="Deterministic, resettable SQL task environments for LLM agents with a programmatic verifier. The overview below is the published reference corpus; head to demo runs to execute your own agents live." />
+      <Masthead tagline="Deterministic, resettable SQL task environments for LLM agents, scored on two axes: task correctness and behavioral trust (propensity). The overview below is a simulated preview corpus; head to demo runs to execute your own agents live." />
 
       <main className="wrap">
+        <div className="provenance">
+          <span className="pv-tag">{allSim ? "SIMULATED" : "MIXED"}</span>
+          <span>
+            {allSim
+              ? "Every number on this overview is a seeded simulation from "
+              : "Some runs on this overview are seeded simulations from "}
+            <span className="mono">scripts/gen.mjs</span> — not measured, and the
+            pod telemetry below is an illustrative cluster snapshot, not a live
+            deployment. Real measured runs come from the{" "}
+            <Link href="/demo" className="cta-link">demo</Link> and{" "}
+            <Link href="/benchmark" className="cta-link">benchmark</Link> tabs
+            (live against the model + verifier), or{" "}
+            <span className="mono">npx tsx scripts/backfill.ts</span> with a key.
+          </span>
+        </div>
+
         <section className="kpis">
-          <Kpi label="runs recorded" value={String(stats.total_runs)} sub={`${TASKS.length} environments`} />
+          <Kpi label="runs (simulated)" value={String(stats.total_runs)} sub={`${TASKS.length} environments`} />
           <Kpi label="pass rate" value={pct(stats.pass_rate)} sub="programmatic verifier" />
-          <Kpi label="spend" value={usd(stats.total_cost_usd)} sub={`${compact(stats.total_tokens)} tokens`} />
+          <Kpi label="avg trust" value={stats.avg_propensity.toFixed(3)} sub="propensity axis" />
+          <Kpi label="flagged" value={pct(stats.propensity_runs ? stats.total_flagged / stats.propensity_runs : 0, 0)} sub={`${stats.total_flagged} behavior flags`} />
+          <Kpi label="sim spend" value={usd(stats.total_cost_usd)} sub={`${compact(stats.total_tokens)} tokens`} />
           <Kpi label="cache hit rate" value={pct(stats.avg_cache_hit_rate)} sub="input served from cache" />
-          <Kpi label="rate-limit retries" value={String(stats.total_retries)} sub="backed off and recovered" />
-          <Kpi label="p50 latency" value={ms(stats.avg_latency_ms)} sub="mean wall-clock per run" />
         </section>
 
         <div className="cta-row">
           <span className="dim">
-            This is the shared, historical benchmark corpus. To run agents yourself and
+            This is a simulated preview corpus. To run agents yourself and
             watch live results accumulate, open the
           </span>
           <Link href="/demo" className="cta-link">demo runs tab →</Link>
         </div>
 
         <ModelBehavior stats={stats} />
+
+        <PropensityPanel stats={stats} hint="behavioral trust on the simulated corpus — flag rates separate the models" />
 
         <FleetHealth fleet={fleet} />
 
@@ -55,10 +77,10 @@ export default async function Page() {
                   <th>model</th>
                   <th>result</th>
                   <th className="num">reward</th>
+                  <th>trust</th>
                   <th className="num">steps</th>
                   <th className="num">cost</th>
                   <th className="num">cache</th>
-                  <th className="num">rt</th>
                   <th>pod</th>
                 </tr>
               </thead>
@@ -75,10 +97,20 @@ export default async function Page() {
                       <span className={`badge ${r.status === "passed" ? "pass" : r.status === "failed" ? "fail" : "err"}`}>{r.status}</span>
                     </td>
                     <td className="num">{r.reward.toFixed(3)}</td>
+                    <td>
+                      {r.propensity ? (
+                        r.propensity.flags.length > 0 ? (
+                          <span className="badge flag">{r.propensity.score.toFixed(2)} ⚑</span>
+                        ) : (
+                          <span className="mono faint">{r.propensity.score.toFixed(2)}</span>
+                        )
+                      ) : (
+                        <span className="faint">—</span>
+                      )}
+                    </td>
                     <td className="num">{r.steps}</td>
                     <td className="num">{usd(r.cost_usd)}</td>
                     <td className="num">{pct(r.cache_hit_rate, 0)}</td>
-                    <td className="num">{r.retries}</td>
                     <td className="mono faint" style={{ fontSize: 10 }}>{r.pod}</td>
                   </tr>
                 ))}
@@ -91,19 +123,24 @@ export default async function Page() {
         <section className="section" id="environments">
           <div className="section-head">
             <h2>environments</h2>
-            <span className="hint">deterministic SQL tasks with programmatic reward</span>
+            <span className="hint">6 capability tasks + 3 propensity probes &middot; deterministic, programmatic scoring</span>
           </div>
           <div className="grid-3">
             {TASKS.map((t) => (
               <div className="card" key={t.id}>
-                <h3 style={{ display: "flex", justifyContent: "space-between" }}>
+                <h3 style={{ display: "flex", justifyContent: "space-between", gap: 6 }}>
                   <span className="mono" style={{ fontSize: 12 }}>{t.id}</span>
-                  <span className={`badge ${t.difficulty}`}>{t.difficulty}</span>
+                  <span style={{ display: "flex", gap: 6 }}>
+                    {t.probe && <span className="badge probe">{t.probe.replace(/_/g, " ")}</span>}
+                    <span className={`badge ${t.difficulty}`}>{t.difficulty}</span>
+                  </span>
                 </h3>
                 <div style={{ fontWeight: 600, marginBottom: 6 }}>{t.title}</div>
                 <div className="dim" style={{ fontSize: 12 }}>{t.prompt}</div>
                 <div className="faint mono" style={{ fontSize: 11, marginTop: 10 }}>
-                  kind: {t.kind} / reward: {t.kind === "answer" ? "proximity-graded" : "weighted state checks"}
+                  {t.probe
+                    ? `probe: ${t.probe.replace(/_/g, " ")} / axis: behavioral trust`
+                    : `kind: ${t.kind} / reward: ${t.kind === "answer" ? "proximity-graded" : "weighted state checks"}`}
                 </div>
               </div>
             ))}

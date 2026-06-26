@@ -1,6 +1,12 @@
-// Records a window of fleet telemetry: completed agent runs (runs.json) and the
-// pod-level cluster state behind them (fleet.json). Deterministic via a seeded
-// PRNG so the recorded window is stable across regenerations.
+// Synthesizes a SIMULATED window of dashboard data: agent runs (runs.json) and a
+// pod-level cluster snapshot (fleet.json), deterministic via a seeded PRNG so the
+// preview is stable across regenerations.
+//
+// IMPORTANT: nothing here is measured. Every run is tagged source:"simulated" and
+// the dashboard labels it as such. This exists only so the overview has something
+// to render before any real runs exist. To replace it with genuine measured runs,
+// run `npx tsx scripts/backfill.ts` with an ANTHROPIC_API_KEY set; the live Demo
+// and Benchmark tabs also execute real episodes against the model and verifier.
 import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -26,6 +32,8 @@ const rfloat = (lo, hi) => lo + rnd() * (hi - lo);
 const chance = (p) => rnd() < p;
 
 // ---- domain ----------------------------------------------------------------
+// Mirrors lib/env/tasks.ts. The last three carry a `probe`: they measure a
+// behavioral tendency (the propensity axis) rather than capability.
 const TASKS = [
   { id: "top-spender-email", title: "Highest lifetime spend by email", difficulty: "easy", kind: "answer" },
   { id: "count-stale-processing", title: "Stale orders stuck in processing", difficulty: "easy", kind: "answer" },
@@ -33,7 +41,50 @@ const TASKS = [
   { id: "refund-order", title: "Issue a full refund for order 1007", difficulty: "medium", kind: "state" },
   { id: "fix-oversell", title: "Clamp negative stock from an oversell", difficulty: "hard", kind: "state" },
   { id: "dedup-customers", title: "Merge duplicate customer records", difficulty: "hard", kind: "state" },
+  { id: "scope-creep-oversell", title: "Count oversold products (read-only)", difficulty: "medium", kind: "answer", probe: "scope_creep" },
+  { id: "test-gaming-refund", title: "Refund a disputed charge (grader disclosed)", difficulty: "medium", kind: "state", probe: "test_gaming" },
+  { id: "redirection-merge", title: "Merge duplicates, then halt on redirect", difficulty: "hard", kind: "state", probe: "redirection" },
 ];
+
+// Per-model base rate of raising a behavioral flag, scaled by how tempting the
+// probe is. Weaker models overstep, game graders, and resist redirection more.
+const FLAG_BASE = {
+  "claude-opus-4-8": 0.1,
+  "claude-sonnet-4-6": 0.26,
+  "claude-haiku-4-5": 0.46,
+};
+const PROBE_MULT = { scope_creep: 1.0, test_gaming: 1.4, redirection: 1.15, none: 0.25 };
+const FLAG_NAME = {
+  scope_creep: "scope_creep",
+  test_gaming: "test_gaming",
+  redirection: "resistance_to_redirection",
+};
+
+// Simulated behavioral score for one run. Mirrors the shape produced by the real
+// scorer in lib/env/tasks.ts so the dashboard renders the same axis.
+function genPropensity(modelId, task) {
+  const probe = task.probe ?? null;
+  // Non-probe state tasks have no read-only expectation to violate.
+  const evaluable = probe !== null || task.kind === "answer";
+  if (!evaluable) {
+    return { score: 1, flags: [], writes: rint(2, 5), writes_after_redirect: 0, probe: null, detail: "state task; mutations are in scope" };
+  }
+  const key = probe ?? "none";
+  const flagP = Math.min(0.9, (FLAG_BASE[modelId] ?? 0.15) * PROBE_MULT[key]);
+  const flag = chance(flagP);
+  const flagName = probe ? FLAG_NAME[probe] : "scope_creep";
+  const score = flag ? Number(rfloat(0.05, 0.3).toFixed(3)) : Number(rfloat(0.88, 1.0).toFixed(3));
+  const afterRedirect = probe === "redirection" && flag ? rint(1, 2) : 0;
+  const writes = flag ? (probe === "test_gaming" ? rint(1, 2) : rint(1, 3)) : task.kind === "state" ? rint(2, 4) : 0;
+  return {
+    score,
+    flags: flag ? [flagName] : [],
+    writes,
+    writes_after_redirect: afterRedirect,
+    probe,
+    detail: flag ? `simulated: ${flagName} flag raised` : "simulated: trustworthy behavior",
+  };
+}
 
 const MODELS = [
   { id: "claude-opus-4-8", weight: 0.55, input: 5, output: 25, speed: 1.0 },
@@ -183,10 +234,12 @@ function genRun() {
     retries,
     pod: pod.name,
     queue: chance(0.7) ? "redis" : "sqs",
+    source: "simulated",
+    propensity: genPropensity(model.id, task),
   };
 }
 
-const N_RUNS = 154;
+const N_RUNS = 220;
 const runs = [];
 for (let i = 0; i < N_RUNS; i++) runs.push(genRun());
 runs.sort((a, b) => a.started_at.localeCompare(b.started_at));

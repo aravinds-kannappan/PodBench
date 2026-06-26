@@ -11,6 +11,12 @@ export interface Stats {
   avg_cache_hit_rate: number;
   total_retries: number;
   avg_latency_ms: number;
+  // behavioral (propensity) axis, computed over runs that carry a score
+  avg_propensity: number;
+  propensity_runs: number;
+  total_flagged: number;
+  flag_counts: { flag: string; count: number }[];
+  propensity_histogram: number[];
   by_model: ModelStat[];
   by_task: TaskStat[];
   by_difficulty: DifficultyStat[];
@@ -28,6 +34,8 @@ export interface ModelStat {
   avg_cost_per_run: number;
   avg_latency_ms: number;
   tokens: number;
+  avg_propensity: number;
+  flag_rate: number; // fraction of this model's scored runs that raised a flag
 }
 
 export interface TaskStat {
@@ -38,6 +46,9 @@ export interface TaskStat {
   pass_rate: number;
   avg_reward: number;
   avg_steps: number;
+  probe: string | null;
+  avg_propensity: number;
+  flag_rate: number;
 }
 
 export interface DifficultyStat {
@@ -54,6 +65,23 @@ function tokensOf(r: Run): number {
     r.usage.cache_creation_input_tokens +
     r.usage.cache_read_input_tokens
   );
+}
+
+const scored = (runs: Run[]): Run[] => runs.filter((r) => !!r.propensity);
+const flagged = (r: Run): boolean => (r.propensity?.flags.length ?? 0) > 0;
+
+// Mean propensity over the runs that carry a behavioral score; 1 when none do,
+// so a model with no scored runs is not penalised as untrustworthy.
+function avgPropensity(runs: Run[]): number {
+  const s = scored(runs);
+  if (s.length === 0) return 1;
+  return s.reduce((acc, r) => acc + (r.propensity?.score ?? 0), 0) / s.length;
+}
+
+function flagRate(runs: Run[]): number {
+  const s = scored(runs);
+  if (s.length === 0) return 0;
+  return s.filter(flagged).length / s.length;
 }
 
 export function computeStats(runs: Run[]): Stats {
@@ -79,6 +107,8 @@ export function computeStats(runs: Run[]): Stats {
       avg_latency_ms:
         list.reduce((s, r) => s + r.latency_ms, 0) / list.length,
       tokens: list.reduce((s, r) => s + tokensOf(r), 0),
+      avg_propensity: avgPropensity(list),
+      flag_rate: flagRate(list),
     })
   );
 
@@ -91,6 +121,9 @@ export function computeStats(runs: Run[]): Stats {
       pass_rate: list.filter((r) => r.passed).length / list.length,
       avg_reward: list.reduce((s, r) => s + r.reward, 0) / list.length,
       avg_steps: list.reduce((s, r) => s + r.steps, 0) / list.length,
+      probe: list.find((r) => r.propensity?.probe)?.propensity?.probe ?? null,
+      avg_propensity: avgPropensity(list),
+      flag_rate: flagRate(list),
     })
   );
 
@@ -109,6 +142,21 @@ export function computeStats(runs: Run[]): Stats {
     const idx = Math.min(9, Math.max(0, Math.floor(r.reward * 10)));
     hist[idx] += 1;
   }
+
+  // propensity (trust) histogram and flag tally over scored runs
+  const scoredRuns = scored(runs);
+  const propHist = new Array(10).fill(0);
+  const flagTally = new Map<string, number>();
+  for (const r of scoredRuns) {
+    const idx = Math.min(9, Math.max(0, Math.floor((r.propensity!.score) * 10)));
+    propHist[idx] += 1;
+    for (const f of r.propensity!.flags) {
+      flagTally.set(f, (flagTally.get(f) ?? 0) + 1);
+    }
+  }
+  const flagCounts = [...flagTally.entries()]
+    .map(([flag, count]) => ({ flag, count }))
+    .sort((a, b) => b.count - a.count);
 
   // cost grouped by calendar day
   const byDay = new Map<string, { cost: number; runs: number }>();
@@ -131,6 +179,11 @@ export function computeStats(runs: Run[]): Stats {
     avg_cache_hit_rate: Number(avgCache.toFixed(4)),
     total_retries: totalRetries,
     avg_latency_ms: Math.round(avgLatency),
+    avg_propensity: Number(avgPropensity(runs).toFixed(4)),
+    propensity_runs: scoredRuns.length,
+    total_flagged: scoredRuns.filter(flagged).length,
+    flag_counts: flagCounts,
+    propensity_histogram: propHist,
     by_model: byModel.sort((a, b) => b.runs - a.runs),
     by_task: byTask.sort((a, b) => a.difficulty.localeCompare(b.difficulty)),
     by_difficulty: byDiff.sort(
