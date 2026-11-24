@@ -1,0 +1,26 @@
+{
+  "qwen2.5-0.5b": {
+    "n": 268,
+    "matches_score_top_one_token": 268,
+    "matches_canonical_token_path": 266,
+    "shared_path_token_count": 1138,
+    "max_abs_logprob_difference_on_shared_canonical_paths": 0.0,
+    "max_abs_first_logprob_difference_on_shared_top": 2.220446049250313e-16,
+    "matches_text": 268,
+    "matches_output_count": 268,
+    "matches_termination": 268,
+    "matches_all": 268
+  },
+  "smollm2-360m": {
+    "n": 344,
+    "matches_score_top_one_token": 344,
+    "matches_canonical_token_path": 344,
+    "shared_path_token_count": 1358,
+    "max_abs_logprob_difference_on_shared_canonical_paths": 0.0,
+    "max_abs_first_logprob_difference_on_shared_top": 2.220446049250313e-16,
+    "matches_text": 344,
+    "matches_output_count": 344,
+    "matches_termination": 344,
+    "matches_all": 344
+  }
+}

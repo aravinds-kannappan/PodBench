@@ -1,0 +1,29 @@
+{
+  "study": "Exploratory (not preregistered)",
+  "groups": {
+    "all": {
+      "all_prefixes": 612,
+      "both_eligible": 352,
+      "oracle_only_rescue": 69,
+      "evidence_only_rescue": 0,
+      "both_rescue": 18,
+      "neither_rescue": 265
+    },
+    "qwen2.5-0.5b": {
+      "all_prefixes": 268,
+      "both_eligible": 145,
+      "oracle_only_rescue": 35,
+      "evidence_only_rescue": 0,
+      "both_rescue": 12,
+      "neither_rescue": 98
+    },
+    "smollm2-360m": {
+      "all_prefixes": 344,
+      "both_eligible": 207,
+      "oracle_only_rescue": 34,
+      "evidence_only_rescue": 0,
+      "both_rescue": 6,
+      "neither_rescue": 167
+    }
+  }
+}
