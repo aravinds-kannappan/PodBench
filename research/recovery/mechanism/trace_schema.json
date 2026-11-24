@@ -1,0 +1,396 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PodBench exploratory trace row",
+  "description": "Validate a decoded CSV row. Empty cells decode to null. JSON structures, integers and lowercase booleans decode to their corresponding JSON types. The episode and decision schemas are disjoint.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/episode"
+    },
+    {
+      "$ref": "#/$defs/decision"
+    }
+  ],
+  "$defs": {
+    "episode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model": {
+          "type": "string"
+        },
+        "task": {
+          "enum": [
+            "refund",
+            "inventory",
+            "transfer"
+          ]
+        },
+        "seed": {
+          "type": "integer"
+        },
+        "committed": {
+          "type": "boolean"
+        },
+        "instruction": {
+          "enum": [
+            "baseline",
+            "inspect_first"
+          ]
+        },
+        "menu_order": {
+          "enum": [
+            "canonical",
+            "reversed"
+          ]
+        },
+        "study": {
+          "const": "Exploratory (not preregistered)"
+        },
+        "turns": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "invalid_decisions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "first_action": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "first_reply": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "submitted": {
+          "type": "boolean"
+        },
+        "exact_state": {
+          "type": "boolean"
+        },
+        "exact_and_submitted": {
+          "type": "boolean"
+        },
+        "failure_label": {
+          "enum": [
+            "exact state without submit",
+            "wrong-row write",
+            "duplicate write",
+            "no valid decision",
+            "premature submit",
+            "invalid-action loop",
+            "repeated-action loop",
+            "incomplete reconciliation"
+          ]
+        },
+        "first_unreachable_exact": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "first_unreachable_submission": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "observed": {
+          "type": "object"
+        },
+        "final_diff": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "extra",
+              "missing"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "extra": {
+                "type": "array",
+                "items": {
+                  "type": "array"
+                }
+              },
+              "missing": {
+                "type": "array",
+                "items": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "id",
+        "model",
+        "task",
+        "seed",
+        "committed",
+        "instruction",
+        "menu_order",
+        "study",
+        "turns",
+        "invalid_decisions",
+        "first_action",
+        "first_reply",
+        "status",
+        "submitted",
+        "exact_state",
+        "exact_and_submitted",
+        "failure_label",
+        "first_unreachable_exact",
+        "first_unreachable_submission",
+        "observed",
+        "final_diff"
+      ]
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model": {
+          "type": "string"
+        },
+        "task": {
+          "enum": [
+            "refund",
+            "inventory",
+            "transfer"
+          ]
+        },
+        "seed": {
+          "type": "integer"
+        },
+        "committed": {
+          "type": "boolean"
+        },
+        "instruction": {
+          "enum": [
+            "baseline",
+            "inspect_first"
+          ]
+        },
+        "menu_order": {
+          "enum": [
+            "canonical",
+            "reversed"
+          ]
+        },
+        "study": {
+          "const": "Exploratory (not preregistered)"
+        },
+        "turn": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "remaining_before": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reply": {
+          "type": "string"
+        },
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "parse_failure": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "force_oracle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_proposal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "force_evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "parse_succeeded": {
+          "type": "boolean"
+        },
+        "same_action_as_previous": {
+          "type": "boolean"
+        },
+        "same_reply_as_previous": {
+          "type": "boolean"
+        },
+        "claims_inspection": {
+          "type": "boolean"
+        },
+        "inspected_before": {
+          "type": "boolean"
+        },
+        "executed_inspect": {
+          "type": "boolean"
+        },
+        "ambiguous_before": {
+          "type": "boolean"
+        },
+        "exact_reachable_before": {
+          "type": "boolean"
+        },
+        "submission_reachable_before": {
+          "type": "boolean"
+        },
+        "exact_reachable_after": {
+          "type": "boolean"
+        },
+        "submission_reachable_after": {
+          "type": "boolean"
+        },
+        "crossed_exact": {
+          "type": "boolean"
+        },
+        "crossed_submission": {
+          "type": "boolean"
+        },
+        "position_1based": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "min_moves_to_exact_before": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "min_moves_to_submission_before": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "menu": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "observation": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "action_loop_period": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "invalid_loop_period": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "viable_next": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "diff_after": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "extra",
+              "missing"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "extra": {
+                "type": "array",
+                "items": {
+                  "type": "array"
+                }
+              },
+              "missing": {
+                "type": "array",
+                "items": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "id",
+        "model",
+        "task",
+        "seed",
+        "committed",
+        "instruction",
+        "menu_order",
+        "study",
+        "turn",
+        "remaining_before",
+        "reply",
+        "action",
+        "parse_failure",
+        "force_oracle",
+        "evidence_proposal",
+        "force_evidence",
+        "parse_succeeded",
+        "same_action_as_previous",
+        "same_reply_as_previous",
+        "claims_inspection",
+        "inspected_before",
+        "executed_inspect",
+        "ambiguous_before",
+        "exact_reachable_before",
+        "submission_reachable_before",
+        "exact_reachable_after",
+        "submission_reachable_after",
+        "crossed_exact",
+        "crossed_submission",
+        "position_1based",
+        "min_moves_to_exact_before",
+        "min_moves_to_submission_before",
+        "menu",
+        "observation",
+        "action_loop_period",
+        "invalid_loop_period",
+        "viable_next",
+        "diff_after"
+      ]
+    }
+  }
+}
