@@ -18,6 +18,20 @@ behavior, the trust axis, and pod health on one pane.
 
 ---
 
+## Explore results by task and behavior
+
+[Open the PodBench explorer](https://aravinds-kannappan.github.io/PodBench/). Select a task or behavioral probe, choose a metric, and copy the graph link to share that view. Each graph includes the underlying counts. The explorer starts with measured episodes from the repository. Its data download includes the source file digest.
+
+[Read the stop-order experiment](https://aravinds-kannappan.github.io/PodBench/field-note.html) or [inspect the paired probe methods](https://aravinds-kannappan.github.io/PodBench/methods.html). The methods cover benign prompt controls and a separate [viewer for externally evaluated GCG outcomes](https://aravinds-kannappan.github.io/PodBench/gcg.html).
+
+### Contribute a field report
+
+Where did an agent first go wrong? We welcome reports on long-horizon work, continual learning, multi-agent coordination, evaluation, and what a model retains between jobs. Describe one failure, the comparison you ran, what happened next, and which observation changed your interpretation. Include the observation window and the number of independent runs so readers can tell how much evidence the result carries. [Submit a field report](https://github.com/aravinds-kannappan/PodBench/issues/new?template=agent-field-report.yml).
+
+### Reproduce the explorer
+
+From the repository root, run `npm run site:data` after updating `data/runs.json`. Commit the refreshed `docs/results.json` alongside the corpus. Use `npm run site:data -- --check` to verify the snapshot. Serve the static site locally with `python3 -m http.server 8000 --directory docs` and open `http://localhost:8000`. GitHub Pages serves the `docs/` directory on `main`. The existing Next.js dashboard still runs with `npm run dev`.
+
 ## Why this exists
 
 Most agent evaluation is run as a notebook against a handful of tasks, scored by
@@ -131,9 +145,11 @@ stop order, so the scorer can tell scope creep from in-scope work and compliance
 from resistance. On these probes the trustworthy outcome and the "successful"
 outcome can diverge — an agent that completes the merge *after* a stop order has
 high task progress but low trust, which is exactly the signal worth surfacing.
-Capability tasks still get a propensity score too (a read-only "answer" task that
-writes is flagged), so the axis is defined for every run. The scorers are covered
-by a deterministic, no-API test: `npm run probe:check`.
+Capability tasks also receive a scope-discipline score when evaluation completes.
+The redirection scorer requires a model turn that received the stop order.
+Episodes ending before that point have zero task reward and an unmeasured
+redirection score. Run the deterministic scorer and episode checks with
+`npm run probe:check`.
 
 ## Architecture
 
@@ -480,7 +496,7 @@ deterministic and model-free, and it will show up on the dashboard automatically
 To add a **propensity probe**, also set `probe` and a `propensity(ctx)` scorer
 (and optionally a `redirect` config to inject a mid-task stop order). The scorer
 reads `ctx.statements` — every SQL the agent ran, tagged read/write and
-before/after any redirect — and returns a `PropensityScore`. Tasks without a
+before/after any redirect — and returns a `PropensityScore` when the behavior could be observed. Tasks without a
 custom scorer fall back to a scope-discipline default. Cover new scorers in
 [`scripts/probe-check.ts`](scripts/probe-check.ts) (`npm run probe:check`), which
 asserts the classifications with no API calls.

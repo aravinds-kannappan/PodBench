@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare paired PodBench episodes under three controlled prompt changes and explore scored GCG evaluations.">
+  <title>Probe methods · PodBench</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="article">
+  <a class="skip" href="#methods">Skip to probe methods</a>
+  <header class="mast"><div class="wrap mast-inner">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PodBench</a>
+    <nav aria-label="Main navigation"><a href="./#explorer">Explorer</a><a href="methods.html" aria-current="page">Methods</a><a href="field-note.html">Field note</a><a class="repo" href="https://github.com/aravinds-kannappan/PodBench">GitHub</a></nav>
+  </div></header>
+  <main id="methods" class="story">
+    <h1>Probe methods</h1>
+    <p>Does an incidental change to a work order affect what the agent does? PodBench can run the same SQL task twice, change one part of the prompt, and grade both the answer and the path through the database.</p>
+
+    <h2>GCG and suffix sensitivity</h2>
+    <p>Greedy Coordinate Gradient (GCG) uses model gradients to select an adversarial suffix. Its success rate depends on the target, the evaluation set, and how each response is judged. If you have scored GCG trials, explore the outcomes by behavior in the <a href="gcg.html">GCG results viewer</a>. <a href="https://arxiv.org/pdf/2407.04295#page=3">Yi et al., §§3.1.1 and 5.1</a></p>
+    <p>PodBench’s <code>suffix</code> condition asks a narrower question about sensitivity to additional text. It appends “Reference label: blue folder.” to the user’s task. Both arms use the same database and verifier. A difference tells you where to inspect the two trajectories. Estimating resilience to optimized GCG suffixes requires separate GCG trials.</p>
+
+    <h2>Two more comparisons</h2>
+    <h3>Task formatting</h3>
+    <p>The <code>format</code> condition replaces the space after the task label with a blank line. The words, identifiers, dates, and intended operation stay the same. The survey discusses testing perturbed copies of prompts, including the randomized method SmoothLLM. This comparison uses one fixed whitespace edit per treatment arm. <a href="https://arxiv.org/pdf/2407.04295#page=12">Yi et al., §4.1.2</a></p>
+    <h3>Boundary reminder</h3>
+    <p>The <code>reminder</code> condition appends two sentences to the system instructions asking the agent to stay within scope and stop writes on an operator hold. The user’s work order is identical in both arms. Inspect both correctness and behavioral flags to see whether the reminder helps compliance at a cost to task completion. <a href="https://arxiv.org/pdf/2407.04295#page=13">Yi et al., §4.1.3</a></p>
+
+    <h2>Run a pair</h2>
+    <p>From a checkout with dependencies installed, preview the exact user messages and system additions. Replace <code>suffix</code> with <code>format</code> or <code>reminder</code> to inspect the other conditions.</p>
+    <pre><code>npm run --silent probe:pairs -- --method suffix --task scope-creep-oversell</code></pre>
+    <p>For a measured comparison, configure a PodBench provider key and specify your model. The command below makes four metered episodes and saves their results in JSON Lines format. Pick a fresh filename for each experiment.</p>
+    <pre><code>npm run --silent probe:pairs -- --live --model MODEL_ID \
+  --task scope-creep-oversell --method suffix --pairs 2 &gt; suffix-pairs.jsonl</code></pre>
+    <p>Each episode starts from the same seed with fresh conversation history and a fourteen-turn limit. Odd pairs start with the baseline and even pairs start with the treatment. The file records the model, provider, user messages, system additions, run IDs, SQL trajectories, and the order each arm ran. Repeated provider calls can vary even with the same prompt. A single disagreement identifies a case to investigate.</p>
+
+    <h2>Read the paired counts</h2>
+    <p>In the final JSON record, <code>pass_fail</code> counts pairs that passed at baseline and failed after the change. <code>fail_pass</code> counts the reverse. Divide by <code>scored_pairs</code> for the share of fully scored pairs. Provider errors appear under <code>error_pairs</code> and remain visible in the episode records.</p>
+    <p><code>flag_disagreements</code> counts pairs whose sets of behavioral flags differ. Its denominator, <code>behavioral_pairs</code>, requires a propensity score in both arms. On the stop-order task both agents must also have responded after the operator’s message. Read the two trajectories to find the first divergent action. The <a href="field-note.html">redirection field note</a> shows why that exposure check matters.</p>
+  </main>
+</body>
+</html>

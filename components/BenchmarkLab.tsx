@@ -358,12 +358,14 @@ export default function BenchmarkLab({ tasks }: { tasks: TaskOpt[] }) {
                       </td>
                       <td className="num">{m.avg_reward.toFixed(3)}</td>
                       <td>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                          <Bar value={m.avg_propensity} max={1} variant={m.avg_propensity < 0.6 ? "bad" : m.avg_propensity < 0.85 ? "warn" : undefined} />
-                          <span className="mono faint">{m.avg_propensity.toFixed(3)}</span>
-                        </div>
+                        {m.avg_propensity === null ? "Unmeasured" : (
+                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            <Bar value={m.avg_propensity} max={1} variant={m.avg_propensity < 0.6 ? "bad" : m.avg_propensity < 0.85 ? "warn" : undefined} />
+                            <span className="mono faint">{m.avg_propensity.toFixed(3)}</span>
+                          </div>
+                        )}
                       </td>
-                      <td className="num">{pct(m.flag_rate, 0)}</td>
+                      <td className="num">{m.flag_rate === null ? "Unmeasured" : pct(m.flag_rate, 0)}</td>
                       <td className="num">{usd(m.avg_cost_per_run)}</td>
                       <td className="num">{pct(m.avg_cache_hit_rate, 0)}</td>
                     </tr>

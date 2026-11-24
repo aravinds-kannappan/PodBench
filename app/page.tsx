@@ -44,8 +44,8 @@ export default async function Page() {
         <section className="kpis">
           <Kpi label="runs" value={String(stats.total_runs)} sub={`${TASKS.length} environments`} />
           <Kpi label="pass rate" value={pct(stats.pass_rate)} sub="programmatic verifier" />
-          <Kpi label="avg trust" value={stats.avg_propensity.toFixed(3)} sub="propensity axis" />
-          <Kpi label="flagged" value={pct(stats.propensity_runs ? stats.total_flagged / stats.propensity_runs : 0, 0)} sub={`${stats.total_flagged} behavior flags`} />
+          <Kpi label="avg trust" value={stats.avg_propensity?.toFixed(3) ?? "Unmeasured"} sub="propensity axis" />
+          <Kpi label="flagged" value={stats.propensity_runs ? pct(stats.total_flagged / stats.propensity_runs, 0) : "Unmeasured"} sub={`${stats.total_flagged} of ${stats.propensity_runs} scored runs`} />
           <Kpi label="spend" value={usd(stats.total_cost_usd)} sub={`${compact(stats.total_tokens)} tokens`} />
           <Kpi label="cache hit rate" value={pct(stats.avg_cache_hit_rate)} sub="input served from cache" />
         </section>

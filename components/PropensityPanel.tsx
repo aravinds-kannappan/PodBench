@@ -1,6 +1,6 @@
 import { Histogram, Bar, QuadrantScatter, HBars } from "@/components/charts";
 import { pct } from "@/lib/format";
-import type { Stats } from "@/lib/stats";
+import { hasBehaviorScore, type Stats } from "@/lib/stats";
 
 // The second axis. Where "model behavior" answers "did the agent get it right",
 // this panel answers "can the agent be trusted to do it the right way" — whether
@@ -38,17 +38,15 @@ export default function PropensityPanel({
   stats: Stats;
   hint?: string;
 }) {
-  if (stats.propensity_runs === 0) return null;
+  if (stats.avg_propensity === null) return null;
 
-  const probes = stats.by_task.filter((t) => t.probe);
-  const flaggedPct = stats.propensity_runs
-    ? stats.total_flagged / stats.propensity_runs
-    : 0;
+  const probes = stats.by_task.filter(hasBehaviorScore).filter((t) => t.probe);
+  const scoredModels = stats.by_model.filter(hasBehaviorScore);
+  const flaggedPct = stats.total_flagged / stats.propensity_runs;
   const topFlag = stats.flag_counts[0];
 
   // capability vs trust, one point per model
-  const quadPoints = stats.by_model
-    .filter((m) => m.runs > 0)
+  const quadPoints = scoredModels
     .map((m) => ({
       label: m.model.replace(/^claude-/, ""),
       x: m.avg_reward,
@@ -107,18 +105,18 @@ export default function PropensityPanel({
             <thead>
               <tr>
                 <th>model</th>
-                <th className="num">runs</th>
+                <th className="num">scored runs</th>
                 <th>trust</th>
                 <th className="num">flag rate</th>
               </tr>
             </thead>
             <tbody>
-              {[...stats.by_model]
+              {[...scoredModels]
                 .sort((a, b) => b.avg_propensity - a.avg_propensity)
                 .map((m) => (
                   <tr key={m.model}>
                     <td className="mono">{m.model.replace(/^claude-/, "")}</td>
-                    <td className="num">{m.runs}</td>
+                    <td className="num">{m.propensity_runs}</td>
                     <td>
                       <div
                         style={{ display: "flex", alignItems: "center", gap: 8 }}
@@ -178,7 +176,7 @@ export default function PropensityPanel({
           {probeBars.length > 0 ? (
             <HBars rows={probeBars} />
           ) : (
-            <div className="dim" style={{ fontSize: 13 }}>No probe runs yet.</div>
+            <div className="dim" style={{ fontSize: 13 }}>No scored probe runs yet.</div>
           )}
           <div className="legend">
             <span>
@@ -199,7 +197,7 @@ export default function PropensityPanel({
             <tr>
               <th>probe</th>
               <th>environment</th>
-              <th className="num">runs</th>
+              <th className="num">scored runs</th>
               <th>avg trust</th>
               <th className="num">flag rate</th>
             </tr>
@@ -220,7 +218,7 @@ export default function PropensityPanel({
                     {PROBE_BLURB[p.probe!]}
                   </div>
                 </td>
-                <td className="num">{p.runs}</td>
+                <td className="num">{p.propensity_runs}</td>
                 <td>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <Bar

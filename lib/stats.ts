@@ -12,7 +12,7 @@ export interface Stats {
   total_retries: number;
   avg_latency_ms: number;
   // behavioral (propensity) axis, computed over runs that carry a score
-  avg_propensity: number;
+  avg_propensity: number | null;
   propensity_runs: number;
   total_flagged: number;
   flag_counts: { flag: string; count: number }[];
@@ -24,7 +24,19 @@ export interface Stats {
   cost_over_time: { ts: string; cost: number; runs: number }[];
 }
 
-export interface ModelStat {
+interface BehaviorStat {
+  propensity_runs: number;
+  avg_propensity: number | null;
+  flag_rate: number | null;
+}
+
+export function hasBehaviorScore<T extends BehaviorStat>(
+  group: T
+): group is T & { avg_propensity: number; flag_rate: number } {
+  return group.avg_propensity !== null && group.flag_rate !== null;
+}
+
+export interface ModelStat extends BehaviorStat {
   model: string;
   runs: number;
   pass_rate: number;
@@ -34,11 +46,9 @@ export interface ModelStat {
   avg_cost_per_run: number;
   avg_latency_ms: number;
   tokens: number;
-  avg_propensity: number;
-  flag_rate: number; // fraction of this model's scored runs that raised a flag
 }
 
-export interface TaskStat {
+export interface TaskStat extends BehaviorStat {
   task_id: string;
   title: string;
   difficulty: string;
@@ -47,8 +57,6 @@ export interface TaskStat {
   avg_reward: number;
   avg_steps: number;
   probe: string | null;
-  avg_propensity: number;
-  flag_rate: number;
 }
 
 export interface DifficultyStat {
@@ -70,18 +78,14 @@ function tokensOf(r: Run): number {
 const scored = (runs: Run[]): Run[] => runs.filter((r) => !!r.propensity);
 const flagged = (r: Run): boolean => (r.propensity?.flags.length ?? 0) > 0;
 
-// Mean propensity over the runs that carry a behavioral score; 1 when none do,
-// so a model with no scored runs is not penalised as untrustworthy.
-function avgPropensity(runs: Run[]): number {
-  const s = scored(runs);
-  if (s.length === 0) return 1;
-  return s.reduce((acc, r) => acc + (r.propensity?.score ?? 0), 0) / s.length;
-}
-
-function flagRate(runs: Run[]): number {
-  const s = scored(runs);
-  if (s.length === 0) return 0;
-  return s.filter(flagged).length / s.length;
+function behaviorStats(runs: Run[]): BehaviorStat {
+  const observations = scored(runs);
+  const n = observations.length;
+  return {
+    propensity_runs: n,
+    avg_propensity: n ? observations.reduce((sum, r) => sum + r.propensity!.score, 0) / n : null,
+    flag_rate: n ? observations.filter(flagged).length / n : null,
+  };
 }
 
 export function computeStats(runs: Run[]): Stats {
@@ -107,8 +111,7 @@ export function computeStats(runs: Run[]): Stats {
       avg_latency_ms:
         list.reduce((s, r) => s + r.latency_ms, 0) / list.length,
       tokens: list.reduce((s, r) => s + tokensOf(r), 0),
-      avg_propensity: avgPropensity(list),
-      flag_rate: flagRate(list),
+      ...behaviorStats(list),
     })
   );
 
@@ -121,9 +124,9 @@ export function computeStats(runs: Run[]): Stats {
       pass_rate: list.filter((r) => r.passed).length / list.length,
       avg_reward: list.reduce((s, r) => s + r.reward, 0) / list.length,
       avg_steps: list.reduce((s, r) => s + r.steps, 0) / list.length,
-      probe: list.find((r) => r.propensity?.probe)?.propensity?.probe ?? null,
-      avg_propensity: avgPropensity(list),
-      flag_rate: flagRate(list),
+      probe: list.find((r) => r.propensity?.probe)?.propensity?.probe ??
+        (list.some((r) => typeof r.redirect_observed === "boolean") ? "redirection" : null),
+      ...behaviorStats(list),
     })
   );
 
@@ -145,6 +148,7 @@ export function computeStats(runs: Run[]): Stats {
 
   // propensity (trust) histogram and flag tally over scored runs
   const scoredRuns = scored(runs);
+  const behavior = behaviorStats(runs);
   const propHist = new Array(10).fill(0);
   const flagTally = new Map<string, number>();
   for (const r of scoredRuns) {
@@ -179,7 +183,7 @@ export function computeStats(runs: Run[]): Stats {
     avg_cache_hit_rate: Number(avgCache.toFixed(4)),
     total_retries: totalRetries,
     avg_latency_ms: Math.round(avgLatency),
-    avg_propensity: Number(avgPropensity(runs).toFixed(4)),
+    avg_propensity: behavior.avg_propensity === null ? null : Number(behavior.avg_propensity.toFixed(4)),
     propensity_runs: scoredRuns.length,
     total_flagged: scoredRuns.filter(flagged).length,
     flag_counts: flagCounts,

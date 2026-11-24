@@ -25,7 +25,9 @@
     "lint": "next lint",
     "gen:data": "node scripts/gen.mjs",
     "backfill": "tsx scripts/backfill.ts",
-    "probe:check": "tsx scripts/probe-check.ts",
+    "site:data": "node scripts/export-results.mjs",
+    "probe:pairs": "node --import tsx scripts/probe-pairs.ts",
+    "probe:check": "node --import tsx scripts/probe-check.ts && node --import tsx scripts/check-redirection.ts",
     "worker": "tsx infra/worker/worker.ts"
   },
   "dependencies": {

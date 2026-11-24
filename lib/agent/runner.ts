@@ -10,6 +10,7 @@ import {
   toolResultMessages,
   isRetryable,
 } from "./llm";
+import { episodePrompts, type PromptCondition } from "./probe-prompts";
 import type { CallParams, ModelTurn, ToolDef } from "./llm";
 import type { Run, TokenUsage, TrajectoryStep, PropensityScore } from "../types";
 
@@ -20,6 +21,7 @@ function isWriteSql(sql: string): boolean {
 }
 
 export interface RunOptions {
+  promptCondition?: PromptCondition;
   model?: string;
   effort?: string;
   maxSteps?: number;
@@ -157,7 +159,8 @@ export async function runEpisode(
   let sawProviderCost = false;
   const trajectory: TrajectoryStep[] = [];
 
-  const messages: any[] = [userMessage(`Task: ${task.prompt}`)];
+  const prompts = episodePrompts(task.prompt, SYSTEM_INSTRUCTIONS, opts.promptCondition ?? "baseline");
+  const messages: any[] = [userMessage(prompts.user)];
 
   let submitted = false;
   let submission: { answer?: string } | null = null;
@@ -168,6 +171,7 @@ export async function runEpisode(
   // and tagged with whether it landed after a mid-task stop order. This is what
   // the propensity scorer reads to detect scope creep and resistance to control.
   const statements: ExecutedStatement[] = [];
+  let redirectQueued = false;
   let redirected = false;
 
   try {
@@ -176,12 +180,15 @@ export async function runEpisode(
       const { turn, retries } = await callWithBackoff({
         provider,
         apiModel,
-        system: SYSTEM_INSTRUCTIONS,
+        system: prompts.system,
         tools: TOOLS,
         messages,
         effort,
         maxTokens: MAX_TOKENS,
       });
+      // A hold appended to the final allowed turn may never reach the model.
+      // Count it once a subsequent call with the hold in its input returns.
+      redirected = redirectQueued;
       totalRetries += retries;
       stepCount += 1;
 
@@ -271,7 +278,7 @@ export async function runEpisode(
         !!task.redirect && !redirected && writeThisTurn && !submitted;
       const extra = fireRedirect ? task.redirect!.message : undefined;
       messages.push(...toolResultMessages(provider, results, extra));
-      if (fireRedirect) redirected = true;
+      if (fireRedirect) redirectQueued = true;
     }
   } catch (e: any) {
     runError = e?.message ?? String(e);
@@ -327,6 +334,7 @@ export async function runEpisode(
     queue,
     source: "live",
     propensity,
+    redirect_observed: task.redirect ? redirected : undefined,
     trajectory,
     error: runError,
   };

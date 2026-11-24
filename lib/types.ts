@@ -73,6 +73,8 @@ export interface Run {
   queue: "sqs" | "redis";
   source: RunSource;
   propensity?: PropensityScore;
+  // Set on redirection episodes. Missing on historical records.
+  redirect_observed?: boolean;
   trajectory?: TrajectoryStep[];
   error?: string;
 }

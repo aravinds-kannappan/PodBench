@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GCG evaluations · PodBench</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="gcg.js" defer></script>
+  <style>
+    .gcg-tool { padding: clamp(1rem, 3vw, 2rem); border: 1px solid #bac6bd; border-radius: 12px; margin: 2rem 0; }
+    .gcg-tool input, .gcg-tool select { max-width: 100%; font: inherit; }
+    .gcg-tool label, .gcg-tool dt { font-weight: 650; }
+    .gcg-tool label { display: block; }
+    .gcg-tool dd { margin: 0 0 .6rem; overflow-wrap: anywhere; }
+    .gcg-tool details { margin: 1rem 0; }
+    .gcg-tool summary { cursor: pointer; }
+    .gcg-tool code { overflow-wrap: anywhere; }
+    .gcg-tool pre { white-space: pre-wrap; }
+    .gcg-controls { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; }
+    .gcg-controls select { display: block; margin-top: .25rem; }
+    .gcg-group { border-top: 1px solid #cad2ca; padding: 1rem 0; }
+    .gcg-group h3 { overflow-wrap: anywhere; margin: 0 0 .6rem; }
+    .gcg-group p { font-size: .92rem; margin: .4rem 0; }
+    .gcg-bar { display: grid; grid-template-columns: 3rem 1fr minmax(7rem, auto); gap: .5rem; align-items: center; }
+    .gcg-track { background: #e3e8e2; border-radius: 2px; overflow: hidden; }
+    .gcg-fill { background: #20704d; display: block; height: .6rem; }
+    .gcg-variant { background: #585f9b; }
+    .gcg-nav { display: flex; gap: 1rem; align-items: center; }
+    #gcg-status[data-error] { color: #8d302f; }
+  </style>
+</head>
+<body class="article">
+  <header class="mast"><div class="wrap mast-inner">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PodBench</a>
+    <nav aria-label="Main navigation"><a href="./#explorer">Explorer</a><a href="methods.html">Methods</a><a href="field-note.html">Field note</a><a class="repo" href="https://github.com/aravinds-kannappan/PodBench">GitHub</a></nav>
+  </div></header>
+  <main class="story">
+    <h1>GCG evaluations</h1>
+    <p>Did a task that passed in a clean run still pass under Greedy Coordinate Gradient (GCG)? Compare outcomes for the same case, model version and evaluator across both conditions. The comparison uses scored records from your own evaluation.</p>
+    <section class="gcg-tool" aria-labelledby="import-title">
+      <h2 id="import-title">Import paired outcomes</h2>
+      <p>Choose a JSON file with blinded case IDs and verdicts. Your browser reads the file locally.</p>
+      <label for="gcg-file">Evaluation file</label>
+      <input id="gcg-file" type="file" accept="application/json,.json">
+      <p id="gcg-status" role="status" aria-live="polite">Choose a file to graph your results.</p>
+      <noscript><p>Enable JavaScript to read a local file.</p></noscript>
+      <details><summary>JSON format and scoring rules</summary>
+        <p>Use one model and evaluator configuration per file. Name the benchmark and run or archive in <code>source</code>. In <code>rubric</code>, describe what counts as task completion, when the behavior can be observed, and what counts as maintaining it.</p>
+        <pre><code>{
+  "method": "GCG",
+  "source": "&lt;benchmark, version and run or archive ID&gt;",
+  "model": "&lt;model and revision&gt;",
+  "evaluator": "&lt;verifier or judge and version&gt;",
+  "rubric": "&lt;task and behavior scoring criteria&gt;",
+  "cases": [
+    {
+      "id": "&lt;unique blinded pair ID&gt;",
+      "task": "&lt;task name&gt;",
+      "behavior": "&lt;behavior name&gt;",
+      "clean": { "taskPassed": null, "behaviorMaintained": null },
+      "gcg": { "taskPassed": null, "behaviorMaintained": null }
+    }
+  ]
+}</code></pre>
+        <p>Enter each matched case once. Use <code>true</code> for a pass, <code>false</code> for a failure, and <code>null</code> when an outcome was unobserved or unscored. For example, leave stop-order compliance unscored if the agent never received a stop order. Only pairs scored in both conditions contribute to that metric. Both bars use the same denominator.</p>
+      </details>
+      <section id="gcg-results" hidden aria-labelledby="results-title">
+        <h2 id="results-title">Paired results</h2>
+        <dl id="gcg-metadata"></dl>
+        <div class="gcg-controls">
+          <label>Group by<select id="gcg-group"><option value="task">Individual task</option><option value="behavior">Behavior</option></select></label>
+          <label>Outcome<select id="gcg-metric"><option value="taskPassed">Task pass rate</option><option value="behaviorMaintained">Behavior maintained</option></select></label>
+        </div>
+        <div id="gcg-chart" aria-live="polite"></div>
+        <div id="gcg-pages" hidden><div class="gcg-nav"><button type="button" id="gcg-prev">Previous</button><span id="gcg-range"></span><button type="button" id="gcg-next">Next</button></div></div>
+      </section>
+    </section>
+    <h2>A published GCG result</h2>
+    <p>Chao et al. reported an 80% GCG attack success rate on Vicuna-13B-v1.5 across the 100 harmful behaviors in JBB-Behaviors. Their Llama-3-70B judge counted a success when it classified the response as fulfilling the harmful request. This historical JailbreakBench aggregate has no paired clean outcomes here, so it is displayed separately from imported case results. <a href="https://arxiv.org/pdf/2404.01318#page=8">JailbreakBench, Table 2</a></p>
+    <p>Yi et al. classify GCG as a white-box gradient-based method and describe how the choice of evaluator changes measured success. PodBench’s fixed, benign prompt variants measure changes in task performance under simpler conditions. <a href="https://arxiv.org/pdf/2407.04295#page=3">Survey, §§3.1.1 and 5.1</a> · <a href="methods.html">PodBench methods</a></p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,32 @@
+name: Agent field report
+description: Share a failure, a reproducible experiment, and what changed afterward.
+title: "[Field report] "
+body:
+  - type: textarea
+    id: setup
+    attributes:
+      label: What work was the agent doing?
+      description: Include the task, model or policy version, tools, and observation window. For multi-agent or continual learning systems, describe what state was shared or retained.
+    validations:
+      required: true
+  - type: textarea
+    id: failure
+    attributes:
+      label: Where did it break?
+      description: Describe the first observable failure and the behavior you expected. Link a public run ID or a redacted trace if available.
+    validations:
+      required: true
+  - type: textarea
+    id: comparison
+    attributes:
+      label: What experiment did you run?
+      description: Describe the baseline, the change, the verifier, the number of trials, and how someone else can repeat the comparison.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What happened next?
+      description: Give the observed counts, any recovery or regression, and what changed your mind. Note any uncertainty or follow-up measurement.
+    validations:
+      required: true

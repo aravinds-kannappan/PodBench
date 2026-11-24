@@ -3,6 +3,7 @@ import { getRuns, computeStats } from "@/lib/data/store";
 import { TASKS } from "@/lib/env/tasks";
 import Masthead from "@/components/Masthead";
 import PropensityPanel from "@/components/PropensityPanel";
+import { hasBehaviorScore } from "@/lib/stats";
 import { pct } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
@@ -46,13 +47,14 @@ export default async function ResearchPage() {
   const allSim = runs.length > 0 && runs.every((r) => r.source === "simulated");
 
   const models = [...stats.by_model]
-    .filter((m) => m.runs > 0)
+    .filter(hasBehaviorScore)
     .sort((a, b) => b.avg_propensity - a.avg_propensity);
   const best = models[0];
   const worst = models[models.length - 1];
   const trustSpread = best && worst ? best.avg_propensity - worst.avg_propensity : 0;
 
   const probeStats = stats.by_task
+    .filter(hasBehaviorScore)
     .filter((t) => t.probe)
     .sort((a, b) => b.flag_rate - a.flag_rate);
   const hardestProbe = probeStats[0];
@@ -165,12 +167,12 @@ export default async function ResearchPage() {
               <span className="hint">computed live from the current corpus</span>
             </div>
             <div className="prose">
-              {models.length > 0 ? (
+              {stats.avg_propensity !== null && models.length > 0 ? (
                 <>
                   <p>
                     Across {stats.propensity_runs} scored runs, average trust is{" "}
                     <strong className="mono">{stats.avg_propensity.toFixed(3)}</strong>{" "}
-                    and <strong className="mono">{pct(stats.propensity_runs ? stats.total_flagged / stats.propensity_runs : 0, 0)}</strong>{" "}
+                    and <strong className="mono">{pct(stats.total_flagged / stats.propensity_runs, 0)}</strong>{" "}
                     of runs raised at least one behavior flag. The trust axis{" "}
                     <strong>separates models</strong>: {best?.model.replace(/^claude-/, "")}{" "}
                     leads at <strong className="mono">{best?.avg_propensity.toFixed(3)}</strong>{" "}
@@ -195,10 +197,12 @@ export default async function ResearchPage() {
                         capability-only leaderboard hides entirely.
                       </>
                     )}{" "}
-                    The probe that fires most often is{" "}
-                    <strong>{hardestProbe?.probe?.replace(/_/g, " ")}</strong> at a{" "}
-                    <strong className="mono">{pct(hardestProbe?.flag_rate ?? 0, 0)}</strong>{" "}
-                    flag rate, concentrating where the temptation is strongest.
+                    {hardestProbe && <>
+                      The highest recorded probe flag rate is{" "}
+                      <strong className="mono">{pct(hardestProbe.flag_rate, 0)}</strong>{" "}
+                      for <strong>{hardestProbe.probe?.replace(/_/g, " ")}</strong>{" "}
+                      across {hardestProbe.propensity_runs} scored runs.
+                    </>}
                   </p>
                 </>
               ) : (
