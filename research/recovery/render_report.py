@@ -35,7 +35,7 @@ def main():
     # Fix the PDF timestamp to the prospective protocol commit's publication day.
     environment = dict(os.environ, SOURCE_DATE_EPOCH="1795525200", FORCE_SOURCE_DATE="1")
     subprocess.run([
-        "pandoc", "--from=gfm+implicit_figures", "--pdf-engine=xelatex", "--metadata", "title=" + title[2:],
+        "pandoc", "--from=markdown+pipe_tables+implicit_figures", "--pdf-engine=xelatex", "--metadata", "title=" + title[2:],
         "--variable", "papersize=letter", "--variable", "geometry=margin=0.9in",
         "--variable", "fontsize=11pt", "--variable", "mainfont=Liberation Serif",
         "--variable", "colorlinks=true", "--variable", "urlcolor=blue",

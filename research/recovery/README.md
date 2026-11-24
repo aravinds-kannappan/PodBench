@@ -122,3 +122,7 @@ python3 research/recovery/render_report.py
 To audit the exact model-facing inputs and match the analysis file to the raw journal, run `python3 research/recovery/check_inputs.py --results docs/recovery-results.json`.
 
 The outputs are `docs/recovery-figure.pdf`, a PNG preview, and `docs/recovery-report.pdf`. Cite the [versioned release](https://github.com/aravinds-kannappan/PodBench/releases/tag/recovery-v1.0.0) and the checkpoint revision for each new comparison. [Software citation](../../CITATION.cff)
+
+### Frozen and released versions
+
+The design was committed and pushed before model evaluation ([protocol](https://github.com/aravinds-kannappan/PodBench/blob/f4ef7fdf31b98fa95046f1ff5ca6461b4a192271/research/recovery/PROTOCOL.md)). The environment, models, prompts, decision parser and estimator were then frozen ([collection revision](https://github.com/aravinds-kannappan/PodBench/tree/9885ae666c6bc65640ab75ab3a4faef4bab2b0e7)). During collection we tightened archive validation, distinguished a missing inference reply from a malformed reply, and added a separate adapter for future models. The collection code remained at the frozen revision. The manifest hashes permit a direct check. [Validation and reuse revision](https://github.com/aravinds-kannappan/PodBench/commit/5f7288b)

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A paired experiment on agent recovery after a transaction returns an ambiguous result. Explore exact outcomes, uncertainty and model-generated traces.">
+  <meta name="theme-color" content="#122527">
+  <title>Recovering after an ambiguous commit · PodBench</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="recovery.js"></script>
+  <style>
+    .recovery { width: min(100% - 2.5rem, 65rem); margin: clamp(2rem,5vw,4.5rem) auto; }
+    .recovery h1, .recovery h2, .recovery .outcome-title { font-family: var(--serif); font-weight: 400; letter-spacing: -.045em; line-height: 1.08; }
+    .recovery h1 { font-size: clamp(2.65rem,6.2vw,5.1rem); margin: .7rem 0 1.1rem; max-width: 18ch; }
+    .recovery h2 { font-size: clamp(2rem,3.5vw,3rem); margin: 0 0 .6rem; }
+    .recovery h3 { margin: 0; font-size: 1.05rem; }
+    .recovery section { margin: 2.75rem 0; }
+    .recovery .lead { max-width: 64ch; font-size: 1.15rem; color: #364e45; line-height: 1.6; }
+    .recovery .measure { max-width: 77ch; }
+    .recovery .materials { margin: 1.1rem 0; display: flex; flex-wrap: wrap; gap: .5rem 1.3rem; }
+    .recovery .materials a, .recovery .trace-arm a { color: var(--deep); font-weight: 600; font-size: .9rem; }
+    .recovery-hero { padding-bottom: 1.6rem; border-bottom: 1px solid var(--line); }
+    .result-grid, .trace-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; margin: 1rem 0; }
+    .result-card, .trace-arm { background: #fff; border: 1px solid var(--line); padding: clamp(1rem,2.2vw,1.6rem); border-radius: .4rem; min-width: 0; }
+    .result-card strong { font-weight: 650; }
+    .recovery-bars { margin: .6rem 0 .75rem; }
+    .result-card h4 { margin: 1.1rem 0 .4rem; color: var(--deep); font-size: .94rem; }
+    .recovery-bars figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; font-size: .9rem; }
+    .recovery-bars figcaption strong { font: .93rem var(--mono); }
+    .recovery .delta { padding-top: .8rem; border-top: 1px solid var(--line); font-size: .95rem; }
+    .recovery .small { color: var(--muted); font-size: .88rem; line-height: 1.6; }
+    .recovery .subset { display: flex; align-items: end; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+    .recovery label { max-width: 100%; min-width: 0; font-size: .9rem; font-weight: 600; }
+    .recovery label select { display: block; margin-top: .35rem; }
+    .recovery .table-scroll { margin: 1rem 0; border: 1px solid var(--line); border-radius: .4rem; background: #fff; }
+    .recovery table { min-width: 100%; width: max-content; margin: 0; border-collapse: collapse; font-size: .9rem; }
+    .recovery th, .recovery td { text-align: left; padding: .58rem .75rem; border-bottom: 1px solid var(--line); }
+    .recovery thead { background: #eaf2e9; }
+    .recovery tr:last-child td, .recovery tr:last-child th { border-bottom: none; }
+    .trace-arm header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+    .trace-arm ol { padding-left: 1.5rem; }
+    .trace-arm li { padding: .65rem 0; border-bottom: 1px solid var(--line); }
+    .trace-arm li:first-child { padding-top: 0; }
+    .trace-arm li:last-child { border: 0; }
+    .trace-arm code, .trace-arm pre { white-space: pre-wrap; overflow-wrap: anywhere; font: .85rem/1.6 var(--mono); }
+    .trace-arm pre { padding: .5rem; margin: .25rem 0; background: #f0f4ef; border-radius: .2rem; }
+    .trace-arm summary { font-size: .85rem; cursor: pointer; text-decoration: underline; color: var(--deep); }
+    .trace-arm p { margin: .4rem 0; }
+    .recovery .trace-status { font: .8rem var(--mono); }
+    .recovery .limitations p+p { margin-top: .8rem; }
+    @media (max-width: 42rem) { .result-grid,.trace-pair { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#results">Skip to recovery results</a>
+  <header class="mast"><div class="wrap mast-inner">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PodBench</a>
+    <nav aria-label="Main navigation"><a href="index.html#explorer">Explorer</a><a href="recovery.html" aria-current="page">Recovery study</a><a href="methods.html">Methods</a><a href="field-note.html">Field note</a></nav>
+  </div></header>
+  <main class="recovery">
+    <div class="recovery-hero">
+      <p class="kicker dark-kicker"><span class="rule"></span>Recovery experiment</p>
+      <h1>Recovering after an ambiguous commit</h1>
+      <p class="lead">The transaction timed out. The database may already have changed. Does asking an agent to inspect the state before retrying help it finish exactly once?</p>
+      <div class="materials">
+        <a href="recovery-report.pdf">Read the paper (PDF)</a>
+        <a href="https://github.com/aravinds-kannappan/PodBench/blob/main/research/recovery/REPORT.md">Manuscript on GitHub</a>
+        <a href="https://github.com/aravinds-kannappan/PodBench/blob/f4ef7fdf31b98fa95046f1ff5ca6461b4a192271/research/recovery/PROTOCOL.md">Study protocol</a>
+        <a href="recovery-episodes.csv" download>Episode CSV</a>
+        <a href="recovery-results.json" download>Analysis data</a>
+      </div>
+    </div>
+    <section id="results" aria-labelledby="results-title">
+      <h2 id="results-title">Inspection, submission and exact recovery</h2>
+      <p id="recovery-headline" class="lead" role="status">Across 192 episodes, neither model submitted an exact recovery. Asking for inspection increased first-action inspection in Qwen and decreased it in SmolLM2.</p>
+      <noscript><p>The research report and episode CSV above include the full results.</p></noscript>
+      <div class="subset"><label>Chart outcome<select id="recovery-metric"><option value="all">All three outcomes</option><option value="exact">Exact recovery</option><option value="inspect">First action was inspection</option><option value="submitted">Explicit submission</option></select></label></div>
+      <div id="recovery-chart" class="result-grid" aria-live="polite"></div>
+      <p id="recovery-interval" class="small measure"></p>
+      <div class="materials"><a href="recovery-figure.pdf">Download the study figure (PDF)</a></div>
+    </section>
+    <section aria-labelledby="task-title">
+      <h2 id="task-title">Where recovery failed</h2>
+      <p class="measure">A retry can duplicate a committed transaction. Stopping early can leave a rolled-back transaction unfinished. Inspect each task family and starting state to see how often the final database passed the verifier.</p>
+      <div class="subset">
+        <label>Model<select id="recovery-model"></select></label>
+        <label>Initial transaction<select id="recovery-outcome"><option value="all">Both outcomes</option><option value="committed">Committed</option><option value="rolled_back">Rolled back</option></select></label>
+      </div>
+      <div class="table-scroll"><table>
+        <caption class="sr">Observed episode counts by task family and instruction</caption>
+        <thead><tr><th scope="col">Task family</th><th scope="col">Instruction</th><th scope="col">Passed / scheduled</th><th scope="col">Inspected first</th><th scope="col">Duplicate</th><th scope="col">Omission</th><th scope="col">Incomplete follow-up</th><th scope="col">Collateral change</th></tr></thead>
+        <tbody id="recovery-cells"></tbody>
+      </table></div>
+      <p id="recovery-coverage" class="small measure" aria-live="polite"></p>
+      <details class="table-panel"><summary>Compare menu orders</summary>
+        <div class="table-scroll"><table><caption class="sr">Exact recoveries for the selected model and initial transaction state</caption>
+          <thead><tr><th scope="col">Menu</th><th scope="col">Generic request</th><th scope="col">Inspect first</th></tr></thead>
+          <tbody id="recovery-menus"></tbody>
+        </table></div>
+      </details>
+    </section>
+    <section aria-labelledby="trace-title">
+      <h2 id="trace-title">Inspect a matched pair</h2>
+      <p class="measure">Each pair uses the same model, database seed, hidden commit outcome and menu order. Open a turn to compare the model’s exact reply with the environment’s recorded response.</p>
+      <div class="subset"><label>Pair<select id="recovery-trace"></select></label></div>
+      <p id="recovery-trace-summary" class="small" aria-live="polite"></p>
+      <div id="recovery-traces" class="trace-pair"></div>
+    </section>
+    <section class="limitations" aria-labelledby="limits-title">
+      <h2 id="limits-title">What the comparison measures</h2>
+      <p class="measure">The recovery instruction changes in a fresh episode while the rest of the paired task stays fixed. A pass requires an explicit submission and the exact expected final database state. Each model has up to five decisions and can inspect under either instruction. The handoff text stays the same whether the preceding write committed or rolled back. The intervention asks for inspection, and the model chooses what to do next.</p>
+      <p class="measure">A scripted control that inspected the database and acted on the observation passed 24/24 fixture worlds. Blindly retrying passed 12/24, all in the previously uncommitted worlds. Assuming the first write had committed passed the other 12/24. These controls establish that each fixture is solvable within the five-decision budget. <a href="https://github.com/aravinds-kannappan/PodBench/blob/main/research/recovery/baselines.py">Reference policies</a></p>
+      <p class="measure">The study used four fixture seeds per task family and two quantized checkpoints running locally with greedy decoding. Reversed menu orders repeat the same underlying work order. The experiment measures recovery within one episode. It does not track learning or retention across jobs.</p>
+      <div class="materials"><a href="https://github.com/aravinds-kannappan/PodBench/releases/tag/recovery-v1.0.0">Versioned study release</a><a href="https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/README.md">Evaluate another policy</a><a href="https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl">Complete raw episode journal</a><a href="https://github.com/aravinds-kannappan/PodBench/blob/main/research/recovery/REPORT.md">Methods and analysis</a></div>
+    </section>
+  </main>
+</body>
+</html>

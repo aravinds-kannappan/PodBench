@@ -18,6 +18,12 @@ behavior, the trust axis, and pod health on one pane.
 
 ---
 
+## Research release: recovering an interrupted database write
+
+A client loses the acknowledgement to a write. Can an agent tell whether to retry? The SQLite recovery suite models this handoff for a refund ledger, an inventory receipt, and a customer archive and transfer. The release includes a prospectively frozen design, model transcripts, independent SQL replay, matched estimates, and three reference policies. A researcher can run the fixtures and verifier with Python's standard library or evaluate a different policy on the same work orders.
+
+[Read the manuscript](research/recovery/REPORT.md) · [Explore the study](https://pod-bench.vercel.app/explorer/recovery.html) · [Reproduce or extend it](research/recovery/README.md) · [Data dictionary](research/recovery/DATA.md)
+
 ## Explore results by task and behavior
 
 [Open the PodBench explorer](https://pod-bench.vercel.app/explorer/index.html). The landing page opens with measured results. Each study shows its denominator and links to the records used for scoring.
