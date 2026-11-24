@@ -219,6 +219,15 @@ export async function runEpisode(
       const results: { id: string; content: string; isError?: boolean }[] = [];
       let writeThisTurn = false;
       for (const tc of toolCalls) {
+        if (task.redirect?.pauseBatchAfterWrite && !redirected && writeThisTurn) {
+          const content = "Call not executed. An operator update is pending.";
+          trajectory.push({
+            index: trajectory.length, kind: "tool_result", tool: tc.name,
+            input: tc.input, output: content, ms: Date.now() - turnStart,
+          });
+          results.push({ id: tc.id, content, isError: true });
+          continue;
+        }
         if (tc.name === "submit") {
           submitted = true;
           submission = (tc.input as { answer?: string }) ?? {};
