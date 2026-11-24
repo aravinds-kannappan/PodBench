@@ -1,0 +1,4483 @@
+{
+  "study": "Exploratory (not preregistered)",
+  "decision_count": 612,
+  "observation_swaps": 128,
+  "conditions": [
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "decisions": 132,
+      "first_n": 48,
+      "first_actions": {
+        "submit": 24,
+        "invalid": 14,
+        "archive_customer": 8,
+        "record_refund": 2
+      },
+      "first_worlds": [
+        {
+          "menu_order": "canonical",
+          "committed": false,
+          "n": 12,
+          "chosen": {
+            "archive_customer": 4,
+            "submit": 4,
+            "invalid": 3,
+            "record_refund": 1
+          }
+        },
+        {
+          "menu_order": "canonical",
+          "committed": true,
+          "n": 12,
+          "chosen": {
+            "submit": 4,
+            "archive_customer": 4,
+            "invalid": 3,
+            "record_refund": 1
+          }
+        },
+        {
+          "menu_order": "reversed",
+          "committed": false,
+          "n": 12,
+          "chosen": {
+            "submit": 8,
+            "invalid": 4
+          }
+        },
+        {
+          "menu_order": "reversed",
+          "committed": true,
+          "n": 12,
+          "chosen": {
+            "submit": 8,
+            "invalid": 4
+          }
+        }
+      ],
+      "first_mean_legal_by_family": {
+        "refund": {
+          "inspect": 2.323888838215898e-05,
+          "mark_refunded": 0.15450436635689427,
+          "record_refund": 0.46697313236332655,
+          "submit": 0.37849926239139703
+        },
+        "inventory": {
+          "close_receipt": 0.024652617533851718,
+          "inspect": 0.005285110672623914,
+          "receive_stock": 0.04423460603908508,
+          "submit": 0.9258276657544393
+        },
+        "transfer": {
+          "archive_customer": 0.5035427713890283,
+          "inspect": 0.02398889456004511,
+          "move_orders": 0.07994736662500337,
+          "remove_customer": 0.03981557931562816,
+          "submit": 0.35270538811029506
+        }
+      },
+      "first_mean_joint_by_family": {
+        "refund": {
+          "inspect": 1.4012453974887426e-05,
+          "mark_refunded": 0.12145663394191901,
+          "record_refund": 0.16232782184988684,
+          "submit": 0.30998041090496703
+        },
+        "inventory": {
+          "close_receipt": 0.022977875744969442,
+          "inspect": 0.004851261840775944,
+          "receive_stock": 0.041008128385397545,
+          "submit": 0.8698864643941371
+        },
+        "transfer": {
+          "archive_customer": 0.3856958221373894,
+          "inspect": 0.012011647944812229,
+          "move_orders": 0.045095542172978995,
+          "remove_customer": 0.020746568461105504,
+          "submit": 0.17732373991210856
+        }
+      },
+      "first_mean_inspect": 0.009765748040350394,
+      "turns": [
+        {
+          "turn": 1,
+          "n": 48,
+          "chosen": {
+            "submit": 24,
+            "invalid": 14,
+            "archive_customer": 8,
+            "record_refund": 2
+          },
+          "mean_entropy_nats": 0.48238492447819503,
+          "top_first_tokens": [
+            {
+              "id": 5955,
+              "text": "submit",
+              "top_one_count": 24,
+              "top_ten_count": 48,
+              "mean_probability_lower_bound": 0.4710008450783789
+            },
+            {
+              "id": 16019,
+              "text": "archive",
+              "top_one_count": 16,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.2248693766693274
+            },
+            {
+              "id": 8548,
+              "text": "record",
+              "top_one_count": 8,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.16774567123502493
+            },
+            {
+              "id": 3987,
+              "text": "mark",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.04260399774648249
+            },
+            {
+              "id": 41893,
+              "text": "receive",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.022920211000988882
+            },
+            {
+              "id": 3397,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.022807195627441008
+            },
+            {
+              "id": 5552,
+              "text": "close",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.008284561646481356
+            },
+            {
+              "id": 5399,
+              "text": "remove",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.007776742917485535
+            },
+            {
+              "id": 1330,
+              "text": "ins",
+              "top_one_count": 0,
+              "top_ten_count": 36,
+              "mean_probability_lower_bound": 0.00690703767092297
+            },
+            {
+              "id": 82054,
+              "text": "inspect",
+              "top_one_count": 0,
+              "top_ten_count": 24,
+              "mean_probability_lower_bound": 0.005680980539182201
+            }
+          ]
+        },
+        {
+          "turn": 2,
+          "n": 24,
+          "chosen": {
+            "archive_customer": 8,
+            "invalid": 6,
+            "remove_customer": 6,
+            "submit": 4
+          },
+          "mean_entropy_nats": 0.5552905693798779,
+          "top_first_tokens": [
+            {
+              "id": 16019,
+              "text": "archive",
+              "top_one_count": 8,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.40351710220177966
+            },
+            {
+              "id": 5955,
+              "text": "submit",
+              "top_one_count": 4,
+              "top_ten_count": 24,
+              "mean_probability_lower_bound": 0.20460564581056437
+            },
+            {
+              "id": 8548,
+              "text": "record",
+              "top_one_count": 6,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.18294461319843927
+            },
+            {
+              "id": 5399,
+              "text": "remove",
+              "top_one_count": 6,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.10343758802628145
+            },
+            {
+              "id": 3397,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.05020719037080804
+            },
+            {
+              "id": 3987,
+              "text": "mark",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.03001072785506646
+            },
+            {
+              "id": 1330,
+              "text": "ins",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.006385393673554063
+            },
+            {
+              "id": 82054,
+              "text": "inspect",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.002846318694840496
+            },
+            {
+              "id": 359,
+              "text": "un",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.0020268314983695745
+            },
+            {
+              "id": 1113,
+              "text": "arch",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.0015969614517719795
+            }
+          ]
+        },
+        {
+          "turn": 3,
+          "n": 20,
+          "chosen": {
+            "archive_customer": 8,
+            "invalid": 6,
+            "remove_customer": 6
+          },
+          "mean_entropy_nats": 0.40828060979318914,
+          "top_first_tokens": [
+            {
+              "id": 16019,
+              "text": "archive",
+              "top_one_count": 8,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.33323469907045367
+            },
+            {
+              "id": 5955,
+              "text": "submit",
+              "top_one_count": 6,
+              "top_ten_count": 20,
+              "mean_probability_lower_bound": 0.24698308892548085
+            },
+            {
+              "id": 5399,
+              "text": "remove",
+              "top_one_count": 6,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.24296639412641524
+            },
+            {
+              "id": 3987,
+              "text": "mark",
+              "top_one_count": 0,
+              "top_ten_count": 6,
+              "mean_probability_lower_bound": 0.06564895659685135
+            },
+            {
+              "id": 8548,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 6,
+              "mean_probability_lower_bound": 0.0471782460808754
+            },
+            {
+              "id": 3397,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.043020660430192946
+            },
+            {
+              "id": 82054,
+              "text": "inspect",
+              "top_one_count": 0,
+              "top_ten_count": 6,
+              "mean_probability_lower_bound": 0.0018055261578410863
+            },
+            {
+              "id": 4542,
+              "text": "delete",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.0016442572697997094
+            },
+            {
+              "id": 1330,
+              "text": "ins",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.001306580303935334
+            },
+            {
+              "id": 1113,
+              "text": "arch",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.0012425229710061104
+            }
+          ]
+        },
+        {
+          "turn": 4,
+          "n": 20,
+          "chosen": {
+            "archive_customer": 8,
+            "invalid": 6,
+            "remove_customer": 6
+          },
+          "mean_entropy_nats": 0.4462035110840682,
+          "top_first_tokens": [
+            {
+              "id": 16019,
+              "text": "archive",
+              "top_one_count": 8,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.397734235227108
+            },
+            {
+              "id": 5955,
+              "text": "submit",
+              "top_one_count": 6,
+              "top_ten_count": 20,
+              "mean_probability_lower_bound": 0.25452341698110104
+            },
+            {
+              "id": 5399,
+              "text": "remove",
+              "top_one_count": 6,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.16710549537092448
+            },
+            {
+              "id": 3987,
+              "text": "mark",
+              "top_one_count": 0,
+              "top_ten_count": 6,
+              "mean_probability_lower_bound": 0.08367310762405396
+            },
+            {
+              "id": 3397,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.04845352508127689
+            },
+            {
+              "id": 8548,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 6,
+              "mean_probability_lower_bound": 0.013124658912420272
+            },
+            {
+              "id": 4542,
+              "text": "delete",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.004269435559399426
+            },
+            {
+              "id": 1330,
+              "text": "ins",
+              "top_one_count": 0,
+              "top_ten_count": 6,
+              "mean_probability_lower_bound": 0.0015985047910362482
+            },
+            {
+              "id": 1113,
+              "text": "arch",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.0012652857694774866
+            },
+            {
+              "id": 13499,
+              "text": "undo",
+              "top_one_count": 0,
+              "top_ten_count": 6,
+              "mean_probability_lower_bound": 0.0012169696856290102
+            }
+          ]
+        },
+        {
+          "turn": 5,
+          "n": 20,
+          "chosen": {
+            "archive_customer": 8,
+            "invalid": 6,
+            "remove_customer": 6
+          },
+          "mean_entropy_nats": 0.3995293584342432,
+          "top_first_tokens": [
+            {
+              "id": 16019,
+              "text": "archive",
+              "top_one_count": 8,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.3992024853825569
+            },
+            {
+              "id": 5955,
+              "text": "submit",
+              "top_one_count": 6,
+              "top_ten_count": 20,
+              "mean_probability_lower_bound": 0.2292214296758175
+            },
+            {
+              "id": 5399,
+              "text": "remove",
+              "top_one_count": 6,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.15853619361296295
+            },
+            {
+              "id": 3987,
+              "text": "mark",
+              "top_one_count": 0,
+              "top_ten_count": 6,
+              "mean_probability_lower_bound": 0.10395451486110688
+            },
+            {
+              "id": 3397,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.035514219850301745
+            },
+            {
+              "id": 8548,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 6,
+              "mean_probability_lower_bound": 0.02575702965259552
+            },
+            {
+              "id": 4542,
+              "text": "delete",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.0059549782308749855
+            },
+            {
+              "id": 1330,
+              "text": "ins",
+              "top_one_count": 0,
+              "top_ten_count": 6,
+              "mean_probability_lower_bound": 0.0020208142697811125
+            },
+            {
+              "id": 30150,
+              "text": "finish",
+              "top_one_count": 0,
+              "top_ten_count": 20,
+              "mean_probability_lower_bound": 0.0018108234275132419
+            },
+            {
+              "id": 13499,
+              "text": "undo",
+              "top_one_count": 0,
+              "top_ten_count": 6,
+              "mean_probability_lower_bound": 0.0012234565103426576
+            }
+          ]
+        }
+      ],
+      "post_inspect": {
+        "n": 0,
+        "changed_inputs": 0
+      },
+      "example_swap": null
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "decisions": 136,
+      "first_n": 48,
+      "first_actions": {
+        "submit": 22,
+        "inspect": 10,
+        "invalid": 8,
+        "archive_customer": 8
+      },
+      "first_worlds": [
+        {
+          "menu_order": "canonical",
+          "committed": false,
+          "n": 12,
+          "chosen": {
+            "inspect": 4,
+            "invalid": 4,
+            "archive_customer": 4
+          }
+        },
+        {
+          "menu_order": "canonical",
+          "committed": true,
+          "n": 12,
+          "chosen": {
+            "archive_customer": 4,
+            "inspect": 4,
+            "invalid": 4
+          }
+        },
+        {
+          "menu_order": "reversed",
+          "committed": false,
+          "n": 12,
+          "chosen": {
+            "submit": 11,
+            "inspect": 1
+          }
+        },
+        {
+          "menu_order": "reversed",
+          "committed": true,
+          "n": 12,
+          "chosen": {
+            "submit": 11,
+            "inspect": 1
+          }
+        }
+      ],
+      "first_mean_legal_by_family": {
+        "refund": {
+          "inspect": 0.1076463597889878,
+          "mark_refunded": 0.3003217602401428,
+          "record_refund": 0.17080008951193165,
+          "submit": 0.42123179045893777
+        },
+        "inventory": {
+          "close_receipt": 0.012751372608910554,
+          "inspect": 0.43624435516595483,
+          "receive_stock": 0.04016597931541148,
+          "submit": 0.5108382929097232
+        },
+        "transfer": {
+          "archive_customer": 0.2890972802291041,
+          "inspect": 0.35436690658397546,
+          "move_orders": 0.08331999227422487,
+          "remove_customer": 0.033679356332433616,
+          "submit": 0.2395364645802619
+        }
+      },
+      "first_mean_joint_by_family": {
+        "refund": {
+          "inspect": 0.031809304801785274,
+          "mark_refunded": 0.17439655805069545,
+          "record_refund": 0.052581626991023804,
+          "submit": 0.3476998003589897
+        },
+        "inventory": {
+          "close_receipt": 0.0112912609818803,
+          "inspect": 0.319462614229207,
+          "receive_stock": 0.03246713660285871,
+          "submit": 0.4785467804506437
+        },
+        "transfer": {
+          "archive_customer": 0.1563393498082446,
+          "inspect": 0.19168155876392168,
+          "move_orders": 0.04506320618033934,
+          "remove_customer": 0.018227550683412082,
+          "submit": 0.13053295931079778
+        }
+      },
+      "first_mean_inspect": 0.2994192071796394,
+      "turns": [
+        {
+          "turn": 1,
+          "n": 48,
+          "chosen": {
+            "submit": 22,
+            "inspect": 10,
+            "invalid": 8,
+            "archive_customer": 8
+          },
+          "mean_entropy_nats": 0.8531410191786591,
+          "top_first_tokens": [
+            {
+              "id": 5955,
+              "text": "submit",
+              "top_one_count": 22,
+              "top_ten_count": 48,
+              "mean_probability_lower_bound": 0.32708009937778115
+            },
+            {
+              "id": 82054,
+              "text": "inspect",
+              "top_one_count": 8,
+              "top_ten_count": 40,
+              "mean_probability_lower_bound": 0.18984250020002946
+            },
+            {
+              "id": 1330,
+              "text": "ins",
+              "top_one_count": 2,
+              "top_ten_count": 48,
+              "mean_probability_lower_bound": 0.11754105327418074
+            },
+            {
+              "id": 16019,
+              "text": "archive",
+              "top_one_count": 8,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.1017862477650245
+            },
+            {
+              "id": 8548,
+              "text": "record",
+              "top_one_count": 8,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.09737492864951491
+            },
+            {
+              "id": 3987,
+              "text": "mark",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.0598788463200132
+            },
+            {
+              "id": 3397,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.02777086617425084
+            },
+            {
+              "id": 41893,
+              "text": "receive",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.017277651155988377
+            },
+            {
+              "id": 5399,
+              "text": "remove",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.00799289159476757
+            },
+            {
+              "id": 9726,
+              "text": " Ins",
+              "top_one_count": 0,
+              "top_ten_count": 30,
+              "mean_probability_lower_bound": 0.004808213212527335
+            }
+          ]
+        },
+        {
+          "turn": 2,
+          "n": 26,
+          "chosen": {
+            "receive_stock": 8,
+            "invalid": 8,
+            "archive_customer": 8,
+            "inspect": 2
+          },
+          "mean_entropy_nats": 0.6959208482817313,
+          "top_first_tokens": [
+            {
+              "id": 16019,
+              "text": "archive",
+              "top_one_count": 8,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.28821671596513343
+            },
+            {
+              "id": 8548,
+              "text": "record",
+              "top_one_count": 8,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.25185146698584926
+            },
+            {
+              "id": 41893,
+              "text": "receive",
+              "top_one_count": 8,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.1918394657281729
+            },
+            {
+              "id": 82054,
+              "text": "inspect",
+              "top_one_count": 2,
+              "top_ten_count": 22,
+              "mean_probability_lower_bound": 0.11968183686482146
+            },
+            {
+              "id": 5955,
+              "text": "submit",
+              "top_one_count": 0,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.05242985980406117
+            },
+            {
+              "id": 3987,
+              "text": "mark",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.024313919819318332
+            },
+            {
+              "id": 3397,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.021391488468417756
+            },
+            {
+              "id": 5552,
+              "text": "close",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.013427397379508385
+            },
+            {
+              "id": 5399,
+              "text": "remove",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.011286409177745763
+            },
+            {
+              "id": 1330,
+              "text": "ins",
+              "top_one_count": 0,
+              "top_ten_count": 18,
+              "mean_probability_lower_bound": 0.007713424543348642
+            }
+          ]
+        },
+        {
+          "turn": 3,
+          "n": 26,
+          "chosen": {
+            "submit": 8,
+            "invalid": 8,
+            "archive_customer": 8,
+            "inspect": 2
+          },
+          "mean_entropy_nats": 0.4609844710806196,
+          "top_first_tokens": [
+            {
+              "id": 5955,
+              "text": "submit",
+              "top_one_count": 16,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.43271023063705516
+            },
+            {
+              "id": 16019,
+              "text": "archive",
+              "top_one_count": 8,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.21487074273710066
+            },
+            {
+              "id": 3987,
+              "text": "mark",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.10854487235729511
+            },
+            {
+              "id": 8548,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.062426173916229837
+            },
+            {
+              "id": 3397,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.051256196859937445
+            },
+            {
+              "id": 82054,
+              "text": "inspect",
+              "top_one_count": 2,
+              "top_ten_count": 18,
+              "mean_probability_lower_bound": 0.04815262995320014
+            },
+            {
+              "id": 5399,
+              "text": "remove",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.017354825511574745
+            },
+            {
+              "id": 5552,
+              "text": "close",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.012100622989237309
+            },
+            {
+              "id": 41893,
+              "text": "receive",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.01114186687538257
+            },
+            {
+              "id": 1330,
+              "text": "ins",
+              "top_one_count": 0,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.007482492320167904
+            }
+          ]
+        },
+        {
+          "turn": 4,
+          "n": 18,
+          "chosen": {
+            "invalid": 8,
+            "archive_customer": 8,
+            "inspect": 2
+          },
+          "mean_entropy_nats": 0.5039627317477777,
+          "top_first_tokens": [
+            {
+              "id": 16019,
+              "text": "archive",
+              "top_one_count": 8,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.3582915958637993
+            },
+            {
+              "id": 5955,
+              "text": "submit",
+              "top_one_count": 8,
+              "top_ten_count": 18,
+              "mean_probability_lower_bound": 0.28991353801555103
+            },
+            {
+              "id": 3987,
+              "text": "mark",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.18687676390012106
+            },
+            {
+              "id": 82054,
+              "text": "inspect",
+              "top_one_count": 2,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.04151216230174112
+            },
+            {
+              "id": 3397,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.038277768012550145
+            },
+            {
+              "id": 5399,
+              "text": "remove",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.022037210563818615
+            },
+            {
+              "id": 8548,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.017243301288949117
+            },
+            {
+              "id": 1330,
+              "text": "ins",
+              "top_one_count": 0,
+              "top_ten_count": 18,
+              "mean_probability_lower_bound": 0.009235377526945539
+            },
+            {
+              "id": 1113,
+              "text": "arch",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.0015327957355313832
+            },
+            {
+              "id": 4542,
+              "text": "delete",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.0013957279346262415
+            }
+          ]
+        },
+        {
+          "turn": 5,
+          "n": 18,
+          "chosen": {
+            "invalid": 8,
+            "archive_customer": 8,
+            "submit": 2
+          },
+          "mean_entropy_nats": 0.40731510543871996,
+          "top_first_tokens": [
+            {
+              "id": 16019,
+              "text": "archive",
+              "top_one_count": 8,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.38245746741692227
+            },
+            {
+              "id": 5955,
+              "text": "submit",
+              "top_one_count": 8,
+              "top_ten_count": 18,
+              "mean_probability_lower_bound": 0.2660699805451764
+            },
+            {
+              "id": 3987,
+              "text": "mark",
+              "top_one_count": 2,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.20216968655586243
+            },
+            {
+              "id": 82054,
+              "text": "inspect",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.03528098276971529
+            },
+            {
+              "id": 8548,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.027780855695406597
+            },
+            {
+              "id": 3397,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.02221627523087793
+            },
+            {
+              "id": 5399,
+              "text": "remove",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.01742183965527349
+            },
+            {
+              "id": 1330,
+              "text": "ins",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.009527961031482037
+            },
+            {
+              "id": 4542,
+              "text": "delete",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.0015316305863153604
+            },
+            {
+              "id": 1113,
+              "text": "arch",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.0013693931460794476
+            }
+          ]
+        }
+      ],
+      "post_inspect": {
+        "n": 16,
+        "changed_inputs": 16,
+        "top_flips": 2,
+        "mean_tv": 0.17219593493647656,
+        "max_tv": 0.5138754805379167,
+        "changed_input_mean_tv": 0.17219593493647656,
+        "mean_retry_absent_minus_committed": 0.02254212893953944,
+        "observed_next_by_world": [
+          {
+            "committed": false,
+            "n": 8,
+            "chosen": {
+              "receive_stock": 4,
+              "inspect": 3,
+              "submit": 1
+            }
+          },
+          {
+            "committed": true,
+            "n": 8,
+            "chosen": {
+              "receive_stock": 4,
+              "inspect": 3,
+              "submit": 1
+            }
+          }
+        ],
+        "families": {
+          "refund": {
+            "n": 0,
+            "changed": 0,
+            "top_flips": 0,
+            "mean_tv": null
+          },
+          "inventory": {
+            "n": 8,
+            "changed": 8,
+            "top_flips": 0,
+            "mean_tv": 0.05887674517518034
+          },
+          "transfer": {
+            "n": 8,
+            "changed": 8,
+            "top_flips": 2,
+            "mean_tv": 0.28551512469777274
+          }
+        }
+      },
+      "example_swap": {
+        "model": "qwen2.5-0.5b",
+        "instruction": "inspect_first",
+        "task": "transfer",
+        "turn": 5,
+        "episode_id": "qwen2.5-0.5b.transfer.37.rolled_back.inspect_first.reversed",
+        "committed": false,
+        "logged_action": "submit",
+        "observation_changed": true,
+        "logged_top": "submit",
+        "swapped_top": "inspect",
+        "flip": true,
+        "tv": 0.5138754805379167,
+        "retry_delta": 0.0020164253955600835
+      }
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "decisions": 152,
+      "first_n": 48,
+      "first_actions": {
+        "submit": 22,
+        "inspect": 16,
+        "mark_refunded": 8,
+        "invalid": 2
+      },
+      "first_worlds": [
+        {
+          "menu_order": "canonical",
+          "committed": false,
+          "n": 12,
+          "chosen": {
+            "inspect": 8,
+            "mark_refunded": 4
+          }
+        },
+        {
+          "menu_order": "canonical",
+          "committed": true,
+          "n": 12,
+          "chosen": {
+            "inspect": 8,
+            "mark_refunded": 4
+          }
+        },
+        {
+          "menu_order": "reversed",
+          "committed": false,
+          "n": 12,
+          "chosen": {
+            "submit": 11,
+            "invalid": 1
+          }
+        },
+        {
+          "menu_order": "reversed",
+          "committed": true,
+          "n": 12,
+          "chosen": {
+            "submit": 11,
+            "invalid": 1
+          }
+        }
+      ],
+      "first_mean_legal_by_family": {
+        "refund": {
+          "inspect": 0.1349022831767221,
+          "mark_refunded": 0.3065779768926249,
+          "record_refund": 0.1144540228149349,
+          "submit": 0.4440657171157181
+        },
+        "inventory": {
+          "close_receipt": 0.06980621609289675,
+          "inspect": 0.225241834675161,
+          "receive_stock": 0.2774680689064325,
+          "submit": 0.4274838803255097
+        },
+        "transfer": {
+          "archive_customer": 0.08229651206318901,
+          "inspect": 0.22816858571489662,
+          "move_orders": 0.07236254345308243,
+          "remove_customer": 0.17872928496523482,
+          "submit": 0.43844307380359715
+        }
+      },
+      "first_mean_joint_by_family": {
+        "refund": {
+          "inspect": 0.04587832658727389,
+          "mark_refunded": 0.11359745401177383,
+          "record_refund": 0.036869945013497815,
+          "submit": 0.11126211510614104
+        },
+        "inventory": {
+          "close_receipt": 0.015891134156006216,
+          "inspect": 0.052108513479139404,
+          "receive_stock": 0.0635501362951327,
+          "submit": 0.09781686491426328
+        },
+        "transfer": {
+          "archive_customer": 0.024089836274629076,
+          "inspect": 0.06686683991284134,
+          "move_orders": 0.021842027628676715,
+          "remove_customer": 0.05749693562346351,
+          "submit": 0.13910022003676703
+        }
+      },
+      "first_mean_inspect": 0.1961042345222599,
+      "turns": [
+        {
+          "turn": 1,
+          "n": 48,
+          "chosen": {
+            "submit": 22,
+            "inspect": 16,
+            "mark_refunded": 8,
+            "invalid": 2
+          },
+          "mean_entropy_nats": 1.0554446985066828,
+          "top_first_tokens": [
+            {
+              "id": 32046,
+              "text": "submit",
+              "top_one_count": 22,
+              "top_ten_count": 48,
+              "mean_probability_lower_bound": 0.12631015293300152
+            },
+            {
+              "id": 927,
+              "text": "ins",
+              "top_one_count": 16,
+              "top_ten_count": 34,
+              "mean_probability_lower_bound": 0.07729840534739196
+            },
+            {
+              "id": 4260,
+              "text": "mark",
+              "top_one_count": 10,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.0696417751411597
+            },
+            {
+              "id": 7871,
+              "text": "Sub",
+              "top_one_count": 0,
+              "top_ten_count": 48,
+              "mean_probability_lower_bound": 0.03882843985532721
+            },
+            {
+              "id": 47696,
+              "text": "receive",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.02662348731731375
+            },
+            {
+              "id": 12432,
+              "text": "remove",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.02511279781659444
+            },
+            {
+              "id": 61,
+              "text": "M",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.022627684908608597
+            },
+            {
+              "id": 504,
+              "text": "The",
+              "top_one_count": 0,
+              "top_ten_count": 40,
+              "mean_probability_lower_bound": 0.020305210957303643
+            },
+            {
+              "id": 5696,
+              "text": "post",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.01996580247456829
+            },
+            {
+              "id": 12757,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.015850991165886324
+            }
+          ]
+        },
+        {
+          "turn": 2,
+          "n": 26,
+          "chosen": {
+            "inspect": 16,
+            "mark_refunded": 8,
+            "invalid": 2
+          },
+          "mean_entropy_nats": 0.6437619216695668,
+          "top_first_tokens": [
+            {
+              "id": 927,
+              "text": "ins",
+              "top_one_count": 16,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.35647555283055854
+            },
+            {
+              "id": 4260,
+              "text": "mark",
+              "top_one_count": 10,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.23049591596309954
+            },
+            {
+              "id": 32046,
+              "text": "submit",
+              "top_one_count": 0,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.04570209761508382
+            },
+            {
+              "id": 47696,
+              "text": "receive",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.04483423066826967
+            },
+            {
+              "id": 504,
+              "text": "The",
+              "top_one_count": 0,
+              "top_ten_count": 24,
+              "mean_probability_lower_bound": 0.023721581539855555
+            },
+            {
+              "id": 12757,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.021986804615992766
+            },
+            {
+              "id": 2683,
+              "text": "You",
+              "top_one_count": 0,
+              "top_ten_count": 24,
+              "mean_probability_lower_bound": 0.0135397704031605
+            },
+            {
+              "id": 24806,
+              "text": "archive",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.01091329731906836
+            },
+            {
+              "id": 4103,
+              "text": "sub",
+              "top_one_count": 0,
+              "top_ten_count": 23,
+              "mean_probability_lower_bound": 0.008928163344255434
+            },
+            {
+              "id": 47137,
+              "text": "finish",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.0061536436327374894
+            }
+          ]
+        },
+        {
+          "turn": 3,
+          "n": 26,
+          "chosen": {
+            "inspect": 16,
+            "mark_refunded": 8,
+            "invalid": 2
+          },
+          "mean_entropy_nats": 0.3371900354223706,
+          "top_first_tokens": [
+            {
+              "id": 927,
+              "text": "ins",
+              "top_one_count": 16,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.5910423738487924
+            },
+            {
+              "id": 4260,
+              "text": "mark",
+              "top_one_count": 10,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.2590430974960327
+            },
+            {
+              "id": 32046,
+              "text": "submit",
+              "top_one_count": 0,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.08810841928397377
+            },
+            {
+              "id": 12757,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.009729446126864506
+            },
+            {
+              "id": 4103,
+              "text": "sub",
+              "top_one_count": 0,
+              "top_ten_count": 18,
+              "mean_probability_lower_bound": 0.005271748621733143
+            },
+            {
+              "id": 47137,
+              "text": "finish",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.004030938081156749
+            },
+            {
+              "id": 47696,
+              "text": "receive",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.0016231029831732695
+            },
+            {
+              "id": 7633,
+              "text": "close",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.0010133006950267232
+            },
+            {
+              "id": 504,
+              "text": "The",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.0009976807565320856
+            },
+            {
+              "id": 14525,
+              "text": "Mark",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.000773870601103856
+            }
+          ]
+        },
+        {
+          "turn": 4,
+          "n": 26,
+          "chosen": {
+            "inspect": 16,
+            "mark_refunded": 8,
+            "invalid": 2
+          },
+          "mean_entropy_nats": 0.13965783626909292,
+          "top_first_tokens": [
+            {
+              "id": 927,
+              "text": "ins",
+              "top_one_count": 16,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.6099637404281216
+            },
+            {
+              "id": 4260,
+              "text": "mark",
+              "top_one_count": 10,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.36060713346187884
+            },
+            {
+              "id": 32046,
+              "text": "submit",
+              "top_one_count": 0,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.013324616601424238
+            },
+            {
+              "id": 12757,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.0031184299060931574
+            },
+            {
+              "id": 4103,
+              "text": "sub",
+              "top_one_count": 0,
+              "top_ten_count": 12,
+              "mean_probability_lower_bound": 0.000964566583906372
+            },
+            {
+              "id": 47137,
+              "text": "finish",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.0009313926387291688
+            },
+            {
+              "id": 14525,
+              "text": "Mark",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.0004137180423220763
+            },
+            {
+              "id": 47696,
+              "text": "receive",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.0004018052355744518
+            },
+            {
+              "id": 1950,
+              "text": "inc",
+              "top_one_count": 0,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.0003866269491062177
+            },
+            {
+              "id": 7633,
+              "text": "close",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.00030034676847907785
+            }
+          ]
+        },
+        {
+          "turn": 5,
+          "n": 26,
+          "chosen": {
+            "inspect": 16,
+            "mark_refunded": 8,
+            "invalid": 2
+          },
+          "mean_entropy_nats": 0.06040594454807968,
+          "top_first_tokens": [
+            {
+              "id": 927,
+              "text": "ins",
+              "top_one_count": 16,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.6122239884201778
+            },
+            {
+              "id": 4260,
+              "text": "mark",
+              "top_one_count": 10,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.3794497985106248
+            },
+            {
+              "id": 32046,
+              "text": "submit",
+              "top_one_count": 0,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.0014115141348156612
+            },
+            {
+              "id": 12757,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.0011284348975795393
+            },
+            {
+              "id": 1950,
+              "text": "inc",
+              "top_one_count": 0,
+              "top_ten_count": 26,
+              "mean_probability_lower_bound": 0.00025013143148009054
+            },
+            {
+              "id": 14525,
+              "text": "Mark",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.00024166185176
+            },
+            {
+              "id": 47137,
+              "text": "finish",
+              "top_one_count": 0,
+              "top_ten_count": 10,
+              "mean_probability_lower_bound": 0.0002269960801081302
+            },
+            {
+              "id": 47696,
+              "text": "receive",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.00020822167817431575
+            },
+            {
+              "id": 4103,
+              "text": "sub",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.00017344358359248593
+            },
+            {
+              "id": 14095,
+              "text": "insert",
+              "top_one_count": 0,
+              "top_ten_count": 18,
+              "mean_probability_lower_bound": 0.00013577761288056185
+            }
+          ]
+        }
+      ],
+      "post_inspect": {
+        "n": 64,
+        "changed_inputs": 64,
+        "top_flips": 0,
+        "mean_tv": 0.009808861766459466,
+        "max_tv": 0.08882146785685438,
+        "changed_input_mean_tv": 0.009808861766459466,
+        "mean_retry_absent_minus_committed": 0.006616254109712766,
+        "observed_next_by_world": [
+          {
+            "committed": false,
+            "n": 32,
+            "chosen": {
+              "inspect": 32
+            }
+          },
+          {
+            "committed": true,
+            "n": 32,
+            "chosen": {
+              "inspect": 32
+            }
+          }
+        ],
+        "families": {
+          "refund": {
+            "n": 0,
+            "changed": 0,
+            "top_flips": 0,
+            "mean_tv": null
+          },
+          "inventory": {
+            "n": 32,
+            "changed": 32,
+            "top_flips": 0,
+            "mean_tv": 0.016545766973912284
+          },
+          "transfer": {
+            "n": 32,
+            "changed": 32,
+            "top_flips": 0,
+            "mean_tv": 0.003071956559006648
+          }
+        }
+      },
+      "example_swap": {
+        "model": "smollm2-360m",
+        "instruction": "baseline",
+        "task": "inventory",
+        "turn": 2,
+        "episode_id": "smollm2-360m.inventory.53.committed.baseline.canonical",
+        "committed": true,
+        "logged_action": "inspect",
+        "observation_changed": true,
+        "logged_top": "inspect",
+        "swapped_top": "inspect",
+        "flip": false,
+        "tv": 0.08882146785685438,
+        "retry_delta": 0.07927646623556531
+      }
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "decisions": 192,
+      "first_n": 48,
+      "first_actions": {
+        "inspect": 12,
+        "submit": 12,
+        "remove_customer": 8,
+        "mark_refunded": 8,
+        "invalid": 6,
+        "receive_stock": 2
+      },
+      "first_worlds": [
+        {
+          "menu_order": "canonical",
+          "committed": false,
+          "n": 12,
+          "chosen": {
+            "inspect": 6,
+            "mark_refunded": 4,
+            "receive_stock": 1,
+            "invalid": 1
+          }
+        },
+        {
+          "menu_order": "canonical",
+          "committed": true,
+          "n": 12,
+          "chosen": {
+            "inspect": 6,
+            "mark_refunded": 4,
+            "invalid": 1,
+            "receive_stock": 1
+          }
+        },
+        {
+          "menu_order": "reversed",
+          "committed": false,
+          "n": 12,
+          "chosen": {
+            "submit": 6,
+            "remove_customer": 4,
+            "invalid": 2
+          }
+        },
+        {
+          "menu_order": "reversed",
+          "committed": true,
+          "n": 12,
+          "chosen": {
+            "submit": 6,
+            "remove_customer": 4,
+            "invalid": 2
+          }
+        }
+      ],
+      "first_mean_legal_by_family": {
+        "refund": {
+          "inspect": 0.08761026941713429,
+          "mark_refunded": 0.3659542137941339,
+          "record_refund": 0.11663409264414974,
+          "submit": 0.42980142414458206
+        },
+        "inventory": {
+          "close_receipt": 0.11455435779899126,
+          "inspect": 0.18524724556498218,
+          "receive_stock": 0.2528023329121588,
+          "submit": 0.44739606372386775
+        },
+        "transfer": {
+          "archive_customer": 0.09144061764776519,
+          "inspect": 0.19465967174396825,
+          "move_orders": 0.06854926374450514,
+          "remove_customer": 0.30692971616003883,
+          "submit": 0.33842073070372264
+        }
+      },
+      "first_mean_joint_by_family": {
+        "refund": {
+          "inspect": 0.023693608229389068,
+          "mark_refunded": 0.10690347285570698,
+          "record_refund": 0.03179183908048928,
+          "submit": 0.10122905805102586
+        },
+        "inventory": {
+          "close_receipt": 0.025815370819678413,
+          "inspect": 0.03838855928298351,
+          "receive_stock": 0.053369768241639796,
+          "submit": 0.10079737917787232
+        },
+        "transfer": {
+          "archive_customer": 0.026932970047517733,
+          "inspect": 0.057554085094093835,
+          "move_orders": 0.022773284781611603,
+          "remove_customer": 0.12479354305048128,
+          "submit": 0.12580595341353096
+        }
+      },
+      "first_mean_inspect": 0.15583906224202823,
+      "turns": [
+        {
+          "turn": 1,
+          "n": 48,
+          "chosen": {
+            "inspect": 12,
+            "submit": 12,
+            "remove_customer": 8,
+            "mark_refunded": 8,
+            "invalid": 6,
+            "receive_stock": 2
+          },
+          "mean_entropy_nats": 1.068131149537433,
+          "top_first_tokens": [
+            {
+              "id": 32046,
+              "text": "submit",
+              "top_one_count": 12,
+              "top_ten_count": 48,
+              "mean_probability_lower_bound": 0.11858196106428902
+            },
+            {
+              "id": 4260,
+              "text": "mark",
+              "top_one_count": 12,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.06437226012349129
+            },
+            {
+              "id": 12432,
+              "text": "remove",
+              "top_one_count": 8,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.05182103354794284
+            },
+            {
+              "id": 927,
+              "text": "ins",
+              "top_one_count": 12,
+              "top_ten_count": 32,
+              "mean_probability_lower_bound": 0.05097677372395992
+            },
+            {
+              "id": 7871,
+              "text": "Sub",
+              "top_one_count": 0,
+              "top_ten_count": 48,
+              "mean_probability_lower_bound": 0.03927544077547888
+            },
+            {
+              "id": 47696,
+              "text": "receive",
+              "top_one_count": 2,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.022456007233510416
+            },
+            {
+              "id": 504,
+              "text": "The",
+              "top_one_count": 0,
+              "top_ten_count": 40,
+              "mean_probability_lower_bound": 0.021525962511077523
+            },
+            {
+              "id": 5696,
+              "text": "post",
+              "top_one_count": 2,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.02112485165707767
+            },
+            {
+              "id": 61,
+              "text": "M",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.019965758081525564
+            },
+            {
+              "id": 57,
+              "text": "I",
+              "top_one_count": 0,
+              "top_ten_count": 36,
+              "mean_probability_lower_bound": 0.018246595398522913
+            }
+          ]
+        },
+        {
+          "turn": 2,
+          "n": 36,
+          "chosen": {
+            "inspect": 12,
+            "remove_customer": 8,
+            "mark_refunded": 8,
+            "invalid": 6,
+            "receive_stock": 2
+          },
+          "mean_entropy_nats": 0.6837024988267815,
+          "top_first_tokens": [
+            {
+              "id": 927,
+              "text": "ins",
+              "top_one_count": 12,
+              "top_ten_count": 36,
+              "mean_probability_lower_bound": 0.2267390958343943
+            },
+            {
+              "id": 4260,
+              "text": "mark",
+              "top_one_count": 12,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.17792525474861678
+            },
+            {
+              "id": 12432,
+              "text": "remove",
+              "top_one_count": 8,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.15647645528790438
+            },
+            {
+              "id": 32046,
+              "text": "submit",
+              "top_one_count": 0,
+              "top_ten_count": 36,
+              "mean_probability_lower_bound": 0.07271142655776607
+            },
+            {
+              "id": 47696,
+              "text": "receive",
+              "top_one_count": 2,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.054846770957940154
+            },
+            {
+              "id": 5696,
+              "text": "post",
+              "top_one_count": 2,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.05078392535344594
+            },
+            {
+              "id": 15467,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.017790466417661972
+            },
+            {
+              "id": 12757,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 12,
+              "mean_probability_lower_bound": 0.016517511672443815
+            },
+            {
+              "id": 504,
+              "text": "The",
+              "top_one_count": 0,
+              "top_ten_count": 30,
+              "mean_probability_lower_bound": 0.011779588621316684
+            },
+            {
+              "id": 24806,
+              "text": "archive",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.011489624054067664
+            }
+          ]
+        },
+        {
+          "turn": 3,
+          "n": 36,
+          "chosen": {
+            "inspect": 12,
+            "remove_customer": 8,
+            "mark_refunded": 8,
+            "invalid": 6,
+            "receive_stock": 2
+          },
+          "mean_entropy_nats": 0.4908237507189045,
+          "top_first_tokens": [
+            {
+              "id": 927,
+              "text": "ins",
+              "top_one_count": 12,
+              "top_ten_count": 36,
+              "mean_probability_lower_bound": 0.3300212199230575
+            },
+            {
+              "id": 4260,
+              "text": "mark",
+              "top_one_count": 12,
+              "top_ten_count": 12,
+              "mean_probability_lower_bound": 0.23165562086635166
+            },
+            {
+              "id": 12432,
+              "text": "remove",
+              "top_one_count": 8,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.15619699160257974
+            },
+            {
+              "id": 32046,
+              "text": "submit",
+              "top_one_count": 0,
+              "top_ten_count": 36,
+              "mean_probability_lower_bound": 0.06206115522460701
+            },
+            {
+              "id": 47696,
+              "text": "receive",
+              "top_one_count": 2,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.054471559014119625
+            },
+            {
+              "id": 5696,
+              "text": "post",
+              "top_one_count": 2,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.052609726838353604
+            },
+            {
+              "id": 15467,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 15,
+              "mean_probability_lower_bound": 0.05163043877150307
+            },
+            {
+              "id": 12757,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 12,
+              "mean_probability_lower_bound": 0.008855208547578918
+            },
+            {
+              "id": 47137,
+              "text": "finish",
+              "top_one_count": 0,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.004633293422456417
+            },
+            {
+              "id": 4103,
+              "text": "sub",
+              "top_one_count": 0,
+              "top_ten_count": 20,
+              "mean_probability_lower_bound": 0.004538931725417367
+            }
+          ]
+        },
+        {
+          "turn": 4,
+          "n": 36,
+          "chosen": {
+            "inspect": 12,
+            "remove_customer": 8,
+            "mark_refunded": 8,
+            "invalid": 6,
+            "receive_stock": 2
+          },
+          "mean_entropy_nats": 0.2683151211955076,
+          "top_first_tokens": [
+            {
+              "id": 927,
+              "text": "ins",
+              "top_one_count": 12,
+              "top_ten_count": 28,
+              "mean_probability_lower_bound": 0.33263458037820076
+            },
+            {
+              "id": 4260,
+              "text": "mark",
+              "top_one_count": 12,
+              "top_ten_count": 14,
+              "mean_probability_lower_bound": 0.3084253854693897
+            },
+            {
+              "id": 12432,
+              "text": "remove",
+              "top_one_count": 8,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.20416270030869377
+            },
+            {
+              "id": 47696,
+              "text": "receive",
+              "top_one_count": 2,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.05524163510320553
+            },
+            {
+              "id": 5696,
+              "text": "post",
+              "top_one_count": 2,
+              "top_ten_count": 2,
+              "mean_probability_lower_bound": 0.052242798937691584
+            },
+            {
+              "id": 15467,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.01551612632142173
+            },
+            {
+              "id": 32046,
+              "text": "submit",
+              "top_one_count": 0,
+              "top_ten_count": 30,
+              "mean_probability_lower_bound": 0.011323606117609112
+            },
+            {
+              "id": 12757,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 12,
+              "mean_probability_lower_bound": 0.0035584376245323154
+            },
+            {
+              "id": 47137,
+              "text": "finish",
+              "top_one_count": 0,
+              "top_ten_count": 21,
+              "mean_probability_lower_bound": 0.0013707211567937823
+            },
+            {
+              "id": 4103,
+              "text": "sub",
+              "top_one_count": 0,
+              "top_ten_count": 16,
+              "mean_probability_lower_bound": 0.0012890007395374898
+            }
+          ]
+        },
+        {
+          "turn": 5,
+          "n": 36,
+          "chosen": {
+            "inspect": 12,
+            "remove_customer": 8,
+            "mark_refunded": 8,
+            "invalid": 6,
+            "receive_stock": 2
+          },
+          "mean_entropy_nats": 0.15576010118024589,
+          "top_first_tokens": [
+            {
+              "id": 927,
+              "text": "ins",
+              "top_one_count": 12,
+              "top_ten_count": 24,
+              "mean_probability_lower_bound": 0.33234629768089186
+            },
+            {
+              "id": 4260,
+              "text": "mark",
+              "top_one_count": 12,
+              "top_ten_count": 12,
+              "mean_probability_lower_bound": 0.32687821984291077
+            },
+            {
+              "id": 12432,
+              "text": "remove",
+              "top_one_count": 8,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.21550174885325962
+            },
+            {
+              "id": 47696,
+              "text": "receive",
+              "top_one_count": 2,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.055408405881381545
+            },
+            {
+              "id": 5696,
+              "text": "post",
+              "top_one_count": 2,
+              "top_ten_count": 2,
+              "mean_probability_lower_bound": 0.05369952321052551
+            },
+            {
+              "id": 15467,
+              "text": "move",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.005494461601807011
+            },
+            {
+              "id": 32046,
+              "text": "submit",
+              "top_one_count": 0,
+              "top_ten_count": 32,
+              "mean_probability_lower_bound": 0.0017482608174961773
+            },
+            {
+              "id": 12757,
+              "text": "record",
+              "top_one_count": 0,
+              "top_ten_count": 12,
+              "mean_probability_lower_bound": 0.001417874766048044
+            },
+            {
+              "id": 7633,
+              "text": "close",
+              "top_one_count": 0,
+              "top_ten_count": 8,
+              "mean_probability_lower_bound": 0.000626428703576999
+            },
+            {
+              "id": 47137,
+              "text": "finish",
+              "top_one_count": 0,
+              "top_ten_count": 17,
+              "mean_probability_lower_bound": 0.00034682927919978585
+            }
+          ]
+        }
+      ],
+      "post_inspect": {
+        "n": 48,
+        "changed_inputs": 48,
+        "top_flips": 0,
+        "mean_tv": 0.012672037311121667,
+        "max_tv": 0.06633216811275477,
+        "changed_input_mean_tv": 0.012672037311121667,
+        "mean_retry_absent_minus_committed": 0.007512194545702461,
+        "observed_next_by_world": [
+          {
+            "committed": false,
+            "n": 24,
+            "chosen": {
+              "inspect": 24
+            }
+          },
+          {
+            "committed": true,
+            "n": 24,
+            "chosen": {
+              "inspect": 24
+            }
+          }
+        ],
+        "families": {
+          "refund": {
+            "n": 0,
+            "changed": 0,
+            "top_flips": 0,
+            "mean_tv": null
+          },
+          "inventory": {
+            "n": 16,
+            "changed": 16,
+            "top_flips": 0,
+            "mean_tv": 0.014144612759726737
+          },
+          "transfer": {
+            "n": 32,
+            "changed": 32,
+            "top_flips": 0,
+            "mean_tv": 0.011935749586819134
+          }
+        }
+      },
+      "example_swap": {
+        "model": "smollm2-360m",
+        "instruction": "inspect_first",
+        "task": "transfer",
+        "turn": 2,
+        "episode_id": "smollm2-360m.transfer.53.rolled_back.inspect_first.canonical",
+        "committed": false,
+        "logged_action": "inspect",
+        "observation_changed": true,
+        "logged_top": "inspect",
+        "swapped_top": "inspect",
+        "flip": false,
+        "tv": 0.06633216811275477,
+        "retry_delta": 0.03009658109712024
+      }
+    }
+  ],
+  "first_step_contrasts": [
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "refund",
+      "action": "inspect",
+      "n_per_arm": 16,
+      "baseline": 2.323888838215898e-05,
+      "inspect_first": 0.1076463597889878,
+      "delta": 0.10762312090060565,
+      "joint_baseline": 1.4012453974887426e-05,
+      "joint_inspect_first": 0.031809304801785274,
+      "joint_delta": 0.03179529234781039
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "refund",
+      "action": "mark_refunded",
+      "n_per_arm": 16,
+      "baseline": 0.15450436635689427,
+      "inspect_first": 0.3003217602401428,
+      "delta": 0.14581739388324852,
+      "joint_baseline": 0.12145663394191901,
+      "joint_inspect_first": 0.17439655805069545,
+      "joint_delta": 0.052939924108776445
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "refund",
+      "action": "record_refund",
+      "n_per_arm": 16,
+      "baseline": 0.46697313236332655,
+      "inspect_first": 0.17080008951193165,
+      "delta": -0.2961730428513949,
+      "joint_baseline": 0.16232782184988684,
+      "joint_inspect_first": 0.052581626991023804,
+      "joint_delta": -0.10974619485886303
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "refund",
+      "action": "submit",
+      "n_per_arm": 16,
+      "baseline": 0.37849926239139703,
+      "inspect_first": 0.42123179045893777,
+      "delta": 0.04273252806754074,
+      "joint_baseline": 0.30998041090496703,
+      "joint_inspect_first": 0.3476998003589897,
+      "joint_delta": 0.037719389454022645
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "inventory",
+      "action": "close_receipt",
+      "n_per_arm": 16,
+      "baseline": 0.024652617533851718,
+      "inspect_first": 0.012751372608910554,
+      "delta": -0.011901244924941164,
+      "joint_baseline": 0.022977875744969442,
+      "joint_inspect_first": 0.0112912609818803,
+      "joint_delta": -0.011686614763089142
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "inventory",
+      "action": "inspect",
+      "n_per_arm": 16,
+      "baseline": 0.005285110672623914,
+      "inspect_first": 0.43624435516595483,
+      "delta": 0.4309592444933309,
+      "joint_baseline": 0.004851261840775944,
+      "joint_inspect_first": 0.319462614229207,
+      "joint_delta": 0.3146113523884311
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "inventory",
+      "action": "receive_stock",
+      "n_per_arm": 16,
+      "baseline": 0.04423460603908508,
+      "inspect_first": 0.04016597931541148,
+      "delta": -0.004068626723673599,
+      "joint_baseline": 0.041008128385397545,
+      "joint_inspect_first": 0.03246713660285871,
+      "joint_delta": -0.008540991782538837
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "inventory",
+      "action": "submit",
+      "n_per_arm": 16,
+      "baseline": 0.9258276657544393,
+      "inspect_first": 0.5108382929097232,
+      "delta": -0.41498937284471615,
+      "joint_baseline": 0.8698864643941371,
+      "joint_inspect_first": 0.4785467804506437,
+      "joint_delta": -0.3913396839434934
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "transfer",
+      "action": "archive_customer",
+      "n_per_arm": 16,
+      "baseline": 0.5035427713890283,
+      "inspect_first": 0.2890972802291041,
+      "delta": -0.21444549115992417,
+      "joint_baseline": 0.3856958221373894,
+      "joint_inspect_first": 0.1563393498082446,
+      "joint_delta": -0.2293564723291448
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "transfer",
+      "action": "inspect",
+      "n_per_arm": 16,
+      "baseline": 0.02398889456004511,
+      "inspect_first": 0.35436690658397546,
+      "delta": 0.33037801202393036,
+      "joint_baseline": 0.012011647944812229,
+      "joint_inspect_first": 0.19168155876392168,
+      "joint_delta": 0.17966991081910944
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "transfer",
+      "action": "move_orders",
+      "n_per_arm": 16,
+      "baseline": 0.07994736662500337,
+      "inspect_first": 0.08331999227422487,
+      "delta": 0.0033726256492215,
+      "joint_baseline": 0.045095542172978995,
+      "joint_inspect_first": 0.04506320618033934,
+      "joint_delta": -3.233599263965242e-05
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "transfer",
+      "action": "remove_customer",
+      "n_per_arm": 16,
+      "baseline": 0.03981557931562816,
+      "inspect_first": 0.033679356332433616,
+      "delta": -0.006136222983194543,
+      "joint_baseline": 0.020746568461105504,
+      "joint_inspect_first": 0.018227550683412082,
+      "joint_delta": -0.002519017777693422
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "task": "transfer",
+      "action": "submit",
+      "n_per_arm": 16,
+      "baseline": 0.35270538811029506,
+      "inspect_first": 0.2395364645802619,
+      "delta": -0.11316892353003316,
+      "joint_baseline": 0.17732373991210856,
+      "joint_inspect_first": 0.13053295931079778,
+      "joint_delta": -0.04679078060131078
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "refund",
+      "action": "inspect",
+      "n_per_arm": 16,
+      "baseline": 0.1349022831767221,
+      "inspect_first": 0.08761026941713429,
+      "delta": -0.0472920137595878,
+      "joint_baseline": 0.04587832658727389,
+      "joint_inspect_first": 0.023693608229389068,
+      "joint_delta": -0.022184718357884825
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "refund",
+      "action": "mark_refunded",
+      "n_per_arm": 16,
+      "baseline": 0.3065779768926249,
+      "inspect_first": 0.3659542137941339,
+      "delta": 0.059376236901509005,
+      "joint_baseline": 0.11359745401177383,
+      "joint_inspect_first": 0.10690347285570698,
+      "joint_delta": -0.0066939811560668555
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "refund",
+      "action": "record_refund",
+      "n_per_arm": 16,
+      "baseline": 0.1144540228149349,
+      "inspect_first": 0.11663409264414974,
+      "delta": 0.0021800698292148424,
+      "joint_baseline": 0.036869945013497815,
+      "joint_inspect_first": 0.03179183908048928,
+      "joint_delta": -0.005078105933008538
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "refund",
+      "action": "submit",
+      "n_per_arm": 16,
+      "baseline": 0.4440657171157181,
+      "inspect_first": 0.42980142414458206,
+      "delta": -0.014264292971136017,
+      "joint_baseline": 0.11126211510614104,
+      "joint_inspect_first": 0.10122905805102586,
+      "joint_delta": -0.010033057055115174
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "inventory",
+      "action": "close_receipt",
+      "n_per_arm": 16,
+      "baseline": 0.06980621609289675,
+      "inspect_first": 0.11455435779899126,
+      "delta": 0.04474814170609451,
+      "joint_baseline": 0.015891134156006216,
+      "joint_inspect_first": 0.025815370819678413,
+      "joint_delta": 0.009924236663672197
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "inventory",
+      "action": "inspect",
+      "n_per_arm": 16,
+      "baseline": 0.225241834675161,
+      "inspect_first": 0.18524724556498218,
+      "delta": -0.039994589110178835,
+      "joint_baseline": 0.052108513479139404,
+      "joint_inspect_first": 0.03838855928298351,
+      "joint_delta": -0.013719954196155897
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "inventory",
+      "action": "receive_stock",
+      "n_per_arm": 16,
+      "baseline": 0.2774680689064325,
+      "inspect_first": 0.2528023329121588,
+      "delta": -0.024665735994273685,
+      "joint_baseline": 0.0635501362951327,
+      "joint_inspect_first": 0.053369768241639796,
+      "joint_delta": -0.010180368053492907
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "inventory",
+      "action": "submit",
+      "n_per_arm": 16,
+      "baseline": 0.4274838803255097,
+      "inspect_first": 0.44739606372386775,
+      "delta": 0.01991218339835804,
+      "joint_baseline": 0.09781686491426328,
+      "joint_inspect_first": 0.10079737917787232,
+      "joint_delta": 0.002980514263609041
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "transfer",
+      "action": "archive_customer",
+      "n_per_arm": 16,
+      "baseline": 0.08229651206318901,
+      "inspect_first": 0.09144061764776519,
+      "delta": 0.009144105584576179,
+      "joint_baseline": 0.024089836274629076,
+      "joint_inspect_first": 0.026932970047517733,
+      "joint_delta": 0.002843133772888657
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "transfer",
+      "action": "inspect",
+      "n_per_arm": 16,
+      "baseline": 0.22816858571489662,
+      "inspect_first": 0.19465967174396825,
+      "delta": -0.03350891397092837,
+      "joint_baseline": 0.06686683991284134,
+      "joint_inspect_first": 0.057554085094093835,
+      "joint_delta": -0.009312754818747507
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "transfer",
+      "action": "move_orders",
+      "n_per_arm": 16,
+      "baseline": 0.07236254345308243,
+      "inspect_first": 0.06854926374450514,
+      "delta": -0.003813279708577297,
+      "joint_baseline": 0.021842027628676715,
+      "joint_inspect_first": 0.022773284781611603,
+      "joint_delta": 0.0009312571529348883
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "transfer",
+      "action": "remove_customer",
+      "n_per_arm": 16,
+      "baseline": 0.17872928496523482,
+      "inspect_first": 0.30692971616003883,
+      "delta": 0.128200431194804,
+      "joint_baseline": 0.05749693562346351,
+      "joint_inspect_first": 0.12479354305048128,
+      "joint_delta": 0.06729660742701776
+    },
+    {
+      "model": "smollm2-360m",
+      "task": "transfer",
+      "action": "submit",
+      "n_per_arm": 16,
+      "baseline": 0.43844307380359715,
+      "inspect_first": 0.33842073070372264,
+      "delta": -0.10002234309987451,
+      "joint_baseline": 0.13910022003676703,
+      "joint_inspect_first": 0.12580595341353096,
+      "joint_delta": -0.013294266623236073
+    }
+  ],
+  "swap_contrasts": [
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "qwen2.5-0.5b.transfer.37.committed.inspect_first.reversed",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.05294081924522262,
+      "retry_delta": 0.011835588499914507
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "qwen2.5-0.5b.transfer.37.committed.inspect_first.reversed",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.19680865282644072,
+      "retry_delta": -0.003569458084452067
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "qwen2.5-0.5b.transfer.37.committed.inspect_first.reversed",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.4023967030497337,
+      "retry_delta": -0.003832647897062544
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "qwen2.5-0.5b.transfer.37.committed.inspect_first.reversed",
+      "committed": true,
+      "logged_action": "submit",
+      "observation_changed": true,
+      "logged_top": "submit",
+      "swapped_top": "inspect",
+      "flip": true,
+      "tv": 0.4599851768627692,
+      "retry_delta": -0.0017206135534495897
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "qwen2.5-0.5b.inventory.23.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "receive_stock",
+      "observation_changed": true,
+      "logged_top": "receive_stock",
+      "swapped_top": "receive_stock",
+      "flip": false,
+      "tv": 0.014300928452898407,
+      "retry_delta": 0.0077310075181731275
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "qwen2.5-0.5b.inventory.23.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "receive_stock",
+      "observation_changed": true,
+      "logged_top": "receive_stock",
+      "swapped_top": "receive_stock",
+      "flip": false,
+      "tv": 0.014300928452898407,
+      "retry_delta": 0.0077310075181731275
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "qwen2.5-0.5b.inventory.53.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "receive_stock",
+      "observation_changed": true,
+      "logged_top": "receive_stock",
+      "swapped_top": "receive_stock",
+      "flip": false,
+      "tv": 0.13372370199103809,
+      "retry_delta": 0.13240568679873432
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "qwen2.5-0.5b.inventory.11.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "receive_stock",
+      "observation_changed": true,
+      "logged_top": "receive_stock",
+      "swapped_top": "receive_stock",
+      "flip": false,
+      "tv": 0.02883149533751086,
+      "retry_delta": -0.028831495337510837
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "qwen2.5-0.5b.transfer.37.rolled_back.inspect_first.reversed",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.05294081924522262,
+      "retry_delta": 0.011835588499914507
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "qwen2.5-0.5b.transfer.37.rolled_back.inspect_first.reversed",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.18521672404774897,
+      "retry_delta": 0.0032718955424754313
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "qwen2.5-0.5b.transfer.37.rolled_back.inspect_first.reversed",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.4199566217671276,
+      "retry_delta": 0.0033519463021776147
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "qwen2.5-0.5b.transfer.37.rolled_back.inspect_first.reversed",
+      "committed": false,
+      "logged_action": "submit",
+      "observation_changed": true,
+      "logged_top": "submit",
+      "swapped_top": "inspect",
+      "flip": true,
+      "tv": 0.5138754805379167,
+      "retry_delta": 0.0020164253955600835
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "qwen2.5-0.5b.inventory.11.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "receive_stock",
+      "observation_changed": true,
+      "logged_top": "receive_stock",
+      "swapped_top": "receive_stock",
+      "flip": false,
+      "tv": 0.02883149533751086,
+      "retry_delta": -0.028831495337510837
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "qwen2.5-0.5b.inventory.37.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "receive_stock",
+      "observation_changed": true,
+      "logged_top": "receive_stock",
+      "swapped_top": "receive_stock",
+      "flip": false,
+      "tv": 0.058650854919274006,
+      "retry_delta": 0.057437470184379946
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "qwen2.5-0.5b.inventory.37.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "receive_stock",
+      "observation_changed": true,
+      "logged_top": "receive_stock",
+      "swapped_top": "receive_stock",
+      "flip": false,
+      "tv": 0.058650854919274006,
+      "retry_delta": 0.057437470184379946
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "qwen2.5-0.5b.inventory.53.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "receive_stock",
+      "observation_changed": true,
+      "logged_top": "receive_stock",
+      "swapped_top": "receive_stock",
+      "flip": false,
+      "tv": 0.13372370199103809,
+      "retry_delta": 0.13240568679873432
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.23.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.05586559206390082,
+      "retry_delta": 0.04781369224024885
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.23.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.008311554722938978,
+      "retry_delta": 0.003865389793072977
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.23.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.001791251938854309,
+      "retry_delta": 0.0003136944086500308
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.23.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0007762981755378985,
+      "retry_delta": 0.00017017981142228474
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.37.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.04047626594551883,
+      "retry_delta": 0.03519139855650785
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.37.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.005448917459540923,
+      "retry_delta": -0.0018544316031063731
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.37.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.002885134072597467,
+      "retry_delta": -0.0008045865785497568
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.37.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0006975138037811102,
+      "retry_delta": -0.0003208205240494154
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.11.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0064646582010677075,
+      "retry_delta": -0.0027974305639814484
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.11.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0014985959103819865,
+      "retry_delta": 0.0001490172231709117
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.11.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00014492287413485398,
+      "retry_delta": 1.269200452755925e-05
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.11.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 2.224481688003871e-05,
+      "retry_delta": -1.4569163253315298e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.37.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.029487904576497588,
+      "retry_delta": 0.0089565994836657
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.37.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.001356135834189054,
+      "retry_delta": -0.00018579364040381986
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.37.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00011769097019230442,
+      "retry_delta": -5.4128330781548495e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.37.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 1.2201804021512111e-05,
+      "retry_delta": 1.5089022890865037e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.23.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.047994759705674434,
+      "retry_delta": 0.039386009168323355
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.23.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.010886227470334305,
+      "retry_delta": -0.005006292809860217
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.23.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0031261043137646707,
+      "retry_delta": -0.0008573459691750627
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.23.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0011661823661618617,
+      "retry_delta": -0.0004874765659184217
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.11.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0536767448584885,
+      "retry_delta": 0.04140048165008763
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.11.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0012820124867748198,
+      "retry_delta": -0.0001692991061126289
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.11.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 9.58986908642518e-05,
+      "retry_delta": 8.602516988874996e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.11.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 5.714746697694586e-06,
+      "retry_delta": 3.6545548077224295e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.23.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.05586559206390082,
+      "retry_delta": 0.04781369224024885
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.23.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.006595909353877306,
+      "retry_delta": -0.0027817213641512665
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.23.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00222719473932438,
+      "retry_delta": -0.0005369509135686398
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.23.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.000590342924643838,
+      "retry_delta": -9.345320045512484e-05
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.37.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.01809946175635021,
+      "retry_delta": -0.004255561824046072
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.37.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.001734462340133748,
+      "retry_delta": 0.0002564169535350049
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.37.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00018844749813628153,
+      "retry_delta": 7.917712834780699e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.37.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 2.8872544854232353e-05,
+      "retry_delta": 1.416595041058083e-07
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.37.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.04047626594551883,
+      "retry_delta": 0.03519139855650785
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.37.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.009947230944707099,
+      "retry_delta": 0.004680479522297578
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.37.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0030421937973845537,
+      "retry_delta": 0.0012081376645497817
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.37.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0009792525074375817,
+      "retry_delta": 0.0004625710045354892
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.53.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0029184897932544142,
+      "retry_delta": 0.0017636460674972862
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.53.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0016130399395360771,
+      "retry_delta": -0.00024235086122500343
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.53.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 6.51087404971397e-05,
+      "retry_delta": 5.974052952581814e-08
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.53.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 1.1232761091342719e-05,
+      "retry_delta": 9.752295887724315e-07
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.23.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.047994759705674434,
+      "retry_delta": 0.039386009168323355
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.23.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.010809154272105064,
+      "retry_delta": 0.005153600641280178
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.23.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.002267120239451712,
+      "retry_delta": 0.0006921660268888617
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.23.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0011320041378244444,
+      "retry_delta": 0.0004417462355460277
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.11.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.037734177045178854,
+      "retry_delta": 0.03187416975440126
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.11.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.008172558091439538,
+      "retry_delta": 0.003910991710519099
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.11.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.002210508852927959,
+      "retry_delta": 0.0005905031940679568
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.11.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.001085154521284458,
+      "retry_delta": 0.0003740043129877627
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.23.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.002376791076909076,
+      "retry_delta": 0.0003423684837311619
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.23.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0030753675825023713,
+      "retry_delta": -0.00038740489452175
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.23.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00010432980094001288,
+      "retry_delta": -1.0445877951030627e-05
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.23.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 2.5683850316049825e-06,
+      "retry_delta": 2.065728817616708e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.11.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.037734177045178854,
+      "retry_delta": 0.03187416975440126
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.11.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00480822199694177,
+      "retry_delta": -0.0026504553818868628
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.11.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0018818715768996346,
+      "retry_delta": -0.0003189201178534066
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.11.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0006633990427983759,
+      "retry_delta": -0.00013278791294621248
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.11.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0536767448584885,
+      "retry_delta": 0.04140048165008763
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.11.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0018129509887562895,
+      "retry_delta": 0.0003253161271113386
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.11.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00028391706931540385,
+      "retry_delta": 6.427727177333559e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.11.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 4.056916110235355e-05,
+      "retry_delta": -7.05174678039312e-08
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.11.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.04333500233610582,
+      "retry_delta": 0.04333500233610585
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.11.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0030128712699713984,
+      "retry_delta": -0.0009213640487984853
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.11.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0024046191699963674,
+      "retry_delta": -0.0007230284195810468
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.11.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.000994600152914917,
+      "retry_delta": -0.0002540326712403502
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.53.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.08882146785685438,
+      "retry_delta": 0.07927646623556531
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.53.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0008778100077182066,
+      "retry_delta": 3.8115621913616116e-05
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.53.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.000742063008420734,
+      "retry_delta": 0.0006268740596628857
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.53.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0009514734891809498,
+      "retry_delta": -0.0003471672142166427
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.23.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.044502974078754656,
+      "retry_delta": 0.03182341274524625
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.23.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.002188507139613592,
+      "retry_delta": -0.0002589488194553063
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.23.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00012207884929449735,
+      "retry_delta": -2.736856262526546e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.23.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 1.8097170800359224e-05,
+      "retry_delta": 2.32942045654735e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.53.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.06633216811275477,
+      "retry_delta": 0.03009658109712024
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.53.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0022967073799694555,
+      "retry_delta": 0.00018063583355109784
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.53.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00034662492710364306,
+      "retry_delta": 1.6176780096329943e-05
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.53.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 1.3931501367947417e-05,
+      "retry_delta": -3.81135058476791e-08
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.11.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0064646582010677075,
+      "retry_delta": -0.0027974305639814484
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.11.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.001392598788227093,
+      "retry_delta": -0.00018330706770566249
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.11.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00013280895304751793,
+      "retry_delta": -4.0825234340131125e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.11.committed.baseline.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 1.0991644160177795e-05,
+      "retry_delta": 4.858236395189948e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.37.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.029487904576497588,
+      "retry_delta": 0.0089565994836657
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.37.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0017847852540531254,
+      "retry_delta": 0.00023255731497654698
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.37.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00018046407695843103,
+      "retry_delta": 2.0152644798205514e-05
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.37.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 1.5140504580161286e-05,
+      "retry_delta": -7.663166617968568e-07
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.11.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.04333500233610582,
+      "retry_delta": 0.04333500233610585
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.11.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.009400193768855244,
+      "retry_delta": 0.0036502185618133235
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.11.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.002668083097495868,
+      "retry_delta": 0.0009234859496487287
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.11.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0009414488527777002,
+      "retry_delta": 0.00042568966058069944
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.23.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.044502974078754656,
+      "retry_delta": 0.03182341274524625
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.23.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.002101231509614018,
+      "retry_delta": 0.0003007658752276766
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.23.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00015630267393951404,
+      "retry_delta": 6.810781332603047e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.23.rolled_back.inspect_first.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 1.5610997384859776e-05,
+      "retry_delta": 6.37022834395124e-07
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.23.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.002376791076909076,
+      "retry_delta": 0.0003423684837311619
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.23.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0016097238868349832,
+      "retry_delta": 0.00035728020037943415
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.23.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00021338799618704106,
+      "retry_delta": 2.3201124305440473e-05
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.23.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 1.199639262930934e-05,
+      "retry_delta": -3.1704899466706287e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 2,
+      "episode_id": "smollm2-360m.inventory.53.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.08882146785685438,
+      "retry_delta": 0.07927646623556531
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 3,
+      "episode_id": "smollm2-360m.inventory.53.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.010821205939700717,
+      "retry_delta": 0.004476138529145925
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 4,
+      "episode_id": "smollm2-360m.inventory.53.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0019173379249261984,
+      "retry_delta": 0.0006665073747362078
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "turn": 5,
+      "episode_id": "smollm2-360m.inventory.53.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.001090809409837045,
+      "retry_delta": 0.0005613336465312207
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.53.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0029184897932544142,
+      "retry_delta": 0.0017636460674972862
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.53.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0022827580120735155,
+      "retry_delta": 0.0003063985832072561
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.53.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00011924430615790904,
+      "retry_delta": 1.3794841022613944e-05
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.53.rolled_back.baseline.canonical",
+      "committed": false,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 2.9583358447599952e-05,
+      "retry_delta": 1.255039397240514e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.53.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.06633216811275477,
+      "retry_delta": 0.03009658109712024
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.53.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.0016845359736185222,
+      "retry_delta": -0.00017246647392701138
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.53.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00015694559936101375,
+      "retry_delta": 1.081166754762988e-07
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.53.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 5.708976247816192e-06,
+      "retry_delta": 3.3029906310000385e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 2,
+      "episode_id": "smollm2-360m.transfer.37.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.01809946175635021,
+      "retry_delta": -0.004255561824046072
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 3,
+      "episode_id": "smollm2-360m.transfer.37.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.001937276143080912,
+      "retry_delta": -0.00015465594184068058
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 4,
+      "episode_id": "smollm2-360m.transfer.37.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 0.00018482847856234332,
+      "retry_delta": 4.8907000223739505e-06
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "turn": 5,
+      "episode_id": "smollm2-360m.transfer.37.committed.inspect_first.canonical",
+      "committed": true,
+      "logged_action": "inspect",
+      "observation_changed": true,
+      "logged_top": "inspect",
+      "swapped_top": "inspect",
+      "flip": false,
+      "tv": 2.0056318922412594e-05,
+      "retry_delta": 3.393583528335463e-06
+    }
+  ]
+}

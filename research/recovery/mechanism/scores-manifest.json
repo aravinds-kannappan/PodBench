@@ -1,0 +1,80 @@
+{
+  "version": "cold-prefix-v2",
+  "study": "Exploratory (not preregistered)",
+  "journal_sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+  "checkpoints": {
+    "qwen2.5-0.5b": {
+      "model": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+      "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+      "filename": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+      "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+      "url": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/9217f5db79a29953eb74d5343926648285ec7e67/qwen2.5-0.5b-instruct-q4_k_m.gguf",
+      "runtime": "node-llama-cpp@3.16.2",
+      "llama_cpp_build": "b8121",
+      "chat_format": "ChatML",
+      "threads": 2,
+      "context": 4096,
+      "batch_size": 256,
+      "seed": 42,
+      "temperature": 0,
+      "device": "cpu"
+    },
+    "smollm2-360m": {
+      "model": "bartowski/SmolLM2-360M-Instruct-GGUF",
+      "revision": "7be6f65f1db715fe5dc5a4634c0d459b4eed42ec",
+      "filename": "SmolLM2-360M-Instruct-Q4_K_M.gguf",
+      "sha256": "2fa3f013dcdd7b99f9b237717fa0b12d75bbb89984cc1274be1471a465bac9c2",
+      "tokenizer_revision": "HuggingFaceTB/SmolLM2-360M-Instruct@a10cc1512eabd3dde888204e902eca88bddb4951",
+      "url": "https://huggingface.co/bartowski/SmolLM2-360M-Instruct-GGUF/resolve/7be6f65f1db715fe5dc5a4634c0d459b4eed42ec/SmolLM2-360M-Instruct-Q4_K_M.gguf",
+      "runtime": "node-llama-cpp@3.16.2",
+      "llama_cpp_build": "b8121",
+      "chat_format": "ChatML",
+      "threads": 2,
+      "context": 4096,
+      "batch_size": 256,
+      "seed": 42,
+      "temperature": 0,
+      "device": "cpu"
+    }
+  },
+  "collection_source_sha256": {
+    "run.py": "208608b6deb379a66272046dcd5a79ddd9737cfdca26f0a401e5dabce237d2e4",
+    "environment.py": "14ab214a2db8c6595c53ef0232d658f2e4bf8d9485a081ed8797066c9854246a",
+    "local-completion.mjs": "7f1e455b1fa7773419d40973e400e59bcef976c3cec22b15b30a8fa2d01431f3"
+  },
+  "runtime": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "cpu_model": "AMD EPYC 9V45 96-Core Processor",
+    "python": "3.12.14",
+    "node": "v24.22.3",
+    "cpu_quota": "400000 100000"
+  },
+  "sequence": "Cold full ChatML prefix, followed by one forced token per decode step. Only KV at this complete prefix is reused for candidate continuations.",
+  "normalization": "Untruncated vocabulary softmax at temperature one. Menu probabilities renormalize canonical strings plus <|im_end|>.",
+  "replay_counts": {
+    "observed_decisions": 612,
+    "counterfactual_next_decisions": 128,
+    "cold_branch_controls": 12
+  },
+  "source_sha256": {
+    "scores-inputs.py": "17cb9127778f1d4d1e454dda397329dbd5aa0819a504e209374de561f04ad2ee",
+    "scores-evaluate.mjs": "f608638abc945d5a847f8ffe3052af3f95e53f79fc324606a9b89710775dc2ce",
+    "scores-merge.py": "1228b96d23430b8c5dfec614c809203501981080c8297053ef2d1da63bd6e963",
+    "scores-summarize.py": "a3c86f22d4de9bfeebace2f355c1a3e8c2409584c772d1935e9c911d72b2bd51",
+    "scores-qa.py": "17e986b9f1b64c02af5a6a55b6e46c303ac93ffd3f13c1b89d392804e47cc7c8",
+    "scores_test.py": "df269418e72c2f249e03c37c613e61ef699e6e6d7598a6b99540e8c9f22a10c0",
+    "scores-manifest.py": "e77eacdf6f86c1bc43e8f764435739b85300c74363a4a22e27f757f6b5615a60",
+    "explain.py": "331663290361dd2000daf88ceedd14842a1edc94222af836c45c84551faf6d96"
+  },
+  "data_sha256": {
+    "scores-decisions.jsonl": "4f0be1b85b26695cd63cc220b117293e9703a1e27d9ec7e871fdcc60c95c1e11",
+    "scores-swaps.jsonl": "dc833f26a5986fc9957e16498935abefff2a4fb33f5b6d21b1433446c28c1c96",
+    "scores-branch-controls.jsonl": "32b72b60b382c4bb04d22c17f7398a8f00d215013d04c6213728d0cb7946aa36",
+    "scores-greedy.jsonl": "432248adf18e2aa1a1abf60ed8af61aba3848fcb508234f4b1505e4594f07b57",
+    "scores-summary.json": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+    "scores-audit.json": "db0acb09268f5d27a0ee11057da47a5d93f92ea179a140ea77a890f22f5245cc",
+    "scores-numerics.json": "0223ea3a4319820249b05e2abb09f70c649186fcdd629d934f8b2895fa627230",
+    "scores-warm-controls.json": "fa21b08cd2eb63de22f039c9c9960e532253041f72d7a154d846680d2b773d81"
+  }
+}
