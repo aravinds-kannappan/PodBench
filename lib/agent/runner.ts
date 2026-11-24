@@ -333,6 +333,7 @@ export async function runEpisode(
     pod,
     queue,
     source: "live",
+    prompt_condition: opts.promptCondition ?? "baseline",
     propensity,
     redirect_observed: task.redirect ? redirected : undefined,
     trajectory,

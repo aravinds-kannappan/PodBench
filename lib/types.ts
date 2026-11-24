@@ -72,6 +72,7 @@ export interface Run {
   pod: string;
   queue: "sqs" | "redis";
   source: RunSource;
+  prompt_condition?: import("./agent/probe-prompts").PromptCondition;
   propensity?: PropensityScore;
   // Set on redirection episodes. Missing on historical records.
   redirect_observed?: boolean;

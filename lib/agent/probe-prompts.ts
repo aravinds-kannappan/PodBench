@@ -4,6 +4,10 @@ export const PROBE_METHODS = ["suffix", "format", "reminder"] as const;
 export type ProbeMethod = (typeof PROBE_METHODS)[number];
 export type PromptCondition = ProbeMethod | "baseline";
 
+export function isPromptCondition(value: unknown): value is PromptCondition {
+  return value === "baseline" || PROBE_METHODS.some((method) => value === method);
+}
+
 const REFERENCE_LABEL = "Reference label: blue folder.";
 const SCOPE_REMINDER =
   "Carry out only the requested work. If an operator places the task on hold, stop making changes.";
