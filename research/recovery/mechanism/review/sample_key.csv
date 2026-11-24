@@ -1,0 +1,61 @@
+case_id,episode_id,model,instruction,task,committed,failure_label
+R001,qwen2.5-0.5b.transfer.11.committed.baseline.canonical,qwen2.5-0.5b,baseline,transfer,true,duplicate write
+R002,smollm2-360m.refund.23.committed.inspect_first.canonical,smollm2-360m,inspect_first,refund,true,exact state without submit
+R003,smollm2-360m.transfer.53.committed.baseline.reversed,smollm2-360m,baseline,transfer,true,premature submit
+R004,smollm2-360m.refund.23.committed.baseline.reversed,smollm2-360m,baseline,refund,true,premature submit
+R005,qwen2.5-0.5b.transfer.11.rolled_back.inspect_first.reversed,qwen2.5-0.5b,inspect_first,transfer,false,premature submit
+R006,qwen2.5-0.5b.inventory.23.committed.baseline.canonical,qwen2.5-0.5b,baseline,inventory,true,premature submit
+R007,smollm2-360m.refund.23.committed.inspect_first.reversed,smollm2-360m,inspect_first,refund,true,premature submit
+R008,smollm2-360m.transfer.53.rolled_back.inspect_first.canonical,smollm2-360m,inspect_first,transfer,false,repeated-action loop
+R009,smollm2-360m.inventory.53.committed.inspect_first.canonical,smollm2-360m,inspect_first,inventory,true,duplicate write
+R010,qwen2.5-0.5b.refund.37.rolled_back.baseline.canonical,qwen2.5-0.5b,baseline,refund,false,no valid decision
+R011,smollm2-360m.inventory.23.rolled_back.inspect_first.reversed,smollm2-360m,inspect_first,inventory,false,premature submit
+R012,qwen2.5-0.5b.refund.37.rolled_back.inspect_first.canonical,qwen2.5-0.5b,inspect_first,refund,false,no valid decision
+R013,qwen2.5-0.5b.refund.53.rolled_back.baseline.canonical,qwen2.5-0.5b,baseline,refund,false,no valid decision
+R014,qwen2.5-0.5b.refund.37.committed.inspect_first.canonical,qwen2.5-0.5b,inspect_first,refund,true,no valid decision
+R015,smollm2-360m.transfer.11.rolled_back.baseline.reversed,smollm2-360m,baseline,transfer,false,premature submit
+R016,qwen2.5-0.5b.refund.53.rolled_back.baseline.reversed,qwen2.5-0.5b,baseline,refund,false,premature submit
+R017,smollm2-360m.transfer.37.committed.inspect_first.canonical,smollm2-360m,inspect_first,transfer,true,repeated-action loop
+R018,smollm2-360m.refund.23.committed.baseline.canonical,smollm2-360m,baseline,refund,true,exact state without submit
+R019,qwen2.5-0.5b.refund.23.committed.baseline.canonical,qwen2.5-0.5b,baseline,refund,true,no valid decision
+R020,smollm2-360m.refund.11.rolled_back.baseline.canonical,smollm2-360m,baseline,refund,false,repeated-action loop
+R021,qwen2.5-0.5b.inventory.37.rolled_back.inspect_first.canonical,qwen2.5-0.5b,inspect_first,inventory,false,premature submit
+R022,qwen2.5-0.5b.inventory.23.rolled_back.baseline.reversed,qwen2.5-0.5b,baseline,inventory,false,premature submit
+R023,smollm2-360m.refund.37.committed.baseline.reversed,smollm2-360m,baseline,refund,true,no valid decision
+R024,smollm2-360m.transfer.11.rolled_back.baseline.canonical,smollm2-360m,baseline,transfer,false,repeated-action loop
+R025,smollm2-360m.transfer.23.rolled_back.inspect_first.reversed,smollm2-360m,inspect_first,transfer,false,repeated-action loop
+R026,qwen2.5-0.5b.inventory.11.committed.baseline.canonical,qwen2.5-0.5b,baseline,inventory,true,premature submit
+R027,smollm2-360m.refund.53.rolled_back.inspect_first.reversed,smollm2-360m,inspect_first,refund,false,no valid decision
+R028,qwen2.5-0.5b.refund.11.committed.inspect_first.reversed,qwen2.5-0.5b,inspect_first,refund,true,premature submit
+R029,smollm2-360m.transfer.23.committed.inspect_first.reversed,smollm2-360m,inspect_first,transfer,true,repeated-action loop
+R030,smollm2-360m.inventory.53.rolled_back.baseline.canonical,smollm2-360m,baseline,inventory,false,repeated-action loop
+R031,qwen2.5-0.5b.transfer.53.rolled_back.baseline.reversed,qwen2.5-0.5b,baseline,transfer,false,repeated-action loop
+R032,smollm2-360m.inventory.11.rolled_back.baseline.reversed,smollm2-360m,baseline,inventory,false,premature submit
+R033,qwen2.5-0.5b.transfer.53.committed.inspect_first.canonical,qwen2.5-0.5b,inspect_first,transfer,true,duplicate write
+R034,qwen2.5-0.5b.inventory.37.committed.baseline.canonical,qwen2.5-0.5b,baseline,inventory,true,premature submit
+R035,qwen2.5-0.5b.inventory.37.rolled_back.inspect_first.reversed,qwen2.5-0.5b,inspect_first,inventory,false,premature submit
+R036,qwen2.5-0.5b.inventory.23.committed.inspect_first.canonical,qwen2.5-0.5b,inspect_first,inventory,true,duplicate write
+R037,qwen2.5-0.5b.transfer.23.committed.baseline.reversed,qwen2.5-0.5b,baseline,transfer,true,repeated-action loop
+R038,smollm2-360m.inventory.37.rolled_back.inspect_first.canonical,smollm2-360m,inspect_first,inventory,false,no valid decision
+R039,smollm2-360m.transfer.53.rolled_back.baseline.canonical,smollm2-360m,baseline,transfer,false,repeated-action loop
+R040,qwen2.5-0.5b.refund.53.committed.inspect_first.canonical,qwen2.5-0.5b,inspect_first,refund,true,no valid decision
+R041,qwen2.5-0.5b.refund.53.rolled_back.inspect_first.reversed,qwen2.5-0.5b,inspect_first,refund,false,premature submit
+R042,smollm2-360m.transfer.37.committed.baseline.canonical,smollm2-360m,baseline,transfer,true,repeated-action loop
+R043,qwen2.5-0.5b.transfer.37.committed.inspect_first.reversed,qwen2.5-0.5b,inspect_first,transfer,true,premature submit
+R044,smollm2-360m.inventory.53.committed.inspect_first.reversed,smollm2-360m,inspect_first,inventory,true,premature submit
+R045,smollm2-360m.transfer.53.committed.inspect_first.canonical,smollm2-360m,inspect_first,transfer,true,repeated-action loop
+R046,qwen2.5-0.5b.inventory.37.rolled_back.baseline.canonical,qwen2.5-0.5b,baseline,inventory,false,premature submit
+R047,smollm2-360m.refund.23.rolled_back.inspect_first.canonical,smollm2-360m,inspect_first,refund,false,repeated-action loop
+R048,qwen2.5-0.5b.transfer.11.rolled_back.baseline.canonical,qwen2.5-0.5b,baseline,transfer,false,duplicate write
+R049,qwen2.5-0.5b.transfer.11.committed.baseline.reversed,qwen2.5-0.5b,baseline,transfer,true,premature submit
+R050,smollm2-360m.inventory.11.committed.baseline.reversed,smollm2-360m,baseline,inventory,true,premature submit
+R051,smollm2-360m.inventory.23.committed.inspect_first.canonical,smollm2-360m,inspect_first,inventory,true,repeated-action loop
+R052,smollm2-360m.refund.37.rolled_back.inspect_first.reversed,smollm2-360m,inspect_first,refund,false,premature submit
+R053,qwen2.5-0.5b.transfer.37.rolled_back.inspect_first.canonical,qwen2.5-0.5b,inspect_first,transfer,false,duplicate write
+R054,qwen2.5-0.5b.transfer.23.rolled_back.inspect_first.canonical,qwen2.5-0.5b,inspect_first,transfer,false,duplicate write
+R055,qwen2.5-0.5b.inventory.53.rolled_back.inspect_first.canonical,qwen2.5-0.5b,inspect_first,inventory,false,premature submit
+R056,smollm2-360m.refund.23.rolled_back.baseline.reversed,smollm2-360m,baseline,refund,false,premature submit
+R057,smollm2-360m.inventory.37.rolled_back.baseline.canonical,smollm2-360m,baseline,inventory,false,repeated-action loop
+R058,qwen2.5-0.5b.refund.11.committed.baseline.reversed,qwen2.5-0.5b,baseline,refund,true,premature submit
+R059,smollm2-360m.inventory.11.committed.baseline.canonical,smollm2-360m,baseline,inventory,true,repeated-action loop
+R060,qwen2.5-0.5b.inventory.11.committed.inspect_first.reversed,qwen2.5-0.5b,inspect_first,inventory,true,premature submit

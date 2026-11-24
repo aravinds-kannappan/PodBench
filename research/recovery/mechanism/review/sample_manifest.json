@@ -1,0 +1,498 @@
+{
+  "study": "Exploratory (not preregistered)",
+  "seed": 20261124,
+  "sample_size": 60,
+  "population_size": 192,
+  "kit_id": "05eda1d6aa70bc03905086d1fce4a8c54d7b2ecef867c9bddbcf44826e121b34",
+  "journal_sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+  "trace_episodes_sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+  "trace_decisions_sha256": "dae6e909a5ba9f2473c837c05ffe47a5e8f81a1038a18743a3b4f2eadc03db23",
+  "strata": [
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "inventory",
+      "committed": "false",
+      "failure_label": "premature submit",
+      "population": 8,
+      "selected": 2
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "inventory",
+      "committed": "true",
+      "failure_label": "premature submit",
+      "population": 8,
+      "selected": 3
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "refund",
+      "committed": "false",
+      "failure_label": "no valid decision",
+      "population": 3,
+      "selected": 2
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "refund",
+      "committed": "false",
+      "failure_label": "premature submit",
+      "population": 5,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "refund",
+      "committed": "true",
+      "failure_label": "duplicate write",
+      "population": 1,
+      "selected": 0
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "refund",
+      "committed": "true",
+      "failure_label": "no valid decision",
+      "population": 3,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "refund",
+      "committed": "true",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "transfer",
+      "committed": "false",
+      "failure_label": "duplicate write",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "transfer",
+      "committed": "false",
+      "failure_label": "premature submit",
+      "population": 1,
+      "selected": 0
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "transfer",
+      "committed": "false",
+      "failure_label": "repeated-action loop",
+      "population": 3,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "transfer",
+      "committed": "true",
+      "failure_label": "duplicate write",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "transfer",
+      "committed": "true",
+      "failure_label": "premature submit",
+      "population": 1,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "baseline",
+      "task": "transfer",
+      "committed": "true",
+      "failure_label": "repeated-action loop",
+      "population": 3,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "committed": "false",
+      "failure_label": "premature submit",
+      "population": 8,
+      "selected": 3
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "committed": "true",
+      "failure_label": "duplicate write",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "committed": "true",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "refund",
+      "committed": "false",
+      "failure_label": "no valid decision",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "refund",
+      "committed": "false",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "refund",
+      "committed": "true",
+      "failure_label": "no valid decision",
+      "population": 4,
+      "selected": 2
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "refund",
+      "committed": "true",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "committed": "false",
+      "failure_label": "duplicate write",
+      "population": 4,
+      "selected": 2
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "committed": "false",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "committed": "true",
+      "failure_label": "duplicate write",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "committed": "true",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "committed": "false",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "committed": "false",
+      "failure_label": "repeated-action loop",
+      "population": 4,
+      "selected": 2
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "committed": "true",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "inventory",
+      "committed": "true",
+      "failure_label": "repeated-action loop",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "refund",
+      "committed": "false",
+      "failure_label": "no valid decision",
+      "population": 1,
+      "selected": 0
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "refund",
+      "committed": "false",
+      "failure_label": "premature submit",
+      "population": 3,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "refund",
+      "committed": "false",
+      "failure_label": "repeated-action loop",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "refund",
+      "committed": "true",
+      "failure_label": "exact state without submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "refund",
+      "committed": "true",
+      "failure_label": "no valid decision",
+      "population": 1,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "refund",
+      "committed": "true",
+      "failure_label": "premature submit",
+      "population": 3,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "committed": "false",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "committed": "false",
+      "failure_label": "repeated-action loop",
+      "population": 4,
+      "selected": 2
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "committed": "true",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "baseline",
+      "task": "transfer",
+      "committed": "true",
+      "failure_label": "repeated-action loop",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "committed": "false",
+      "failure_label": "duplicate write",
+      "population": 1,
+      "selected": 0
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "committed": "false",
+      "failure_label": "no valid decision",
+      "population": 1,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "committed": "false",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "committed": "false",
+      "failure_label": "repeated-action loop",
+      "population": 2,
+      "selected": 0
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "committed": "true",
+      "failure_label": "duplicate write",
+      "population": 1,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "committed": "true",
+      "failure_label": "no valid decision",
+      "population": 1,
+      "selected": 0
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "committed": "true",
+      "failure_label": "premature submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "inventory",
+      "committed": "true",
+      "failure_label": "repeated-action loop",
+      "population": 2,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "refund",
+      "committed": "false",
+      "failure_label": "no valid decision",
+      "population": 2,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "refund",
+      "committed": "false",
+      "failure_label": "premature submit",
+      "population": 2,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "refund",
+      "committed": "false",
+      "failure_label": "repeated-action loop",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "refund",
+      "committed": "true",
+      "failure_label": "exact state without submit",
+      "population": 4,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "refund",
+      "committed": "true",
+      "failure_label": "no valid decision",
+      "population": 2,
+      "selected": 0
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "refund",
+      "committed": "true",
+      "failure_label": "premature submit",
+      "population": 2,
+      "selected": 1
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "committed": "false",
+      "failure_label": "repeated-action loop",
+      "population": 8,
+      "selected": 2
+    },
+    {
+      "model": "smollm2-360m",
+      "instruction": "inspect_first",
+      "task": "transfer",
+      "committed": "true",
+      "failure_label": "repeated-action loop",
+      "population": 8,
+      "selected": 3
+    }
+  ]
+}
