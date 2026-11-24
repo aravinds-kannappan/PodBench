@@ -1,0 +1,214 @@
+{
+  "study": "Exploratory (not preregistered)",
+  "model_sources": {
+    "Qwen": {
+      "repo_id": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "files": {
+        "config.json": {
+          "size": 659,
+          "git_blob_sha1": "0dbb161213629a23f0fc00ef286e6b1e366d180f",
+          "sha256": "18e18afcaccafade98daf13a54092927904649e1dd4eba8299ab717d5d94ff45"
+        },
+        "generation_config.json": {
+          "size": 242,
+          "git_blob_sha1": "dfc11073787daf1b0f9c0f1499487ab5f4c93738",
+          "sha256": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6"
+        },
+        "merges.txt": {
+          "size": 1671839,
+          "git_blob_sha1": "20024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0",
+          "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+        },
+        "model.safetensors": {
+          "size": 988097824,
+          "git_blob_sha1": "d7db405a3f0d9bf1ba5bdd4e4211db8022ebe4eb",
+          "sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe"
+        },
+        "tokenizer.json": {
+          "size": 7031645,
+          "git_blob_sha1": "443909a61d429dff23010e5bddd28ff530edda00",
+          "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539"
+        },
+        "tokenizer_config.json": {
+          "size": 7305,
+          "git_blob_sha1": "07bfe0640cb5a0037f9322287fbfc682806cf672",
+          "sha256": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583"
+        },
+        "vocab.json": {
+          "size": 2776833,
+          "git_blob_sha1": "4783fe10ac3adce15ac8f358ef5462739852c569",
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+        }
+      },
+      "architecture": {
+        "model_type": "qwen2",
+        "hidden_size": 896,
+        "num_hidden_layers": 24,
+        "num_attention_heads": 14,
+        "num_key_value_heads": 2,
+        "vocab_size": 151936,
+        "torch_dtype": "bfloat16"
+      },
+      "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f"
+    },
+    "HuggingFaceTB": {
+      "repo_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+      "revision": "a10cc1512eabd3dde888204e902eca88bddb4951",
+      "files": {
+        "config.json": {
+          "size": 846,
+          "git_blob_sha1": "4f2ae86545bb5c1d4fcc55644deef86be50a7dee",
+          "sha256": "224f72354f10d617a359cc82ad15a3c96e866b9b2ffadb81997eeea9e88e22ee"
+        },
+        "generation_config.json": {
+          "size": 132,
+          "git_blob_sha1": "da6c4d71a43aa7e6f785bdbb28ea5025438a73fa",
+          "sha256": "87b916edaaab66b3899b9d0dd0752727dff6666686da0504d89ae0a6e055a013"
+        },
+        "merges.txt": {
+          "size": 466391,
+          "git_blob_sha1": "69503b13f727ba3812b6803e97442a6de05ef5eb",
+          "sha256": "0b54e8aa4e53d5383e2e4bc635a56b43f9647f7b13832d5d9ecd8f82dac4f510"
+        },
+        "model.safetensors": {
+          "size": 723674912,
+          "git_blob_sha1": "5e3cd2324bc51fbe72a42fc00f3ccd8da230cc04",
+          "sha256": "e6bffe7435d7ddc10fd3b9a9efd429dafbacb1cb17015fb5562664e7532bf86e"
+        },
+        "special_tokens_map.json": {
+          "size": 655,
+          "git_blob_sha1": "44719d2e365acac0637fd25a3acf46494ca45940",
+          "sha256": "2b7379f3ae813529281a5c602bc5a11c1d4e0a99107aaa597fe936c1e813ca52"
+        },
+        "tokenizer.json": {
+          "size": 2104556,
+          "git_blob_sha1": "f922b1797f0c88e71addc8393787831f2477a4bd",
+          "sha256": "9ca9acddb6525a194ec8ac7a87f24fbba7232a9a15ffa1af0c1224fcd888e47c"
+        },
+        "tokenizer_config.json": {
+          "size": 3764,
+          "git_blob_sha1": "8c7b22013909450429303ed10be4398bd63f5457",
+          "sha256": "4ec77d44f62efeb38d7e044a1db318f6a939438425312dfa333b8382dbad98df"
+        },
+        "vocab.json": {
+          "size": 800662,
+          "git_blob_sha1": "0ad5ecc2035b7031b88afb544ee95e2d49baa484",
+          "sha256": "82b84012e3add4d01d12ba14442026e49b8cbbaead1f79ecf3d919784f82dc79"
+        }
+      },
+      "architecture": {
+        "model_type": "llama",
+        "hidden_size": 960,
+        "num_hidden_layers": 32,
+        "num_attention_heads": 15,
+        "num_key_value_heads": 5,
+        "vocab_size": 49152,
+        "torch_dtype": "bfloat16"
+      },
+      "chat_template_sha256": "872be49dbb638044ad01b60388f48d469ff2980e5f0dccdc22ec907db54d0788"
+    }
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "system": "Linux",
+    "machine": "x86_64",
+    "packages": {
+      "torch": "2.7.1+cpu",
+      "transformers": "4.53.3",
+      "numpy": "2.2.6",
+      "tokenizers": "0.21.4",
+      "safetensors": "0.8.0",
+      "huggingface_hub": "0.36.2"
+    },
+    "torch_cpu_threads": 1,
+    "blas_threads": 1,
+    "attention": "eager",
+    "parameters_and_matmuls": "bfloat16",
+    "cpu_model": "AMD EPYC 9V45 96-Core Processor"
+  },
+  "settings": {
+    "train_seeds": [
+      11,
+      23,
+      37
+    ],
+    "test_seed": 53,
+    "max_new_tokens": 12,
+    "episode_turn_limit": 5,
+    "greedy": true,
+    "decoding_seed": null,
+    "decoding_note": "No token sampling; models in eval mode.",
+    "shuffle_seed_by_target": {
+      "hidden_commit": 41817,
+      "inspected": 41818,
+      "correct_next_action": 41819,
+      "instruction": 41820
+    },
+    "ridge_penalty": 1,
+    "steering_coefficients": [
+      -1,
+      0,
+      0.5,
+      1,
+      2
+    ],
+    "direction_training_pairs_per_model": 18,
+    "steering_blocks_one_indexed": {
+      "qwen2.5-0.5b": 12,
+      "smollm2-360m": 16
+    }
+  },
+  "source_sha256": {
+    "contexts.py": "e065e32976163499d83ece4eb5986220d9a4f2af738b8daa89e475fc9037c8fc",
+    "features.py": "e5d556e027bbd11da2e0c989b92729e9e21f011d51589c860b5a804442e53bc8",
+    "original.py": "bdd255b386cf0aa49379f60fbb3e7c2bcd7e8573999c9c73cc2d2e7b2d558591",
+    "readouts.py": "919f5bb2eaa07fa8a61f9b9fb833ae04e96d674eb29ee08c1430efaf74bfd6dd",
+    "collect.py": "d1517162731a3644c25e1bdc53a05339eeded3d24029c70f3298fb600752d72e",
+    "interventions.py": "26c10c7f59f227e20d56023e36e9d88df9556794429d8826bdc751c59344aceb",
+    "protocol.md": "8dfde322d7c64a9a00c5acacd30142ba4f565e98b7ada14cd43a0a6b1258dec8",
+    "fetch_weights.py": "16d603cc8265a5e364a494fa1f2f5c3cd9cc7e5bf7fddbf39abbb20bf4db5afe",
+    "merge.py": "89c3aa0cce1af1d2596273fc56a8c1fc50de95054a7636c82479a206827be49d",
+    "weights.json": "b9adadeec248213ba11ab246a9056ed1734adc0558ed9654bcc3ef6a8044a4f2",
+    "feature_archive.py": "c1f1294560ca7977fc561142e44c09ece4fba40b251cd14e4e43936a7d90749d",
+    "vocab_lens.py": "2e501f87cf4a5288b24f78891cc79f1839adc4de6a4e8b667bedbc4fefb9cb2e"
+  },
+  "input_sha256": {
+    "journal": {
+      "path": "../../episodes.jsonl",
+      "sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211"
+    },
+    "gguf_scores": {
+      "path": "../scores-decisions.jsonl",
+      "sha256": "4f0be1b85b26695cd63cc220b117293e9703a1e27d9ec7e871fdcc60c95c1e11"
+    },
+    "recovery_environment": {
+      "path": "../../environment.py",
+      "sha256": "14ab214a2db8c6595c53ef0232d658f2e4bf8d9485a081ed8797066c9854246a"
+    },
+    "recovery_driver": {
+      "path": "../../run.py",
+      "sha256": "208608b6deb379a66272046dcd5a79ddd9737cfdca26f0a401e5dabce237d2e4"
+    }
+  },
+  "output_sha256": {
+    "records/qwen2.5-0.5b/decision-residuals.npz": "2294f3a6ae1097e47bfdd03b84caf27832acda1ef5b18b1910f17e61ea1de35f",
+    "records/qwen2.5-0.5b/patches.jsonl": "9d474ecd7fa7e503b0d7ed47717a6f672714b7590bc1d006643432008b7a190a",
+    "records/qwen2.5-0.5b/predictions.jsonl": "5a9f2f5632d0fca0b321c5a5ed80fd14e88d061d25551a8fefa34535b9c7d2fe",
+    "records/qwen2.5-0.5b/readouts.jsonl": "9a310c17cb68ac7d2c716f79d54b61ceeead23e73eacc0dd196a03366c4e50bb",
+    "records/qwen2.5-0.5b/steering-episodes.jsonl": "6b86e2e7e273014d119055c3e419a148cb61c193fcb2de6e3364798e9624c319",
+    "records/qwen2.5-0.5b/vocab-lens.jsonl": "dad012746fb60569ac27f2bc9baa0d6425dfbd4f2fe5a31fe8cc807b1b74965c",
+    "records/smollm2-360m/decision-residuals.npz": "d1d5533b180466821a7f5519c6536e0e2cfa0b5b7627f7275a06591fac9b7b73",
+    "records/smollm2-360m/patches.jsonl": "4ef35c35dee22c727ee93f42fb2f65c6c3789210f94b756595baadbec049f3b5",
+    "records/smollm2-360m/predictions.jsonl": "b4d3f6d694f27af0825d2b440ce95d26891114912bce44216021b7025842a0bb",
+    "records/smollm2-360m/readouts.jsonl": "210f6dae7fb88506bad513b7eef5b397480f1f17182ed38ab870495b749c901d",
+    "records/smollm2-360m/steering-episodes.jsonl": "a83bafc409cff3b7c13033853f55c0a9ae517e5402b70d4e6904ddd1bd255342",
+    "records/smollm2-360m/vocab-lens.jsonl": "be59fb0098fc931d7614bd448bb28b5fcdecfed92e996e9de6519172201004c9",
+    "results.json": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636"
+  },
+  "local_feature_caches": {
+    "disposition": "Lossless decision-position residuals and row labels are published as numeric NPZ files in records/, excluded from website assets. Full PyTorch caches with other intermediate tensors and original weights remain external.",
+    "qwen2.5-0.5b": "83910ea14a2696808c1f3222820b7956da8ab4f680acb85e2075c71dd155ac57",
+    "smollm2-360m": "48272a0a4e1072ab03e520655f0bce3ab9661e644993aebef50ecb8e5ea6c6ab"
+  }
+}

@@ -1,0 +1,630 @@
+{
+  "n_contexts": 78,
+  "n_decisions": 146,
+  "final_argmax_matches_forward": 78,
+  "max_final_inspect_probability_absolute_difference": 0.0,
+  "layers": [
+    {
+      "layer": 1,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 1.586987676127486e-08,
+      "vocab_top_tokens": [
+        {
+          "id": 94422,
+          "text": "*sp",
+          "count": 92
+        },
+        {
+          "id": 58265,
+          "text": " (^)(",
+          "count": 52
+        },
+        {
+          "id": 109605,
+          "text": "\u4f46\u5982\u679c",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "layer": 2,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 1.3360759086608191e-08,
+      "vocab_top_tokens": [
+        {
+          "id": 68132,
+          "text": "/*****************************************************************************\n",
+          "count": 146
+        }
+      ]
+    },
+    {
+      "layer": 3,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 2.2038303115452546e-09,
+      "vocab_top_tokens": [
+        {
+          "id": 68132,
+          "text": "/*****************************************************************************\n",
+          "count": 146
+        }
+      ]
+    },
+    {
+      "layer": 4,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 5.860689171409284e-10,
+      "vocab_top_tokens": [
+        {
+          "id": 58265,
+          "text": " (^)(",
+          "count": 96
+        },
+        {
+          "id": 68132,
+          "text": "/*****************************************************************************\n",
+          "count": 28
+        },
+        {
+          "id": 91514,
+          "text": "').\"",
+          "count": 22
+        }
+      ]
+    },
+    {
+      "layer": 5,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 1.326794993507222e-09,
+      "vocab_top_tokens": [
+        {
+          "id": 92104,
+          "text": ".\"]",
+          "count": 92
+        },
+        {
+          "id": 94303,
+          "text": "//================================================================================",
+          "count": 28
+        },
+        {
+          "id": 118228,
+          "text": "\u6362\u53e5\u8bdd",
+          "count": 14
+        },
+        {
+          "id": 83894,
+          "text": "/////////////////////////////////////////////////////////////////////////////\n",
+          "count": 8
+        },
+        {
+          "id": 58265,
+          "text": " (^)(",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "layer": 6,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 2.3628033459773046e-08,
+      "vocab_top_tokens": [
+        {
+          "id": 83894,
+          "text": "/////////////////////////////////////////////////////////////////////////////\n",
+          "count": 128
+        },
+        {
+          "id": 94303,
+          "text": "//================================================================================",
+          "count": 12
+        },
+        {
+          "id": 93728,
+          "text": ":');\n",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "layer": 7,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 3.25553503302963e-08,
+      "vocab_top_tokens": [
+        {
+          "id": 72025,
+          "text": "+')",
+          "count": 96
+        },
+        {
+          "id": 94303,
+          "text": "//================================================================================",
+          "count": 50
+        }
+      ]
+    },
+    {
+      "layer": 8,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 1.0333745349224619e-07,
+      "vocab_top_tokens": [
+        {
+          "id": 90522,
+          "text": "','');\n",
+          "count": 136
+        },
+        {
+          "id": 68132,
+          "text": "/*****************************************************************************\n",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "layer": 9,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 7.596473730722963e-08,
+      "vocab_top_tokens": [
+        {
+          "id": 91514,
+          "text": "').\"",
+          "count": 146
+        }
+      ]
+    },
+    {
+      "layer": 10,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 1.1093145175656195e-07,
+      "vocab_top_tokens": [
+        {
+          "id": 91514,
+          "text": "').\"",
+          "count": 146
+        }
+      ]
+    },
+    {
+      "layer": 11,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 1.1271814266137685e-07,
+      "vocab_top_tokens": [
+        {
+          "id": 91514,
+          "text": "').\"",
+          "count": 146
+        }
+      ]
+    },
+    {
+      "layer": 12,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 3.356877023171763e-07,
+      "vocab_top_tokens": [
+        {
+          "id": 91514,
+          "text": "').\"",
+          "count": 74
+        },
+        {
+          "id": 62319,
+          "text": "(','",
+          "count": 40
+        },
+        {
+          "id": 85718,
+          "text": "')?></",
+          "count": 16
+        },
+        {
+          "id": 94692,
+          "text": "][_",
+          "count": 14
+        },
+        {
+          "id": 43416,
+          "text": "xbc",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "layer": 13,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 1.945524669220703e-08,
+      "vocab_top_tokens": [
+        {
+          "id": 86544,
+          "text": "/************************************************************************************************",
+          "count": 94
+        },
+        {
+          "id": 94303,
+          "text": "//================================================================================",
+          "count": 50
+        },
+        {
+          "id": 43416,
+          "text": "xbc",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "layer": 14,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 4.168405171262578e-09,
+      "vocab_top_tokens": [
+        {
+          "id": 86544,
+          "text": "/************************************************************************************************",
+          "count": 98
+        },
+        {
+          "id": 94303,
+          "text": "//================================================================================",
+          "count": 19
+        },
+        {
+          "id": 92104,
+          "text": ".\"]",
+          "count": 14
+        },
+        {
+          "id": 91514,
+          "text": "').\"",
+          "count": 6
+        },
+        {
+          "id": 68132,
+          "text": "/*****************************************************************************\n",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "layer": 15,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 3.9857624987392955e-08,
+      "vocab_top_tokens": [
+        {
+          "id": 71471,
+          "text": "\")));",
+          "count": 116
+        },
+        {
+          "id": 86726,
+          "text": ")\",\r\n",
+          "count": 22
+        },
+        {
+          "id": 30511,
+          "text": "ropolitan",
+          "count": 4
+        },
+        {
+          "id": 64599,
+          "text": "redi",
+          "count": 2
+        },
+        {
+          "id": 64247,
+          "text": "(Blueprint",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "layer": 16,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 9.718627889364815e-08,
+      "vocab_top_tokens": [
+        {
+          "id": 71471,
+          "text": "\")));",
+          "count": 78
+        },
+        {
+          "id": 92104,
+          "text": ".\"]",
+          "count": 28
+        },
+        {
+          "id": 89180,
+          "text": "//----------------------------------------------------------------------------------------------------------------",
+          "count": 16
+        },
+        {
+          "id": 94303,
+          "text": "//================================================================================",
+          "count": 14
+        },
+        {
+          "id": 78427,
+          "text": "\",__",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "layer": 17,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 4.4390072237785703e-07,
+      "vocab_top_tokens": [
+        {
+          "id": 68132,
+          "text": "/*****************************************************************************\n",
+          "count": 59
+        },
+        {
+          "id": 63457,
+          "text": "[Double",
+          "count": 30
+        },
+        {
+          "id": 111889,
+          "text": "\u5f53\u4e4b",
+          "count": 24
+        },
+        {
+          "id": 94422,
+          "text": "*sp",
+          "count": 20
+        },
+        {
+          "id": 94303,
+          "text": "//================================================================================",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "layer": 18,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 5.997939196002908e-06,
+      "vocab_top_tokens": [
+        {
+          "id": 89988,
+          "text": "toISOString",
+          "count": 34
+        },
+        {
+          "id": 78427,
+          "text": "\",__",
+          "count": 31
+        },
+        {
+          "id": 70521,
+          "text": "propri",
+          "count": 24
+        },
+        {
+          "id": 98320,
+          "text": "////////////////////////////////////////////////////////////////////////////////\n\n",
+          "count": 20
+        },
+        {
+          "id": 107184,
+          "text": "\u540e\u8005",
+          "count": 13
+        }
+      ]
+    },
+    {
+      "layer": 19,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 1.140826443962359e-05,
+      "vocab_top_tokens": [
+        {
+          "id": 68132,
+          "text": "/*****************************************************************************\n",
+          "count": 28
+        },
+        {
+          "id": 70521,
+          "text": "propri",
+          "count": 26
+        },
+        {
+          "id": 107184,
+          "text": "\u540e\u8005",
+          "count": 24
+        },
+        {
+          "id": 98320,
+          "text": "////////////////////////////////////////////////////////////////////////////////\n\n",
+          "count": 20
+        },
+        {
+          "id": 78427,
+          "text": "\",__",
+          "count": 18
+        }
+      ]
+    },
+    {
+      "layer": 20,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 4.4186123650184554e-05,
+      "vocab_top_tokens": [
+        {
+          "id": 85626,
+          "text": " requestBody",
+          "count": 46
+        },
+        {
+          "id": 69790,
+          "text": "RequestMethod",
+          "count": 26
+        },
+        {
+          "id": 40424,
+          "text": "bindValue",
+          "count": 20
+        },
+        {
+          "id": 4064,
+          "text": "None",
+          "count": 20
+        },
+        {
+          "id": 70521,
+          "text": "propri",
+          "count": 16
+        }
+      ]
+    },
+    {
+      "layer": 21,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 7.296184349635876e-05,
+      "vocab_top_tokens": [
+        {
+          "id": 29082,
+          "text": " INTERRU",
+          "count": 42
+        },
+        {
+          "id": 68768,
+          "text": "DebugEnabled",
+          "count": 30
+        },
+        {
+          "id": 4064,
+          "text": "None",
+          "count": 22
+        },
+        {
+          "id": 89988,
+          "text": "toISOString",
+          "count": 18
+        },
+        {
+          "id": 9318,
+          "text": " submit",
+          "count": 18
+        }
+      ]
+    },
+    {
+      "layer": 22,
+      "vocab_final_agreement": 0.0,
+      "vocab_top_is_menu_token_rate": 0.0,
+      "mean_vocab_inspect_token_probability": 0.0009155395561458434,
+      "vocab_top_tokens": [
+        {
+          "id": 9318,
+          "text": " submit",
+          "count": 58
+        },
+        {
+          "id": 5258,
+          "text": " receive",
+          "count": 24
+        },
+        {
+          "id": 42873,
+          "text": "_archive",
+          "count": 24
+        },
+        {
+          "id": 4064,
+          "text": "None",
+          "count": 14
+        },
+        {
+          "id": 4057,
+          "text": " remove",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "layer": 23,
+      "vocab_final_agreement": 0.7671232876712328,
+      "vocab_top_is_menu_token_rate": 0.7808219178082192,
+      "mean_vocab_inspect_token_probability": 0.021233143438708694,
+      "vocab_top_tokens": [
+        {
+          "id": 16019,
+          "text": "archive",
+          "count": 40
+        },
+        {
+          "id": 5955,
+          "text": "submit",
+          "count": 34
+        },
+        {
+          "id": 1330,
+          "text": "ins",
+          "count": 32
+        },
+        {
+          "id": 41893,
+          "text": "receive",
+          "count": 16
+        },
+        {
+          "id": 8548,
+          "text": "record",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "layer": 24,
+      "vocab_final_agreement": 1.0,
+      "vocab_top_is_menu_token_rate": 1.0,
+      "mean_vocab_inspect_token_probability": 0.12065898768271101,
+      "vocab_top_tokens": [
+        {
+          "id": 16019,
+          "text": "archive",
+          "count": 40
+        },
+        {
+          "id": 8548,
+          "text": "record",
+          "count": 32
+        },
+        {
+          "id": 5955,
+          "text": "submit",
+          "count": 32
+        },
+        {
+          "id": 82054,
+          "text": "inspect",
+          "count": 16
+        },
+        {
+          "id": 41893,
+          "text": "receive",
+          "count": 16
+        }
+      ]
+    }
+  ]
+}

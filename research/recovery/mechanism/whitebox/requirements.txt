@@ -1,0 +1,4 @@
+# Install the CPU build of torch with the official CPU index, as documented in README.md.
+torch==2.7.1
+transformers==4.53.3
+numpy==2.2.6
