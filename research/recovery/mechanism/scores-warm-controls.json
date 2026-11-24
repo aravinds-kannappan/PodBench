@@ -1,0 +1,751 @@
+{
+  "status": "Superseded warm-prefix pass, numerical audit only",
+  "scorer_commit": "1ff3f95",
+  "inputs": {
+    "scores-decisions.jsonl": "24ac0697f0784e68fd0cb1716c6eab955369c1248bda5239287ae98a40bebd5c",
+    "scores-swaps.jsonl": "fef2c895aaf96e0ede73d185bf8aa8908ca1456a6e0ce9dd5b02b644ee5443f3",
+    "scores-summary.json": "a7448c7d046d96197c052e96a5e1a327da7723feec7f2fa4de404a8f4afe651b"
+  },
+  "repeat_controls": {
+    "qwen2.5-0.5b": {
+      "identical_observed_and_swapped_inputs": {
+        "n": 10,
+        "mean_tv": 0.01468323863224626,
+        "max_tv": 0.061145333452360874,
+        "max_abs_token_logprob_delta": 0.3437320804201689,
+        "max_abs_sequence_logprob_delta": 0.34513467990185687,
+        "top_ten_order_changes": 5,
+        "max_shared_top_ten_probability_delta": 0.0584183931350708,
+        "top_action_changes": 0
+      }
+    },
+    "smollm2-360m": {
+      "identical_observed_and_swapped_inputs": {
+        "n": 28,
+        "mean_tv": 0.016396531520751333,
+        "max_tv": 0.06204490186161171,
+        "max_abs_token_logprob_delta": 0.5244185566598816,
+        "max_abs_sequence_logprob_delta": 0.5266023094771466,
+        "top_ten_order_changes": 16,
+        "max_shared_top_ten_probability_delta": 0.060514867305755615,
+        "top_action_changes": 0
+      }
+    }
+  },
+  "matched_inputs": [
+    {
+      "model": "qwen2.5-0.5b",
+      "original": [
+        "qwen2.5-0.5b.transfer.37.rolled_back.inspect_first.reversed",
+        2
+      ],
+      "swap": [
+        "qwen2.5-0.5b.transfer.37.committed.inspect_first.reversed",
+        2
+      ],
+      "visible_prefix_sha256": "1cb9e2b6275815ab13eb5fd86998f9226bd0543299f7510d3d8d30295b886905",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "original": [
+        "qwen2.5-0.5b.inventory.23.committed.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "qwen2.5-0.5b.inventory.23.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "1b7a5d5ce0b48f3530afcb0bdbdc2ae53e97eaba0bb382ba083adac278958f38",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "original": [
+        "qwen2.5-0.5b.inventory.23.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "qwen2.5-0.5b.inventory.23.committed.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "c6b570d8e8fd20bb0a6cc581f7697255e7d7b50620560ae8b81ef30671049805",
+      "tv": 0.011755716515977021,
+      "max_abs_token_logprob_delta": 0.12254866728828517,
+      "max_abs_sequence_logprob_delta": 0.12244695464399324,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.011937320232391357,
+      "top_action_changed": false
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "original": [
+        "qwen2.5-0.5b.inventory.53.committed.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "qwen2.5-0.5b.inventory.53.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "41f15a99a7bab86df8e47deacf6cadf17e3ee691a95f49d283ae0fd4b5ca78c8",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "original": [
+        "qwen2.5-0.5b.inventory.11.committed.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "qwen2.5-0.5b.inventory.11.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "32356b2266b79b4d7f19c94220fd454e0e9978352505e0200c0566eaee85c08e",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "original": [
+        "qwen2.5-0.5b.transfer.37.committed.inspect_first.reversed",
+        2
+      ],
+      "swap": [
+        "qwen2.5-0.5b.transfer.37.rolled_back.inspect_first.reversed",
+        2
+      ],
+      "visible_prefix_sha256": "d4a1796e9a9edc71a1e16bae397faf7e2d7716e014a8ee5f2c75e2987c2028be",
+      "tv": 0.061145333452360874,
+      "max_abs_token_logprob_delta": 0.3437320804201689,
+      "max_abs_sequence_logprob_delta": 0.34513467990185687,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.0584183931350708,
+      "top_action_changed": false
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "original": [
+        "qwen2.5-0.5b.inventory.11.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "qwen2.5-0.5b.inventory.11.committed.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "f32202e3473c6a6d99fbb1e0c319dffa41c05a7cac129e0d7659b3f17fac9405",
+      "tv": 0.004857744810433318,
+      "max_abs_token_logprob_delta": 0.1389667656429876,
+      "max_abs_sequence_logprob_delta": 0.13896593112807043,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.004595629870891571,
+      "top_action_changed": false
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "original": [
+        "qwen2.5-0.5b.inventory.37.committed.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "qwen2.5-0.5b.inventory.37.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "ddca9d54acc03358ad51e352e03d3983299ca44c45ab7dc923eef15b69826ce4",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "original": [
+        "qwen2.5-0.5b.inventory.37.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "qwen2.5-0.5b.inventory.37.committed.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "7284d24b00b23a8e2c30b4f0859fe118ac2e1b3ba1b5d3162bbe7db777b03c30",
+      "tv": 0.02927530646685325,
+      "max_abs_token_logprob_delta": 0.10125360653099769,
+      "max_abs_sequence_logprob_delta": 0.1012690567523089,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.028646230697631836,
+      "top_action_changed": false
+    },
+    {
+      "model": "qwen2.5-0.5b",
+      "original": [
+        "qwen2.5-0.5b.inventory.53.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "qwen2.5-0.5b.inventory.53.committed.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "50bf9cab77b1ac4f9cb1ddc0fdfe8476ba127ca1ef8e1085e20b337e4a8d2aeb",
+      "tv": 0.03979828507683812,
+      "max_abs_token_logprob_delta": 0.21782362885082684,
+      "max_abs_sequence_logprob_delta": 0.21784378217228872,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.037991687655448914,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.23.committed.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.23.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "1b7a5d5ce0b48f3530afcb0bdbdc2ae53e97eaba0bb382ba083adac278958f38",
+      "tv": 0.034237661730080825,
+      "max_abs_token_logprob_delta": 0.25218437102722824,
+      "max_abs_sequence_logprob_delta": 0.24956011316217497,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.04075360298156738,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.37.rolled_back.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.37.committed.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "ff5cf50b84e93255d35f09f5793c2f1cf7f8f269af4fa708b44ca3a324eb6c62",
+      "tv": 0.028640011921345458,
+      "max_abs_token_logprob_delta": 0.11490408676348363,
+      "max_abs_sequence_logprob_delta": 0.11692894523813546,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.01932653784751892,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.11.committed.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.11.rolled_back.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "8b465ff167fa5473c26bf500a4e8423cc0091dff733ec619d1bddf97daab0a77",
+      "tv": 0.01215708622109124,
+      "max_abs_token_logprob_delta": 0.5244185566598816,
+      "max_abs_sequence_logprob_delta": 0.5266023094771466,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.005463585257530212,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.37.rolled_back.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.37.committed.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "0b29437b5bc015f7a490238c957bb95b8d8145db897087b0c6b348177554c3d7",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.23.rolled_back.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.23.committed.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "a9c5380ed3fe481a24d482d3eb37a36d4c93dfac24f973cea4da7bd2e934a1fe",
+      "tv": 0.06204490186161171,
+      "max_abs_token_logprob_delta": 0.2059511441540307,
+      "max_abs_sequence_logprob_delta": 0.2055911459411668,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.045109838247299194,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.11.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.11.committed.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "e384e5fdaaa0c89b9879b4f7194fe1d9c9054a73558b68cfb95a8e601458b84e",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.23.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.23.committed.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "c6b570d8e8fd20bb0a6cc581f7697255e7d7b50620560ae8b81ef30671049805",
+      "tv": 0.045001660126209125,
+      "max_abs_token_logprob_delta": 0.27105195543263294,
+      "max_abs_sequence_logprob_delta": 0.27123496862434404,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.060514867305755615,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.37.committed.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.37.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "3f69e4f79b7f80e7fcbd841a5670fc8382c08468dbc6e269142a71518a7efaa7",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.37.committed.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.37.rolled_back.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "da3edfddc445e79e09f1023ff124217fbf531b2530af895092d2f135814308be",
+      "tv": 0.017631269615212546,
+      "max_abs_token_logprob_delta": 0.20559435010196392,
+      "max_abs_sequence_logprob_delta": 0.2056490238483466,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.00995790958404541,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.53.rolled_back.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.53.committed.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "8fa592c2db5b1363ac795ecfb872b866f703d6d2d2dc26f335397da1a240eec2",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.23.committed.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.23.rolled_back.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "8d44da6d29efa67c07c147fac2b4c4b3badbbf0d5bf9d70441efb2f9164c3b6e",
+      "tv": 0.045317014647130435,
+      "max_abs_token_logprob_delta": 0.28056622739395953,
+      "max_abs_sequence_logprob_delta": 0.2833162200425372,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.04583364725112915,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.11.committed.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.11.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "32356b2266b79b4d7f19c94220fd454e0e9978352505e0200c0566eaee85c08e",
+      "tv": 0.010187619464081081,
+      "max_abs_token_logprob_delta": 0.13465406699155746,
+      "max_abs_sequence_logprob_delta": 0.13434846526901367,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.01967257261276245,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.23.rolled_back.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.23.committed.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "2541636d0ca8ac24089da119f413358807c21224e84fb5be9f9549d5f4c854af",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.11.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.11.committed.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "f32202e3473c6a6d99fbb1e0c319dffa41c05a7cac129e0d7659b3f17fac9405",
+      "tv": 0.014305118719339021,
+      "max_abs_token_logprob_delta": 0.09518183435729544,
+      "max_abs_sequence_logprob_delta": 0.09539911489113884,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.010707437992095947,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.11.committed.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.11.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "cad08a261c720db0b8b4721e0034a6ee7a795ecd64bd19197f9ca6657b64409f",
+      "tv": 0.029116608501428682,
+      "max_abs_token_logprob_delta": 0.21587070292061927,
+      "max_abs_sequence_logprob_delta": 0.217914802493258,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.045413196086883545,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.11.rolled_back.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.11.committed.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "1ece1d2d63b6b5fa263d071bdc88335a0132ec90e32be1561d32fc49685fd90f",
+      "tv": 0.059067448187342865,
+      "max_abs_token_logprob_delta": 0.24205342509562655,
+      "max_abs_sequence_logprob_delta": 0.2364359069639299,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.040174633264541626,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.53.rolled_back.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.53.committed.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "3f9e615215572b499c1a2a62ce831ddc2fea81fce8e2c5d792b170a368a1c95d",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.23.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.23.committed.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "dcf3db74147f0954b234ebb68ebacb7d732d6955e6b8334df116b0cb6bf49300",
+      "tv": 0.01629809165769609,
+      "max_abs_token_logprob_delta": 0.2529908024540619,
+      "max_abs_sequence_logprob_delta": 0.25246039053976954,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.008014455437660217,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.53.committed.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.53.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "d0843c0ca8dbb506aff1e849f1866b7b538188ea36894456561b1f1dc8202730",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.11.rolled_back.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.11.committed.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "0a3c1c8a2c16b72f603fc53ed4f9b6c2309f522ed840b8d08b894a10cbea947c",
+      "tv": 0.01389990445100583,
+      "max_abs_token_logprob_delta": 0.203420259611101,
+      "max_abs_sequence_logprob_delta": 0.20340811958928517,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.007325291633605957,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.37.committed.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.37.rolled_back.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "48357f4e771a4527b871863961b0a810e2aec1d83405c3b035970128b248ddc5",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.11.committed.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.11.rolled_back.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "bc3cf772b0c7356521c966f384e63851e79598790a872bc9e2ee1531dfe50349",
+      "tv": 0.0028471741603625575,
+      "max_abs_token_logprob_delta": 0.0957046053503654,
+      "max_abs_sequence_logprob_delta": 0.09401460233738135,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.03649711608886719,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.23.committed.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.23.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "3289297876f77c8934cb51bd52e4fe008f8bb04fc8407bc0c1137e08e76d093d",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.23.committed.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.23.rolled_back.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "183eb3f0caa4517ee41a630552a26eb745c7b4ba091535a28c61a4c0fc100ef5",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.inventory.53.committed.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.inventory.53.rolled_back.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "588c3e94ded68493e3c35115d277d8095e3ace26ac763dcadaef2a5de87c51b0",
+      "tv": 0.016612821632488853,
+      "max_abs_token_logprob_delta": 0.2006199770640924,
+      "max_abs_sequence_logprob_delta": 0.18436756585519465,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.00770442932844162,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.53.committed.baseline.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.53.rolled_back.baseline.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "4601db4c42ec6922bf3563c1a8440f58102c7f9285aa6105b9dc7ab547c17b1e",
+      "tv": 0.023457526746663977,
+      "max_abs_token_logprob_delta": 0.3564184444784142,
+      "max_abs_sequence_logprob_delta": 0.38127676522855225,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.03918159008026123,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.53.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.53.committed.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "93acaed7cada5d6951670f84a429274a0578e10db98cbc7fb80e8abccad1408b",
+      "tv": 0.028280962937947008,
+      "max_abs_token_logprob_delta": 0.29978646471823067,
+      "max_abs_sequence_logprob_delta": 0.2894427336964047,
+      "top_ten_order_changed": true,
+      "max_shared_top_ten_probability_delta": 0.04358094930648804,
+      "top_action_changed": false
+    },
+    {
+      "model": "smollm2-360m",
+      "original": [
+        "smollm2-360m.transfer.37.rolled_back.inspect_first.canonical",
+        2
+      ],
+      "swap": [
+        "smollm2-360m.transfer.37.committed.inspect_first.canonical",
+        2
+      ],
+      "visible_prefix_sha256": "55e1e2ad49d8017d9e4bb89450c3ec46ab5c4a847fd0a7254d98658771272981",
+      "tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changed": false,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changed": false
+    }
+  ],
+  "superseded_swap_summaries": {
+    "qwen2.5-0.5b": {
+      "baseline": {
+        "n": 0,
+        "top_flips": null,
+        "mean_tv": null,
+        "max_tv": null
+      },
+      "inspect_first": {
+        "n": 16,
+        "top_flips": 2,
+        "mean_tv": 0.15285638346875585,
+        "max_tv": 0.49845634790186605
+      }
+    },
+    "smollm2-360m": {
+      "baseline": {
+        "n": 64,
+        "top_flips": 0,
+        "mean_tv": 0.010342628345866094,
+        "max_tv": 0.09710039364487871
+      },
+      "inspect_first": {
+        "n": 48,
+        "top_flips": 0,
+        "mean_tv": 0.011062086078371329,
+        "max_tv": 0.06628221917977938
+      }
+    }
+  }
+}

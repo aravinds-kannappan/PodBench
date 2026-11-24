@@ -8,11 +8,17 @@ For a decision prefix, the evaluator tokenizes each action name independently us
 
 `menu_probability` divides a candidate’s sequence probability by the sum of the scored probabilities over the current menu. `menu_logmass` gives the log of that sum. Other strings, whitespace variants and alternative tokenizations of the same characters can take the rest of the vocabulary mass. `menu_entropy_nats` is the Shannon entropy on the normalized menu. `margin_nats` subtracts the runner-up’s sequence log probability from the highest value. The probability assigned to a legal response and the action produced by greedy free generation answer different questions. [Decision measurements](scores-decisions.jsonl)
 
-The collector archived decoded replies and token counts. `logged_continuation` measures the canonical retokenization of the logged reply, including an end-of-turn marker for replies that ended naturally. A length-limited reply is scored without appending a marker. The separate greedy audit reconstructs the vocabulary path using the original prefix and records the probability of each successive argmax token. Its `matches_reply`, `matches_length` and `matches_finish` flags compare the reconstruction with the archive. Only a match on all three supports attributing this reconstructed likelihood to the logged decision. [Greedy-path audit](scores-greedy.jsonl)
+The collector archived decoded replies and token counts. `logged_continuation` measures the canonical retokenization of the logged reply, including an end-of-turn marker for replies that ended naturally. A length-limited reply is scored without appending a marker. The separate greedy audit reconstructs the vocabulary path using the original prefix and records the probability of each successive argmax token. Its `matches_reply`, `matches_length` and `matches_finish` flags compare the reconstruction with the archive. Only a match on all three supports attributing this reconstructed likelihood to the logged decision. For example, in `qwen2.5-0.5b.transfer.37.committed.inspect_first.reversed` turn 1, the canonical content token ID for `inspect` is 82054. Greedy replay produced the same archived text through IDs 1330 and 987. Treating the recorded text as a record of its token IDs would give a different likelihood. [Greedy-path audit](scores-greedy.jsonl)
+
+## Numerical repeatability
+
+The corrected scorer clears the KV history before evaluating every distinct full prompt. Within that decision, each legal branch starts from the same complete prefix. The evaluator truncates preceding continuation tokens, then feeds one forced token at a time. An independent branch-control job also clears history and reprocesses the entire prompt before each candidate. It covers the first and longest original decisions in each checkpoint and task family, 12 prefixes total.
+
+An earlier pass reused partial prefixes across different prompts and evaluated some continuation token sequences together. Across 38 matching original and swapped inputs with identical visible messages, it returned different probabilities. Mean total variation over the menu was 0.01468 on ten Qwen matches and 0.01640 on 28 SmolLM matches. The mean drift on identical SmolLM inputs exceeded that pass’s mean distance of 0.01034 over 64 generic-instruction observation replacements. This made the initial sensitivity estimate difficult to interpret. The corrected run uses the original generator's cold prompt and single-token continuation batch geometry. The two implementation changes were applied together, so this comparison does not isolate either one’s contribution. Raw decoded replies and SQLite outcomes were unaffected. [Superseded-pass controls](scores-warm-controls.json) · [Cold repeatability checks](scores-numerics.json) · [Greedy concordance](scores-audit.json)
 
 ## Replacing one observation
 
-Every archived next decision immediately after a valid inspection is eligible. Replay the same valid preceding actions against a fresh SQLite fixture whose initial commit bit is reversed. Replace just the latest inspection result with the new reading. Keep the original assistant replies, earlier feedback, user request, action bindings and menu order. The intervention measures local response sensitivity even when the replacement is inconsistent with observations *earlier* in a long history. It does not sample a new episode. The two probability distributions in each comparison use the same action menu. Their total variation distance is half the sum of absolute differences across actions. [Input reconstruction](scores-inputs.py) · [Swapped scores](scores-swaps.jsonl)
+Every archived next decision immediately after a valid inspection is eligible. Replay the same valid preceding actions against a fresh SQLite fixture whose initial commit bit is reversed. Replace just the latest inspection result with the new reading. Keep the original assistant replies, earlier feedback, user request, action bindings and menu order. The intervention measures local response sensitivity even when the replacement is inconsistent with observations *earlier* in a long history. It does not sample a new episode. The two probability distributions in each comparison use the same action menu. The swapped row retains the original logged reply as a reference continuation for teacher forcing; no replacement reply was recorded by the original collector. Their total variation distance is half the sum of absolute differences across actions. [Input reconstruction](scores-inputs.py) · [Swapped scores](scores-swaps.jsonl)
 
 All later-turn descriptions are conditional on the original policy reaching that turn. An episode can produce more than one inspection comparison. The first-token summaries across decisions give each vocabulary token only the probability captured in the top ten on each prefix; averages are lower bounds when the token drops out of those ten. [Summaries](scores-summary.json)
 
@@ -44,9 +50,16 @@ done
 for KIND in scores greedy swaps; do
   python3 "$MECH/scores-merge.py" --parts "$SCORE_DIR" --kind "$KIND"
 done
+python3 "$MECH/scores-qa.py" --control-inputs > "$SCORE_DIR/controls.jsonl"
+node "$MECH/scores-evaluate.mjs" qwen2.5-0.5b "$QWEN_GGUF" "$SCORE_DIR/controls.jsonl" "$SCORE_DIR/qwen-branches.jsonl" branch-audit
+node "$MECH/scores-evaluate.mjs" smollm2-360m "$SMOLLM_GGUF" "$SCORE_DIR/controls.jsonl" "$SCORE_DIR/smollm-branches.jsonl" branch-audit
+cat "$SCORE_DIR/qwen-branches.jsonl" "$SCORE_DIR/smollm-branches.jsonl" > "$MECH/scores-branch-controls.jsonl"
+python3 "$MECH/scores-qa.py" --branches "$MECH/scores-branch-controls.jsonl" > "$MECH/scores-numerics.json"
 python3 "$MECH/scores-summarize.py"
+python3 "$MECH/scores-summarize.py" --audit
 python3 "$MECH/explain.py"
+python3 "$MECH/scores-manifest.py"
 python3 -m unittest discover -s "$MECH" -p 'scores_test.py'
 ```
 
-Run outputs can differ slightly across CPU implementations. Compare the saved log probabilities and argmax choices as well as the archive joins. The merge checks verify complete decision coverage, token-path lengths, menu normalization and ranking before writing the public files. [Merge checks](scores-merge.py)
+Run outputs can differ slightly across CPU implementations. Compare the saved log probabilities and argmax choices as well as the archive joins. The merge checks verify complete decision coverage, token-path lengths, menu normalization and ranking before writing the public files. [Merge checks](scores-merge.py) · [Source and data fingerprints](scores-manifest.json)

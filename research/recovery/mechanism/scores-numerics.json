@@ -1,0 +1,46 @@
+{
+  "qwen2.5-0.5b": {
+    "identical_observed_and_swapped_inputs": {
+      "n": 10,
+      "mean_tv": 0.0,
+      "max_tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changes": 0,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changes": 0
+    },
+    "full_reset_each_candidate": {
+      "n": 6,
+      "mean_tv": 0.0,
+      "max_tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changes": 0,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changes": 0
+    }
+  },
+  "smollm2-360m": {
+    "identical_observed_and_swapped_inputs": {
+      "n": 28,
+      "mean_tv": 0.0,
+      "max_tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changes": 0,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changes": 0
+    },
+    "full_reset_each_candidate": {
+      "n": 6,
+      "mean_tv": 0.0,
+      "max_tv": 0.0,
+      "max_abs_token_logprob_delta": 0.0,
+      "max_abs_sequence_logprob_delta": 0.0,
+      "top_ten_order_changes": 0,
+      "max_shared_top_ten_probability_delta": 0.0,
+      "top_action_changes": 0
+    }
+  }
+}

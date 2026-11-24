@@ -2,7 +2,6 @@
 import argparse
 import json
 import math
-from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -37,6 +36,8 @@ def merge(parts, kind, output):
                 if not math.isclose(sum(path["token_logprobs"]), path["logprob"]):
                     raise ValueError(f"Invalid token path sum at {k}")
             else:
+                if row.get("scoring_version") != "cold-prefix-v2":
+                    raise ValueError(f"Expected a cold-prefix measurement at {k}")
                 candidates = row["candidates"]
                 if list(candidates) != e["menu"]:
                     raise ValueError(f"Candidate menu differs at {k}")
