@@ -31,3 +31,14 @@ jobs:
           python research/recovery/analyze.py
           python research/recovery/check_inputs.py --results docs/recovery-results.json
           git diff --exit-code -- docs/recovery-results.json docs/recovery-episodes.csv
+      - name: Verify the exploratory release and static data
+        run: |
+          python -m unittest discover -s research/recovery/mechanism -p 'test_*.py'
+          python research/recovery/mechanism/scores_test.py
+          python -m unittest discover -s research/recovery/mechanism/blackbox -p 'test_*.py'
+          python research/recovery/mechanism/whitebox/check.py
+          python research/recovery/mechanism/make_manifest.py --check
+          python -m unittest discover -s research/recovery/mechanism/review -p 'test_*.py'
+          python -m unittest discover -s research/recovery/mechanism/writing -p 'test_build.py'
+          python research/recovery/mechanism/review/generate.py --check
+          node research/recovery/site/build.mjs

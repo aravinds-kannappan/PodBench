@@ -1,0 +1,174 @@
+{
+  "study": "Exploratory (not preregistered)",
+  "release": "recovery-mechanism-v1.0.0",
+  "frozen_release": "recovery-v1.0.0",
+  "frozen_journal_sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+  "frozen_manifest_sha256": "b27c976966ba8574a3496827cd8e5778bb67dcb3b53b47753efdb2b500eb934e",
+  "gguf_models": {
+    "qwen2.5-0.5b": {
+      "model": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+      "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+      "filename": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+      "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+      "url": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/9217f5db79a29953eb74d5343926648285ec7e67/qwen2.5-0.5b-instruct-q4_k_m.gguf",
+      "runtime": "node-llama-cpp@3.16.2",
+      "llama_cpp_build": "b8121",
+      "chat_format": "ChatML",
+      "threads": 2,
+      "context": 4096,
+      "batch_size": 256,
+      "seed": 42,
+      "temperature": 0,
+      "device": "cpu"
+    },
+    "smollm2-360m": {
+      "model": "bartowski/SmolLM2-360M-Instruct-GGUF",
+      "revision": "7be6f65f1db715fe5dc5a4634c0d459b4eed42ec",
+      "filename": "SmolLM2-360M-Instruct-Q4_K_M.gguf",
+      "sha256": "2fa3f013dcdd7b99f9b237717fa0b12d75bbb89984cc1274be1471a465bac9c2",
+      "tokenizer_revision": "HuggingFaceTB/SmolLM2-360M-Instruct@a10cc1512eabd3dde888204e902eca88bddb4951",
+      "url": "https://huggingface.co/bartowski/SmolLM2-360M-Instruct-GGUF/resolve/7be6f65f1db715fe5dc5a4634c0d459b4eed42ec/SmolLM2-360M-Instruct-Q4_K_M.gguf",
+      "runtime": "node-llama-cpp@3.16.2",
+      "llama_cpp_build": "b8121",
+      "chat_format": "ChatML",
+      "threads": 2,
+      "context": 4096,
+      "batch_size": 256,
+      "seed": 42,
+      "temperature": 0,
+      "device": "cpu"
+    }
+  },
+  "original_models": {
+    "Qwen": {
+      "repo_id": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "files": {
+        "config.json": {
+          "size": 659,
+          "git_blob_sha1": "0dbb161213629a23f0fc00ef286e6b1e366d180f"
+        },
+        "generation_config.json": {
+          "size": 242,
+          "git_blob_sha1": "dfc11073787daf1b0f9c0f1499487ab5f4c93738"
+        },
+        "merges.txt": {
+          "size": 1671839,
+          "git_blob_sha1": "20024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0"
+        },
+        "model.safetensors": {
+          "size": 988097824,
+          "git_blob_sha1": "d7db405a3f0d9bf1ba5bdd4e4211db8022ebe4eb",
+          "sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe"
+        },
+        "tokenizer.json": {
+          "size": 7031645,
+          "git_blob_sha1": "443909a61d429dff23010e5bddd28ff530edda00"
+        },
+        "tokenizer_config.json": {
+          "size": 7305,
+          "git_blob_sha1": "07bfe0640cb5a0037f9322287fbfc682806cf672"
+        },
+        "vocab.json": {
+          "size": 2776833,
+          "git_blob_sha1": "4783fe10ac3adce15ac8f358ef5462739852c569"
+        }
+      }
+    },
+    "HuggingFaceTB": {
+      "repo_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+      "revision": "a10cc1512eabd3dde888204e902eca88bddb4951",
+      "files": {
+        "config.json": {
+          "size": 846,
+          "git_blob_sha1": "4f2ae86545bb5c1d4fcc55644deef86be50a7dee"
+        },
+        "generation_config.json": {
+          "size": 132,
+          "git_blob_sha1": "da6c4d71a43aa7e6f785bdbb28ea5025438a73fa"
+        },
+        "merges.txt": {
+          "size": 466391,
+          "git_blob_sha1": "69503b13f727ba3812b6803e97442a6de05ef5eb"
+        },
+        "model.safetensors": {
+          "size": 723674912,
+          "git_blob_sha1": "5e3cd2324bc51fbe72a42fc00f3ccd8da230cc04",
+          "sha256": "e6bffe7435d7ddc10fd3b9a9efd429dafbacb1cb17015fb5562664e7532bf86e"
+        },
+        "special_tokens_map.json": {
+          "size": 655,
+          "git_blob_sha1": "44719d2e365acac0637fd25a3acf46494ca45940"
+        },
+        "tokenizer.json": {
+          "size": 2104556,
+          "git_blob_sha1": "f922b1797f0c88e71addc8393787831f2477a4bd"
+        },
+        "tokenizer_config.json": {
+          "size": 3764,
+          "git_blob_sha1": "8c7b22013909450429303ed10be4398bd63f5457"
+        },
+        "vocab.json": {
+          "size": 800662,
+          "git_blob_sha1": "0ad5ecc2035b7031b88afb544ee95e2d49baa484"
+        }
+      }
+    }
+  },
+  "settings": {
+    "archive_protocol": "../PROTOCOL.md",
+    "score_definition": "scores-method.md",
+    "forcing_budget": 5,
+    "forcing_reply_limit": 12,
+    "black_box_design": "blackbox/design.json",
+    "white_box_design": "whitebox/protocol.md"
+  },
+  "artifacts": {
+    "trajectory": {
+      "trace_decisions.csv": "dae6e909a5ba9f2473c837c05ffe47a5e8f81a1038a18743a3b4f2eadc03db23",
+      "trace_episodes.csv": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "trace_schema.json": "abb4a10ea226aae02b7e67932960686d29f8a8ffeefcc1af13f11336d3eb111a",
+      "trace_extract.py": "17e03da28a38a7c9053e5744dcf02a7febf21d1d86dc3d1981a7f64162d7aeb6"
+    },
+    "teacher_forced": {
+      "scores-decisions.jsonl": "4f0be1b85b26695cd63cc220b117293e9703a1e27d9ec7e871fdcc60c95c1e11",
+      "scores-greedy.jsonl": "432248adf18e2aa1a1abf60ed8af61aba3848fcb508234f4b1505e4594f07b57",
+      "scores-audit.json": "db0acb09268f5d27a0ee11057da47a5d93f92ea179a140ea77a890f22f5245cc",
+      "scores-numerics.json": "0223ea3a4319820249b05e2abb09f70c649186fcdd629d934f8b2895fa627230",
+      "scores-warm-controls.json": "fa21b08cd2eb63de22f039c9c9960e532253041f72d7a154d846680d2b773d81",
+      "scores-manifest.json": "d59f153e50b9f8c5e9a3352f3e6a531a4da28aa10311c663b65e35a4f10d2109",
+      "scores-evaluate.mjs": "f608638abc945d5a847f8ffe3052af3f95e53f79fc324606a9b89710775dc2ce",
+      "scores-inputs.py": "17cb9127778f1d4d1e454dda397329dbd5aa0819a504e209374de561f04ad2ee",
+      "scores-method.md": "a404982773f04843ac7c816a53e872cc0f94e074afc813b84dd591e68b94c41d"
+    },
+    "instruction": {
+      "scores-swaps.jsonl": "dc833f26a5986fc9957e16498935abefff2a4fb33f5b6d21b1433446c28c1c96",
+      "scores-summary.json": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "scores-summarize.py": "a3c86f22d4de9bfeebace2f355c1a3e8c2409584c772d1935e9c911d72b2bd51"
+    },
+    "single_action_forcing": {
+      "forcing.jsonl": "645cafe68ac61d2511cb86d9e428dddfa2fbb1651b1b73c922f8f73383369fc9",
+      "forcing-paired.json": "5a022fa9ab6ab8a9bcee0db1753ffcae9ca361122471c520e1bda3219c08d999",
+      "force.py": "551c31fa74ad80a1815293158536eb83187250e830009be101e943ef7b4ad571",
+      "decisions.csv": "b6e8aea05430e45b15066dfbb639f0214b76d68ae8a6036bb899c581d28adcc2",
+      "first_tokens.csv": "1ee45772ebbb977d4bea227bf29dca5fa9a7810fce2d0174556d78a2f59786b1",
+      "action_scores.csv": "1b74fa549a91915572f76719a971fc9e8df48e6471e56d983b4976ad67197104",
+      "schema.json": "85a04b316985fcbe9eb82f2bb12ee7b0013c3c1fb549ca9ec01260c653bdf84a"
+    },
+    "black_box": {
+      "blackbox/design.json": "998e05b637bc6dc430bcc2025684a6d7ad32c01abada5e025514dd16cbc16314",
+      "blackbox/placebos.json": "74fc18de0b1c2ad074ea6ccfd27176fe630719a347c3599b32b1d7e0ddd02384",
+      "blackbox/manifest.json": "063a0bca5e2dae7985f741c3a464090e50a37673b156539d3a4aca6fab3a9912",
+      "blackbox/traces.jsonl": "87993ce9fdf4be6beb0bbe36505318797dc7b7c7bb64d06fd81132a32d71d1b4",
+      "blackbox/decisions.jsonl": "3517a4f02d3299fb1c1310897a0f48f82e8e009328975b74e92c8ae6d782d4c9",
+      "blackbox/results.json": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7"
+    },
+    "white_box": {
+      "whitebox/weights.json": "b9adadeec248213ba11ab246a9056ed1734adc0558ed9654bcc3ef6a8044a4f2",
+      "whitebox/manifest.json": "cc022c09a13a22b6d6d66f7c871c249bea5cb2dc13f96804ff37dca228f34627",
+      "whitebox/protocol.md": "8dfde322d7c64a9a00c5acacd30142ba4f565e98b7ada14cd43a0a6b1258dec8",
+      "whitebox/requirements.txt": "d879c23706e0af4988ed71fbfcb3a08b0a3bc67643b55ef4a588439fab2adb63",
+      "whitebox/results.json": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636"
+    }
+  }
+}

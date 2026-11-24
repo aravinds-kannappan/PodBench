@@ -18,6 +18,12 @@ behavior, the trust axis, and pod health on one pane.
 
 ---
 
+## Recovery mechanisms
+
+What happens between a lost database acknowledgement and the agent's last decision? The recovery site pairs the original frozen results with exploratory token scores, SQLite reachability, corrected-action branches and controlled model probes. Researchers can inspect an individual trajectory, download its data, or independently annotate a masked case.
+
+[Recovery research site](https://pod-bench.vercel.app/recovery/index.html) · [Versioned release](https://github.com/aravinds-kannappan/PodBench/releases/tag/recovery-mechanism-v1.0.0) · [Mechanism datasets and reproduction](research/recovery/mechanism/README.md) · [Static deployment guide](research/recovery/site/README.md)
+
 ## Research release: recovering an interrupted database write
 
 A client loses the acknowledgement to a write. Can an agent tell whether to retry? The SQLite recovery suite models this handoff for a refund ledger, an inventory receipt, and a customer archive and transfer. The release includes a prospectively frozen design, model transcripts, independent SQL replay, matched estimates, and three reference policies. A researcher can run the fixtures and verifier with Python's standard library or evaluate a different policy on the same work orders.
@@ -46,7 +52,7 @@ Where did an agent first go wrong? We welcome reports on long-horizon work, cont
 
 ### Reproduce the explorer
 
-From the repository root, run `npm run site:data` after updating `data/runs.json`. Commit the refreshed `docs/results.json` alongside the corpus. Use `npm run site:data -- --check` to verify the snapshot. Serve the static site locally with `python3 -m http.server 8000 --directory docs` and open `http://localhost:8000`. The Next.js dashboard serves the same files at `/explorer/index.html` with `npm run dev` or `npm run build`. To publish a second copy on GitHub Pages, select the `docs/` directory on `main` in the repository’s Pages settings.
+From the repository root, run `npm run site:data` after updating `data/runs.json`. Commit the refreshed `docs/results.json` alongside the corpus. Use `npm run site:data -- --check` to verify the snapshot. Serve the static site locally with `python3 -m http.server 8000 --directory docs` and open `http://localhost:8000`. The Next.js dashboard serves the same files at `/explorer/index.html` with `npm run dev` or `npm run build`.
 
 ## Why this exists
 

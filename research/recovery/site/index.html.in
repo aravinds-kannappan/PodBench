@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#191715" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fbf8f2" media="(prefers-color-scheme: light)" />
+    <meta
+      name="description"
+      content="PodBench research on agent recovery after an ambiguous database commit. Compare model decisions, inspect trajectories and explore the evidence."
+    />
+    <title>PodBench · Recovery benchmark</title>
+    <link rel="stylesheet" href="./assets/site.css" />
+    <script src="./assets/charts.js" defer></script>
+    <script src="./assets/results.js" defer></script>
+    <script src="./assets/trajectory.js" defer></script>
+    <script src="./assets/probes.js" defer></script>
+    <script src="./assets/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to page content</a>
+    <header class="mast">
+      <div class="container top">
+        <a href="#home" class="wordmark" aria-label="PodBench Recovery home"
+          ><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>PodBench <small>Recovery</small></a
+        >
+        <nav aria-label="Research navigation" id="research-nav"></nav>
+        <details class="mobile-menu">
+          <summary>Pages</summary>
+          <nav aria-label="All site pages" id="all-nav"></nav>
+        </details>
+      </div>
+    </header>
+    <div class="bar"><nav class="container" aria-label="Benchmark navigation" id="benchmark-nav"></nav></div>
+    <main id="content" class="container" tabindex="-1">
+      <h1>Recovery after an uncertain commit</h1>
+      <p class="lede">Loading the research archive…</p>
+      <noscript
+        ><p>
+          This explorer uses JavaScript to draw the charts and read the local study data. The full records are also
+          available as JSON.
+        </p>
+        <p>
+          <a href="data/frozen.json">Frozen study data</a> · <a href="data/episodes.json">Exploratory trajectories</a> ·
+          <a href="writing/paper.html">Research paper</a>
+        </p></noscript
+      >
+    </main>
+    <footer>
+      <div class="container foot">
+        <a class="wordmark" href="#home">PodBench <small>Recovery</small></a>
+        <nav aria-label="Project links">
+          <a href="#methods">Methods &amp; data</a><a href="#expert-review">Expert review</a
+          ><a href="https://github.com/aravinds-kannappan/PodBench">GitHub</a>
+        </nav>
+        <nav aria-label="Related benchmarks">
+          <span>Related benchmarks</span><a href="https://arxiv.org/abs/2406.12045">τ-bench</a>
+          <a href="https://arxiv.org/abs/2408.04682">ToolSandbox</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

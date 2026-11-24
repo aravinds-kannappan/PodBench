@@ -5,5 +5,55 @@
     "app/api/run/route.ts": {
       "maxDuration": 60
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/recovery",
+      "destination": "/recovery/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/recovery/blog",
+      "destination": "/recovery/blog/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/blog",
+      "destination": "/recovery/blog/index.html",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/recovery/data/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=60, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/recovery/assets/:file([a-zA-Z0-9_-]+\\.[0-9a-f]{12,64}\\.(?:js|css|svg|woff2))",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/recovery/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
 }

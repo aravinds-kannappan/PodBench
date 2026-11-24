@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Research blog · PodBench</title>
+    <script>
+      const prefix = location.pathname.replace(/\/blog(?:\/index(?:\.html)?|\/)?$/, "/");
+      const documentPath = prefix === "/" ? prefix : prefix + "index.html";
+      location.replace(documentPath + "#blog" + location.search);
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>Research blog</h1>
+      <p><a href="../writing/blog/index.html">Browse the research notes</a></p>
+      <noscript
+        ><p>
+          For the archive on the dashboard,
+          <a href="/recovery/writing/blog/index.html">open the research notes here</a>.
+        </p></noscript
+      >
+    </main>
+  </body>
+</html>

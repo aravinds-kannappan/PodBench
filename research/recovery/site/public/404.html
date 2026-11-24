@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Page unavailable · PodBench</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        padding: 8vw;
+        background: #191715;
+        color: #f3e9d8;
+        font: 1.1rem/1.6 system-ui;
+      }
+      a {
+        color: #eda976;
+      }
+      @media (prefers-color-scheme: light) {
+        body {
+          background: #faf7f2;
+          color: #261d16;
+        }
+        a {
+          color: #873d17;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Page unavailable</h1>
+      <p>Open the recovery benchmark to browse the results, trajectories and paper.</p>
+      <a id="benchmark" href="/#home">Open the benchmark</a>
+      <script>
+        if (location.pathname.startsWith("/recovery/"))
+          document.getElementById("benchmark").href = "/recovery/index.html#home";
+      </script>
+    </main>
+  </body>
+</html>

@@ -19,6 +19,7 @@ data/runs.live.json
 
 # Generated static explorer assets for Next.js
 /public/explorer/
+/public/recovery/
 
 # Python experiment driver caches
 __pycache__/
