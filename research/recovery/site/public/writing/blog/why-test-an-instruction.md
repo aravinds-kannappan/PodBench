@@ -1,0 +1,23 @@
+---
+title: "Would a reminder prevent a duplicate refund?"
+date: 2026-11-24
+status: draft
+tags: [recovery, evaluation, databases]
+reading_minutes: 3
+summary: "How a lost acknowledgement creates a testable question about an agent's next decision."
+---
+# Would a reminder prevent a duplicate refund?
+
+Suppose I inherit an unfinished refund. I know the order, the amount, and the operation the previous worker tried. The connection failed before it got a reply. I have a reason to act quickly, because the customer is waiting. I also have a reason to pause. If the ledger already contains the credit, repeating the operation will give the customer another refund. If the write failed, skipping it will leave the customer without the credit they were promised.
+
+That is the point in a workflow that PodBench tries to reproduce. We can build two copies of the database with the same order and the same handoff. In one copy the previous operation took effect. In the other it did not. We give the replacement worker the same words in each case. The environment decides what actually happened. A read of the ledger tells the worker which world it is in.
+
+I like this setup because it lets a reader disagree with a proposed recovery strategy and run the alternative. You can always retry the write and then finish the rest of the job. You can always assume that the earlier worker succeeded. Or you can read the database and make the next write depend on what you see. Each policy is short enough to audit, and the effects show up as actual rows. [Reference policies](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/baselines.py)
+
+The treatment we chose was modest. The generic prompt already gave the worker an inspection action and told it to finish the work. The extra instruction told it to inspect before writing and use the result to decide what remained. It did not add a tool, reveal the hidden world or give the model extra time. The comparison therefore asked something fairly specific. With the same opportunities to act, does a reminder change whether a worker actually finishes?
+
+We ran [192](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json) episodes under a design committed before collection. We varied the order in which the menu appeared because a model might simply copy an attractive action near the top. We required both a correct database and an explicit submission. A caller waiting for a completion signal needs both. A different caller may only care about the final state, which is why the data expose the two outcomes separately. [Frozen protocol](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/PROTOCOL.md)
+
+The headline result was [0](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json) exact submitted recoveries. On its own, that number gives a disappointing answer to a question about improving completion. But it also tells me where to look next. Did either worker inspect? Did it repeat the write after seeing the ledger entry? Did it complete the remaining changes and then keep talking to the console? Those are distinct questions, and each needs a different entry from the trace.
+
+For a service I was designing today, I would want the comparison to include an idempotency key. If the service can recognize a repeated logical request, it can protect the customer even when a worker misreads the ledger. That is a different intervention from advice in a system prompt. Keeping the two arms distinct would show how much reliability comes from the worker’s decisions and how much comes from the service contract. [Featonby on idempotent APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/)

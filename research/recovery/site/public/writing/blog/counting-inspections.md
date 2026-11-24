@@ -1,0 +1,23 @@
+---
+title: "When an inspection is a useful measurement"
+date: 2026-11-24
+status: draft
+tags: [inspection, measurement, tools]
+reading_minutes: 3
+summary: "An agent can obey a reminder and still leave the most important part of a job undone."
+---
+# When an inspection is a useful measurement
+
+There is an appealing way to evaluate an instruction that says “inspect first.” Count how often the agent inspects first. It is easy to score, close to the wording of the request and understandable to someone reviewing a dashboard. For one checkpoint it also made the treatment look promising. Qwen’s count went from [0](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json) of [48](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json) episodes to [10](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json) of [48](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json). If I were testing whether the instruction ever changed an opening action, I would pay attention to that difference.
+
+An inspection produces information. A completed job requires an interpretation of that information and a sequence of writes. On a rolled-back inventory receipt, the first read can establish that the shipment was never added to stock. The next correct action is to apply the missing quantity. The worker still has to post the receipt and signal completion. A single check mark for inspection cannot tell me which of those later obligations the worker discharged.
+
+One archived pair shows the gap. In the generic arm, Qwen submitted immediately. In the treatment arm it inspected, received the stock and submitted. The stored quantity was now right, but the receipt had not been posted. The intervention changed both the read history and a numeric field in the database. The user would still own an open receipt and the host would believe the job had ended. That is a more specific result than a win or a loss on a leaderboard. [Generic episode](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L70) · [Verify-first episode](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L27)
+
+The second checkpoint cautions against extrapolating the first. SmolLM2 inspected first in [16](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json) of [48](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json) generic episodes and [12](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json) of [48](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json) verify-first episodes. At the primary endpoint neither model completed an exact submitted recovery. A reminder can change the first move in a direction that varies with the checkpoint. It does not install a recovery procedure that both models then follow.
+
+When I read an inspection metric I also ask what the measure cost. The budget was [5](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/manifest.json) decisions, and every read counted. Inspecting an ambiguous state can buy information worth much more than the turn. Inspecting that same unchanged state again can consume the only remaining opportunity to finish. Counting all reads equally would reward both behaviors. Measuring only the opening decision avoids part of the problem, but still gives no evidence that the worker used what it learned.
+
+For a new evaluation I would keep a count of opening inspections and add a matched test of reactions to different returned states. A controlled result can ask whether a worker that has just read an existing ledger entry behaves differently from one that has just read an empty ledger. Then I would check both resulting databases and the terminal signals. The three questions belong at different levels: whether the information was requested, whether the decision was sensitive to it, and whether the work actually finished.
+
+The archive makes that separation possible. Its action trace carries the model’s reply, the SQL observation and the final verifier checks. An engineer can choose the outcome that matches the service contract and still inspect the intermediate signals that might explain a regression. [How to join the records](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/DATA.md)

@@ -1,0 +1,25 @@
+---
+title: "Why the console rejected “post the receipt”"
+date: 2026-11-24
+status: draft
+tags: [transcripts, parsing, inventory]
+reading_minutes: 3
+summary: "The difference between a plausible phrase, a valid tool action and a completed job."
+---
+# Why the console rejected “post the receipt”
+
+**Exploratory (not preregistered)**
+
+I can understand the reply `post the receipt`. If someone said it while receiving a shipment, I would know roughly what they wanted. A database console with an exact action menu handles that phrase differently. It checks whether the response names one of its registered actions. The inventory task offers an operation called `close_receipt`. A sentence that describes the operation is still an invalid call.
+
+The archived SmolLM2 inventory episode with seed [37](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L158) makes this distinction visible. The previous worker’s stock update had rolled back. The replacement worker needed to account for the shipment and post the receipt. Under the verify-first instruction it wrote “post the receipt” [5](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L158) times. After each rejected action that left another turn available, the host explained that no statement ran and presented the menu again. The replies are in the journal, along with the exact feedback and the absence of any SQL observation for an invalid turn. [Raw episode](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L158)
+
+What went wrong? The most immediate answer is that the phrase failed the parser. The database stayed untouched. But changing the parser alone would not guarantee the intended recovery. Had it accepted the phrase as the receipt action, that action would have acknowledged a shipment whose stock had not yet been added. The proposed interpretation might fix one local interface error and still leave the overall job unfinished.
+
+That last point is a counterfactual about the SQL operation, not a transcript of a real rerun. Had the first paraphrase been accepted, the model would have seen different feedback next. It could have inspected the stock, applied the missing quantity or simply repeated itself again. We cannot know that subsequent path by replacing the parsed action in a spreadsheet. A test of the relaxed interface needs to run the policy again from the point where the histories diverge.
+
+In the generic instruction paired with this episode, the same model selected the legal inspection action repeatedly. It saw the same unadjusted quantity each time. The stock value was available, the action was valid and the job still did not progress. The contrast locates two different interface failures on one starting state. It does not show that the model consciously preferred a paraphrase, or that it lacked a concept of receiving inventory. [Matched generic transcript](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L116)
+
+If I were making this console easier to use, I would test a typed tool-call interface on held-out cases. A second arm could present short aliases while preserving the same SQL bindings. I would record parser acceptance, correctness of the chosen operation, postconditions and explicit completion separately. Otherwise a high acceptance rate might conceal a system that reliably executes the wrong request.
+
+When reading a trace like this, I start with three questions. What did the model actually say? What did the host accept and execute? What state did the verifier observe after that? Keeping those answers distinct gives a researcher a concrete place to intervene without turning a plausible explanation into a claim about the model’s internal reasoning.
