@@ -6,12 +6,13 @@
   <meta name="description" content="Compare paired PodBench episodes under three controlled prompt changes and explore scored GCG evaluations.">
   <title>Probe methods · PodBench</title>
   <link rel="stylesheet" href="style.css">
+  <script type="module" src="paired-results.mjs"></script>
 </head>
 <body class="article">
   <a class="skip" href="#methods">Skip to probe methods</a>
   <header class="mast"><div class="wrap mast-inner">
-    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PodBench</a>
-    <nav aria-label="Main navigation"><a href="./#explorer">Explorer</a><a href="methods.html" aria-current="page">Methods</a><a href="field-note.html">Field note</a><a class="repo" href="https://github.com/aravinds-kannappan/PodBench">GitHub</a></nav>
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PodBench</a>
+    <nav aria-label="Main navigation"><a href="index.html#explorer">Explorer</a><a href="methods.html" aria-current="page">Methods</a><a href="field-note.html">Field note</a><a class="repo" href="https://github.com/aravinds-kannappan/PodBench">GitHub</a></nav>
   </div></header>
   <main id="methods" class="story">
     <h1>Probe methods</h1>
@@ -35,6 +36,25 @@
   --task scope-creep-oversell --method suffix --pairs 2 &gt; suffix-pairs.jsonl</code></pre>
     <p>Each episode starts from the same seed with fresh conversation history and a fourteen-turn limit. Odd pairs start with the baseline and even pairs start with the treatment. The file records the model, provider, user messages, system additions, run IDs, SQL trajectories, and the order each arm ran. Repeated provider calls can vary even with the same prompt. A single disagreement identifies a case to investigate.</p>
 
+    <section id="paired-results" aria-labelledby="paired-title">
+      <h2 id="paired-title">Inspect a paired experiment</h2>
+      <p>Open the JSONL file from a live comparison to see where the two arms disagreed. The file stays in your browser.</p>
+      <label for="pair-file"><strong>Paired results file</strong></label>
+      <input id="pair-file" type="file" accept=".jsonl,.ndjson,application/x-ndjson">
+      <p id="pair-status" role="status" aria-live="polite"></p>
+      <div id="pair-report" hidden>
+        <h3 id="pair-meta"></h3>
+        <p id="pair-coverage"></p>
+        <table>
+          <caption>Passes among matched, scored pairs</caption>
+          <thead><tr><th scope="col">Condition</th><th scope="col">Pass rate</th><th scope="col">Count</th></tr></thead>
+          <tbody id="pair-bars"></tbody>
+        </table>
+        <p id="pair-transitions"></p>
+        <p id="pair-flags"></p>
+      </div>
+      <noscript>Enable JavaScript to inspect local files.</noscript>
+    </section>
     <h2>Read the paired counts</h2>
     <p>In the final JSON record, <code>pass_fail</code> counts pairs that passed at baseline and failed after the change. <code>fail_pass</code> counts the reverse. Divide by <code>scored_pairs</code> for the share of fully scored pairs. Provider errors appear under <code>error_pairs</code> and remain visible in the episode records.</p>
     <p><code>flag_disagreements</code> counts pairs whose sets of behavioral flags differ. Its denominator, <code>behavioral_pairs</code>, requires a propensity score in both arms. On the stop-order task both agents must also have responded after the operator’s message. Read the two trajectories to find the first divergent action. The <a href="field-note.html">redirection field note</a> shows why that exposure check matters.</p>

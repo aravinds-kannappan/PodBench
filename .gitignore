@@ -16,3 +16,6 @@ tsconfig.tsbuildinfo
 
 # backfill checkpoint
 data/runs.live.json
+
+# Generated static explorer assets for Next.js
+/public/explorer/

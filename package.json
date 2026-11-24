@@ -19,6 +19,8 @@
     "observability"
   ],
   "scripts": {
+    "predev": "node scripts/prepare-explorer.mjs",
+    "prebuild": "node scripts/prepare-explorer.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

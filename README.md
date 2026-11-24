@@ -20,9 +20,9 @@ behavior, the trust axis, and pod health on one pane.
 
 ## Explore results by task and behavior
 
-[Open the PodBench explorer](https://aravinds-kannappan.github.io/PodBench/). Select a task or behavioral probe, choose a metric, and copy the graph link to share that view. Each graph includes the underlying counts. The explorer starts with measured episodes from the repository. Its data download includes the source file digest.
+[Open the PodBench explorer](https://pod-bench.vercel.app/explorer/index.html). Select a task or behavioral probe, choose a metric, and copy the graph link to share that view. Each graph includes the underlying counts. The explorer starts with measured episodes from the repository. Its data download includes the source file digest.
 
-[Read the stop-order experiment](https://aravinds-kannappan.github.io/PodBench/field-note.html) or [inspect the paired probe methods](https://aravinds-kannappan.github.io/PodBench/methods.html). The methods cover benign prompt controls and a separate [viewer for externally evaluated GCG outcomes](https://aravinds-kannappan.github.io/PodBench/gcg.html).
+[Read the stop-order experiment](https://pod-bench.vercel.app/explorer/field-note.html) or [inspect the paired probe methods](https://pod-bench.vercel.app/explorer/methods.html). The methods cover benign prompt controls and a separate [viewer for externally evaluated GCG outcomes](https://pod-bench.vercel.app/explorer/gcg.html).
 
 ### Contribute a field report
 
@@ -30,7 +30,7 @@ Where did an agent first go wrong? We welcome reports on long-horizon work, cont
 
 ### Reproduce the explorer
 
-From the repository root, run `npm run site:data` after updating `data/runs.json`. Commit the refreshed `docs/results.json` alongside the corpus. Use `npm run site:data -- --check` to verify the snapshot. Serve the static site locally with `python3 -m http.server 8000 --directory docs` and open `http://localhost:8000`. GitHub Pages serves the `docs/` directory on `main`. The existing Next.js dashboard still runs with `npm run dev`.
+From the repository root, run `npm run site:data` after updating `data/runs.json`. Commit the refreshed `docs/results.json` alongside the corpus. Use `npm run site:data -- --check` to verify the snapshot. Serve the static site locally with `python3 -m http.server 8000 --directory docs` and open `http://localhost:8000`. The Next.js dashboard serves the same files at `/explorer/index.html` with `npm run dev` or `npm run build`. To publish a second copy on GitHub Pages, select the `docs/` directory on `main` in the repository’s Pages settings.
 
 ## Why this exists
 
