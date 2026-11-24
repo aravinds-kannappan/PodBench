@@ -1,0 +1,33 @@
+name: Recovery research artifact
+on:
+  push:
+    paths:
+      - 'research/recovery/**'
+      - 'scripts/local-completion.mjs'
+      - 'docs/recovery-*'
+      - '.github/workflows/recovery.yml'
+  pull_request:
+    paths:
+      - 'research/recovery/**'
+      - 'scripts/local-completion.mjs'
+      - 'docs/recovery-*'
+      - '.github/workflows/recovery.yml'
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify fixtures and reference policies
+        run: |
+          python -m unittest discover -s research/recovery -p 'test_*.py'
+          python research/recovery/baselines.py
+      - name: Replay all published decisions with SQLite
+        run: |
+          python research/recovery/analyze.py
+          python research/recovery/check_inputs.py --results docs/recovery-results.json
+          git diff --exit-code -- docs/recovery-results.json docs/recovery-episodes.csv
