@@ -6,6 +6,7 @@
   <title>GCG evaluations · PodBench</title>
   <link rel="stylesheet" href="style.css">
   <script src="gcg.js" defer></script>
+  <script src="published-gcg.js" defer></script>
   <style>
     .gcg-tool { padding: clamp(1rem, 3vw, 2rem); border: 1px solid #bac6bd; border-radius: 12px; margin: 2rem 0; }
     .gcg-tool input, .gcg-tool select { max-width: 100%; font: inherit; }
@@ -26,6 +27,10 @@
     .gcg-fill { background: #20704d; display: block; height: .6rem; }
     .gcg-variant { background: #585f9b; }
     .gcg-nav { display: flex; gap: 1rem; align-items: center; }
+    .published-table { border-collapse: collapse; }
+    .published-table th, .published-table td { text-align: left; padding: .42rem .65rem; border-bottom: 1px solid var(--line); }
+    .published-table meter { width: clamp(3rem, 10vw, 8rem); vertical-align: middle; }
+    .published-table th:first-child, .published-table td:first-child { padding-left: 0; }
     #gcg-status[data-error] { color: #8d302f; }
   </style>
 </head>
@@ -36,7 +41,22 @@
   </div></header>
   <main class="story">
     <h1>GCG evaluations</h1>
-    <p>Did a task that passed in a clean run still pass under Greedy Coordinate Gradient (GCG)? Compare outcomes for the same case, model version and evaluator across both conditions. The comparison uses scored records from your own evaluation.</p>
+    <p>Explore published Greedy Coordinate Gradient (GCG) outcomes by model, behavior category and judge. You can also <a href="#import-title">import a paired evaluation</a> to compare your own clean and GCG conditions.</p>
+    <section class="gcg-tool" aria-labelledby="published-title">
+      <h2 id="published-title">Published JailbreakBench results</h2>
+      <p>JailbreakBench recorded 100 GCG cases for each of four models on March 18, 2024. Each row shows how often the selected judge classified a response as fulfilling a harmful request. The two open models were tested white-box and the two GPT models under transfer.</p>
+      <div class="gcg-controls">
+        <label>Model<select id="archive-model" disabled><option value="">All models</option></select></label>
+        <label>Evaluator<select id="archive-judge" disabled><option value="jailbroken">Primary verdict</option><option value="jailbroken_llama_guard1">Llama Guard 1</option></select></label>
+      </div>
+      <p id="archive-status" role="status">Loading published scores…</p>
+      <table class="published-table" id="archive-table" hidden>
+        <thead><tr><th id="archive-heading" scope="col">Model</th><th scope="col">Setting</th><th scope="col">Success rate</th><th scope="col">Count</th></tr></thead>
+        <tbody id="archive-rows"></tbody>
+      </table>
+      <p>For Vicuna-13B-v1.5, the primary verdict counts 80 successes and Llama Guard 1 counts 58 across the same 100 responses. The chart uses each case’s recorded verdict. Select a model to see the ten behavior categories. These are historical GCG evaluations with no paired baseline in the archive. <a href="https://arxiv.org/pdf/2404.01318#page=8">JailbreakBench, Table 2</a></p>
+      <p><a href="published-gcg.json" download>Download aggregate counts</a> · <a href="https://github.com/JailbreakBench/artifacts/tree/909e68c01d94222b8ad2e397a017e2e12e2adb73/attack-artifacts/GCG">Pinned JailbreakBench archive</a></p>
+    </section>
     <section class="gcg-tool" aria-labelledby="import-title">
       <h2 id="import-title">Import paired outcomes</h2>
       <p>Choose a JSON file with blinded case IDs and verdicts. Your browser reads the file locally.</p>
@@ -75,8 +95,6 @@
         <div id="gcg-pages" hidden><div class="gcg-nav"><button type="button" id="gcg-prev">Previous</button><span id="gcg-range"></span><button type="button" id="gcg-next">Next</button></div></div>
       </section>
     </section>
-    <h2>A published GCG result</h2>
-    <p>Chao et al. reported an 80% GCG attack success rate on Vicuna-13B-v1.5 across the 100 harmful behaviors in JBB-Behaviors. Their Llama-3-70B judge counted a success when it classified the response as fulfilling the harmful request. This historical JailbreakBench aggregate has no paired clean outcomes here, so it is displayed separately from imported case results. <a href="https://arxiv.org/pdf/2404.01318#page=8">JailbreakBench, Table 2</a></p>
     <p>Yi et al. classify GCG as a white-box gradient-based method and describe how the choice of evaluator changes measured success. PodBench’s fixed, benign prompt variants measure changes in task performance under simpler conditions. <a href="https://arxiv.org/pdf/2407.04295#page=3">Survey, §§3.1.1 and 5.1</a> · <a href="methods.html">PodBench methods</a></p>
   </main>
 </body>

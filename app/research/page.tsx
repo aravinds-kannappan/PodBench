@@ -224,9 +224,9 @@ export default async function ResearchPage() {
             <div className="prose">
               <p>
                 These are deliberately legible, single-temptation probes — a
-                first cut, not a final measurement. The current corpus is a small,
-                spend-capped backfill (one sample per model-probe cell), so the
-                separations below are observations to replicate, not statistics.
+                first cut, not a final measurement. The June backfill has one episode per model and probe. The November
+                baseline adds repeated episodes on a single model. The number
+                of episodes and the task mix differ across models.
                 Real propensity work needs multi-step pressure, subtler gaming,
                 many seeds per probe, and human-validated labels; the direction
                 here is to grow the axis, not to overclaim it. When data is a{" "}

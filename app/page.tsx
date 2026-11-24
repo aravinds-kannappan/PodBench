@@ -20,7 +20,7 @@ export default async function Page() {
 
   return (
     <>
-      <Masthead tagline="Deterministic, resettable SQL task environments for LLM agents, scored on two axes — task correctness and behavioral trust (propensity) — across the top two models from Anthropic, OpenAI, and Google. Head to demo runs to execute your own agents live." />
+      <Masthead tagline="Deterministic, resettable SQL task environments for LLM agents, scored on two axes — task correctness and behavioral trust (propensity). Head to demo runs to execute your own agents live." />
 
       <main className="wrap">
         {allSim && (
@@ -52,10 +52,15 @@ export default async function Page() {
 
         <div className="cta-row">
           <span className="dim">
-            Six models across three labs. To run agents yourself and watch live
+            {stats.by_model.length} models in this corpus. To run agents yourself and watch live
             results accumulate, open the
           </span>
           <Link href="/demo" className="cta-link">demo runs tab →</Link>
+        </div>
+
+        <div className="cta-row">
+          <a className="cta-link" href="/explorer/index.html#study">Explore the measured behavior studies</a>
+          <span className="dim">Prompt comparisons, option-order reversals, and episode traces.</span>
         </div>
 
         <ModelBehavior stats={stats} />

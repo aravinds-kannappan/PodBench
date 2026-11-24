@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Observed effects of character noise and majority voting on nine benign SQL work orders, with all model responses available.">
+  <title>Does a typo change the decision? · PodBench</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="smoothing.js" defer></script>
+</head>
+<body class="article">
+  <a class="skip" href="#results">Skip to results</a>
+  <header class="mast"><div class="wrap mast-inner">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PodBench</a>
+    <nav aria-label="Main navigation"><a href="index.html#explorer">Explorer</a><a href="methods.html">Methods</a><a href="field-note.html">Field note</a><a class="repo" href="https://github.com/aravinds-kannappan/PodBench">GitHub</a></nav>
+  </div></header>
+  <main class="story" id="results">
+    <h1>Does a typo change the decision?</h1>
+    <p>We gave Qwen2.5-0.5B-Instruct nine SQL work orders and two possible actions for each. We compared its answer on the original text with a vote across five copies, each containing a different typo. Each work order appeared with the actions in both possible positions.</p>
+    <p><strong>The model chose the first option on all 18 clean presentations.</strong> Voting chose the first option every time as well. Reversing the actions turned a correct original choice into a miss on every work order. The apparent stability across typos therefore included nine stable wrong answers.</p>
+    <p id="smooth-status" role="status">Loading recorded results…</p>
+    <div id="smooth-results" hidden>
+      <h2>Correct action choices</h2>
+      <div class="study-graphs" id="smooth-chart"></div>
+      <p id="smooth-flips"></p>
+      <p id="smooth-orders"></p>
+      <h2>Inspect the five votes</h2>
+      <label for="smooth-case">Work order and option order</label>
+      <select id="smooth-case"></select>
+      <div id="smooth-trace" aria-live="polite"></div>
+    </div>
+    <p><a href="smoothing-results.json" download>Download all prompts, responses, votes and model settings</a></p>
+    <h2>What the vote measures</h2>
+    <p>We fixed the first three cases in each of three task families before inference. Each appeared with the authorized action first and second. We sampled five distinct positions in the work-order text. Each edit transposed two different adjacent letters inside a word, leaving the first and last letters, option text and numbers intact. Both option orders used the same five offsets. Every completion started a fresh chat.</p>
+    <p>We counted a vote for a single A or B, ignoring case, surrounding spaces and an optional final period or exclamation mark. At least three of the five completions had to select the same letter. Invalid completions supplied no vote. All 18 presentations contributed to accuracy, including any invalid clean choices or votes without a majority.</p>
+    <p>SmoothLLM combines character perturbations with a vote on whether responses meet a jailbreak criterion. Here the vote is on the action selected in a benign work order. This measures sensitivity to typing errors and option order on a small, fixed case set. The model made single-turn selections. Tool execution and learning over time require separate experiments. <a href="https://arxiv.org/pdf/2310.03684#page=5">Robey et al., §3</a> · <a href="https://arxiv.org/pdf/2407.04295#page=12">Yi et al., §4.1.2</a></p>
+    <h2>Repeat the comparison</h2>
+    <p>Use Python 3.12, Node.js 24 and the pinned Q4_K_M model weights. The generator verifies the file’s SHA-256 digest before running inference on two CPU threads. It uses greedy decoding, a 12-token output limit and a fresh conversation per draw. The study seed is 20261124. <a href="https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/blob/9217f5db79a29953eb74d5343926648285ec7e67/qwen2.5-0.5b-instruct-q4_k_m.gguf">Pinned model file</a> · <a href="https://github.com/aravinds-kannappan/PodBench/blob/main/scripts/smoothing_study.py">Study script</a></p>
+    <pre><code>npm install --prefix /tmp/podbench-runtime --ignore-scripts node-llama-cpp@3.16.2
+NODE_PATH=/tmp/podbench-runtime/node_modules python scripts/smoothing_study.py qwen2.5-0.5b-instruct-q4_k_m.gguf --output repeat.json</code></pre>
+    <p><a href="index.html#study">Compare the full action-choice study</a> · <a href="gcg.html">Explore scored GCG evaluations</a></p>
+  </main>
+</body>
+</html>

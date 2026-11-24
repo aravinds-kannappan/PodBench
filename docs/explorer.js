@@ -3,6 +3,14 @@
 const byId = (id) => document.getElementById(id);
 const controls = byId("controls");
 const sourceNames = { live: "Measured", simulated: "Simulated", unknown: "Unclassified" };
+const cohortNames = {
+  all: "All cohorts", "june-reference": "June reference", "flash-lite-baseline": "Flash-Lite baseline",
+  "sql-prompt": "SQL prompt study", "batch-interrupt": "Batch interruption", unassigned: "Unassigned cohort",
+};
+const conditionNames = {
+  all: "All conditions", reference: "Reference prompt", baseline: "Baseline", suffix: "Fixed suffix",
+  reminder: "Boundary reminder", format: "Task formatting", unassigned: "Unrecorded condition",
+};
 const probeNames = {
   scope_creep: "Scope creep",
   test_gaming: "Grader gaming",
@@ -13,6 +21,7 @@ const taskShortNames = {
   "dedup-customers": "Dedup",
   "fix-oversell": "Stock",
   "redirection-merge": "Stop",
+  "redirection-merge-paused": "Pause",
   "refund-order": "Refund",
   "revenue-by-category": "Rev.",
   "scope-creep-oversell": "Scope",
@@ -22,6 +31,7 @@ const taskShortNames = {
 const modelNames = {
   "claude-opus-4-8": "Opus 4.8",
   "claude-sonnet-4-6": "Sonnet 4.6",
+  "google/gemini-2.5-flash-lite": "Gemini 2.5 Flash-Lite",
   "gemini-3.1-pro": "Gemini 3.1 Pro",
   "gemini-3.5-flash": "Gemini 3.5 Flash",
   "gpt-5.5": "GPT-5.5",
@@ -47,7 +57,7 @@ const metrics = {
     note: "Total recorded agent steps divided by episodes with a step count.",
   },
 };
-const groups = { task: "Task", behavior: "Behavior", model: "Model" };
+const groups = { task: "Task", behavior: "Behavior", model: "Model", cohort: "Cohort", condition: "Prompt condition" };
 const fmt = new Intl.NumberFormat("en", { maximumFractionDigits: 2 });
 const pct = new Intl.NumberFormat("en", { style: "percent", maximumFractionDigits: 1 });
 const taskNames = new Map();
@@ -138,20 +148,31 @@ function setOptions(select, keys, name, emptyLabel) {
   if (keys.includes(selected)) select.value = selected;
 }
 
-function refreshFilters() {
-  const rows = records.filter((r) => r.source === byId("source").value);
+function scopeSelect(field, rows, names, preferred, requested) {
+  const keys = values(rows, field);
+  const select = byId(field);
+  setOptions(select, ["all", ...keys], (key) => names[key] ?? key);
+  select.value = requested === "all" || keys.includes(requested)
+    ? requested : keys.includes(preferred) ? preferred : keys[0] ?? "all";
+  return select.value === "all" ? rows : rows.filter((r) => r[field] === select.value);
+}
+
+function refreshFilters(requested = Object.fromEntries(new FormData(controls))) {
+  const sourceRows = records.filter((r) => r.source === byId("source").value);
+  const cohortRows = scopeSelect("cohort", sourceRows, cohortNames, "june-reference", requested.cohort);
+  const rows = scopeSelect("condition", cohortRows, conditionNames, "baseline", requested.condition);
   setOptions(byId("task"), values(rows, "task_id"), taskName, "All tasks");
   setOptions(byId("model"), values(rows, "model"), modelName, "All models");
   setOptions(byId("behavior"), values(rows, "probe"), probeName, "All probes and tasks");
 }
 
 function readQuery() {
-  const params = new URLSearchParams(location.search);
-  for (const key of ["source", "group", "metric", "task", "behavior", "model"]) {
+  const params = Object.fromEntries(new URLSearchParams(location.search));
+  if (Array.from(byId("source").options).some((o) => o.value === params.source)) byId("source").value = params.source;
+  refreshFilters(params);
+  for (const key of ["group", "metric", "task", "behavior", "model"]) {
     const select = byId(key);
-    const value = params.get(key);
-    if (Array.from(select.options).some((o) => o.value === value)) select.value = value;
-    if (key === "source") refreshFilters();
+    if (Array.from(select.options).some((o) => o.value === params[key])) select.value = params[key];
   }
 }
 
@@ -166,14 +187,17 @@ function graphUrl() {
 }
 
 function renderGraph() {
-  const { source, task, behavior, model, group, metric } = Object.fromEntries(new FormData(controls));
+  const { source, cohort, condition, task, behavior, model, group, metric } = Object.fromEntries(new FormData(controls));
   const selectedMetric = metrics[metric];
   const matched = records.filter((r) =>
-    r.source === source && (!task || r.task_id === task) && (!model || r.model === model) &&
+    r.source === source && (cohort === "all" || r.cohort === cohort) &&
+    (condition === "all" || r.condition === condition) && (!task || r.task_id === task) && (!model || r.model === model) &&
     (!behavior || r.probe === behavior) && (group !== "behavior" || r.probe)
   );
-  const keyOf = { task: (r) => r.task_id, model: (r) => r.model, behavior: (r) => r.probe }[group];
-  const labelOf = { task: taskName, model: modelName, behavior: probeName }[group];
+  const keyOf = { task: (r) => r.task_id, model: (r) => r.model, behavior: (r) => r.probe,
+    cohort: (r) => r.cohort, condition: (r) => r.condition }[group];
+  const labelOf = { task: taskName, model: modelName, behavior: probeName,
+    cohort: (key) => cohortNames[key] ?? key, condition: (key) => conditionNames[key] ?? key }[group];
   const points = [];
   for (const [key, rows] of groupBy(matched, keyOf)) {
     const scores = rows.map(selectedMetric.value).filter(Number.isFinite);
@@ -183,12 +207,13 @@ function renderGraph() {
   points.sort((a, b) => a.label.localeCompare(b.label));
   const eligible = points.reduce((total, p) => total + p.eligible, 0);
   const graph = byId("graph");
-  const title = selectedMetric.name + " by " + group;
+  const title = selectedMetric.name + " by " + groups[group].toLowerCase();
   const note = [selectedMetric.note];
   if (group === "behavior") note.push("Groups correspond to each task’s designated probe.");
+  if (cohort === "all" || condition === "all") note.push("The selection can pool episodes with different task mixes, interventions, or prompts.");
   note.push("The data table gives the sample size for each value.");
   byId("plot-title").textContent = title;
-  byId("plot-source").textContent = sourceNames[source] + " · " + matched.length + (matched.length === 1 ? " run" : " runs");
+  byId("plot-source").textContent = [sourceNames[source], cohortNames[cohort] ?? cohort, conditionNames[condition] ?? condition].join(" · ") + " · " + matched.length + (matched.length === 1 ? " run" : " runs");
   byId("graph-caption").textContent = note.join(" ");
   byId("graph-status").textContent = title + ". " + points.length + " groups, " + eligible + " eligible episodes.";
   graph.replaceChildren();
@@ -249,7 +274,7 @@ async function start() {
   if (!response.ok) throw new Error("Cannot load results.");
   const dataset = await response.json();
   if (dataset.schema_version !== 1 || !Array.isArray(dataset.runs)) throw new Error("Unsupported dataset.");
-  records = dataset.runs;
+  records = dataset.runs.map((r) => ({...r, cohort: r.cohort ?? "unassigned", condition: r.condition ?? "unassigned"}));
   for (const row of records) taskNames.set(row.task_id, row.task_title);
   renderOverview();
   const sources = ["live", ...values(records, "source").filter((key) => key !== "live")];
@@ -257,7 +282,9 @@ async function start() {
   readQuery();
   renderGraph();
   controls.addEventListener("change", (event) => {
-    if (event.target.id === "source") refreshFilters();
+    if (event.target.id === "source") refreshFilters({});
+    if (event.target.id === "cohort") refreshFilters({cohort: byId("cohort").value});
+    if (event.target.id === "condition") refreshFilters();
     if (event.target.id === "group") byId("metric").value = event.target.value === "behavior" ? "flags" : "pass";
     renderGraph();
     history.replaceState(null, "", graphUrl());
@@ -265,7 +292,7 @@ async function start() {
   controls.addEventListener("reset", (event) => {
     event.preventDefault();
     byId("source").value = "live";
-    refreshFilters();
+    refreshFilters({});
     byId("group").value = "task";
     byId("metric").value = "pass";
     for (const key of ["task", "model", "behavior"]) byId(key).value = "";

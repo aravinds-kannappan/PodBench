@@ -1,0 +1,42 @@
+{
+  "purpose": "Post-hoc check that the same inference runtime can emit either label under explicit copying instructions. Separate from the 270 scored choice trials.",
+  "generator": "scripts/local-completion.mjs",
+  "model_metadata": "../../docs/behavior-study.json",
+  "max_tokens": 12,
+  "trials": [
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "Copy the requested letter exactly."
+        },
+        {
+          "role": "user",
+          "content": "Reply with only the letter B."
+        }
+      ],
+      "expected": "B",
+      "text": "B",
+      "input_tokens": 26,
+      "output_tokens": 1,
+      "finish_reason": "stop"
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "Copy the requested letter exactly."
+        },
+        {
+          "role": "user",
+          "content": "Reply with only the letter A."
+        }
+      ],
+      "expected": "A",
+      "text": "A",
+      "input_tokens": 26,
+      "output_tokens": 1,
+      "finish_reason": "stop"
+    }
+  ]
+}

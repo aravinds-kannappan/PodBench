@@ -8,9 +8,10 @@
   <title>PodBench · Agent benchmark explorer</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="explorer.js"></script>
+  <script defer src="behavior-study.js"></script>
 </head>
 <body>
-<a class="skip" href="#explorer">Skip to benchmark explorer</a>
+<a class="skip" href="#study">Skip to measured studies</a>
 <header class="mast">
   <div class="wrap mast-inner">
     <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PodBench</a>
@@ -28,41 +29,115 @@
       <div class="intro">
         <p class="kicker"><span class="rule"></span>Agent evaluation</p>
         <h1>Agent behavior,<br><em>under test.</em></h1>
-        <p class="dek">Explore how agents handle SQL tasks, stay within scope, and respond when an operator tells them to stop.</p>
-        <a class="primary" href="#explorer">Explore results</a>
+        <p class="dek" id="study-headline">Inspect how models respond to changes in a work order. Compare their stated choices and the SQL they execute, then read the trace behind a failure.</p>
+        <a class="primary" href="#study">Explore results</a>
       </div>
-      <figure class="matrix-card" id="overview" aria-labelledby="matrix-title">
-        <div class="matrix-heading"><figcaption id="matrix-title">Task pass matrix</figcaption><span class="matrix-key"><i></i>Measured runs</span></div>
-        <div id="matrix" class="matrix-scroll"><p>Loading recorded results…</p></div>
-        <div class="matrix-foot"><div class="legend" aria-label="Pass rate legend"><span><i class="full"></i>All passed</span><span><i class="partial"></i>Mixed</span><span><i class="none"></i>None passed</span><span><i class="missing"></i>No runs</span></div></div>
+      <figure class="matrix-card" aria-labelledby="study-matrix-title">
+        <div class="matrix-heading"><figcaption id="study-matrix-title">Choices changed by option order</figcaption><span class="matrix-key"><i></i>Measured study</span></div>
+        <div id="study-matrix" class="matrix-scroll"><p>Loading study records…</p></div>
+        <div class="matrix-foot study-matrix-foot" id="study-matrix-note">Work orders where swapping A and B changed the selected action.</div>
       </figure>
     </div>
-    <div class="wrap snapshot" aria-label="Measured dataset coverage">
-      <div><strong id="snap-runs">—</strong><span>measured runs</span></div>
-      <div><strong id="snap-tasks">—</strong><span>observed tasks</span></div>
-      <div><strong id="snap-models">—</strong><span>models</span></div>
-      <div><strong id="snap-probes">—</strong><span>behavior probes</span></div>
+    <div class="wrap study-links" aria-label="Explore measured experiments">
+      <a href="#study"><strong>Action choice</strong><span id="choice-link-summary">Compare single-turn decisions</span></a>
+      <a href="sql-study.html"><strong>SQL tool use</strong><span id="sql-link-summary">Inspect executed queries and verifier outcomes</span></a>
+      <a href="smoothing.html"><strong>Randomized smoothing</strong><span id="smoothing-link-summary">Inspect benign prompt perturbations</span></a>
+      <a href="gcg.html"><strong>Published GCG evaluations</strong><span>400 JailbreakBench cases across four models</span></a>
     </div>
   </div>
+  <aside class="wrap batch-callout" aria-labelledby="batch-note-title">
+    <div>
+      <p class="plot-meta">SQL field experiment</p>
+      <h2 id="batch-note-title">When a stop arrives mid-batch</h2>
+      <p>Gemini Flash-Lite deleted the customer in all four original merge episodes. Pausing the tool batch after the first write gave the model a turn to receive the hold.</p>
+      <a class="text-link" href="field-note.html#batch-interrupt">Read the experiment and trace</a>
+    </div>
+    <div class="batch-outcomes">
+      <table><caption class="sr">Observed outcomes in eight completed SQL episodes</caption>
+        <thead><tr><th scope="col">Tool batch</th><th scope="col">Deleted</th><th scope="col">Task passed</th></tr></thead>
+        <tbody><tr><th scope="row">Original</th><td>4/4</td><td>2/4</td></tr><tr><th scope="row">Paused</th><td>0/4</td><td>4/4</td></tr></tbody>
+      </table>
+      <a class="text-link" href="?cohort=batch-interrupt&amp;condition=baseline#explorer">Graph these episodes</a>
+    </div>
+  </aside>
+  <section class="wrap explorer" id="study" aria-labelledby="study-title">
+    <div class="section-head">
+      <div><p class="kicker dark-kicker"><span class="rule"></span>Measured study</p><h2 id="study-title">Which action does the model choose?</h2></div>
+      <a class="text-link" href="behavior-study.json" download>Download trials</a>
+    </div>
+    <p id="study-coverage" class="study-coverage" role="status">Loading measured action choices…</p>
+    <noscript><p>Enable JavaScript to compare conditions or download the trial records above.</p></noscript>
+    <div id="study-body" hidden>
+      <div class="plot-card study-panel">
+        <div class="plot-top">
+          <div><p class="plot-meta">Paired action choices</p><h3>Correct choices by behavior</h3></div>
+          <div class="study-control"><label for="study-condition">Compare with baseline</label><select id="study-condition"></select></div>
+        </div>
+        <div class="order-panel" aria-live="polite">
+          <h4>What happened when A and B swapped places?</h4>
+          <p>Each work order appears twice, with its actions reversed. A pair is eligible when both responses parse. “Changed action” means the model chose a different action after the swap.</p>
+          <div class="table-scroll"><table class="order-table">
+            <caption class="sr">Results across both answer orders, comparing baseline and selected condition</caption>
+            <thead><tr><th scope="col">Condition</th><th scope="col">Changed action / eligible</th><th scope="col">Correct twice / eligible</th><th scope="col">Ineligible pairs</th><th scope="col">A / B responses</th></tr></thead>
+            <tbody id="study-order-rows"></tbody>
+          </table></div>
+        </div>
+        <div id="study-graphs" class="study-graphs" aria-live="polite"></div>
+        <p class="plot-note">Each bar shows correct choices divided by responses that parsed as A or B. Wrong choices and invalid responses are counted separately. The same work orders appear in both answer orders and every condition.</p>
+        <p id="study-changes" class="study-changes" aria-live="polite"></p>
+        <details class="table-panel" id="study-provenance"><summary>Study design and provenance</summary><div id="study-design"></div></details>
+      </div>
+      <div class="plot-card study-inspector">
+        <div class="plot-top">
+          <div><p class="plot-meta">Trial inspection</p><h3>Compare a pair of responses</h3></div>
+          <div class="inspect-controls">
+            <div class="study-control"><label for="study-pair-mode">Comparison</label>
+              <select id="study-pair-mode"><option value="order-clean">Reverse options at baseline</option><option value="order-treatment">Reverse options with treatment</option><option value="prompt">Compare prompt conditions</option></select>
+            </div>
+            <div class="study-control"><label for="study-case">Work order</label><select id="study-case"></select></div>
+          </div>
+        </div>
+        <p id="pair-finding" class="study-finding" aria-live="polite"></p>
+        <div id="study-pair" class="study-pair"></div>
+      </div>
+    </div>
+  </section>
   <section class="wrap explorer" id="explorer" aria-labelledby="explorer-title">
     <div class="section-head">
-      <div><p class="kicker dark-kicker"><span class="rule"></span>Results</p><h2 id="explorer-title">Benchmark explorer</h2></div>
+      <div><p class="kicker dark-kicker"><span class="rule"></span>Archived SQL episodes</p><h2 id="explorer-title">Benchmark explorer</h2></div>
       <a class="text-link" href="results.json" download>Download dataset</a>
     </div>
+    <details class="archive-summary"><summary>Dataset coverage and task pass matrix across all measured cohorts and conditions</summary>
+      <div class="archive-grid">
+        <figure class="matrix-card" id="overview" aria-labelledby="matrix-title">
+          <div class="matrix-heading"><figcaption id="matrix-title">All measured SQL episodes</figcaption><span class="matrix-key"><i></i>Measured runs</span></div>
+          <div id="matrix" class="matrix-scroll"><p>Loading recorded results…</p></div>
+          <div class="matrix-foot"><div class="legend" aria-label="Pass rate legend"><span><i class="full"></i>All passed</span><span><i class="partial"></i>Mixed</span><span><i class="none"></i>None passed</span><span><i class="missing"></i>No runs</span></div></div>
+        </figure>
+        <div class="snapshot" aria-label="Measured dataset coverage">
+          <div><strong id="snap-runs">—</strong><span>SQL episodes</span></div>
+          <div><strong id="snap-tasks">—</strong><span>observed tasks</span></div>
+          <div><strong id="snap-models">—</strong><span>models</span></div>
+          <div><strong id="snap-probes">—</strong><span>behavior probes</span></div>
+        </div>
+      </div>
+    </details>
     <noscript><p>Enable JavaScript to draw graphs, or use the dataset download above to inspect the run records.</p></noscript>
     <div id="load-error" role="alert" hidden></div>
     <div class="workbench">
       <form id="controls" class="filters" aria-label="Graph settings">
         <h3>Build a graph</h3>
         <label for="group">Group by</label>
-        <select id="group" name="group"><option value="task">Task</option><option value="behavior">Behavior</option><option value="model">Model</option></select>
+        <select id="group" name="group"><option value="task">Task</option><option value="behavior">Behavior</option><option value="model">Model</option><option value="condition">Prompt condition</option><option value="cohort">Cohort</option></select>
         <label for="metric">Metric</label>
         <select id="metric" name="metric"><option value="pass">Pass rate</option><option value="flags">Behavior flag rate</option><option value="reward">Mean reward</option><option value="steps">Mean steps</option></select>
         <div class="filter-break"></div>
+        <label for="source">Run source</label><select id="source" name="source"><option value="live">Measured</option></select>
+        <label for="cohort">Cohort</label><select id="cohort" name="cohort"></select>
+        <label for="condition">Prompt condition</label><select id="condition" name="condition"></select>
         <label for="task">Task</label><select id="task" name="task"><option value="">All tasks</option></select>
         <label for="behavior">Behavior probe</label><select id="behavior" name="behavior"><option value="">All probes and tasks</option></select>
         <label for="model">Model</label><select id="model" name="model"><option value="">All models</option></select>
-        <label for="source">Run source</label><select id="source" name="source"><option value="live">Measured</option></select>
         <button class="reset" type="reset">Reset graph</button>
       </form>
       <div class="plot-card">
@@ -82,7 +157,7 @@
     <div class="reading">
       <a href="field-note.html"><span class="plot-meta">Field note</span><h3>After the stop order</h3><p>Follow the redirection task from the operator’s instruction to the agent’s next write.</p></a>
       <a href="methods.html"><span class="plot-meta">Methods</span><h3>Paired prompt probes</h3><p>Compare task outcomes and behavior under controlled changes to the prompt.</p></a>
-      <a href="gcg.html"><span class="plot-meta">Analysis tool</span><h3>GCG evaluations</h3><p>Graph paired baseline and GCG results from an externally scored evaluation.</p></a>
+      <a href="gcg.html"><span class="plot-meta">Analysis tool</span><h3>GCG evaluations</h3><p>Compare published JailbreakBench outcomes by behavior and judge, or import your own paired results.</p></a>
     </div>
   </section>
 </main>

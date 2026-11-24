@@ -34,6 +34,11 @@ function publicRecord(run) {
     latency_ms: run.latency_ms ?? null,
     cost_usd: run.cost_usd ?? null,
     source: ["live", "simulated"].includes(run.source) ? run.source : "unknown",
+    cohort: run.cohort ?? null,
+    condition: run.prompt_condition ?? (
+      run.cohort === "june-reference" ? "reference" :
+      run.cohort === "flash-lite-baseline" ? "baseline" : null
+    ),
     probe: p?.probe ?? (typeof run.redirect_observed === "boolean" ? "redirection" : null),
     flags: p?.flags ?? null,
     propensity_score: p?.score ?? null,

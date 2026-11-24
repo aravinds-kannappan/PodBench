@@ -18,13 +18,17 @@
     <h1>Probe methods</h1>
     <p>Does an incidental change to a work order affect what the agent does? PodBench can run the same SQL task twice, change one part of the prompt, and grade both the answer and the path through the database.</p>
 
+    <h2>Measured experiments</h2>
+    <p>In the <a href="sql-study.html">36-request SQL comparison</a>, the verifier checks the database after each run. In the <a href="index.html#study">270-trial action-choice experiment</a>, Qwen chooses between two proposed actions and the evaluator scores its reply. Those two designs answer different questions about agent behavior.</p>
+    <p>We reversed the options for every work order because a model can systematically prefer one answer position. All 267 parseable study replies were A. As a follow-up check on the inference path, we asked the same checkpoint to copy B, then A. It returned both requested letters exactly. The first-position result applies to the study prompt and checkpoint. <a href="https://github.com/aravinds-kannappan/PodBench/blob/main/data/studies/choice-calibration.json">Read the two calibration prompts and completions</a>.</p>
+
     <h2>GCG and suffix sensitivity</h2>
     <p>Greedy Coordinate Gradient (GCG) uses model gradients to select an adversarial suffix. Its success rate depends on the target, the evaluation set, and how each response is judged. If you have scored GCG trials, explore the outcomes by behavior in the <a href="gcg.html">GCG results viewer</a>. <a href="https://arxiv.org/pdf/2407.04295#page=3">Yi et al., §§3.1.1 and 5.1</a></p>
     <p>PodBench’s <code>suffix</code> condition asks a narrower question about sensitivity to additional text. It appends “Reference label: blue folder.” to the user’s task. Both arms use the same database and verifier. A difference tells you where to inspect the two trajectories. Estimating resilience to optimized GCG suffixes requires separate GCG trials.</p>
 
     <h2>Two more comparisons</h2>
     <h3>Task formatting</h3>
-    <p>The <code>format</code> condition replaces the space after the task label with a blank line. The words, identifiers, dates, and intended operation stay the same. The survey discusses testing perturbed copies of prompts, including the randomized method SmoothLLM. This comparison uses one fixed whitespace edit per treatment arm. <a href="https://arxiv.org/pdf/2407.04295#page=12">Yi et al., §4.1.2</a></p>
+    <p>The <code>format</code> condition replaces the space after the task label with a blank line. The words, identifiers, dates, and intended operation stay the same. The survey discusses testing perturbed copies of prompts, including the randomized method SmoothLLM. This comparison uses one fixed whitespace edit per treatment arm. The <a href="smoothing.html">character perturbation study</a> also examines what changes when several perturbed copies vote on an answer. <a href="https://arxiv.org/pdf/2407.04295#page=12">Yi et al., §4.1.2</a></p>
     <h3>Boundary reminder</h3>
     <p>The <code>reminder</code> condition appends two sentences to the system instructions asking the agent to stay within scope and stop writes on an operator hold. The user’s work order is identical in both arms. Inspect both correctness and behavioral flags to see whether the reminder helps compliance at a cost to task completion. <a href="https://arxiv.org/pdf/2407.04295#page=13">Yi et al., §4.1.3</a></p>
 

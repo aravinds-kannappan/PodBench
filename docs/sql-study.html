@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Inspect live SQL agent episodes across three prompt conditions, compare paired outcomes and trace individual failures.">
+  <title>SQL prompt trials · PodBench</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="sql-study.js" defer></script>
+</head>
+<body class="article">
+  <a class="skip" href="#results">Skip to results</a>
+  <header class="mast"><div class="wrap mast-inner">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PodBench</a>
+    <nav aria-label="Main navigation"><a href="index.html#explorer">Explorer</a><a href="methods.html">Methods</a><a href="field-note.html">Field note</a><a class="repo" href="https://github.com/aravinds-kannappan/PodBench">GitHub</a></nav>
+  </div></header>
+  <main class="story" id="results">
+    <h1>SQL prompt trials</h1>
+    <p>Does the agent act differently when a work order ends with an irrelevant label, or when its system instructions repeat an operator boundary? Each episode gives the model a fresh seeded database and the same two tools to run SQL and submit its answer.</p>
+    <p id="study-status" role="status">Loading recorded episodes…</p>
+    <noscript><p>Enable JavaScript to inspect the study, or download the <a href="sql-study.json">episode results</a>.</p></noscript>
+    <div id="sql-results" hidden>
+      <section aria-labelledby="chart-title">
+        <h2 id="chart-title">Outcomes by task</h2>
+        <label for="sql-metric">Measure</label>
+        <select id="sql-metric">
+          <option value="failure">Task failure rate</option>
+          <option value="flag">Behavioral flag rate</option>
+        </select>
+        <p id="metric-note"></p>
+        <div class="study-graphs" id="sql-chart"></div>
+        <p id="refund-summary"></p>
+        <p id="hold-summary"></p>
+        <p><a href="field-note.html#batch-interrupt">Read the recovery experiment on batched writes and operator holds</a>.</p>
+      </section>
+      <section aria-labelledby="paired-title">
+        <h2 id="paired-title">When the verdict changed</h2>
+        <p>Each comparison pairs a treatment with the baseline on the same task and repeat. Task transitions require a completed verdict in both arms. Flag changes require behavioral scores in both arms.</p>
+        <table>
+          <caption class="sr">Paired task and behavioral outcomes by condition</caption>
+          <thead><tr><th scope="col">Prompt change</th><th scope="col">Pass to fail</th><th scope="col">Fail to pass</th><th scope="col">Same task verdict</th><th scope="col">Flag verdict changed</th></tr></thead>
+          <tbody id="sql-pairs"></tbody>
+        </table>
+      </section>
+      <section aria-labelledby="inspect-title">
+        <h2 id="inspect-title">Inspect an episode</h2>
+        <label for="sql-selected">Task, prompt condition and repeat</label>
+        <select id="sql-selected"></select>
+        <div id="sql-detail" aria-live="polite"></div>
+      </section>
+      <h2>What the comparison covers</h2>
+      <p id="sql-design"></p>
+      <p>The baseline uses the original work order. The suffix condition appends “Reference label: blue folder.” to its user message. The reminder condition adds instructions about staying in scope and stopping on hold to the system message. The survey describes suffix-based tests and protective prompts. The fixed label tests sensitivity to incidental text. Measuring GCG robustness requires outcomes from optimized suffix trials. <a href="https://arxiv.org/abs/2407.04295">Yi et al.</a></p>
+      <p>These repeats use one model and a fixed database seed. Sampling variability, including differences between two baseline repeats, can produce a change in outcome. Each run starts with a fresh conversation, so the study measures short-episode behavior.</p>
+      <p><a href="sql-study.json" download>Download the scored episodes</a> · <a href="https://github.com/aravinds-kannappan/PodBench/blob/main/data/studies/sql-prompt-trials.jsonl">Read the full trajectories</a></p>
+    </div>
+  </main>
+</body>
+</html>

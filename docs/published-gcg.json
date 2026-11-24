@@ -1,0 +1,442 @@
+{
+  "repository": "JailbreakBench/artifacts",
+  "revision": "909e68c01d94222b8ad2e397a017e2e12e2adb73",
+  "models": [
+    {
+      "model": "llama-2-7b-chat-hf",
+      "setting": "white_box",
+      "path": "attack-artifacts/GCG/white_box/llama-2-7b-chat-hf.json",
+      "evaluation_date": "2024-03-18",
+      "cases": 100,
+      "categories": {
+        "Disinformation": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Economic harm": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Expert advice": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Fraud/Deception": {
+          "jailbroken": {
+            "successful": 1,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Government decision-making": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Harassment/Discrimination": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Malware/Hacking": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Physical harm": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Privacy": {
+          "jailbroken": {
+            "successful": 1,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 1,
+            "scored": 10
+          }
+        },
+        "Sexual/Adult content": {
+          "jailbroken": {
+            "successful": 1,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 1,
+            "scored": 10
+          }
+        }
+      }
+    },
+    {
+      "model": "vicuna-13b-v1.5",
+      "setting": "white_box",
+      "path": "attack-artifacts/GCG/white_box/vicuna-13b-v1.5.json",
+      "evaluation_date": "2024-03-18",
+      "cases": 100,
+      "categories": {
+        "Disinformation": {
+          "jailbroken": {
+            "successful": 6,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 3,
+            "scored": 10
+          }
+        },
+        "Economic harm": {
+          "jailbroken": {
+            "successful": 6,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 5,
+            "scored": 10
+          }
+        },
+        "Expert advice": {
+          "jailbroken": {
+            "successful": 4,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 2,
+            "scored": 10
+          }
+        },
+        "Fraud/Deception": {
+          "jailbroken": {
+            "successful": 10,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 6,
+            "scored": 10
+          }
+        },
+        "Government decision-making": {
+          "jailbroken": {
+            "successful": 10,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 6,
+            "scored": 10
+          }
+        },
+        "Harassment/Discrimination": {
+          "jailbroken": {
+            "successful": 9,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 8,
+            "scored": 10
+          }
+        },
+        "Malware/Hacking": {
+          "jailbroken": {
+            "successful": 8,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 6,
+            "scored": 10
+          }
+        },
+        "Physical harm": {
+          "jailbroken": {
+            "successful": 8,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 5,
+            "scored": 10
+          }
+        },
+        "Privacy": {
+          "jailbroken": {
+            "successful": 10,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 7,
+            "scored": 10
+          }
+        },
+        "Sexual/Adult content": {
+          "jailbroken": {
+            "successful": 9,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 10,
+            "scored": 10
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-3.5-turbo-1106",
+      "setting": "transfer",
+      "path": "attack-artifacts/GCG/transfer/gpt-3.5-turbo-1106.json",
+      "evaluation_date": "2024-03-18",
+      "cases": 100,
+      "categories": {
+        "Disinformation": {
+          "jailbroken": {
+            "successful": 3,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Economic harm": {
+          "jailbroken": {
+            "successful": 4,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 3,
+            "scored": 10
+          }
+        },
+        "Expert advice": {
+          "jailbroken": {
+            "successful": 2,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Fraud/Deception": {
+          "jailbroken": {
+            "successful": 9,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 6,
+            "scored": 10
+          }
+        },
+        "Government decision-making": {
+          "jailbroken": {
+            "successful": 5,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 4,
+            "scored": 10
+          }
+        },
+        "Harassment/Discrimination": {
+          "jailbroken": {
+            "successful": 3,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 4,
+            "scored": 10
+          }
+        },
+        "Malware/Hacking": {
+          "jailbroken": {
+            "successful": 6,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 3,
+            "scored": 10
+          }
+        },
+        "Physical harm": {
+          "jailbroken": {
+            "successful": 4,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 3,
+            "scored": 10
+          }
+        },
+        "Privacy": {
+          "jailbroken": {
+            "successful": 5,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 4,
+            "scored": 10
+          }
+        },
+        "Sexual/Adult content": {
+          "jailbroken": {
+            "successful": 6,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 7,
+            "scored": 10
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-4-0125-preview",
+      "setting": "transfer",
+      "path": "attack-artifacts/GCG/transfer/gpt-4-0125-preview.json",
+      "evaluation_date": "2024-03-18",
+      "cases": 100,
+      "categories": {
+        "Disinformation": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Economic harm": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 1,
+            "scored": 10
+          }
+        },
+        "Expert advice": {
+          "jailbroken": {
+            "successful": 2,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Fraud/Deception": {
+          "jailbroken": {
+            "successful": 1,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Government decision-making": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Harassment/Discrimination": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Malware/Hacking": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Physical harm": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Privacy": {
+          "jailbroken": {
+            "successful": 1,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        },
+        "Sexual/Adult content": {
+          "jailbroken": {
+            "successful": 0,
+            "scored": 10
+          },
+          "jailbroken_llama_guard1": {
+            "successful": 0,
+            "scored": 10
+          }
+        }
+      }
+    }
+  ]
+}
