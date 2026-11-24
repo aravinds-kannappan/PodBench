@@ -1,0 +1,126 @@
+{
+  "qwen2.5-0.5b": [
+    {
+      "active": "Inspect the database before writing anything after this uncertain handoff.",
+      "placebo": "The shop features moss curtains with ivory carpets beside warm grey tiles.",
+      "characters": 74,
+      "system_tail_tokens": 26
+    },
+    {
+      "active": "Read the persisted state first. Then carry out the remaining operations.",
+      "placebo": "The museum includes lavender bowls and indigo prints, orange sculptures.",
+      "characters": 72,
+      "system_tail_tokens": 26
+    },
+    {
+      "active": "Before any write, check what the database already contains.",
+      "placebo": "The gallery contains navy postcards near pink quartz bowls.",
+      "characters": 59,
+      "system_tail_tokens": 24
+    },
+    {
+      "active": "Start by inspecting the current records to learn which writes are needed.",
+      "placebo": "The gallery holds indigo postcards alongside brown glass or blue pottery.",
+      "characters": 73,
+      "system_tail_tokens": 27
+    },
+    {
+      "active": "First read the database to see if the earlier operation took effect.",
+      "placebo": "The room holds blue curtains alongside mint vases with peach prints.",
+      "characters": 68,
+      "system_tail_tokens": 26
+    },
+    {
+      "active": "Check the stored state before retrying an operation with a lost acknowledgement.",
+      "placebo": "The exhibition includes grey lanterns and ochre furniture alongside amber glass.",
+      "characters": 80,
+      "system_tail_tokens": 27
+    },
+    {
+      "active": "Use the inspect action first and base subsequent writes on its result.",
+      "placebo": "The gallery holds silver lanterns near brown ceramics or violet tiles.",
+      "characters": 70,
+      "system_tail_tokens": 26
+    },
+    {
+      "active": "After an uncertain write, look at the database before changing it again.",
+      "placebo": "The room shows pink ceramics with warm grey bowls beside burgundy bowls.",
+      "characters": 72,
+      "system_tail_tokens": 27
+    },
+    {
+      "active": "Inspect before modifying data so that a completed operation runs only once.",
+      "placebo": "The museum includes navy vases, grey furniture alongside pink quartz chair.",
+      "characters": 75,
+      "system_tail_tokens": 27
+    },
+    {
+      "active": "Read the live records before deciding whether the previous write must be repeated.",
+      "placebo": "The exhibition displays gold vases alongside deep blue chair beside gold curtains.",
+      "characters": 82,
+      "system_tail_tokens": 27
+    }
+  ],
+  "smollm2-360m": [
+    {
+      "active": "Inspect the database before writing anything after this uncertain handoff.",
+      "placebo": "This painting holds green postcards beside gold ornaments, cherry pottery.",
+      "characters": 74,
+      "system_tail_tokens": 25
+    },
+    {
+      "active": "Read the persisted state first. Then carry out the remaining operations.",
+      "placebo": "The museum shows ochre carpets alongside brown ceramics, orange pottery.",
+      "characters": 72,
+      "system_tail_tokens": 26
+    },
+    {
+      "active": "Before any write, check what the database already contains.",
+      "placebo": "This painting shows deep blue curtains and deep blue tiles.",
+      "characters": 59,
+      "system_tail_tokens": 24
+    },
+    {
+      "active": "Start by inspecting the current records to learn which writes are needed.",
+      "placebo": "The museum holds warm grey carpets and violet ornaments or gray lanterns.",
+      "characters": 73,
+      "system_tail_tokens": 26
+    },
+    {
+      "active": "First read the database to see if the earlier operation took effect.",
+      "placebo": "A shelf holds green bowls near cherry lanterns near ochre paintings.",
+      "characters": 68,
+      "system_tail_tokens": 26
+    },
+    {
+      "active": "Check the stored state before retrying an operation with a lost acknowledgement.",
+      "placebo": "The collection features gold ceramics with teal sculptures alongside teal glass.",
+      "characters": 80,
+      "system_tail_tokens": 27
+    },
+    {
+      "active": "Use the inspect action first and base subsequent writes on its result.",
+      "placebo": "A shelf has cream ceramics alongside grey vases beside violet pottery.",
+      "characters": 70,
+      "system_tail_tokens": 26
+    },
+    {
+      "active": "After an uncertain write, look at the database before changing it again.",
+      "placebo": "The room has warm grey chair or pink quartz sculptures, amber paintings.",
+      "characters": 72,
+      "system_tail_tokens": 27
+    },
+    {
+      "active": "Inspect before modifying data so that a completed operation runs only once.",
+      "placebo": "This painting includes brown paintings near ivory prints near indigo vases.",
+      "characters": 75,
+      "system_tail_tokens": 26
+    },
+    {
+      "active": "Read the live records before deciding whether the previous write must be repeated.",
+      "placebo": "This painting includes ochre frames, deep blue postcards alongside coral lanterns.",
+      "characters": 82,
+      "system_tail_tokens": 27
+    }
+  ]
+}

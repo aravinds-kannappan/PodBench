@@ -1,0 +1,23 @@
+{
+  "paraphrases": [
+    "Inspect the database before writing anything after this uncertain handoff.",
+    "Read the persisted state first. Then carry out the remaining operations.",
+    "Before any write, check what the database already contains.",
+    "Start by inspecting the current records to learn which writes are needed.",
+    "First read the database to see if the earlier operation took effect.",
+    "Check the stored state before retrying an operation with a lost acknowledgement.",
+    "Use the inspect action first and base subsequent writes on its result.",
+    "After an uncertain write, look at the database before changing it again.",
+    "Inspect before modifying data so that a completed operation runs only once.",
+    "Read the live records before deciding whether the previous write must be repeated."
+  ],
+  "seed": 11,
+  "panel_task": "refund",
+  "models": ["qwen2.5-0.5b", "smollm2-360m"],
+  "panel_states": [false, true],
+  "permutation_model": "qwen2.5-0.5b",
+  "permutation_tasks": ["refund", "inventory", "transfer"],
+  "permutation_state": true,
+  "max_turns": 5,
+  "max_tokens": 12
+}
