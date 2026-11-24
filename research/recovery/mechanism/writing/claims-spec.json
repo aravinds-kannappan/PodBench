@@ -1,0 +1,243 @@
+{
+  "scheduled": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/scheduled"
+  },
+  "recorded": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/recorded"
+  },
+  "passed": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/passed"
+  },
+  "exact_state": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/exact_state"
+  },
+  "missing": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/missing"
+  },
+  "inference_errors": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/inference_errors"
+  },
+  "step_limit": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/step_limit"
+  },
+  "submitted_inexact": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/submitted_inexact"
+  },
+  "no_valid_decision": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/no_valid_decision"
+  },
+  "diagnostic_eligible": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/diagnostic_eligible"
+  },
+  "duplicate": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/duplicate"
+  },
+  "omission": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/omission"
+  },
+  "incomplete_followup": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/totals/incomplete_followup"
+  },
+  "qg_scheduled": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/by_instruction/baseline/scheduled"
+  },
+  "qg_passed": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/by_instruction/baseline/passed"
+  },
+  "qg_submitted": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/by_instruction/baseline/submitted"
+  },
+  "qg_exact_state": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/by_instruction/baseline/exact_state"
+  },
+  "qg_first_inspection": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/by_instruction/baseline/first_inspection"
+  },
+  "qv_scheduled": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/by_instruction/inspect_first/scheduled"
+  },
+  "qv_passed": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/by_instruction/inspect_first/passed"
+  },
+  "qv_submitted": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/by_instruction/inspect_first/submitted"
+  },
+  "qv_exact_state": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/by_instruction/inspect_first/exact_state"
+  },
+  "qv_first_inspection": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/by_instruction/inspect_first/first_inspection"
+  },
+  "q_difference": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/difference",
+    "scale": 100
+  },
+  "q_both_recorded_pairs": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/both_recorded_pairs"
+  },
+  "q_low": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/interval/0",
+    "scale": 100
+  },
+  "q_high": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/0/interval/1",
+    "scale": 100
+  },
+  "sg_scheduled": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/by_instruction/baseline/scheduled"
+  },
+  "sg_passed": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/by_instruction/baseline/passed"
+  },
+  "sg_submitted": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/by_instruction/baseline/submitted"
+  },
+  "sg_exact_state": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/by_instruction/baseline/exact_state"
+  },
+  "sg_first_inspection": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/by_instruction/baseline/first_inspection"
+  },
+  "sv_scheduled": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/by_instruction/inspect_first/scheduled"
+  },
+  "sv_passed": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/by_instruction/inspect_first/passed"
+  },
+  "sv_submitted": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/by_instruction/inspect_first/submitted"
+  },
+  "sv_exact_state": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/by_instruction/inspect_first/exact_state"
+  },
+  "sv_first_inspection": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/by_instruction/inspect_first/first_inspection"
+  },
+  "s_difference": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/difference",
+    "scale": 100
+  },
+  "s_low": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/interval/0",
+    "scale": 100
+  },
+  "s_high": {
+    "source": "docs/recovery-results.json",
+    "pointer": "/by_model/1/interval/1",
+    "scale": 100
+  },
+  "max_steps": {
+    "source": "research/recovery/manifest.json",
+    "pointer": "/max_steps"
+  },
+  "max_tokens": {
+    "source": "research/recovery/manifest.json",
+    "pointer": "/max_tokens"
+  },
+  "n_tasks": {
+    "source": "research/recovery/manifest.json",
+    "pointer": "/tasks",
+    "op": "size"
+  },
+  "n_seeds": {
+    "source": "research/recovery/manifest.json",
+    "pointer": "/seeds",
+    "op": "size"
+  },
+  "line27_seed": {
+    "source": "research/recovery/episodes.jsonl",
+    "pointer": "/26/seed"
+  },
+  "line158_seed": {
+    "source": "research/recovery/episodes.jsonl",
+    "pointer": "/157/seed"
+  },
+  "work_orders": {
+    "source": "research/recovery/episodes.jsonl",
+    "op": "distinct",
+    "fields": [
+      "task",
+      "seed"
+    ]
+  },
+  "decisions": {
+    "source": "research/recovery/episodes.jsonl",
+    "op": "total_length",
+    "field": "steps"
+  },
+  "smol_repeat": {
+    "source": "research/recovery/episodes.jsonl",
+    "op": "reply_count",
+    "id": "smollm2-360m.inventory.37.rolled_back.inspect_first.canonical",
+    "reply": "post the receipt"
+  },
+  "unreachable_one": {
+    "source": "research/recovery/mechanism/trace_episodes.csv",
+    "op": "matches",
+    "where": {
+      "first_unreachable_submission": "1"
+    }
+  },
+  "unreachable_one_submit": {
+    "source": "research/recovery/mechanism/trace_episodes.csv",
+    "op": "matches",
+    "where": {
+      "first_unreachable_submission": "1",
+      "first_action": "submit"
+    }
+  },
+  "unreachable_one_duplicate": {
+    "source": "research/recovery/mechanism/trace_episodes.csv",
+    "op": "matches",
+    "where": {
+      "first_unreachable_submission": "1",
+      "failure_label": "duplicate write"
+    }
+  },
+  "exclusive_premature": {
+    "source": "research/recovery/mechanism/trace_episodes.csv",
+    "op": "matches",
+    "where": {
+      "failure_label": "premature submit"
+    }
+  }
+}

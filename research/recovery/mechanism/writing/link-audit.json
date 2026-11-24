@@ -1,0 +1,278 @@
+{
+  "checked_at": "2026-11-24T15:28:48.111508+00:00",
+  "external": [
+    {
+      "url": "https://arxiv.org/abs/2307.13854",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2307.13854",
+      "ok": true
+    },
+    {
+      "url": "https://arxiv.org/abs/2406.12045",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2406.12045",
+      "ok": true
+    },
+    {
+      "url": "https://arxiv.org/abs/2407.04295",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2407.04295",
+      "ok": true
+    },
+    {
+      "url": "https://arxiv.org/abs/2408.04682",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2408.04682",
+      "ok": true
+    },
+    {
+      "url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+      "status": 200,
+      "final_url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/releases/tag/recovery-v1.0.0",
+      "status": 200,
+      "final_url": "https://github.com/aravinds-kannappan/PodBench/releases/tag/recovery-v1.0.0",
+      "ok": true
+    },
+    {
+      "url": "https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct",
+      "status": 200,
+      "final_url": "https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct",
+      "ok": true,
+      "apache_2_0_label_present": true
+    },
+    {
+      "url": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct",
+      "status": 200,
+      "final_url": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct",
+      "ok": true,
+      "apache_2_0_label_present": true
+    }
+  ],
+  "repo": [
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/f4ef7fdf31b98fa95046f1ff5ca6461b4a192271/research/recovery/PROTOCOL.md",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/CITATION.cff",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/LICENSE",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/README.md",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/design.json",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/traces.jsonl#L100",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/traces.jsonl#L211",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/traces.jsonl#L88",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/forcing.jsonl",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-audit.json",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-numerics.json",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-warm-controls.json",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_decisions.csv",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_notes.md",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/README.md",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/manifest.json",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/site/public/review/index.html",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/behavior-study.json",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/field-note.html",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/gcg.html",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-episodes.csv",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/DATA.md",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/PROTOCOL.md",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/README.md",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/analyze.py",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/baselines.py",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L116",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L158",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L27",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L70",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/figure.py",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/manifest.json",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/tree/9885ae666c6bc65640ab75ab3a4faef4bab2b0e7/research/recovery",
+      "method": "pinned local git object",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/tree/recovery-mechanism-v1.0.0/research/recovery/mechanism",
+      "method": "local path for upcoming release",
+      "ok": true
+    },
+    {
+      "url": "https://github.com/aravinds-kannappan/PodBench/tree/recovery-v1.0.0/research/recovery",
+      "method": "pinned local git object",
+      "ok": true
+    }
+  ],
+  "generated": [
+    "research/recovery/site/public/writing/claims.json",
+    "research/recovery/site/public/writing/paper.html",
+    "research/recovery/site/public/writing/paper.pdf",
+    "research/recovery/site/public/writing/recovery-figure.png"
+  ]
+}

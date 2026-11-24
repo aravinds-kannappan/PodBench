@@ -1,0 +1,178 @@
+# Recovery after a lost write acknowledgement in tool-using language agents
+
+## Abstract
+
+A disconnected worker can leave a successor uncertain whether a database write committed. We asked whether a system instruction to inspect persisted state before writing improves recovery in that setting. A frozen factorial design paired instructions across workflow, fixture, prior commit outcome and action-menu order. Two small quantized instruction checkpoints completed {{recorded}} scheduled episodes. Exact submitted recoveries for Qwen were {{qg_passed}}/{{qg_scheduled}} under generic and {{qv_passed}}/{{qv_scheduled}} under verify-first instructions. For SmolLM2 they were {{sg_passed}}/{{sg_scheduled}} and {{sv_passed}}/{{sv_scheduled}}, respectively. The models submitted {{submitted_inexact}} incorrect databases, while {{exact_state}} exact databases occurred without a submission. A reference policy could solve every starting state through the same tools. An exploratory search over legal action sequences found that {{unreachable_one}} episodes had already lost every route to an exact submission after the first decision. {{menu_abstract}}We release the prompts, raw replies, SQLite effects, paired estimates and post hoc diagnostics. The endpoint floor limits inference about comparative ability. A worker can submit an incorrect database or leave a correct database unsubmitted.
+
+## Why a missing acknowledgement changes the problem
+
+A worker attempts to update stock before its connection drops. The replacement worker receives the original order and the name of the last operation attempted. If the stock update committed, repeating the operation counts a shipment twice. If the transaction rolled back, skipping it leaves an outstanding shipment that the bookkeeping system may nevertheless mark received. A polished report that the worker has “handled the shipment” resolves neither possibility. The relevant evidence lives in the database and in the sequence of actions that led to the final record.
+
+We construct the interruption in SQLite. Both worlds present identical opening instructions while exposing different facts on inspection.
+
+The intervention asks the successor to inspect before writing. The worker must interpret the observation, issue the remaining actions in a legal order and signal completion.
+
+This question grew out of earlier PodBench observations. A stop-order replay showed that a verifier could award credit to an agent whose conversation ended before the stop order was delivered. A separate choice task showed that reversing the actions could change which behavior a model appeared to endorse. Those exploratory observations informed the menu-order control and the choice to preserve the actual feedback seen by each worker. Earlier episodes do not contribute to the recovery comparison. [Earlier hold replay](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/field-note.html) · [Earlier option-order experiment](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/behavior-study.json)
+
+## Related work
+
+Featonby describes a service client that sends a resource-creation request and then receives no response. The resource might already exist. A client can reconcile with persisted state, or an API can offer an idempotent operation keyed by a caller-supplied request identifier. PodBench exercises reconciliation by an agent using ordinary database operations. A production API that recognizes the same logical request could prevent a duplicate even when a caller retries naively. [Featonby, *Making retries safe with idempotent APIs*](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/)
+
+Yao and colleagues’ τ-bench assesses tool use in interaction with a simulated user and scores the database against a goal state. Lu and colleagues’ ToolSandbox includes dependencies among tools and evaluates milestones along a trajectory. The controlled missing acknowledgement in PodBench isolates one ambiguity. Both the target state and the effect of every named operation are fully specified, so a failed bookkeeping operation can be distinguished from failure to submit an otherwise correct database. [Yao et al., τ-bench](https://arxiv.org/abs/2406.12045) · [Lu et al., ToolSandbox](https://arxiv.org/abs/2408.04682)
+
+WebArena assesses functional task completion through interactions with working web applications. It provides a broader target for long-horizon agents and includes the difficulty of navigating a realistic interface. The recovery console narrows the interaction surface to named operations with fixed bindings. This choice gives up some ecological validity in exchange for simple replay. Each archived action name maps to a fixed database operation. [Zhou et al., WebArena](https://arxiv.org/abs/2307.13854)
+
+Yi and colleagues survey methods for probing and protecting language models, including prompt perturbations and explicit system safeguards. The broader PodBench archive includes benign perturbation experiments and separately sourced GCG evaluation material. The present recovery experiment uses a human-authored instruction about a legitimate database operation. Its endpoint is operational correctness. Measuring susceptibility to optimized adversarial suffixes would require a different intervention, success criterion and dataset. [Yi et al., survey](https://arxiv.org/abs/2407.04295) · [PodBench GCG study notes](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/gcg.html)
+
+## Frozen study design
+
+We fixed the directional hypothesis before collecting model decisions. Within each checkpoint, adding a verify-first instruction would increase the proportion of scheduled episodes ending in exact, submitted recovery. The protocol, collection driver and verifier were committed before inference. There was no independent registration or external test-set custodian. The Git history records these decisions. [Prospective protocol](https://github.com/aravinds-kannappan/PodBench/blob/f4ef7fdf31b98fa95046f1ff5ca6461b4a192271/research/recovery/PROTOCOL.md) · [Frozen implementation](https://github.com/aravinds-kannappan/PodBench/tree/9885ae666c6bc65640ab75ab3a4faef4bab2b0e7/research/recovery)
+
+### Workflows and starting states
+
+The refund task requires a single full-value ledger entry and a matching order status. The inventory task requires an additive stock update issued exactly once and a receipt marked posted. The transfer task requires archiving the duplicate customer, moving the customer’s orders to the keeper and removing the duplicate. Every task has unrelated rows whose values are checked after recovery. Each named action runs fixed SQL against a fresh in-memory database. Changes to one episode cannot affect another.
+
+For each work order we construct two initial worlds. The prior worker attempted the first write in the workflow. In one world the write persisted, and in the other the write is absent. Every later operation remains outstanding. The agent receives the same description, handoff and menu in both worlds. The action choices do not expose the world label. Inspection can distinguish the worlds using information appropriate to the workflow, such as the refund ledger entries, target stock quantity or archive count. Ground-truth metadata is available to the verifier and researcher after the fact.
+
+Crossing {{n_tasks}} task families with {{n_seeds}} seeds produced {{work_orders}} distinct work orders. Hidden commit outcome and menu order varied within each work order under both instructions. The canonical and reverse menus expose identical operation names and SQL bindings. Menu order tests whether a model reacts to where an action appears. Those repeated observations belong to the same workflow.
+
+### Instructions, model interaction and verification
+
+We evaluated Qwen2.5-0.5B-Instruct and SmolLM2-360M-Instruct in Q4_K_M form. Both upstream model cards name Apache 2.0 as their license. The collection manifest pins the quantized files by revision and SHA-256. We selected models that could run locally on the available CPU with their weights exposed for subsequent analysis. They are a convenience sample. Model size, tokenizer, instruction training and the effect of quantization differ, so the design supports a within-checkpoint comparison more directly than a comparison of architectures. [Qwen card and license](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct) · [SmolLM2 card and license](https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct) · [Pinned inference metadata](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/manifest.json)
+
+The generic system message asks the model to finish the job after the handoff and reply with a named action. The treatment adds a direction to inspect the database before making a write and decide from that inspection which operations remain. A new episode starts with an empty chat history. Within an episode, the previous response, observed SQL result or invalid-action feedback, and action menu remain in context. The prior worker is simulated by the interrupted state and the handoff message.
+
+Greedy decoding allows up to {{max_tokens}} output tokens per decision. Only an exact action name after trimming surrounding whitespace can execute. Invalid answers receive feedback and consume a turn. The {{max_steps}} decisions include inspection and submission. A correct transfer can need the entire budget. The parser rejects even an intelligible description of a permitted operation.
+
+The verifier requires explicit submission as well as every state check. It measures the target ledger, quantity or archive, checks the related completion fields and other required postconditions, and compares protected records against the reference. Replaying an episode independently parses the reply, executes each accepted action and compares the tool observation and final state to the archive. The verifier never asks the evaluated model whether it succeeded. The separate state-only measure supports services with a different completion contract.
+
+### Pairing and reference comparisons
+
+Within each model we pair generic and verify-first episodes at fixed family, seed, hidden world and menu order. The estimand is the absolute difference in verified completion rates over the scheduled grid. Missing outcomes and inference failures cannot count as confirmed successes. We report both the planned and observed coverage. The uncertainty analysis resamples fixture seeds within each family, moving all repeated measurements from a fixture together. Its percentile interval describes sensitivity to this particular fixture mix. It does not quantify uncertainty over future production incidents.
+
+Handwritten policies check whether a solution is attainable in the allotted turns. The conditional policy inspects the same row the model can read, determines whether the uncertain write is missing, completes the remaining operations and submits. Blind policies either always replay the write or always assume it committed. A blind policy can succeed in all cases of one hidden condition while systematically failing in the other. The two worlds receive equal weight. [Reference policies and replay](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/baselines.py)
+
+## Frozen results
+
+The archive contains {{recorded}} of {{scheduled}} planned episodes and {{decisions}} decisions. There were {{inference_errors}} inference errors and {{missing}} missing records. Each checkpoint supplied {{q_both_recorded_pairs}} complete matched instruction pairs. Neither checkpoint gained or lost a verified completion under the reminder. The paired differences in percentage points were {{q_difference}} for Qwen and {{s_difference}} for SmolLM2, with percentile interval endpoints of {{q_low}} and {{q_high}} for Qwen and {{s_low}} and {{s_high}} for SmolLM2. Resampling work orders generated the same value in every draw because every fixture had the same failed primary outcome in both arms. This degeneracy expresses the absence of observed successes. It supplies no equivalence bound for a different model or operational task distribution.
+
+| Checkpoint and instruction | Episodes | Inspected first | Submitted | Exact state | Exact and submitted |
+| --------------------- | ----------: | --------------: | ----------: | -----------: | -------------------: |
+| Qwen, generic | {{qg_scheduled}} | {{qg_first_inspection}} | {{qg_submitted}} | {{qg_exact_state}} | {{qg_passed}} |
+| Qwen, verify first | {{qv_scheduled}} | {{qv_first_inspection}} | {{qv_submitted}} | {{qv_exact_state}} | {{qv_passed}} |
+| SmolLM2, generic | {{sg_scheduled}} | {{sg_first_inspection}} | {{sg_submitted}} | {{sg_exact_state}} | {{sg_passed}} |
+| SmolLM2, verify first | {{sv_scheduled}} | {{sv_first_inspection}} | {{sv_submitted}} | {{sv_exact_state}} | {{sv_passed}} |
+
+Table. Rows count episodes under a single instruction. Every exact state occurred without a submission. Each cell links to the scored source. [Episode-level table and denominators](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-episodes.csv)
+
+The agent submitted an inexact database in {{submitted_inexact}} episodes. The other {{step_limit}} ended at the turn limit. Within the latter group, {{exact_state}} had attained the exact state. All of those cases involved SmolLM2, the committed refund and a canonical menu. The model repeatedly selected the status update after the refund entry already existed. Under that starting condition, a correct database could arise without consulting the ledger. The missing submit action still mattered to the host process. At the other extreme, {{no_valid_decision}} episodes never produced even one executable action.
+
+State diagnostics require at least one valid choice and no infrastructure failure. In {{diagnostic_eligible}} eligible episodes we found {{duplicate}} with an overapplied uncertain operation, {{omission}} with that operation missing and {{incomplete_followup}} with incomplete later work. The categories can overlap. For example, omitting a refund and failing to mark the order both leave visible discrepancies in one database. The denominator for these checks differs from the planned denominator for completion, because assigning a particular reaction to the database makes little sense when the parser executed no action at all.
+
+![Frozen comparison. Bars count first-action inspection, submission, exact state, and exact submitted recovery in each model and instruction cell.](recovery-figure.png)
+
+Figure. The stages are distinct endpoints on the same episodes. The figure can be reconstructed from the episode table. [Figure data](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json) · [Figure source](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/figure.py)
+
+## When did recovery become impossible?
+
+**Exploratory (not preregistered)**
+
+After observing the floor, we reconstructed each trajectory from the frozen log and asked what a perfect controller could still have achieved at each prefix. Given the current database, legal actions and remaining turns, could any continuation reach the target? A duplicate non-reversible ledger entry can make success impossible while time remains. A harmless read can also use the last spare turn. Its SQL effect is quite different, even if both choices eliminate every successful continuation.
+
+At the opening decision, {{unreachable_one}} episodes lost every legal route to an exact submission. Of those, {{unreachable_one_submit}} submitted immediately and {{unreachable_one_duplicate}} duplicated a previous write. These are behaviorally different errors even though neither can be corrected within the menu after the move.
+
+The extractor searches two endpoints separately. The state-only endpoint asks whether the target database remains attainable. The full endpoint asks whether that database and an explicit submit are still attainable together. The search uses actual SQL operation semantics and restores the prior state after each alternative. This matters on transfer jobs where an ordering error can trigger a database constraint. Simply counting pending writes would miss the cost of an unsuccessful operation and could credit an impossible continuation. Each saved prefix can be joined to the original model response and its preceding observation. [Decision table](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_decisions.csv) · [Extraction notes](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_notes.md)
+
+{{reach_table}}
+
+Table. Cumulative episodes that had lost every legal continuation to each endpoint by the indicated decision. The denominator stays at {{reach_episodes}} throughout. A terminal failure stays in the count. A terminal exact database can still appear in the submission column if it was never submitted. [Reachability table data](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv)
+
+For the rolled-back inventory case with seed {{line27_seed}}, the Qwen treatment first inspected, then applied the missing stock receipt and submitted too soon. The stock was correct but its receipt remained open. The matched generic episode submitted immediately. This pair was selected in the original report as the earliest sorted Qwen pair with different first actions when no pair differed on primary success. The reminder changed behavior in a way that looks useful on a partial endpoint. The trace identifies the work that remained outstanding when the host received the completion signal. [Generic transcript](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L70) · [Verify-first transcript](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L27)
+
+In the corresponding SmolLM2 example, inventory seed {{line158_seed}}, the generic arm inspected repeatedly. The treatment instead produced the literal text “post the receipt” {{smol_repeat}} times. The offered action name was `close_receipt`. The unrecognized response triggered feedback every time and never executed a write. It is tempting to award partial credit for the semantic resemblance, but accepting that paraphrase would change the interface and still leave the stock adjustment unperformed. Replaying a different parser would be a new experiment with different subsequent feedback. [Generic transcript](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L116) · [Verify-first transcript](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L158)
+
+{{forcing_prose}}
+
+The episode table also records a single failure label using a documented precedence rule. The original verifier counted {{submitted_inexact}} incorrect submissions. The mutually exclusive taxonomy labels {{exclusive_premature}} premature submissions because a duplicate-write label can take priority. A worker that emitted only invalid replies also exhausted the budget. Changing which label takes precedence changes the mutually exclusive summary but leaves the underlying trace intact. Database-difference records make it possible to audit whether a particular failure involved excess rows, missing rows, wrong field values or a missing submission. We treat these annotations as a way to find testable hypotheses. Independent expert review of individual trajectories and proposed explanations is pending. The downloadable masked annotation kit provides a way to test agreement without showing reviewers a checkpoint name or suggested diagnosis. No human ratings or adjudicated expert judgments are treated as observed outcomes. [Review kit](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/site/public/review/index.html) Automated labels and recovery reachability are properties of the recorded interface. They cannot identify a model’s private intent.
+
+## What the additional probes can establish
+
+**Exploratory (not preregistered)**
+
+A model chooses among token sequences, while the controller accepts a small menu of complete action names. The score of a menu candidate under teacher forcing measures the conditional probability of its tokens followed by the ChatML message terminator in a specified context. It does not guarantee that unconstrained greedy generation will produce that string and stop at the correct boundary. Token count and model-specific segmentation can affect comparisons among candidates. For this reason the score records retain the candidate identity and model configuration. A constrained ranking and an actual raw reply should be viewed together before attributing a mistake to the agent’s use of state.
+
+{{scores_prose}}
+
+### Changes to the interface and tool observations
+
+**Exploratory (not preregistered)**
+
+The black-box interventions preserve a runnable environment while varying the message or action interface. Position changes can reveal sensitivity to presentation. Replacing observations can test whether an action changes when the only deliberately altered information is the returned state. A forced inspection removes the choice of whether to inspect, so the next-turn contrast concerns reaction to an observation among these constructed histories. It estimates a different quantity from the frozen reminder comparison. Artificial histories need not occur naturally under the evaluated policy. [Black-box design](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/design.json)
+
+{{blackbox_prose}}
+
+### Analyses of original-weight checkpoints
+
+**Exploratory (not preregistered)**
+
+The original-weight analysis tests which labels can be read from activations and whether changing an activation changes an output. A readout can exploit a nuisance variable. We distinguish evidence about a tested contrast at a particular layer from evidence about the action the host executed.
+
+{{whitebox_prose}}
+
+## Limits and implications
+
+The experiment contains {{work_orders}} fixed fixtures from {{n_tasks}} authored workflows. Seeds change identifiers and quantities within a family. They leave much of the instruction, desired program and verifier structure shared. Repeated menu orders are correlated measurements, and multiple turns are conditional on earlier choices. Treating every token or reply as an independent draw would inflate apparent precision. The bootstrap keeps related outcomes together but cannot create variation at a primary endpoint that never succeeded. An observed lack of paired improvement therefore gives no population-level upper bound on a better policy’s effect.
+
+The workloads omit concurrent writers, live users, delayed reconciliation and machine failures beyond the constructed acknowledgement gap. The prior worker is represented by its database effect and a handoff message. There is no live multi-agent negotiation or continual parameter update. With a fixed, bounded menu, the model cannot choose arbitrary SQL against unrelated rows. A lack of protected-row changes mostly tests the bindings and verifier under these conditions. Measuring the propensity to cause collateral damage would require a task surface that actually permits such behavior.
+
+The hardware and decoder choices limit what can be inferred about the models. Quantization can change next-token preferences, especially when alternatives score closely. Greedy decoding gives no estimate of variation over stochastic samples. The short output budget can truncate text and the strict parser can reject an otherwise intelligible operation. Removing the format constraint would change both the task and the opportunities for recovery. Similarly, increasing the turn limit might give a worker time to fix a mistake, or give it further opportunities to repeat a non-idempotent operation. The direction of change cannot be recovered from a truncated trajectory alone.
+
+A stronger comparison would sample independent workflows before selecting prompts and checkpoints. It would reserve entire workflow families for evaluation, recruit outside fixture authors, and include larger checkpoints with both a strict action interface and a well-defined tool-call adapter. A pilot on separate development fixtures could estimate a plausible baseline success range and the rate of discordant instruction pairs. A power calculation should use those paired rates, a prespecified minimally useful effect and clustering by independently authored task. The uniform failure of the current grid is a poor basis for specifying that rate.
+
+A separate intervention could add an operation key or a read-only `already_applied` tool. An idempotency-key arm would move duplicate prevention into the service, while an applied-check arm would narrow the interpretation required of the model. Folding these changes into the generic instruction would make the mechanism hard to distinguish. A factorial design could instead measure whether clearer observations, robust service behavior, or prompt wording improve recovery under the same terminal contract. Report duplicate payments and omissions alongside completed requests.
+
+## Data, licenses and reproduction
+
+The journal and database records are synthetic. Neither weight file is bundled with the released journal. Each upstream model has its own model card and license declaration. The following table distinguishes project-owned artifacts distributed under the repository license from model files obtained separately. [Repository license](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/LICENSE) · [Data provenance](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/DATA.md)
+
+| Artifact and location | Published license | Reproduction check |
+| ---------------------- | ---------------- | ----------------------------------- |
+| [SQL tasks, journal and analyzer](https://github.com/aravinds-kannappan/PodBench/tree/recovery-v1.0.0/research/recovery) | Apache 2.0 | Run the reference policies and replay the journal against SQLite. |
+| [Exploratory code and data](https://github.com/aravinds-kannappan/PodBench/tree/recovery-mechanism-v1.0.0/research/recovery/mechanism) | Apache 2.0 | Read each study design, input provenance and availability fields before interpreting its outcomes. |
+| [Frozen GGUF checkpoints](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/manifest.json) | Upstream Apache 2.0 | Match the downloaded quantized file to its recorded GGUF revision and SHA-256. |
+| [Qwen original model](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct) | Upstream Apache 2.0 | Check the original revision, safetensors and tokenizer digests against the [original-weight manifest](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/manifest.json). |
+| [SmolLM2 original model](https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct) | Upstream Apache 2.0 | Check the original revision, safetensors and tokenizer against the same manifest. |
+
+From the repository root, run `python3 research/recovery/baselines.py` to confirm that each fixture is solvable. Then run `python3 research/recovery/analyze.py` to replay the archived decisions and regenerate the frozen results. Neither check needs model inference. For a new model, use a separate output directory, record the weights and prompt adapter, and preserve every raw reply. For a new task, construct both starting worlds and make sure the model-visible handoff is identical before comparing the treatments. [Reproduction and adaptation guide](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/README.md)
+
+The mechanism release contains this manuscript and the public claim register, which identifies source fields, calculations and input digests. The original-weight study also ships decision-position residual arrays and a NumPy refit procedure for checking the readout analysis without downloading the weights. [Residual archive and refitting instructions](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/README.md) [Claim register](claims.json) · [Project citation metadata](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/CITATION.cff)
+
+```bibtex
+@misc{podbench_recovery,
+  title = {PodBench recovery after an ambiguous write acknowledgement},
+  year = {2026},
+  url = {https://github.com/aravinds-kannappan/PodBench},
+  version = {recovery-v1.0.0},
+  note = {Software, protocol, episode journal and reproducible analysis}
+}
+@misc{podbench_mechanism,
+  title = {PodBench recovery mechanism analysis and replication materials},
+  year = {2026},
+  url = {https://github.com/aravinds-kannappan/PodBench},
+  version = {recovery-mechanism-v1.0.0},
+  note = {Exploratory follow-up to the frozen recovery study}
+}
+```
+
+<!-- executive-summary -->
+# A recovery instruction changed the first action. Did it finish the job?
+
+A worker loses its connection while recording a refund. The next worker knows which write was attempted, but the missing acknowledgement leaves open whether the money was already recorded. Repeating the write can duplicate a payment. Skipping it can leave a paid order marked refunded with an empty ledger. PodBench gives a model this handoff and lets it inspect and change a real, disposable SQLite database.
+
+We compared a generic recovery instruction with the same instruction plus a request to inspect persisted state before writing. Across {{scheduled}} scheduled episodes, the two locally runnable checkpoints produced {{passed}} exact, submitted recoveries. Qwen inspected first in {{qg_first_inspection}} of {{qg_scheduled}} generic episodes and {{qv_first_inspection}} of {{qv_scheduled}} verify-first episodes. SmolLM2 inspected first in {{sg_first_inspection}} of {{sg_scheduled}} and {{sv_first_inspection}} of {{sv_scheduled}}, respectively. Those changes in behavior did not establish which remaining writes the agent would execute or when it would declare the work finished.
+
+The archive separates these outcomes. Models explicitly submitted {{submitted_inexact}} inexact databases. In {{exact_state}} other episodes, the database met the verifier’s target and the agent never submitted. A handwritten controller solved each starting state by consulting the same inspection results available to the models. The protocols, action bindings, raw replies and replay code let another team check what the endpoint counted, or evaluate a different policy under the same constraints.
+
+The frozen comparison concerns short, constructed handoffs under greedy decoding. A finite collection of uniformly unsuccessful episodes gives little information about effects on other models or workloads. Our subsequent analyses examine where the trajectories diverged, which alternatives a model scored, and whether changing what the model sees changes its next decision. These are exploratory tests selected after the endpoint was known. The trajectory search found that {{unreachable_one}} episodes had lost every route to an exact submission at the opening decision. Immediate submission accounted for {{unreachable_one_submit}} of those cases. That distinction separates a worker that ended too soon from one that permanently overapplied a write. {{menu_abstract}}A practical next experiment would include a service-side request identifier alongside the instructional intervention, with new workflows and enough successful baseline episodes to make improvement measurable.
+[Read the full paper](paper.html) · [Download the PDF](paper.pdf)
+<!-- /executive-summary -->

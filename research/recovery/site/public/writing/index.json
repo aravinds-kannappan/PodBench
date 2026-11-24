@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "title": "Recovery after a lost write acknowledgement in tool-using language agents",
+    "summary": "A paired experiment in database recovery, followed by exploratory analysis of agent decisions.",
+    "markdown": "paper.md",
+    "pdf": "paper.pdf",
+    "html": "paper.html",
+    "executive_summary": "summary.md",
+    "executive_summary_html": "summary.html",
+    "summary_html": "summary.html",
+    "words": 4489,
+    "summary_words": 385,
+    "status": "research draft"
+  },
+  "posts": [
+    {
+      "title": "When an inspection is a useful measurement",
+      "date": "2026-11-24",
+      "status": "draft",
+      "tags": [
+        "inspection",
+        "measurement",
+        "tools"
+      ],
+      "reading_minutes": 3,
+      "summary": "An agent can obey a reminder and still leave the most important part of a job undone.",
+      "slug": "counting-inspections",
+      "words": 522,
+      "placeholders": [],
+      "markdown": "blog/counting-inspections.md",
+      "html": "blog/counting-inspections.html"
+    },
+    {
+      "title": "The next recovery test I would run",
+      "date": "2026-11-24",
+      "status": "draft",
+      "tags": [
+        "study-design",
+        "idempotency",
+        "replication"
+      ],
+      "reading_minutes": 3,
+      "summary": "A held-out workflow, an applied-check arm and an explicit minimum worthwhile improvement.",
+      "slug": "next-recovery-test",
+      "words": 570,
+      "placeholders": [],
+      "markdown": "blog/next-recovery-test.md",
+      "html": "blog/next-recovery-test.html"
+    },
+    {
+      "title": "Why the console rejected “post the receipt”",
+      "date": "2026-11-24",
+      "status": "draft",
+      "tags": [
+        "transcripts",
+        "parsing",
+        "inventory"
+      ],
+      "reading_minutes": 3,
+      "summary": "The difference between a plausible phrase, a valid tool action and a completed job.",
+      "slug": "post-the-receipt",
+      "words": 505,
+      "placeholders": [],
+      "markdown": "blog/post-the-receipt.md",
+      "html": "blog/post-the-receipt.html"
+    },
+    {
+      "title": "What a changed next action can tell us",
+      "date": "2026-11-24",
+      "status": "draft",
+      "tags": [
+        "probes",
+        "counterfactuals",
+        "interpretability"
+      ],
+      "reading_minutes": 4,
+      "summary": "Testing what a model does with an observation requires tracking exactly what changed in its input.",
+      "slug": "what-probes-reveal",
+      "words": 755,
+      "placeholders": [],
+      "markdown": "blog/what-probes-reveal.md",
+      "html": "blog/what-probes-reveal.html"
+    },
+    {
+      "title": "What a zero recovery score hides",
+      "date": "2026-11-24",
+      "status": "draft",
+      "tags": [
+        "metrics",
+        "recovery",
+        "evaluation"
+      ],
+      "reading_minutes": 3,
+      "summary": "Submitting a broken database and leaving a correct one unsubmitted produce the same primary score.",
+      "slug": "what-the-floor-hides",
+      "words": 591,
+      "placeholders": [],
+      "markdown": "blog/what-the-floor-hides.md",
+      "html": "blog/what-the-floor-hides.html"
+    },
+    {
+      "title": "Would a reminder prevent a duplicate refund?",
+      "date": "2026-11-24",
+      "status": "draft",
+      "tags": [
+        "recovery",
+        "evaluation",
+        "databases"
+      ],
+      "reading_minutes": 3,
+      "summary": "How a lost acknowledgement creates a testable question about an agent's next decision.",
+      "slug": "why-test-an-instruction",
+      "words": 530,
+      "placeholders": [],
+      "markdown": "blog/why-test-an-instruction.md",
+      "html": "blog/why-test-an-instruction.html"
+    }
+  ],
+  "claims": "claims.json",
+  "pending_data": [],
+  "placeholder_count": 0,
+  "blog": "blog/index.html",
+  "rss": "blog/feed.xml"
+}

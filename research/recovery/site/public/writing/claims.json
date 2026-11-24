@@ -1,0 +1,2695 @@
+{
+  "schema_version": 2,
+  "claims": {
+    "recorded": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/recorded",
+      "value": 192,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "what-probes-reveal"
+      ]
+    },
+    "qg_passed": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/by_instruction/baseline/passed",
+      "value": 0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "qg_scheduled": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/by_instruction/baseline/scheduled",
+      "value": 48,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "counting-inspections"
+      ]
+    },
+    "qv_passed": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/by_instruction/inspect_first/passed",
+      "value": 0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "qv_scheduled": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/by_instruction/inspect_first/scheduled",
+      "value": 48,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "counting-inspections"
+      ]
+    },
+    "sg_passed": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/by_instruction/baseline/passed",
+      "value": 0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sg_scheduled": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/by_instruction/baseline/scheduled",
+      "value": 48,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "counting-inspections"
+      ]
+    },
+    "sv_passed": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/by_instruction/inspect_first/passed",
+      "value": 0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sv_scheduled": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/by_instruction/inspect_first/scheduled",
+      "value": 48,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "counting-inspections"
+      ]
+    },
+    "submitted_inexact": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/submitted_inexact",
+      "value": 94,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "what-the-floor-hides"
+      ]
+    },
+    "exact_state": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/exact_state",
+      "value": 8,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "what-the-floor-hides"
+      ]
+    },
+    "unreachable_one": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "matches",
+      "where": {
+        "first_unreachable_submission": "1"
+      },
+      "value": 90,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper",
+        "summary"
+      ]
+    },
+    "bb_refund_exact": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/permutation_summaries/0/passed",
+      "value": 2,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "what-the-floor-hides"
+      ]
+    },
+    "bb_refund_orders": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/permutation_summaries/0/orders",
+      "value": 24,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "what-the-floor-hides"
+      ]
+    },
+    "n_tasks": {
+      "source": "research/recovery/manifest.json",
+      "pointer": "/tasks",
+      "op": "size",
+      "value": 3,
+      "stage": "frozen archive",
+      "sha256": "b27c976966ba8574a3496827cd8e5778bb67dcb3b53b47753efdb2b500eb934e",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/manifest.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "n_seeds": {
+      "source": "research/recovery/manifest.json",
+      "pointer": "/seeds",
+      "op": "size",
+      "value": 4,
+      "stage": "frozen archive",
+      "sha256": "b27c976966ba8574a3496827cd8e5778bb67dcb3b53b47753efdb2b500eb934e",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/manifest.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "work_orders": {
+      "source": "research/recovery/episodes.jsonl",
+      "op": "distinct",
+      "fields": [
+        "task",
+        "seed"
+      ],
+      "value": 12,
+      "stage": "frozen archive",
+      "sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl",
+      "appears_in": [
+        "paper",
+        "next-recovery-test"
+      ]
+    },
+    "max_tokens": {
+      "source": "research/recovery/manifest.json",
+      "pointer": "/max_tokens",
+      "value": 12,
+      "stage": "frozen archive",
+      "sha256": "b27c976966ba8574a3496827cd8e5778bb67dcb3b53b47753efdb2b500eb934e",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/manifest.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "max_steps": {
+      "source": "research/recovery/manifest.json",
+      "pointer": "/max_steps",
+      "value": 5,
+      "stage": "frozen archive",
+      "sha256": "b27c976966ba8574a3496827cd8e5778bb67dcb3b53b47753efdb2b500eb934e",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/manifest.json",
+      "appears_in": [
+        "paper",
+        "counting-inspections"
+      ]
+    },
+    "scheduled": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/scheduled",
+      "value": 192,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "why-test-an-instruction"
+      ]
+    },
+    "decisions": {
+      "source": "research/recovery/episodes.jsonl",
+      "op": "total_length",
+      "field": "steps",
+      "value": 612,
+      "stage": "frozen archive",
+      "sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "inference_errors": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/inference_errors",
+      "value": 0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "missing": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/missing",
+      "value": 0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "q_both_recorded_pairs": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/both_recorded_pairs",
+      "value": 48,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "q_difference": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/difference",
+      "scale": 100,
+      "value": 0.0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "s_difference": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/difference",
+      "scale": 100,
+      "value": 0.0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "q_low": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/interval/0",
+      "scale": 100,
+      "value": 0.0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "q_high": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/interval/1",
+      "scale": 100,
+      "value": 0.0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "s_low": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/interval/0",
+      "scale": 100,
+      "value": 0.0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "s_high": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/interval/1",
+      "scale": 100,
+      "value": 0.0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "qg_first_inspection": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/by_instruction/baseline/first_inspection",
+      "value": 0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "counting-inspections"
+      ]
+    },
+    "qg_submitted": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/by_instruction/baseline/submitted",
+      "value": 28,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "qg_exact_state": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/by_instruction/baseline/exact_state",
+      "value": 0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "qv_first_inspection": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/by_instruction/inspect_first/first_inspection",
+      "value": 10,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "counting-inspections"
+      ]
+    },
+    "qv_submitted": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/by_instruction/inspect_first/submitted",
+      "value": 32,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "qv_exact_state": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/0/by_instruction/inspect_first/exact_state",
+      "value": 0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sg_first_inspection": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/by_instruction/baseline/first_inspection",
+      "value": 16,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "counting-inspections"
+      ]
+    },
+    "sg_submitted": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/by_instruction/baseline/submitted",
+      "value": 22,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sg_exact_state": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/by_instruction/baseline/exact_state",
+      "value": 4,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sv_first_inspection": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/by_instruction/inspect_first/first_inspection",
+      "value": 12,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper",
+        "summary",
+        "counting-inspections"
+      ]
+    },
+    "sv_submitted": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/by_instruction/inspect_first/submitted",
+      "value": 12,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sv_exact_state": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/by_model/1/by_instruction/inspect_first/exact_state",
+      "value": 4,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "step_limit": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/step_limit",
+      "value": 98,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "no_valid_decision": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/no_valid_decision",
+      "value": 22,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "diagnostic_eligible": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/diagnostic_eligible",
+      "value": 170,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "duplicate": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/duplicate",
+      "value": 23,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "omission": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/omission",
+      "value": 71,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "incomplete_followup": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/incomplete_followup",
+      "value": 154,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "unreachable_one_submit": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "matches",
+      "where": {
+        "first_unreachable_submission": "1",
+        "first_action": "submit"
+      },
+      "value": 80,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper",
+        "summary"
+      ]
+    },
+    "unreachable_one_duplicate": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "matches",
+      "where": {
+        "first_unreachable_submission": "1",
+        "failure_label": "duplicate write"
+      },
+      "value": 10,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "reach_exact_first": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "first_loss_by_turn",
+      "field": "first_unreachable_exact",
+      "turn": 1,
+      "value": 90,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "reach_submission_first": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "first_loss_by_turn",
+      "field": "first_unreachable_submission",
+      "turn": 1,
+      "value": 90,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "reach_exact_second": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "first_loss_by_turn",
+      "field": "first_unreachable_exact",
+      "turn": 2,
+      "value": 106,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "reach_submission_second": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "first_loss_by_turn",
+      "field": "first_unreachable_submission",
+      "turn": 2,
+      "value": 122,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "reach_exact_third": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "first_loss_by_turn",
+      "field": "first_unreachable_exact",
+      "turn": 3,
+      "value": 126,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "reach_submission_third": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "first_loss_by_turn",
+      "field": "first_unreachable_submission",
+      "turn": 3,
+      "value": 159,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "reach_exact_fourth": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "first_loss_by_turn",
+      "field": "first_unreachable_exact",
+      "turn": 4,
+      "value": 159,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "reach_submission_fourth": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "first_loss_by_turn",
+      "field": "first_unreachable_submission",
+      "turn": 4,
+      "value": 184,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "reach_exact_fifth": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "first_loss_by_turn",
+      "field": "first_unreachable_exact",
+      "turn": 5,
+      "value": 184,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "reach_submission_fifth": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "first_loss_by_turn",
+      "field": "first_unreachable_submission",
+      "turn": 5,
+      "value": 192,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "reach_episodes": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "size",
+      "value": 192,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "line27_seed": {
+      "source": "research/recovery/episodes.jsonl",
+      "pointer": "/26/seed",
+      "value": 11,
+      "stage": "frozen archive",
+      "sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L27",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "line158_seed": {
+      "source": "research/recovery/episodes.jsonl",
+      "pointer": "/157/seed",
+      "value": 37,
+      "stage": "frozen archive",
+      "sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L158",
+      "appears_in": [
+        "paper",
+        "post-the-receipt"
+      ]
+    },
+    "smol_repeat": {
+      "source": "research/recovery/episodes.jsonl",
+      "op": "reply_count",
+      "id": "smollm2-360m.inventory.37.rolled_back.inspect_first.canonical",
+      "reply": "post the receipt",
+      "value": 5,
+      "stage": "frozen archive",
+      "sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L158",
+      "appears_in": [
+        "paper",
+        "post-the-receipt"
+      ]
+    },
+    "force_oracle_pass": {
+      "source": "research/recovery/mechanism/forcing.jsonl",
+      "op": "matches",
+      "where": {
+        "policy": "oracle",
+        "eligible": true,
+        "passed": true
+      },
+      "value": 102,
+      "stage": "exploratory",
+      "sha256": "645cafe68ac61d2511cb86d9e428dddfa2fbb1651b1b73c922f8f73383369fc9",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/forcing.jsonl",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "force_oracle_n": {
+      "source": "research/recovery/mechanism/forcing.jsonl",
+      "op": "matches",
+      "where": {
+        "policy": "oracle",
+        "eligible": true
+      },
+      "value": 405,
+      "stage": "exploratory",
+      "sha256": "645cafe68ac61d2511cb86d9e428dddfa2fbb1651b1b73c922f8f73383369fc9",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/forcing.jsonl",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "force_evidence_pass": {
+      "source": "research/recovery/mechanism/forcing.jsonl",
+      "op": "matches",
+      "where": {
+        "policy": "evidence",
+        "eligible": true,
+        "passed": true
+      },
+      "value": 18,
+      "stage": "exploratory",
+      "sha256": "645cafe68ac61d2511cb86d9e428dddfa2fbb1651b1b73c922f8f73383369fc9",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/forcing.jsonl",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "force_evidence_n": {
+      "source": "research/recovery/mechanism/forcing.jsonl",
+      "op": "matches",
+      "where": {
+        "policy": "evidence",
+        "eligible": true
+      },
+      "value": 352,
+      "stage": "exploratory",
+      "sha256": "645cafe68ac61d2511cb86d9e428dddfa2fbb1651b1b73c922f8f73383369fc9",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/forcing.jsonl",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "exclusive_premature": {
+      "source": "research/recovery/mechanism/trace_episodes.csv",
+      "op": "matches",
+      "where": {
+        "failure_label": "premature submit"
+      },
+      "value": 89,
+      "stage": "exploratory",
+      "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "scores_completed": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/decision_count",
+      "value": 612,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "score_swap_count": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/observation_swaps",
+      "value": 128,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "score_qg": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/0/first_mean_inspect",
+      "digits": 4,
+      "value": 0.009765748040350394,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper",
+        "what-probes-reveal"
+      ]
+    },
+    "score_qv": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/1/first_mean_inspect",
+      "digits": 4,
+      "value": 0.2994192071796394,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper",
+        "what-probes-reveal"
+      ]
+    },
+    "score_sg": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/2/first_mean_inspect",
+      "digits": 4,
+      "value": 0.1961042345222599,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "score_sv": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/3/first_mean_inspect",
+      "digits": 4,
+      "value": 0.15583906224202823,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "warm_s_n": {
+      "source": "research/recovery/mechanism/scores-warm-controls.json",
+      "pointer": "/repeat_controls/smollm2-360m/identical_observed_and_swapped_inputs/n",
+      "value": 28,
+      "stage": "exploratory",
+      "sha256": "fa21b08cd2eb63de22f039c9c9960e532253041f72d7a154d846680d2b773d81",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-warm-controls.json",
+      "appears_in": [
+        "paper",
+        "what-probes-reveal"
+      ]
+    },
+    "warm_s_mean": {
+      "source": "research/recovery/mechanism/scores-warm-controls.json",
+      "pointer": "/repeat_controls/smollm2-360m/identical_observed_and_swapped_inputs/mean_tv",
+      "digits": 4,
+      "value": 0.016396531520751333,
+      "stage": "exploratory",
+      "sha256": "fa21b08cd2eb63de22f039c9c9960e532253041f72d7a154d846680d2b773d81",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-warm-controls.json",
+      "appears_in": [
+        "paper",
+        "what-probes-reveal"
+      ]
+    },
+    "superseded_smollm_generic_tv": {
+      "source": "research/recovery/mechanism/scores-warm-controls.json",
+      "pointer": "/superseded_swap_summaries/smollm2-360m/baseline/mean_tv",
+      "digits": 4,
+      "value": 0.010342628345866094,
+      "stage": "exploratory",
+      "sha256": "fa21b08cd2eb63de22f039c9c9960e532253041f72d7a154d846680d2b773d81",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-warm-controls.json",
+      "appears_in": [
+        "paper",
+        "what-probes-reveal"
+      ]
+    },
+    "superseded_smollm_generic_n": {
+      "source": "research/recovery/mechanism/scores-warm-controls.json",
+      "pointer": "/superseded_swap_summaries/smollm2-360m/baseline/n",
+      "value": 64,
+      "stage": "exploratory",
+      "sha256": "fa21b08cd2eb63de22f039c9c9960e532253041f72d7a154d846680d2b773d81",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-warm-controls.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "cold_drift_0": {
+      "source": "research/recovery/mechanism/scores-numerics.json",
+      "pointer": "/qwen2.5-0.5b/identical_observed_and_swapped_inputs/max_tv",
+      "digits": 4,
+      "value": 0.0,
+      "stage": "exploratory",
+      "sha256": "0223ea3a4319820249b05e2abb09f70c649186fcdd629d934f8b2895fa627230",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-numerics.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "cold_repeat_0": {
+      "source": "research/recovery/mechanism/scores-numerics.json",
+      "pointer": "/qwen2.5-0.5b/identical_observed_and_swapped_inputs/n",
+      "value": 10,
+      "stage": "exploratory",
+      "sha256": "0223ea3a4319820249b05e2abb09f70c649186fcdd629d934f8b2895fa627230",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-numerics.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "cold_drift_1": {
+      "source": "research/recovery/mechanism/scores-numerics.json",
+      "pointer": "/smollm2-360m/identical_observed_and_swapped_inputs/max_tv",
+      "digits": 4,
+      "value": 0.0,
+      "stage": "exploratory",
+      "sha256": "0223ea3a4319820249b05e2abb09f70c649186fcdd629d934f8b2895fa627230",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-numerics.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "cold_repeat_1": {
+      "source": "research/recovery/mechanism/scores-numerics.json",
+      "pointer": "/smollm2-360m/identical_observed_and_swapped_inputs/n",
+      "value": 28,
+      "stage": "exploratory",
+      "sha256": "0223ea3a4319820249b05e2abb09f70c649186fcdd629d934f8b2895fa627230",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-numerics.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "q_full_reset_max": {
+      "source": "research/recovery/mechanism/scores-numerics.json",
+      "pointer": "/qwen2.5-0.5b/full_reset_each_candidate/max_tv",
+      "digits": 4,
+      "value": 0.0,
+      "stage": "exploratory",
+      "sha256": "0223ea3a4319820249b05e2abb09f70c649186fcdd629d934f8b2895fa627230",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-numerics.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "q_full_reset_n": {
+      "source": "research/recovery/mechanism/scores-numerics.json",
+      "pointer": "/qwen2.5-0.5b/full_reset_each_candidate/n",
+      "value": 6,
+      "stage": "exploratory",
+      "sha256": "0223ea3a4319820249b05e2abb09f70c649186fcdd629d934f8b2895fa627230",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-numerics.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "s_full_reset_max": {
+      "source": "research/recovery/mechanism/scores-numerics.json",
+      "pointer": "/smollm2-360m/full_reset_each_candidate/max_tv",
+      "digits": 4,
+      "value": 0.0,
+      "stage": "exploratory",
+      "sha256": "0223ea3a4319820249b05e2abb09f70c649186fcdd629d934f8b2895fa627230",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-numerics.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "s_full_reset_n": {
+      "source": "research/recovery/mechanism/scores-numerics.json",
+      "pointer": "/smollm2-360m/full_reset_each_candidate/n",
+      "value": 6,
+      "stage": "exploratory",
+      "sha256": "0223ea3a4319820249b05e2abb09f70c649186fcdd629d934f8b2895fa627230",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-numerics.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "qv_flips": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/1/post_inspect/top_flips",
+      "value": 2,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "qv_swaps": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/1/post_inspect/n",
+      "value": 16,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "qv_distance": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/1/post_inspect/mean_tv",
+      "digits": 5,
+      "value": 0.17219593493647656,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sg_flips": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/2/post_inspect/top_flips",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sg_swaps": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/2/post_inspect/n",
+      "value": 64,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sg_distance": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/2/post_inspect/mean_tv",
+      "digits": 5,
+      "value": 0.009808861766459466,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sv_flips": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/3/post_inspect/top_flips",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sv_swaps": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/3/post_inspect/n",
+      "value": 48,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "sv_distance": {
+      "source": "research/recovery/mechanism/scores-summary.json",
+      "pointer": "/conditions/3/post_inspect/mean_tv",
+      "digits": 5,
+      "value": 0.012672037311121667,
+      "stage": "exploratory",
+      "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_episodes": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/coverage/episodes",
+      "value": 344,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_permutations": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/coverage/permutations",
+      "value": 168,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_new_inferences": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/coverage/new_inferences",
+      "value": 675,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_unique_from_parent": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/coverage/unique_from_parent",
+      "value": 17,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_qword_submitted": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/variants",
+      "op": "sum_matched",
+      "where": {
+        "family": "paraphrase"
+      },
+      "field": "/by_model/qwen2.5-0.5b/submitted/treatment",
+      "value": 2,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_qword_n": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/variants",
+      "op": "sum_matched",
+      "where": {
+        "family": "paraphrase"
+      },
+      "field": "/by_model/qwen2.5-0.5b/submitted/n",
+      "value": 20,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_qplacebo_submitted": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/variants",
+      "op": "sum_matched",
+      "where": {
+        "family": "paraphrase"
+      },
+      "field": "/by_model/qwen2.5-0.5b/submitted/control",
+      "value": 12,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_forced_v": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/variants/37/passed/treatment",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_forced_g": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/variants/37/passed/control",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_forced_n": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/variants/37/n",
+      "value": 4,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_toolnote_control": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/variants/43/submit_after_inspect/control",
+      "value": 2,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_toolnote_n": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/variants/43/submit_after_inspect/n",
+      "value": 4,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_toolnote_treatment": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/variants/43/submit_after_inspect/treatment",
+      "value": 1,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_transfer_orders": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/permutation_summaries/10/orders",
+      "value": 120,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_transfer_first": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/permutation_summaries/10/chose_first_entry",
+      "value": 19,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_transfer_passed": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/permutation_summaries/10/passed",
+      "value": 1,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_inventory_exact": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/permutation_summaries/5/passed",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "bb_inventory_orders": {
+      "source": "research/recovery/mechanism/blackbox/results.json",
+      "pointer": "/permutation_summaries/5/orders",
+      "value": 24,
+      "stage": "exploratory",
+      "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wq_contexts": {
+      "source": "research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "pointer": "/agreement/total",
+      "value": 12,
+      "stage": "exploratory",
+      "sha256": "475d8f47054826de626c17d2f36c35e68b3650816cb4ea6d1a249a27a68d7463",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wq_agree": {
+      "source": "research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "pointer": "/agreement/matched_actions",
+      "value": 7,
+      "stage": "exploratory",
+      "sha256": "475d8f47054826de626c17d2f36c35e68b3650816cb4ea6d1a249a27a68d7463",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wq_valid": {
+      "source": "research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "pointer": "/agreement/paired_valid",
+      "value": 9,
+      "stage": "exploratory",
+      "sha256": "475d8f47054826de626c17d2f36c35e68b3650816cb4ea6d1a249a27a68d7463",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wq_drift": {
+      "source": "research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "pointer": "/agreement/inspect_mean_abs_probability_difference",
+      "digits": 3,
+      "value": 0.07969326550642108,
+      "stage": "exploratory",
+      "sha256": "475d8f47054826de626c17d2f36c35e68b3650816cb4ea6d1a249a27a68d7463",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wq_test_n": {
+      "source": "research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "pointer": "/probes/95/test_n",
+      "value": 36,
+      "stage": "exploratory",
+      "sha256": "475d8f47054826de626c17d2f36c35e68b3650816cb4ea6d1a249a27a68d7463",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wq_instruction": {
+      "source": "research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "pointer": "/probes/95/accuracy",
+      "digits": 3,
+      "value": 1.0,
+      "stage": "exploratory",
+      "sha256": "475d8f47054826de626c17d2f36c35e68b3650816cb4ea6d1a249a27a68d7463",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wq_shuffle": {
+      "source": "research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "pointer": "/probes/95/shuffled_accuracy",
+      "digits": 3,
+      "value": 0.4444444444444444,
+      "stage": "exploratory",
+      "sha256": "475d8f47054826de626c17d2f36c35e68b3650816cb4ea6d1a249a27a68d7463",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wq_first_hidden": {
+      "source": "research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "pointer": "/probes/23/subsets/first_turn/accuracy",
+      "digits": 3,
+      "value": 0.5,
+      "stage": "exploratory",
+      "sha256": "475d8f47054826de626c17d2f36c35e68b3650816cb4ea6d1a249a27a68d7463",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/qwen2.5-0.5b/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_contexts": {
+      "source": "research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "pointer": "/agreement/total",
+      "value": 12,
+      "stage": "exploratory",
+      "sha256": "a6dc4b1eda69d5be121a49c1dd3a32011fe2c3a5837bfbe06da646976cde63b4",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_agree": {
+      "source": "research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "pointer": "/agreement/matched_actions",
+      "value": 8,
+      "stage": "exploratory",
+      "sha256": "a6dc4b1eda69d5be121a49c1dd3a32011fe2c3a5837bfbe06da646976cde63b4",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_valid": {
+      "source": "research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "pointer": "/agreement/paired_valid",
+      "value": 11,
+      "stage": "exploratory",
+      "sha256": "a6dc4b1eda69d5be121a49c1dd3a32011fe2c3a5837bfbe06da646976cde63b4",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_drift": {
+      "source": "research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "pointer": "/agreement/inspect_mean_abs_probability_difference",
+      "digits": 3,
+      "value": 0.044672761500502624,
+      "stage": "exploratory",
+      "sha256": "a6dc4b1eda69d5be121a49c1dd3a32011fe2c3a5837bfbe06da646976cde63b4",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_test_n": {
+      "source": "research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "pointer": "/probes/127/test_n",
+      "value": 40,
+      "stage": "exploratory",
+      "sha256": "a6dc4b1eda69d5be121a49c1dd3a32011fe2c3a5837bfbe06da646976cde63b4",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_instruction": {
+      "source": "research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "pointer": "/probes/127/accuracy",
+      "digits": 3,
+      "value": 1.0,
+      "stage": "exploratory",
+      "sha256": "a6dc4b1eda69d5be121a49c1dd3a32011fe2c3a5837bfbe06da646976cde63b4",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_shuffle": {
+      "source": "research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "pointer": "/probes/127/shuffled_accuracy",
+      "digits": 3,
+      "value": 0.575,
+      "stage": "exploratory",
+      "sha256": "a6dc4b1eda69d5be121a49c1dd3a32011fe2c3a5837bfbe06da646976cde63b4",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_first_hidden": {
+      "source": "research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "pointer": "/probes/31/subsets/first_turn/accuracy",
+      "digits": 3,
+      "value": 0.5,
+      "stage": "exploratory",
+      "sha256": "a6dc4b1eda69d5be121a49c1dd3a32011fe2c3a5837bfbe06da646976cde63b4",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/smollm2-360m/readout-summary.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_q_control_inspect": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/0/steering/1/inspect_first",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_q_steer_inspect": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/0/steering/3/inspect_first",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_q_n": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/0/steering/3/n",
+      "value": 12,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper",
+        "what-probes-reveal"
+      ]
+    },
+    "ws_q_control_pass": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/0/steering/1/passed",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_q_steer_pass": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/0/steering/3/passed",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper",
+        "what-probes-reveal"
+      ]
+    },
+    "lens_q_agreement": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/0/lens/11/vocab_final_agreement",
+      "digits": 3,
+      "value": 0.0,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "lens_q_n": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/0/lens/11/n",
+      "value": 146,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wp_q_moved_to_donor": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/0/patching/35/moved_to_donor",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wp_q_discordant_leaders": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/0/patching/35/discordant_leaders",
+      "value": 2,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "final_q_move": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/0/patching/71/moved_to_donor_action",
+      "value": 1,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "final_q_valid": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/0/patching/71/full_reply_pairs",
+      "value": 1,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_s_control_inspect": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/1/steering/1/inspect_first",
+      "value": 6,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_s_steer_inspect": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/1/steering/3/inspect_first",
+      "value": 6,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_s_n": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/1/steering/3/n",
+      "value": 12,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper",
+        "what-probes-reveal"
+      ]
+    },
+    "ws_s_control_pass": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/1/steering/1/passed",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "ws_s_steer_pass": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/1/steering/3/passed",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper",
+        "what-probes-reveal"
+      ]
+    },
+    "lens_s_agreement": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/1/lens/15/vocab_final_agreement",
+      "digits": 3,
+      "value": 0.0,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "lens_s_n": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/1/lens/15/n",
+      "value": 158,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wp_s_moved_to_donor": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/1/patching/47/moved_to_donor",
+      "value": 0,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "wp_s_discordant_leaders": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/1/patching/47/discordant_leaders",
+      "value": 1,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "final_s_move": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/1/patching/95/moved_to_donor_action",
+      "value": 1,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "final_s_valid": {
+      "source": "research/recovery/mechanism/whitebox/results.json",
+      "pointer": "/models/1/patching/95/full_reply_pairs",
+      "value": 1,
+      "stage": "exploratory",
+      "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json",
+      "appears_in": [
+        "paper"
+      ]
+    },
+    "passed": {
+      "source": "docs/recovery-results.json",
+      "pointer": "/totals/passed",
+      "value": 0,
+      "stage": "frozen archive",
+      "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json",
+      "appears_in": [
+        "summary",
+        "what-the-floor-hides",
+        "why-test-an-instruction"
+      ]
+    },
+    "greedy_q_all": {
+      "source": "research/recovery/mechanism/scores-audit.json",
+      "pointer": "/qwen2.5-0.5b/matches_all",
+      "value": 268,
+      "stage": "exploratory",
+      "sha256": "db0acb09268f5d27a0ee11057da47a5d93f92ea179a140ea77a890f22f5245cc",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-audit.json",
+      "appears_in": [
+        "what-probes-reveal"
+      ]
+    },
+    "greedy_q_n": {
+      "source": "research/recovery/mechanism/scores-audit.json",
+      "pointer": "/qwen2.5-0.5b/n",
+      "value": 268,
+      "stage": "exploratory",
+      "sha256": "db0acb09268f5d27a0ee11057da47a5d93f92ea179a140ea77a890f22f5245cc",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-audit.json",
+      "appears_in": [
+        "what-probes-reveal"
+      ]
+    },
+    "greedy_s_all": {
+      "source": "research/recovery/mechanism/scores-audit.json",
+      "pointer": "/smollm2-360m/matches_all",
+      "value": 344,
+      "stage": "exploratory",
+      "sha256": "db0acb09268f5d27a0ee11057da47a5d93f92ea179a140ea77a890f22f5245cc",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-audit.json",
+      "appears_in": [
+        "what-probes-reveal"
+      ]
+    },
+    "greedy_s_n": {
+      "source": "research/recovery/mechanism/scores-audit.json",
+      "pointer": "/smollm2-360m/n",
+      "value": 344,
+      "stage": "exploratory",
+      "sha256": "db0acb09268f5d27a0ee11057da47a5d93f92ea179a140ea77a890f22f5245cc",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-audit.json",
+      "appears_in": [
+        "what-probes-reveal"
+      ]
+    },
+    "greedy_q_canonical": {
+      "source": "research/recovery/mechanism/scores-audit.json",
+      "pointer": "/qwen2.5-0.5b/matches_canonical_token_path",
+      "value": 266,
+      "stage": "exploratory",
+      "sha256": "db0acb09268f5d27a0ee11057da47a5d93f92ea179a140ea77a890f22f5245cc",
+      "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-audit.json",
+      "appears_in": [
+        "what-probes-reveal"
+      ]
+    }
+  },
+  "passages": [
+    {
+      "document": "paper",
+      "claim_text": "A disconnected worker can leave a successor uncertain whether a database write committed. We asked whether a system instruction to inspect persisted state before writing improves recovery in that setting. A frozen factorial design paired instructions across workflow, fixture, prior commit outcome and action-menu order. Two small quantized instruction checkpoints completed 192 scheduled episodes. Exact submitted recoveries for Qwen were 0/48 under generic and 0/48 under verify-first instructions. For SmolLM2 they were 0/48 and 0/48, respectively. The models submitted 94 incorrect databases, while 8 exact databases occurred without a submission. A reference policy could solve every starting state through the same tools. An exploratory search over legal action sequences found that 90 episodes had already lost every route to an exact submission after the first decision. In an exploratory menu sweep Qwen recovered the committed refund on 2/24 presentations of the same work order. We release the prompts, raw replies, SQLite effects, paired estimates and post hoc diagnostics. The endpoint floor limits inference about comparative ability. A worker can submit an incorrect database or leave a correct database unsubmitted.",
+      "claims": [
+        "recorded",
+        "qg_passed",
+        "qg_scheduled",
+        "qv_passed",
+        "qv_scheduled",
+        "sg_passed",
+        "sg_scheduled",
+        "sv_passed",
+        "sv_scheduled",
+        "submitted_inexact",
+        "exact_state",
+        "unreachable_one",
+        "bb_refund_exact",
+        "bb_refund_orders"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "paper",
+      "claim_text": "Crossing 3 task families with 4 seeds produced 12 distinct work orders. Hidden commit outcome and menu order varied within each work order under both instructions. The canonical and reverse menus expose identical operation names and SQL bindings. Menu order tests whether a model reacts to where an action appears. Those repeated observations belong to the same workflow.",
+      "claims": [
+        "n_tasks",
+        "n_seeds",
+        "work_orders"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "paper",
+      "claim_text": "Greedy decoding allows up to 12 output tokens per decision. Only an exact action name after trimming surrounding whitespace can execute. Invalid answers receive feedback and consume a turn. The 5 decisions include inspection and submission. A correct transfer can need the entire budget. The parser rejects even an intelligible description of a permitted operation.",
+      "claims": [
+        "max_tokens",
+        "max_steps"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "paper",
+      "claim_text": "The archive contains 192 of 192 planned episodes and 612 decisions. There were 0 inference errors and 0 missing records. Each checkpoint supplied 48 complete matched instruction pairs. Neither checkpoint gained or lost a verified completion under the reminder. The paired differences in percentage points were 0.0 for Qwen and 0.0 for SmolLM2, with percentile interval endpoints of 0.0 and 0.0 for Qwen and 0.0 and 0.0 for SmolLM2. Resampling work orders generated the same value in every draw because every fixture had the same failed primary outcome in both arms. This degeneracy expresses the absence of observed successes. It supplies no equivalence bound for a different model or operational task distribution.",
+      "claims": [
+        "recorded",
+        "scheduled",
+        "decisions",
+        "inference_errors",
+        "missing",
+        "q_both_recorded_pairs",
+        "q_difference",
+        "s_difference",
+        "q_low",
+        "q_high",
+        "s_low",
+        "s_high"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "paper",
+      "claim_text": "| Checkpoint and instruction | Episodes | Inspected first | Submitted | Exact state | Exact and submitted |\n| --------------------- | ----------: | --------------: | ----------: | -----------: | -------------------: |\n| Qwen, generic | 48 | 0 | 28 | 0 | 0 |\n| Qwen, verify first | 48 | 10 | 32 | 0 | 0 |\n| SmolLM2, generic | 48 | 16 | 22 | 4 | 0 |\n| SmolLM2, verify first | 48 | 12 | 12 | 4 | 0 |",
+      "claims": [
+        "qg_scheduled",
+        "qg_first_inspection",
+        "qg_submitted",
+        "qg_exact_state",
+        "qg_passed",
+        "qv_scheduled",
+        "qv_first_inspection",
+        "qv_submitted",
+        "qv_exact_state",
+        "qv_passed",
+        "sg_scheduled",
+        "sg_first_inspection",
+        "sg_submitted",
+        "sg_exact_state",
+        "sg_passed",
+        "sv_scheduled",
+        "sv_first_inspection",
+        "sv_submitted",
+        "sv_exact_state",
+        "sv_passed"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "paper",
+      "claim_text": "The agent submitted an inexact database in 94 episodes. The other 98 ended at the turn limit. Within the latter group, 8 had attained the exact state. All of those cases involved SmolLM2, the committed refund and a canonical menu. The model repeatedly selected the status update after the refund entry already existed. Under that starting condition, a correct database could arise without consulting the ledger. The missing submit action still mattered to the host process. At the other extreme, 22 episodes never produced even one executable action.",
+      "claims": [
+        "submitted_inexact",
+        "step_limit",
+        "exact_state",
+        "no_valid_decision"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "paper",
+      "claim_text": "State diagnostics require at least one valid choice and no infrastructure failure. In 170 eligible episodes we found 23 with an overapplied uncertain operation, 71 with that operation missing and 154 with incomplete later work. The categories can overlap. For example, omitting a refund and failing to mark the order both leave visible discrepancies in one database. The denominator for these checks differs from the planned denominator for completion, because assigning a particular reaction to the database makes little sense when the parser executed no action at all.",
+      "claims": [
+        "diagnostic_eligible",
+        "duplicate",
+        "omission",
+        "incomplete_followup"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "paper",
+      "claim_text": "At the opening decision, 90 episodes lost every legal route to an exact submission. Of those, 80 submitted immediately and 10 duplicated a previous write. These are behaviorally different errors even though neither can be corrected within the menu after the move.",
+      "claims": [
+        "unreachable_one",
+        "unreachable_one_submit",
+        "unreachable_one_duplicate"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "paper",
+      "claim_text": "| Through decision | Exact state unreachable | Exact submission unreachable |\n| --------------------- | ----------------------------: | --------------------------------: |\n| First | 90 | 90 |\n| Second | 106 | 122 |\n| Third | 126 | 159 |\n| Fourth | 159 | 184 |\n| Fifth | 184 | 192 |",
+      "claims": [
+        "reach_exact_first",
+        "reach_submission_first",
+        "reach_exact_second",
+        "reach_submission_second",
+        "reach_exact_third",
+        "reach_submission_third",
+        "reach_exact_fourth",
+        "reach_submission_fourth",
+        "reach_exact_fifth",
+        "reach_submission_fifth"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "paper",
+      "claim_text": "Table. Cumulative episodes that had lost every legal continuation to each endpoint by the indicated decision. The denominator stays at 192 throughout. A terminal failure stays in the count. A terminal exact database can still appear in the submission column if it was never submitted. [Reachability table data](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv)",
+      "claims": [
+        "reach_episodes"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "paper",
+      "claim_text": "For the rolled-back inventory case with seed 11, the Qwen treatment first inspected, then applied the missing stock receipt and submitted too soon. The stock was correct but its receipt remained open. The matched generic episode submitted immediately. This pair was selected in the original report as the earliest sorted Qwen pair with different first actions when no pair differed on primary success. The reminder changed behavior in a way that looks useful on a partial endpoint. The trace identifies the work that remained outstanding when the host received the completion signal. [Generic transcript](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L70) · [Verify-first transcript](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L27)",
+      "claims": [
+        "line27_seed"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "paper",
+      "claim_text": "In the corresponding SmolLM2 example, inventory seed 37, the generic arm inspected repeatedly. The treatment instead produced the literal text “post the receipt” 5 times. The offered action name was `close_receipt`. The unrecognized response triggered feedback every time and never executed a write. It is tempting to award partial credit for the semantic resemblance, but accepting that paraphrase would change the interface and still leave the stock adjustment unperformed. Replaying a different parser would be a new experiment with different subsequent feedback. [Generic transcript](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L116) · [Verify-first transcript](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L158)",
+      "claims": [
+        "line158_seed",
+        "smol_repeat"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "paper",
+      "claim_text": "Replacing one decision on a saved prefix and then resuming the original policy produced 102/405 exact submissions on eligible shortest-path oracle interventions and 18/352 on eligible evidence-respecting interventions. The oracle can use the hidden state. The policies have different eligible prefixes, and several prefixes can come from one episode. These conditional rates describe recovery after an externally supplied move.",
+      "claims": [
+        "force_oracle_pass",
+        "force_oracle_n",
+        "force_evidence_pass",
+        "force_evidence_n"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "paper",
+      "claim_text": "The episode table also records a single failure label using a documented precedence rule. The original verifier counted 94 incorrect submissions. The mutually exclusive taxonomy labels 89 premature submissions because a duplicate-write label can take priority. A worker that emitted only invalid replies also exhausted the budget. Changing which label takes precedence changes the mutually exclusive summary but leaves the underlying trace intact. Database-difference records make it possible to audit whether a particular failure involved excess rows, missing rows, wrong field values or a missing submission. We treat these annotations as a way to find testable hypotheses. Independent expert review of individual trajectories and proposed explanations is pending. The downloadable masked annotation kit provides a way to test agreement without showing reviewers a checkpoint name or suggested diagnosis. No human ratings or adjudicated expert judgments are treated as observed outcomes. [Review kit](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/site/public/review/index.html) Automated labels and recovery reachability are properties of the recorded interface. They cannot identify a model’s private intent.",
+      "claims": [
+        "submitted_inexact",
+        "exclusive_premature"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "paper",
+      "claim_text": "We scored legal alternatives at 612 archived decisions and compared 128 post-inspection prefixes with their opposite-world observation. Averaged over opening decisions, the probability assigned to inspection after renormalizing across complete menu candidates went from 0.009765748040350394 to 0.2994192071796394 for Qwen and from 0.1961042345222599 to 0.15583906224202823 for SmolLM2. These scores concern exact candidate strings with the scorer’s boundary convention. They describe relative weight within the menu and exclude probability mass assigned to other text. In the superseded warm-prefix pass, 28 identical SmolLM2 inputs had a mean total variation of 0.016396531520751333 between scoring passes, exceeding the preliminary 0.010342628345866094 mean across 64 generic observation swaps. We discarded the warm scores as evidence for the treatment and repeated the calculation with fresh prefix contexts and the generator’s single-token continuation batch geometry. The changes were made together. After the correction, the maximum total variation under identical-input controls was 0.0 across 10 repeated inputs for Qwen and 0.0 across 28 repeated inputs for SmolLM2. Resetting the entire prefix for each candidate yielded maximum total variation 0.0 on 6 Qwen and 0.0 on 6 SmolLM2 controls. Qwen verify-first changed the leading candidate on 2/16 swaps (mean total variation 0.17219593493647656). SmolLM2 generic changed the leading candidate on 0/64 swaps (mean total variation 0.009808861766459466). SmolLM2 verify-first changed the leading candidate on 0/48 swaps (mean total variation 0.012672037311121667). Qwen generic had no eligible post-inspection prefix. These swaps rescore the same fixed action menu at an archived prefix.",
+      "claims": [
+        "scores_completed",
+        "score_swap_count",
+        "score_qg",
+        "score_qv",
+        "score_sg",
+        "score_sv",
+        "warm_s_n",
+        "warm_s_mean",
+        "superseded_smollm_generic_tv",
+        "superseded_smollm_generic_n",
+        "cold_drift_0",
+        "cold_repeat_0",
+        "cold_drift_1",
+        "cold_repeat_1",
+        "q_full_reset_max",
+        "q_full_reset_n",
+        "s_full_reset_max",
+        "s_full_reset_n",
+        "qv_flips",
+        "qv_swaps",
+        "qv_distance",
+        "sg_flips",
+        "sg_swaps",
+        "sg_distance",
+        "sv_flips",
+        "sv_swaps",
+        "sv_distance"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "paper",
+      "claim_text": "The follow-up contains 344 controlled episodes, including 168 menu permutations. The inference cache records 675 new requests and 17 unique decisions reused from the parent archive. Duplicate prompts reuse a response, so an episode count is not a count of independent model calls. The permutation panel uses a single checkpoint and starting condition, while the smaller matched wording and observation comparisons apply to the designated refund fixture. Both hidden worlds share the initial text within checkpoint. Matched length controls token and character counts, but an imperative reminder and a declarative placebo differ in what they ask the worker to do. Qwen submitted in 2/20 active-wording episodes versus 12/20 neutral placebos on that fixture. After a supplied inspection, showing the opposite-world result yielded 0 verified recoveries versus 0 for correct feedback across 4 matched cases. Adding an instruction to submit now to a supplied observation changed immediate submissions from 2/4 to 1/4. On the committed refund, Qwen achieved exact submitted recovery in 2/24 menu layouts. The earlier canonical and reversed orders had both missed this outcome on the same work order. Across 120 transfer menu orderings, Qwen chose the first listed entry 19 times and completed 1 exact submissions. Inventory yielded 0/24 verified recoveries. The successful sequences were [mark_refunded → submit](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/traces.jsonl#L88) · [mark_refunded → mark_refunded → submit](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/traces.jsonl#L100) · [move_orders → remove_customer → move_orders → submit](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/traces.jsonl#L211).",
+      "claims": [
+        "bb_episodes",
+        "bb_permutations",
+        "bb_new_inferences",
+        "bb_unique_from_parent",
+        "bb_qword_submitted",
+        "bb_qword_n",
+        "bb_qplacebo_submitted",
+        "bb_forced_v",
+        "bb_forced_g",
+        "bb_forced_n",
+        "bb_toolnote_control",
+        "bb_toolnote_n",
+        "bb_toolnote_treatment",
+        "bb_refund_exact",
+        "bb_refund_orders",
+        "bb_transfer_orders",
+        "bb_transfer_first",
+        "bb_transfer_passed",
+        "bb_inventory_exact",
+        "bb_inventory_orders"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "paper",
+      "claim_text": "For Qwen, among 12 held-out first-turn texts, original and quantized models selected the same action on 7/9 jointly parseable replies. Mean absolute drift in probability of the first inspect token was 0.07969326550642108. On 36 held-out decision rows, final-block classification of the instruction achieved accuracy 1.0, compared with 0.4444444444444444 under shuffled training labels. Hidden-state accuracy before any tool feedback was 0.5. For SmolLM2, among 12 held-out first-turn texts, original and quantized models selected the same action on 8/11 jointly parseable replies. Mean absolute drift in probability of the first inspect token was 0.044672761500502624. On 40 held-out decision rows, final-block classification of the instruction achieved accuracy 1.0, compared with 0.575 under shuffled training labels. Hidden-state accuracy before any tool feedback was 0.5. Hidden-world pairs start from identical text. Distinguishing that bit at the opening decision would indicate leakage or a scoring defect. Instruction labels are visible in the prompts. Their decodability can coexist with uninformative hidden-state prediction. In the held-out generic committed refund with canonical menu, the frozen SmolLM2 repeatedly updated status and reached exact state. Its matched original-weight control repeatedly inspected and ended inexact. Precision and runtime both changed. Training and testing use separate fixture seeds, yet repeated context positions and shared workflow templates limit independence.",
+      "claims": [
+        "wq_contexts",
+        "wq_agree",
+        "wq_valid",
+        "wq_drift",
+        "wq_test_n",
+        "wq_instruction",
+        "wq_shuffle",
+        "wq_first_hidden",
+        "ws_contexts",
+        "ws_agree",
+        "ws_valid",
+        "ws_drift",
+        "ws_test_n",
+        "ws_instruction",
+        "ws_shuffle",
+        "ws_first_hidden"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "paper",
+      "claim_text": "A fixed unit steering coefficient applied the training-set verify-first direction once at the last prompt position in the middle block. We compare it with zero steering on matched held-out workflows. For Qwen, opening inspections changed from 0 to 0 across 12 episodes per arm, and verified completion changed from 0 to 0. The unrestricted midpoint logit lens agreed with the final token leader at rate 0.0 across 146 decision rows. At that midpoint residual patch, 0/2 pairs with different natural menu-token leaders acquired the donor leader. At the final block, the residual patch transferred the donor’s complete action in 1/1 eligible natural-action contrasts. For SmolLM2, opening inspections changed from 6 to 6 across 12 episodes per arm, and verified completion changed from 0 to 0. The unrestricted midpoint logit lens agreed with the final token leader at rate 0.0 across 158 decision rows. At that midpoint residual patch, 0/1 pairs with different natural menu-token leaders acquired the donor leader. At the final block, the residual patch transferred the donor’s complete action in 1/1 eligible natural-action contrasts. Eligibility for complete-action transfer required different valid natural replies in both contexts. The late residual replacement is an expected positive control. These selected cases do not identify a unique circuit or imply better recovery. [Original-weight outputs](https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json)",
+      "claims": [
+        "ws_q_control_inspect",
+        "ws_q_steer_inspect",
+        "ws_q_n",
+        "ws_q_control_pass",
+        "ws_q_steer_pass",
+        "lens_q_agreement",
+        "lens_q_n",
+        "wp_q_moved_to_donor",
+        "wp_q_discordant_leaders",
+        "final_q_move",
+        "final_q_valid",
+        "ws_s_control_inspect",
+        "ws_s_steer_inspect",
+        "ws_s_n",
+        "ws_s_control_pass",
+        "ws_s_steer_pass",
+        "lens_s_agreement",
+        "lens_s_n",
+        "wp_s_moved_to_donor",
+        "wp_s_discordant_leaders",
+        "final_s_move",
+        "final_s_valid"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "paper",
+      "claim_text": "The experiment contains 12 fixed fixtures from 3 authored workflows. Seeds change identifiers and quantities within a family. They leave much of the instruction, desired program and verifier structure shared. Repeated menu orders are correlated measurements, and multiple turns are conditional on earlier choices. Treating every token or reply as an independent draw would inflate apparent precision. The bootstrap keeps related outcomes together but cannot create variation at a primary endpoint that never succeeded. An observed lack of paired improvement therefore gives no population-level upper bound on a better policy’s effect.",
+      "claims": [
+        "work_orders",
+        "n_tasks"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "summary",
+      "claim_text": "We compared a generic recovery instruction with the same instruction plus a request to inspect persisted state before writing. Across 192 scheduled episodes, the two locally runnable checkpoints produced 0 exact, submitted recoveries. Qwen inspected first in 0 of 48 generic episodes and 10 of 48 verify-first episodes. SmolLM2 inspected first in 16 of 48 and 12 of 48, respectively. Those changes in behavior did not establish which remaining writes the agent would execute or when it would declare the work finished.",
+      "claims": [
+        "scheduled",
+        "passed",
+        "qg_first_inspection",
+        "qg_scheduled",
+        "qv_first_inspection",
+        "qv_scheduled",
+        "sg_first_inspection",
+        "sg_scheduled",
+        "sv_first_inspection",
+        "sv_scheduled"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "summary",
+      "claim_text": "The archive separates these outcomes. Models explicitly submitted 94 inexact databases. In 8 other episodes, the database met the verifier’s target and the agent never submitted. A handwritten controller solved each starting state by consulting the same inspection results available to the models. The protocols, action bindings, raw replies and replay code let another team check what the endpoint counted, or evaluate a different policy under the same constraints.",
+      "claims": [
+        "submitted_inexact",
+        "exact_state"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "summary",
+      "claim_text": "The frozen comparison concerns short, constructed handoffs under greedy decoding. A finite collection of uniformly unsuccessful episodes gives little information about effects on other models or workloads. Our subsequent analyses examine where the trajectories diverged, which alternatives a model scored, and whether changing what the model sees changes its next decision. These are exploratory tests selected after the endpoint was known. The trajectory search found that 90 episodes had lost every route to an exact submission at the opening decision. Immediate submission accounted for 80 of those cases. That distinction separates a worker that ended too soon from one that permanently overapplied a write. In an exploratory menu sweep Qwen recovered the committed refund on 2/24 presentations of the same work order. A practical next experiment would include a service-side request identifier alongside the instructional intervention, with new workflows and enough successful baseline episodes to make improvement measurable.\n[Read the full paper](paper.html) · [Download the PDF](paper.pdf)\n",
+      "claims": [
+        "unreachable_one",
+        "unreachable_one_submit",
+        "bb_refund_exact",
+        "bb_refund_orders"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "counting-inspections",
+      "claim_text": "There is an appealing way to evaluate an instruction that says “inspect first.” Count how often the agent inspects first. It is easy to score, close to the wording of the request and understandable to someone reviewing a dashboard. For one checkpoint it also made the treatment look promising. Qwen’s count went from 0 of 48 episodes to 10 of 48. If I were testing whether the instruction ever changed an opening action, I would pay attention to that difference.",
+      "claims": [
+        "qg_first_inspection",
+        "qg_scheduled",
+        "qv_first_inspection",
+        "qv_scheduled"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "counting-inspections",
+      "claim_text": "The second checkpoint cautions against extrapolating the first. SmolLM2 inspected first in 16 of 48 generic episodes and 12 of 48 verify-first episodes. At the primary endpoint neither model completed an exact submitted recovery. A reminder can change the first move in a direction that varies with the checkpoint. It does not install a recovery procedure that both models then follow.",
+      "claims": [
+        "sg_first_inspection",
+        "sg_scheduled",
+        "sv_first_inspection",
+        "sv_scheduled"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "counting-inspections",
+      "claim_text": "When I read an inspection metric I also ask what the measure cost. The budget was 5 decisions, and every read counted. Inspecting an ambiguous state can buy information worth much more than the turn. Inspecting that same unchanged state again can consume the only remaining opportunity to finish. Counting all reads equally would reward both behaviors. Measuring only the opening decision avoids part of the problem, but still gives no evidence that the worker used what it learned.",
+      "claims": [
+        "max_steps"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "next-recovery-test",
+      "claim_text": "The recovery study asked a worker to finish an interrupted job once and signal that it was done. Across 12 distinct work orders, neither small checkpoint met that contract under either instruction. I would use the result to design a more discriminating comparison. Repeating the same episodes until a different answer appears would mix changes in sampling with changes in the task or policy. I want a test whose outcome could alter a decision about how to build the service.",
+      "claims": [
+        "work_orders"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "post-the-receipt",
+      "claim_text": "The archived SmolLM2 inventory episode with seed 37 makes this distinction visible. The previous worker’s stock update had rolled back. The replacement worker needed to account for the shipment and post the receipt. Under the verify-first instruction it wrote “post the receipt” 5 times. After each rejected action that left another turn available, the host explained that no statement ran and presented the menu again. The replies are in the journal, along with the exact feedback and the absence of any SQL observation for an invalid turn. [Raw episode](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl#L158)",
+      "claims": [
+        "line158_seed",
+        "smol_repeat"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "what-probes-reveal",
+      "claim_text": "For Qwen, inspection’s mean opening probability within the scored legal menu changed from 0.009765748040350394 to 0.2994192071796394 with the reminder. The actual worker could still generate text outside that menu. The normalized figure is conditional on the comparison set. I would not use it as the probability that the live console will receive a valid inspection request. The first, superseded implementation produced a mean total variation of 0.016396531520751333 on 28 identical SmolLM2 inputs, larger than the apparent 0.010342628345866094 change when swapping the generic observation. With a comparison that moves even when the text stays fixed, I cannot interpret a small apparent effect of an altered observation. The study repeated the score measurements under cold contexts and checked repeats before interpreting changes. A separate unrestricted greedy replay reproduced the original reply, output count and stop reason on 268/268 Qwen decisions and 344/344 SmolLM2 decisions. That check helped distinguish the score implementation failure from a change to the frozen behavior. Canonical tokenization matched the naturally generated path for 266/268 Qwen replies. A displayed word can have more than one legal token sequence. In a separate original-weight experiment, the unit steering intervention produced 0/12 exact submitted recoveries on Qwen and 0/12 on SmolLM2. A change in an internal representation has to survive the action interface and the later turns before it can count as a recovered job.",
+      "claims": [
+        "score_qg",
+        "score_qv",
+        "warm_s_mean",
+        "warm_s_n",
+        "superseded_smollm_generic_tv",
+        "greedy_q_all",
+        "greedy_q_n",
+        "greedy_s_all",
+        "greedy_s_n",
+        "greedy_q_canonical",
+        "ws_q_steer_pass",
+        "ws_q_n",
+        "ws_s_steer_pass",
+        "ws_s_n"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "what-probes-reveal",
+      "claim_text": "The frozen benchmark gives these checks an anchor. Its 192 episodes have an immutable journal, verifiable tool semantics and a known budget. The new probes are follow-ups to what happened there. A convincing next test would make a prediction from one of them, commit it before seeing a different set of work orders, and then see whether the intervention changes both the predicted decision and the operational outcome. That is the point at which a descriptive pattern starts earning its keep as an explanation. [Frozen journal](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl)\n",
+      "claims": [
+        "recorded"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "what-the-floor-hides",
+      "claim_text": "If I only looked at the last column of the recovery table, I could get through the results very quickly. The numerator is 0. Every checkpoint and instruction cell has the same number of successful jobs. A chart of that measure contains very little ink. The danger is deciding that the underlying workers did the same thing, or that changing the instruction had no effect on any decision that mattered.",
+      "claims": [
+        "passed"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "what-the-floor-hides",
+      "claim_text": "Consider the paths to failure. The workers submitted 94 incorrect databases. If the host trusted the submit signal, those jobs would leave its queue even though something was wrong with the state. Another 8 episodes reached the expected database but ended without a submission. A worker waiting on that signal might retry the job and create a new problem. The effect on a deployed system would depend on how that system handles a missing signal, so the count identifies an exposure and does not estimate a production incident rate.",
+      "claims": [
+        "submitted_inexact",
+        "exact_state"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "what-the-floor-hides",
+      "claim_text": "In an exploratory menu sweep Qwen recovered the committed refund on 2/24 presentations of the same work order. Within that sweep the checkpoint, database and action names stayed fixed. Only the presentation order varied. I would now ask which part of the interface made the right sequence easier to produce. Counting the extra layouts as fresh refund cases would obscure that question.\n",
+      "claims": [
+        "bb_refund_exact",
+        "bb_refund_orders"
+      ],
+      "status": "verified against source fields",
+      "stage": "exploratory"
+    },
+    {
+      "document": "why-test-an-instruction",
+      "claim_text": "We ran 192 episodes under a design committed before collection. We varied the order in which the menu appeared because a model might simply copy an attractive action near the top. We required both a correct database and an explicit submission. A caller waiting for a completion signal needs both. A different caller may only care about the final state, which is why the data expose the two outcomes separately. [Frozen protocol](https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/PROTOCOL.md)",
+      "claims": [
+        "scheduled"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    },
+    {
+      "document": "why-test-an-instruction",
+      "claim_text": "The headline result was 0 exact submitted recoveries. On its own, that number gives a disappointing answer to a question about improving completion. But it also tells me where to look next. Did either worker inspect? Did it repeat the write after seeing the ledger entry? Did it complete the remaining changes and then keep talking to the console? Those are distinct questions, and each needs a different entry from the trace.",
+      "claims": [
+        "passed"
+      ],
+      "status": "verified against source fields",
+      "stage": "frozen archive"
+    }
+  ],
+  "qualitative_claims": [
+    {
+      "id": "reference-controls",
+      "claim": "State-inspecting reference succeeds in both worlds; blind retry and assume-committed succeed in opposite worlds.",
+      "status": "verified",
+      "stage": "Frozen",
+      "source_fields": [
+        {
+          "file": "research/recovery/baselines.py",
+          "field": "--json policy, committed, verdict.passed",
+          "sha256": "813d4c761df73b02ede7a22569b89279d0f19a4449541df96714e54ee42983da",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/baselines.py"
+        },
+        {
+          "file": "research/recovery/manifest.json",
+          "field": "tasks, seeds",
+          "sha256": "b27c976966ba8574a3496827cd8e5778bb67dcb3b53b47753efdb2b500eb934e",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/manifest.json"
+        }
+      ]
+    },
+    {
+      "id": "complete-coverage",
+      "claim": "All scheduled cells have recorded episodes without inference errors.",
+      "status": "verified",
+      "stage": "Frozen",
+      "source_fields": [
+        {
+          "file": "docs/recovery-results.json",
+          "field": "totals.scheduled, recorded, inference_errors, missing",
+          "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json"
+        }
+      ]
+    },
+    {
+      "id": "matched-openings",
+      "claim": "Committed and rolled-back worlds in each pair have identical initial visible messages and first replies.",
+      "status": "verified",
+      "stage": "Frozen",
+      "source_fields": [
+        {
+          "file": "research/recovery/episodes.jsonl",
+          "field": "group by model, task, seed, instruction, menu_order; compare committed, prompt, system, menu, steps[0].reply",
+          "sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl"
+        }
+      ]
+    },
+    {
+      "id": "primary-floor",
+      "claim": "No checkpoint submitted an exact database in any condition. The paired fixture bootstrap consequently has no width.",
+      "status": "verified",
+      "stage": "Frozen",
+      "source_fields": [
+        {
+          "file": "docs/recovery-results.json",
+          "field": "episodes[*].passed; by_model[*].difference, interval",
+          "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json"
+        }
+      ]
+    },
+    {
+      "id": "opposite-inspection-directions",
+      "claim": "First-action inspection increased for Qwen and decreased for SmolLM2 under verify-first.",
+      "status": "verified",
+      "stage": "Frozen",
+      "source_fields": [
+        {
+          "file": "docs/recovery-results.json",
+          "field": "by_model[*].by_instruction.{baseline,inspect_first}.first_inspection",
+          "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json"
+        }
+      ]
+    },
+    {
+      "id": "unacknowledged-refunds",
+      "claim": "All exact databases came from unsubmitted SmolLM2 committed-refund episodes with canonical menus and repeated status updates.",
+      "status": "verified",
+      "stage": "Frozen",
+      "source_fields": [
+        {
+          "file": "docs/recovery-results.json",
+          "field": "episodes[*].{exact_state,submitted,model,task,committed,menu_order,turns[*].action}",
+          "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json"
+        }
+      ]
+    },
+    {
+      "id": "inventory-reminder",
+      "claim": "For the selected rolled-back Qwen inventory case, generic submitted immediately. Verify-first inspected, received stock and submitted without posting the receipt.",
+      "status": "verified",
+      "stage": "Frozen",
+      "source_fields": [
+        {
+          "file": "research/recovery/episodes.jsonl",
+          "field": "lines 27,70: steps[*].action, verdict.endpoints.receipt_posted",
+          "sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl"
+        }
+      ]
+    },
+    {
+      "id": "receipt-phrase",
+      "claim": "The selected SmolLM2 verify-first case repeated the literal unaccepted reply ‘post the receipt’ on every turn. Its generic counterpart repeatedly inspected.",
+      "status": "verified",
+      "stage": "Frozen",
+      "source_fields": [
+        {
+          "file": "research/recovery/episodes.jsonl",
+          "field": "lines 116,158: menu, steps[*].{reply,valid,action}",
+          "sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl"
+        }
+      ]
+    },
+    {
+      "id": "early-unreachability",
+      "claim": "Early loss of every legal submission route included both immediate submission and overapplied writes.",
+      "status": "verified",
+      "stage": "Exploratory",
+      "source_fields": [
+        {
+          "file": "research/recovery/mechanism/trace_episodes.csv",
+          "field": "first_unreachable_submission=1; first_action, failure_label",
+          "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv"
+        }
+      ]
+    },
+    {
+      "id": "precedence",
+      "claim": "The exclusive premature-submit label counts fewer episodes than submitted-inexact because some submissions already have a duplicate-write label.",
+      "status": "verified",
+      "stage": "Exploratory",
+      "source_fields": [
+        {
+          "file": "docs/recovery-results.json",
+          "field": "totals.submitted_inexact",
+          "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json"
+        },
+        {
+          "file": "research/recovery/mechanism/trace_episodes.csv",
+          "field": "submitted, exact_and_submitted, failure_label",
+          "sha256": "8163b8a7a7d437fa9649e2e00b026a8f290cf0c0ad262004fa5c2f9579de3e94",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/trace_episodes.csv"
+        }
+      ]
+    },
+    {
+      "id": "distribution-vs-choice",
+      "claim": "Opposite-world inspection feedback can alter relative candidate scores on prefixes without changing every highest-ranked candidate.",
+      "status": "verified",
+      "stage": "Exploratory",
+      "source_fields": [
+        {
+          "file": "research/recovery/mechanism/scores-summary.json",
+          "field": "conditions[*].post_inspect.{n,top_flips,mean_tv}",
+          "sha256": "8cd7a0f74f59b0575bc5aaa1db43fcfd1aa18ec859792071b0b81758fbd571f1",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-summary.json"
+        }
+      ]
+    },
+    {
+      "id": "numerical-repeatability",
+      "claim": "With warm prefix reuse, SmolLM2 repeated identical inputs varied more than the initial mean generic observation-swap contrast. Fresh-context repeat controls reduced that discrepancy.",
+      "status": "verified",
+      "stage": "Exploratory",
+      "source_fields": [
+        {
+          "file": "research/recovery/mechanism/scores-warm-controls.json",
+          "field": "SmolLM2 repeat_controls and superseded_swap_summaries.baseline mean_tv",
+          "sha256": "fa21b08cd2eb63de22f039c9c9960e532253041f72d7a154d846680d2b773d81",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-warm-controls.json"
+        },
+        {
+          "file": "research/recovery/mechanism/scores-numerics.json",
+          "field": "smollm2-360m.identical_observed_and_swapped_inputs.max_tv",
+          "sha256": "0223ea3a4319820249b05e2abb09f70c649186fcdd629d934f8b2895fa627230",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/scores-numerics.json"
+        }
+      ]
+    },
+    {
+      "id": "successful-menu-trajectories",
+      "claim": "The successful menu permutations contain the documented status-update and order-transfer paths.",
+      "status": "verified",
+      "stage": "Exploratory",
+      "source_fields": [
+        {
+          "file": "research/recovery/mechanism/blackbox/traces.jsonl",
+          "field": "qwen2.5-0.5b.refund.11.1.order_002 / steps[*].action and passed",
+          "sha256": "87993ce9fdf4be6beb0bbe36505318797dc7b7c7bb64d06fd81132a32d71d1b4",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/traces.jsonl"
+        },
+        {
+          "file": "research/recovery/mechanism/blackbox/traces.jsonl",
+          "field": "qwen2.5-0.5b.refund.11.1.order_014 / steps[*].action and passed",
+          "sha256": "87993ce9fdf4be6beb0bbe36505318797dc7b7c7bb64d06fd81132a32d71d1b4",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/traces.jsonl"
+        },
+        {
+          "file": "research/recovery/mechanism/blackbox/traces.jsonl",
+          "field": "qwen2.5-0.5b.transfer.11.1.order_074 / steps[*].action and passed",
+          "sha256": "87993ce9fdf4be6beb0bbe36505318797dc7b7c7bb64d06fd81132a32d71d1b4",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/traces.jsonl"
+        }
+      ]
+    },
+    {
+      "id": "menu-permutation-recovery",
+      "claim": "The exhaustive menu sweep produced a verified recovery for the committed refund while every recorded frozen menu setting failed.",
+      "status": "verified",
+      "stage": "Exploratory",
+      "source_fields": [
+        {
+          "file": "research/recovery/mechanism/blackbox/results.json",
+          "field": "permutation_summaries[task=refund,first_menu_entry=all].passed",
+          "sha256": "6f852fa5d346345c00ff8168871002c6ba8b9a6c147e36d0e601c1727c6fa1e7",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/blackbox/results.json"
+        },
+        {
+          "file": "docs/recovery-results.json",
+          "field": "episodes[task=refund,committed=true,model=qwen2.5-0.5b].passed",
+          "sha256": "e8f94a1d8d04051ff2e6122d73c5d7ec5932ce1280e55d85584aeb6629f6b372",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/docs/recovery-results.json"
+        }
+      ]
+    },
+    {
+      "id": "backend-counterexample",
+      "claim": "On the selected committed refund, GGUF repeatedly updated status and reached exact state without submission, while the original-weight control repeatedly inspected and ended inexact.",
+      "status": "verified",
+      "stage": "Exploratory",
+      "source_fields": [
+        {
+          "file": "research/recovery/episodes.jsonl",
+          "field": "smollm2-360m.refund.53.committed.baseline.canonical / steps and verdict.endpoints",
+          "sha256": "d5b0ddac7e8681f6f9d77270929bf797340845bc4ca56c1d45428b409f065211",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-v1.0.0/research/recovery/episodes.jsonl"
+        },
+        {
+          "file": "research/recovery/mechanism/whitebox/records/smollm2-360m/steering-episodes.jsonl",
+          "field": "smollm2-360m.refund.53.committed.baseline.canonical.control / steps and verdict.endpoints",
+          "sha256": "a83bafc409cff3b7c13033853f55c0a9ae517e5402b70d4e6904ddd1bd255342",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/records/smollm2-360m/steering-episodes.jsonl"
+        }
+      ]
+    },
+    {
+      "id": "steering-qwen2.5-0.5b",
+      "claim": "Unit steering did not increase exact submitted recovery for qwen2.5-0.5b on the matched held-out episodes.",
+      "status": "verified",
+      "stage": "Exploratory",
+      "source_fields": [
+        {
+          "file": "research/recovery/mechanism/whitebox/results.json",
+          "field": "models[id=qwen2.5-0.5b].steering[arm=control or steered].{passed,n}",
+          "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json"
+        }
+      ]
+    },
+    {
+      "id": "quantization-qwen2.5-0.5b",
+      "claim": "The original and quantized runs did not always decode the same first response for qwen2.5-0.5b.",
+      "status": "verified",
+      "stage": "Exploratory",
+      "source_fields": [
+        {
+          "file": "research/recovery/mechanism/whitebox/results.json",
+          "field": "models[id=qwen2.5-0.5b].agreement.{total,exact_replies,paired_valid,matched_actions}",
+          "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json"
+        }
+      ]
+    },
+    {
+      "id": "steering-smollm2-360m",
+      "claim": "Unit steering did not increase exact submitted recovery for smollm2-360m on the matched held-out episodes.",
+      "status": "verified",
+      "stage": "Exploratory",
+      "source_fields": [
+        {
+          "file": "research/recovery/mechanism/whitebox/results.json",
+          "field": "models[id=smollm2-360m].steering[arm=control or steered].{passed,n}",
+          "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json"
+        }
+      ]
+    },
+    {
+      "id": "quantization-smollm2-360m",
+      "claim": "The original and quantized runs did not always decode the same first response for smollm2-360m.",
+      "status": "verified",
+      "stage": "Exploratory",
+      "source_fields": [
+        {
+          "file": "research/recovery/mechanism/whitebox/results.json",
+          "field": "models[id=smollm2-360m].agreement.{total,exact_replies,paired_valid,matched_actions}",
+          "sha256": "df51c2ca65b4ab5ed05a10d529b739b951b05a53279e05765eac189f3883b636",
+          "url": "https://github.com/aravinds-kannappan/PodBench/blob/recovery-mechanism-v1.0.0/research/recovery/mechanism/whitebox/results.json"
+        }
+      ]
+    }
+  ]
+}
