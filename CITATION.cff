@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use PodBench in a publication, cite the software and identify the study release or exact Git commit you evaluated."
+title: PodBench
+type: software
+authors:
+  - name: PodBench contributors
+repository-code: "https://github.com/aravinds-kannappan/PodBench"
+url: "https://pod-bench.vercel.app/explorer/index.html"
+license: Apache-2.0

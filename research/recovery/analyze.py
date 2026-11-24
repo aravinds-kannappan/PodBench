@@ -27,8 +27,8 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def schedule():
-    for values in itertools.product(MODELS, FAMILIES, SEEDS, (False, True), ARMS, MENUS):
+def schedule(models=MODELS):
+    for values in itertools.product(models, FAMILIES, SEEDS, (False, True), ARMS, MENUS):
         yield dict(zip(KEY, values))
 
 
@@ -84,7 +84,11 @@ def episode(design, raw=None, line=None):
     status = raw["status"]
     require(status in ("submitted", "step_limit", "inference_error"), f"Unknown status {status}")
     steps = raw["steps"]
-    require(len(steps) <= 5, f"{raw['id']}: decision budget exceeded")
+    require(1 <= len(steps) <= 5, f"{raw['id']}: invalid decision count")
+    require(status != "step_limit" or len(steps) == 5, f"{raw['id']}: premature turn limit")
+    require(all(s["action"] != "submit" and s["reply"] is not None for s in steps[:-1]),
+            f"{raw['id']}: decision after a terminal turn")
+    require((steps[-1]["reply"] is None) == (status == "inference_error"), f"{raw['id']}: invalid inference status")
     verdict, diagnostics = replay(raw)
     decisions = [s for s in steps if s["reply"] is not None]
     valid = [s for s in decisions if s["valid"]]
@@ -180,8 +184,12 @@ def model_comparison(rows):
             "nonerror_improvement_pairs": improved_assessed, "nonerror_regression_pairs": regressed_assessed}
 
 
-def analyze(records):
-    design = list(schedule())
+def analyze(records, model_ids=MODELS):
+    if (not model_ids or any(not isinstance(m, str) or not m.strip() or m.strip() != m
+                             or not m.isprintable() for m in model_ids)):
+        raise ValueError("Model IDs must be nonempty printable names without surrounding whitespace")
+    require(len(set(model_ids)) == len(model_ids), "Duplicate model ID")
+    design = list(schedule(model_ids))
     allowed = {identity(d) for d in design}
     indexed = {}
     ids = set()
@@ -193,7 +201,7 @@ def analyze(records):
         ids.add(raw["id"])
     rows = [episode(d, *indexed.get(identity(d), (None, None))) for d in design]
     models, cells, menus = [], [], []
-    for model in MODELS:
+    for model in model_ids:
         subset = [r for r in rows if r["model"] == model]
         models.append({"model": model, **model_comparison(subset)})
         for task, world, arm in itertools.product(FAMILIES, (False, True), ARMS):
@@ -202,7 +210,7 @@ def analyze(records):
         for menu, arm in itertools.product(MENUS, ARMS):
             group = [r for r in subset if r["menu_order"] == menu and r["instruction"] == arm]
             menus.append({"model": model, "menu_order": menu, "instruction": arm, **aggregate(group)})
-    return {"schema_version": 1, "protocol": "research/recovery/PROTOCOL.md", "models": MODELS, "families": FAMILIES,
+    return {"schema_version": 1, "protocol": "research/recovery/PROTOCOL.md", "models": model_ids, "families": FAMILIES,
             "bootstrap": {"seed": BOOTSTRAP_SEED, "draws": DRAWS, "level": 0.95,
                           "method": "Percentile bootstrap of seed clusters stratified within fixed task family."},
             "totals": aggregate(rows), "by_model": models, "cells": cells, "by_menu": menus, "episodes": rows}
@@ -213,9 +221,10 @@ def main():
     parser.add_argument("--journal", type=Path, default=HERE / "episodes.jsonl")
     parser.add_argument("--output", type=Path, default=DOCS / "recovery-results.json")
     parser.add_argument("--csv", type=Path, default=DOCS / "recovery-episodes.csv")
+    parser.add_argument("--model-id", action="append", help="analyze this model ID in the same 96-cell design; repeat for additional models")
     args = parser.parse_args()
     source = args.journal.read_bytes()
-    report = analyze(json.loads(line) for line in source.splitlines())
+    report = analyze((json.loads(line) for line in source.splitlines()), args.model_id or MODELS)
     report["journal_sha256"] = hashlib.sha256(source).hexdigest()
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False) + "\n")
     fields = [name for name in report["episodes"][0] if name != "turns"]

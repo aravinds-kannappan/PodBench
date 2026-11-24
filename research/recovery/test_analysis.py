@@ -37,7 +37,7 @@ class TestAnalysis(unittest.TestCase):
         bad = fixture(self.design, ["submit"], "submitted")
         self.assertTrue(episode(self.design, bad)["omission"])
         actions = ["inspect", "record_refund", "mark_refunded"]
-        incomplete = fixture(self.design, actions, "step_limit")
+        incomplete = fixture(self.design, actions + ["inspect", "inspect"], "step_limit")
         row = episode(self.design, incomplete)
         self.assertTrue(row["exact_state"])
         self.assertFalse(row["passed"])
@@ -71,6 +71,24 @@ class TestAnalysis(unittest.TestCase):
         self.assertEqual(result["improvement_pairs"], 16)
         self.assertEqual(result["both_nonerror_pairs"], 48)
         self.assertEqual(result["clusters"], 12)
+
+    def test_external_model_roster(self):
+        records = []
+        for i, design in enumerate(schedule(("lab/new-checkpoint",))):
+            row = fixture(design, ["submit"], "submitted")
+            row["id"] = f"custom-{i}"
+            records.append(row)
+        report = analyze(records, ["lab/new-checkpoint"])
+        self.assertEqual(report["models"], ["lab/new-checkpoint"])
+        self.assertEqual(report["totals"]["recorded"], 96)
+        self.assertEqual(report["totals"]["missing"], 0)
+        self.assertEqual(report["by_model"][0]["pairs"], 48)
+        with self.assertRaisesRegex(ValueError, "Duplicate model ID"):
+            analyze([], ["lab/policy", "lab/policy"])
+        with self.assertRaisesRegex(ValueError, "Model IDs"):
+            analyze([], [" "])
+        with self.assertRaisesRegex(ValueError, "Unscheduled trial"):
+            analyze(records)
 
     def test_duplicate_and_out_of_design_are_rejected(self):
         row = fixture(self.design, ["submit"], "submitted")

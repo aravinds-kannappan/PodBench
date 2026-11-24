@@ -1,0 +1,13 @@
+{
+  "study": "SQLite recovery v1",
+  "protocol_commit": "f4ef7fdf31b98fa95046f1ff5ca6461b4a192271",
+  "collection_commit": "9885ae666c6bc65640ab75ab3a4faef4bab2b0e7",
+  "system": "Linux",
+  "machine": "x86_64",
+  "cpu_model": "AMD EPYC 9V45 96-Core Processor",
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "node": "v24.22.3",
+  "cpu_quota": "400000 100000",
+  "workers": "Two local processes, one per checkpoint, each using two inference threads."
+}
